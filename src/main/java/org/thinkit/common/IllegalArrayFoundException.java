@@ -16,13 +16,13 @@ package org.thinkit.common;
 
 /**
  * Thrown to indicate that a method has been passed an illegal or inappropriate
- * list.
+ * array.
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-final class IllegalListFoundException extends RuntimeException {
+final class IllegalArrayFoundException extends RuntimeException {
 
     /**
      * serialVersionUID
@@ -30,19 +30,19 @@ final class IllegalListFoundException extends RuntimeException {
     private static final long serialVersionUID = 0L;
 
     /**
-     * Constructs an <code>IllegalListFoundException</code> with no detail message.
+     * Constructs an <code>IllegalArrayFoundException</code> with no detail message.
      */
-    public IllegalListFoundException() {
+    public IllegalArrayFoundException() {
         super();
     }
 
     /**
-     * Constructs an <code>IllegalListFoundException</code> with the specified
+     * Constructs an <code>IllegalArrayFoundException</code> with the specified
      * detail message.
      *
      * @param s the detail message.
      */
-    public IllegalListFoundException(String s) {
+    public IllegalArrayFoundException(String s) {
         super(s);
     }
 
@@ -60,7 +60,7 @@ final class IllegalListFoundException extends RuntimeException {
      *                unknown.)
      * @since 1.0
      */
-    public IllegalListFoundException(String message, Throwable cause) {
+    public IllegalArrayFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -77,7 +77,7 @@ final class IllegalListFoundException extends RuntimeException {
      *              unknown.)
      * @since 1.0
      */
-    public IllegalListFoundException(Throwable cause) {
+    public IllegalArrayFoundException(Throwable cause) {
         super(cause);
     }
 }
