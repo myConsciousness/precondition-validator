@@ -150,11 +150,11 @@ public interface Precondition {
      *
      * @param list 判定対象のリスト
      *
-     * @throws IllegalListFoundException 引数として渡された {@code list} に要素が含まれていない場合
+     * @throws IllegalArrayFoundException 引数として渡された {@code list} に要素が含まれていない場合
      */
     static void requireNonEmpty(List<?> list) {
         if (list.isEmpty()) {
-            throw new IllegalListFoundException("List must contain at least one or more elements");
+            throw new IllegalArrayFoundException("List must contain at least one or more elements");
         }
     }
 
