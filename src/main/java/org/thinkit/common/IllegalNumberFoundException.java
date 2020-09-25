@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.exception;
+package org.thinkit.common;
 
 /**
  * Thrown to indicate that a method has been passed an illegal or inappropriate
@@ -22,7 +22,7 @@ package org.thinkit.common.exception;
  * @since 1.0
  * @version 1.0
  */
-public final class IllegalNumberFoundException extends RuntimeException {
+final class IllegalNumberFoundException extends RuntimeException {
 
     /**
      * serialVersionUID

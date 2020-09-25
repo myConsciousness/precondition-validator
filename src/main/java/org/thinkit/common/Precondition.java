@@ -17,11 +17,6 @@ package org.thinkit.common;
 import java.util.List;
 import java.util.Map;
 
-import org.thinkit.common.exception.IllegalListFoundException;
-import org.thinkit.common.exception.IllegalMapFoundException;
-import org.thinkit.common.exception.IllegalNumberFoundException;
-import org.thinkit.common.exception.IllegalSequenceFoundException;
-
 /**
  * 前提条件を判定する処理を定義したインターフェースです。
  *
