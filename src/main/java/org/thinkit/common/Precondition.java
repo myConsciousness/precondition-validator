@@ -74,11 +74,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (sequence.isEmpty()) {
-            try {
-                throw exception;
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
+            error(exception);
         }
     }
 
@@ -90,6 +86,9 @@ public interface Precondition {
      * <p>
      * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
      * が必ず実行時に発生します。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, Throwable)}
+     * メソッドを使用してください。
      *
      * @param sequence 判定対象の文字列
      *
@@ -104,6 +103,8 @@ public interface Precondition {
     /**
      * 引数として渡された {@code sequence} の値が {@code null} または空文字列であるか判定します。 {@code null}
      * または空文字列である場合は例外をスローします。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(String)} メソッドを使用してください。
      *
      * @param sequence  検査対象の文字列
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -122,28 +123,73 @@ public interface Precondition {
     /**
      * 引数として指定された {@code number} の数値が正数であるか判定します。引数として指定された {@code number}
      * の数値が負数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, Throwable)} メソッドを使用してください。
      *
      * @param number 判定対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が負数の場合
      */
     static void requirePositive(int number) {
+        requirePositive(number,
+                new IllegalNumberFoundException(String.format("Number must be positive but %s was given", number)));
+    }
+
+    /**
+     * 引数として指定された {@code number} の数値が正数であるか判定します。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requirePositive(int)} メソッドを使用してください。
+     *
+     * @param number    判定対象の数値
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
+     * @exception IllegalNumberFoundException {@link #requirePositive(int)
+     *                                        メソッドから実行され、指定された {@code number}
+     *                                        の数値が負数の場合
+     */
+    static void requirePositive(int number, Throwable exception) {
+        requireNonNull(exception);
+
         if (number < 0) {
-            throw new IllegalNumberFoundException(String.format("Number must be positive but %s was given", number));
+            error(exception);
         }
     }
 
     /**
      * 引数として指定された {@code number} の数値が負数であるか判定します。引数として指定された {@code number}
      * の数値が正数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, Throwable)} メソッドを使用してください。
      *
      * @param number 判定対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
      */
     static void requireNegative(int number) {
+        requireNegative(number,
+                new IllegalNumberFoundException(String.format("Number must be negative but %s was given", number)));
+    }
+
+    /**
+     * 引数として指定された {@code number} の数値が負数であるか判定します。引数として指定された {@code number}
+     * が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requireNegative(int)} メソッドを使用してください。
+     *
+     * @param number    検査対象の数値
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
+     * @exception IllegalNumberFoundException {@link #requireNegative(int)}
+     *                                        メソッドから実行され、引数として渡された {@code number}
+     *                                        の数値が正数の場合
+     */
+    static void requireNegative(int number, Throwable exception) {
+        requireNonNull(exception);
+
         if (number < 0) {
-            throw new IllegalNumberFoundException(String.format("Number must be negative but %s was given", number));
+            error(exception);
         }
     }
 
@@ -213,6 +259,22 @@ public interface Precondition {
     static void requireNonEmpty(Map<?, ?> map) {
         if (map.isEmpty()) {
             throw new IllegalMapFoundException("Map must contain at least one or more elements");
+        }
+    }
+
+    /**
+     * 引数として渡された {@code exception} の例外オブジェクトをスローします。
+     * <p>
+     * 前提条件を検査する各静的メソッドで前提条件を満たさない値を検知した際にこの {@link #error(Throwable)}
+     * メソッドを使用してください。
+     *
+     * @param exception スローされる例外オブジェクト
+     */
+    private static void error(Throwable exception) {
+        try {
+            throw exception;
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 }
