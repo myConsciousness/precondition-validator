@@ -287,18 +287,41 @@ public interface Precondition {
     }
 
     /**
-     * 引数として渡された {@code list} が空か判定します。
+     * 引数として渡された {@code list} が {@code null} または空リストか判定します。
      * <p>
-     * この {@link #requireNonEmpty(List)} メソッドは {@link List#isEmpty()} メソッドでの判定前に
-     * {@code null} の判定を行いません。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, Throwable)} メソッドを使用してください。
      *
      * @param list 判定対象のリスト
      *
-     * @throws IllegalArrayFoundException 引数として渡された {@code list} に要素が含まれていない場合
+     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
+     *                                       が渡された場合
+     * @exception IllegalArrayFoundException 引数として渡された {@code list} が空リストの場合
      */
     static void requireNonEmpty(List<?> list) {
+        requireNonEmpty(list, new IllegalArrayFoundException("List must contain at least one or more elements"));
+    }
+
+    /**
+     * 引数として指定された {@code list} が {@code null} または空リストか判定します。引数として渡された {@code list} が
+     * {@code null} または空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
+     * {@link #requireNonEmpty(List)} メソッドから実行され 、引数として渡された {@code list} が
+     * {@code null} または空リストの場合は {@link IllegalArrayFoundException}
+     * を例外オブジェクトとしてスローします。
+     *
+     * @param list      判定対象のリスト
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
+     *                                       の場合
+     * @exception IllegalArrayFoundException {@link #requireNonEmpty(List)}
+     *                                       メソッドから実行され、引数として渡された {@code list}
+     *                                       が空リストの場合
+     */
+    static void requireNonEmpty(List<?> list, Throwable exception) {
+        requireNonNull(list);
+
         if (list.isEmpty()) {
-            throw new IllegalArrayFoundException("List must contain at least one or more elements");
+            error(exception);
         }
     }
 
