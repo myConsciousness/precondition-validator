@@ -30,7 +30,7 @@ public interface Precondition {
      * 引数として渡された {@code object} オブジェクトの参照が {@code null} であるか判定します。 {@code object}
      * オブジェクトの参照が {@code null} である場合には {@link NullPointerException} が必ず実行時に発生します。
      *
-     * @param object {@code null} 判定対象のオブジェクト
+     * @param object 検査対象のオブジェクト
      *
      * @throws NullPointerException 引数として {@code null} が渡された場合
      */
@@ -47,7 +47,7 @@ public interface Precondition {
      * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
      *
-     * @param sequence 判定対象の文字列
+     * @param sequence 検査対象の文字列
      *
      * @throws NullPointerException          引数として {@code null} が渡された場合
      * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
@@ -90,7 +90,7 @@ public interface Precondition {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, Throwable)}
      * メソッドを使用してください。
      *
-     * @param sequence 判定対象の文字列
+     * @param sequence 検査対象の文字列
      *
      * @throws NullPointerException          引数として {@code null} が渡された場合
      * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
@@ -126,7 +126,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, Throwable)} メソッドを使用してください。
      *
-     * @param number 判定対象の数値
+     * @param number 検査対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が負数の場合
      */
@@ -140,7 +140,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requirePositive(int)} メソッドを使用してください。
      *
-     * @param number    判定対象の数値
+     * @param number    検査対象の数値
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
      * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
@@ -162,7 +162,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, Throwable)} メソッドを使用してください。
      *
-     * @param number 判定対象の数値
+     * @param number 検査対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
      */
@@ -200,7 +200,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, Throwable)} メソッドを使用してください。
      *
-     * @param index 判定対象のインデックス
+     * @param index 検査対象のインデックス
      * @param to    判定時の上限値
      *
      * @throws IndexOutOfBoundsException 引数として指定された {@code number} の数値が {@code 0} から
@@ -220,7 +220,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int)} メソッドを使用してください。
      *
-     * @param index     判定対象のインデックス
+     * @param index     検査対象のインデックス
      * @param to        判定時の上限値
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
@@ -246,7 +246,7 @@ public interface Precondition {
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, Throwable)}
      * メソッドを使用してください。
      *
-     * @param index 判定対象のインデックス
+     * @param index 検査対象のインデックス
      * @param from  判定時の最低値
      * @param to    判定時の上限値
      *
@@ -268,7 +268,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int, int)} メソッドを使用してください。
      *
-     * @param index     判定対象のインデックス
+     * @param index     検査対象のインデックス
      * @param from      判定時の最低値
      * @param to        判定時の上限値
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -291,7 +291,7 @@ public interface Precondition {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, Throwable)} メソッドを使用してください。
      *
-     * @param list 判定対象のリスト
+     * @param list 検査対象のリスト
      *
      * @exception NullPointerException       引数として渡された {@code list} が {@code null}
      *                                       が渡された場合
@@ -308,10 +308,11 @@ public interface Precondition {
      * {@code null} または空リストの場合は {@link IllegalArrayFoundException}
      * を例外オブジェクトとしてスローします。
      *
-     * @param list      判定対象のリスト
+     * @param list      検査対象のリスト
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
      * @exception NullPointerException       引数として渡された {@code list} が {@code null}
+     *                                       の場合、または引数として渡された例外オブジェクトが {@code null}
      *                                       の場合
      * @exception IllegalArrayFoundException {@link #requireNonEmpty(List)}
      *                                       メソッドから実行され、引数として渡された {@code list}
@@ -319,6 +320,7 @@ public interface Precondition {
      */
     static void requireNonEmpty(List<?> list, Throwable exception) {
         requireNonNull(list);
+        requireNonNull(exception);
 
         if (list.isEmpty()) {
             error(exception);
@@ -326,18 +328,42 @@ public interface Precondition {
     }
 
     /**
-     * 引数として渡された {@code map} が空か判定します。
+     * 引数として渡された {@code map} が {@code null} または空マップか判定します。
      * <p>
-     * この {@link #requireNonEmpty(Map)} メソッドは {@link Map#isEmpty()} メソッドでの判定前に
-     * {@code null} の判定を行いません。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, Throwable)} メソッドを使用してください。
      *
-     * @param list 判定対象のリスト
+     * @param list 検査対象のリスト
      *
      * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
      */
     static void requireNonEmpty(Map<?, ?> map) {
+        requireNonEmpty(map, new IllegalMapFoundException("Map must contain at least one or more elements"));
+    }
+
+    /**
+     * 引数として渡された {@code map} が {@code null} または空マップか判定します。引数として指定された {@code map} が
+     * {@code null} または空マップの場合は引数として渡された任意の例外オブジェクトを返却します。
+     * {@link #requireNonEmpty(Map)} メソッドから実行されて、引数として渡された {@code map} が
+     * {@code null} または空マップの場合は {@link IllegalMapFoundException} を例外オブジェクトとしてスローします。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(Map)} メソッドを使用してください。
+     *
+     * @param map       検査対象のマップ
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException     引数として渡された {@code map} が
+     *                                     {@null} の場合、または引数として渡された任意の例外オブジェクトが
+     *                                     {@code null} の場合
+     * @exception IllegalMapFoundException {@link #requireNonEmpty(Map)}
+     *                                     メソッドから実行されて、引数として渡された {@code map}
+     *                                     が空マップの場合
+     */
+    static void requireNonEmpty(Map<?, ?> map, Throwable exception) {
+        requireNonNull(map);
+        requireNonNull(exception);
+
         if (map.isEmpty()) {
-            throw new IllegalMapFoundException("Map must contain at least one or more elements");
+            error(exception);
         }
     }
 
