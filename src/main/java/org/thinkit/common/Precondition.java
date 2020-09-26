@@ -53,8 +53,32 @@ public interface Precondition {
      * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
      */
     static void requireNonBlank(String sequence) {
+        requireNonBlank(sequence, new IllegalSequenceFoundException("String must not be blank"));
+    }
+
+    /**
+     * 引数として与えられた {@code sequence} が空文字列か判定します。与えられた {@code sequence} の値が空文字列の場合は
+     * {@code exception} オブジェクトをスローします。
+     * <p>
+     * 任意の例外を指定しない場合は {@link #requireNonBlank(String)} メソッドを使用してください。
+     *
+     * @param sequence  検査対象の文字列
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException          引数として渡された例外オブジェクトが {@code null} の場合
+     * @exception IllegalSequenceFoundException {@link #requireNonBlank(String)}
+     *                                          メソッドから実行され、引数として渡された
+     *                                          {@code sequence} が空文字列の場合
+     */
+    static void requireNonBlank(String sequence, Throwable exception) {
+        requireNonNull(exception);
+
         if (sequence.isEmpty()) {
-            throw new IllegalSequenceFoundException("String must not be blank");
+            try {
+                throw exception;
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -75,6 +99,24 @@ public interface Precondition {
     static void requireNonEmpty(String sequence) {
         requireNonNull(sequence);
         requireNonBlank(sequence);
+    }
+
+    /**
+     * 引数として渡された {@code sequence} の値が {@code null} または空文字列であるか判定します。 {@code null}
+     * または空文字列である場合は例外をスローします。
+     *
+     * @param sequence  検査対象の文字列
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException          引数として渡された例外オブジェクトが {@code null}
+     *                                          の場合、または引数として渡された {@code sequence} が
+     *                                          {@code null} の場合
+     * @exception IllegalSequenceFoundException 引数として渡された {@code sequence} が空文字列の場合
+     */
+    static void requireNonEmpty(String sequence, Throwable exception) {
+        requireNonNull(exception);
+        requireNonNull(sequence);
+        requireNonBlank(sequence, exception);
     }
 
     /**
