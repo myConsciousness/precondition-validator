@@ -395,8 +395,14 @@ public interface Precondition {
      * メソッドから実行されて、引数として渡された配列が {@code null} または空配列の場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
-     * @param array
-     * @param exception
+     * @param array     検査対象の配列
+     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException       引数として渡された配列が {@code null}
+     *                                       の場合、または引数として渡された例外オブジェクトが {@code null}
+     *                                       の場合
+     * @exception IllegalArrayFoundException {@link #requireNonEmpty(Object[])}
+     *                                       メソッドから実行されて、引数として渡された配列が空配列の場合
      */
     static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
