@@ -52,7 +52,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireNonBlank {
+    class TestRequireNonBlankString {
     }
 
     /**
@@ -64,7 +64,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireNonBlankWithException {
+    class TestRequireNonBlankStringWithException {
     }
 
     /**
@@ -75,7 +75,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireStringNonEmpty {
+    class TestRequireNonEmptyString {
     }
 
     /**
@@ -87,7 +87,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireStringNonEmptyWithException {
+    class TestRequireNonEmptyStringWithException {
     }
 
     /**
@@ -192,7 +192,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireListNonEmpty {
+    class TestRequireNonEmptyList {
     }
 
     /**
@@ -204,7 +204,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireListNonEmptyWithException {
+    class TestRequireNonEmptyListWithException {
     }
 
     /**
@@ -216,7 +216,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireMapNonEmpty {
+    class TestRequireNonEmptyMap {
     }
 
     /**
@@ -228,7 +228,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireMapNonEmptyWithException {
+    class TestRequireNonEmptyMapWithException {
     }
 
     /**
@@ -239,7 +239,7 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireArrayNonEmpty {
+    class TestRequireNonEmptyArray {
     }
 
     /**
@@ -251,6 +251,6 @@ final class PreconditionTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireArrayNonEmptyWithException {
+    class TestRequireNonEmptyArrayWithException {
     }
 }
