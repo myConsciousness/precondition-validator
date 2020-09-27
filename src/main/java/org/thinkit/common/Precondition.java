@@ -75,7 +75,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (sequence.isEmpty()) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -154,7 +154,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (number < 0) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -192,7 +192,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (number < 0) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -238,7 +238,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (index < 0 || to < index) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -286,7 +286,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (index < from || to < index) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -328,7 +328,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (list.isEmpty()) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -369,7 +369,7 @@ public interface Precondition {
         requireNonNull(exception);
 
         if (map.isEmpty()) {
-            error(exception);
+            throw exception;
         }
     }
 
@@ -391,24 +391,14 @@ public interface Precondition {
 
     /**
      * 引数として渡された配列が {@code null} または空配列か判定します。引数として渡された配列が {@code null}
-     * または空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
+     * または空配列の場合は引数として渡された任意の例外オブジェクトをスローします。 {@link #requireNonEmpty(Object[])}
+     * メソッドから実行されて、引数として渡された配列が {@code null} または空配列の場合は
+     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
      * @param array
      * @param exception
      */
     static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
-    }
-
-    /**
-     * 引数として渡された {@code exception} の例外オブジェクトをスローします。
-     * <p>
-     * 前提条件を検査する各静的メソッドで前提条件を満たさない値を検知した際にこの {@link #error(RuntimeException)}
-     * メソッドを使用してください。
-     *
-     * @param exception スローされる例外オブジェクト
-     */
-    private static void error(RuntimeException exception) {
-        throw exception;
     }
 }
