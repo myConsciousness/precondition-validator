@@ -112,4 +112,145 @@ final class PreconditionTest {
     @Nested
     class TestRequirePositiveWithException {
     }
+
+    /**
+     * {@link Precondition#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNegative {
+    }
+
+    /**
+     * {@link Precondition#requireNegative(int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNegativeWithException {
+    }
+
+    /**
+     * {@link Precondition#requireRange(int, int)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeTo {
+    }
+
+    /**
+     * {@link Precondition#requireRange(int, int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeToWithException {
+    }
+
+    /**
+     * {@link Precondition#requireRange(int, int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeFromTo {
+    }
+
+    /**
+     * {@link Precondition#requireRange(int, int, int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeFromToWithException {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(java.util.List)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireListNonEmpty {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(java.util.List, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireListNonEmptyWithException {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(java.util.Map)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireMapNonEmpty {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(java.util.Map, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireMapNonEmptyWithException {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(Object[])} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireArrayNonEmpty {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(Object[], RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireArrayNonEmptyWithException {
+    }
 }
