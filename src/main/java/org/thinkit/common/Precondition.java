@@ -14,6 +14,7 @@
 
 package org.thinkit.common;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +71,7 @@ public interface Precondition {
      *                                          メソッドから実行され、引数として渡された
      *                                          {@code sequence} が空文字列の場合
      */
-    static void requireNonBlank(String sequence, Throwable exception) {
+    static void requireNonBlank(String sequence, RuntimeException exception) {
         requireNonNull(exception);
 
         if (sequence.isEmpty()) {
@@ -87,7 +88,7 @@ public interface Precondition {
      * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
      * が必ず実行時に発生します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, Throwable)}
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, RuntimeException)}
      * メソッドを使用してください。
      *
      * @param sequence 検査対象の文字列
@@ -114,7 +115,7 @@ public interface Precondition {
      *                                          {@code null} の場合
      * @exception IllegalSequenceFoundException 引数として渡された {@code sequence} が空文字列の場合
      */
-    static void requireNonEmpty(String sequence, Throwable exception) {
+    static void requireNonEmpty(String sequence, RuntimeException exception) {
         requireNonNull(exception);
         requireNonNull(sequence);
         requireNonBlank(sequence, exception);
@@ -124,7 +125,8 @@ public interface Precondition {
      * 引数として指定された {@code number} の数値が正数であるか判定します。引数として指定された {@code number}
      * の数値が負数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, Throwable)} メソッドを使用してください。
+     * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
+     * メソッドを使用してください。
      *
      * @param number 検査対象の数値
      *
@@ -148,7 +150,7 @@ public interface Precondition {
      *                                        メソッドから実行され、指定された {@code number}
      *                                        の数値が負数の場合
      */
-    static void requirePositive(int number, Throwable exception) {
+    static void requirePositive(int number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0) {
@@ -160,7 +162,8 @@ public interface Precondition {
      * 引数として指定された {@code number} の数値が負数であるか判定します。引数として指定された {@code number}
      * の数値が正数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, Throwable)} メソッドを使用してください。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
+     * メソッドを使用してください。
      *
      * @param number 検査対象の数値
      *
@@ -185,7 +188,7 @@ public interface Precondition {
      *                                        メソッドから実行され、引数として渡された {@code number}
      *                                        の数値が正数の場合
      */
-    static void requireNegative(int number, Throwable exception) {
+    static void requireNegative(int number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0) {
@@ -198,7 +201,8 @@ public interface Precondition {
      * で指定された範囲内の数値か判定します。引数として指定された {@code index} が範囲外にある数値である場合は
      * {@link IndexOutOfBoundsException} が必ず実行時に発生します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, Throwable)} メソッドを使用してください。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
+     * メソッドを使用してください。
      *
      * @param index 検査対象のインデックス
      * @param to    判定時の上限値
@@ -230,7 +234,7 @@ public interface Precondition {
      *                                      の数値が {@code 0} から {@code to}
      *                                      で指定された範囲内に存在しない場合
      */
-    static void requireRange(int index, int to, Throwable exception) {
+    static void requireRange(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < 0 || to < index) {
@@ -243,7 +247,7 @@ public interface Precondition {
      * で指定された範囲内の数値か判定します。引数として指定された {@code index} が範囲外にある数値である場合は
      * {@link IndexOutOfBoundsException} が必ず実行時に発生します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, Throwable)}
+     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
      * メソッドを使用してください。
      *
      * @param index 検査対象のインデックス
@@ -278,7 +282,7 @@ public interface Precondition {
      *                                      {@code from} から {@code to}
      *                                      で指定された範囲内に存在しない場合
      */
-    static void requireRange(int index, int from, int to, Throwable exception) {
+    static void requireRange(int index, int from, int to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -289,7 +293,8 @@ public interface Precondition {
     /**
      * 引数として渡された {@code list} が {@code null} または空リストか判定します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, Throwable)} メソッドを使用してください。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
+     * メソッドを使用してください。
      *
      * @param list 検査対象のリスト
      *
@@ -318,7 +323,7 @@ public interface Precondition {
      *                                       メソッドから実行され、引数として渡された {@code list}
      *                                       が空リストの場合
      */
-    static void requireNonEmpty(List<?> list, Throwable exception) {
+    static void requireNonEmpty(List<?> list, RuntimeException exception) {
         requireNonNull(list);
         requireNonNull(exception);
 
@@ -330,7 +335,8 @@ public interface Precondition {
     /**
      * 引数として渡された {@code map} が {@code null} または空マップか判定します。
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, Throwable)} メソッドを使用してください。
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
+     * メソッドを使用してください。
      *
      * @param list 検査対象のリスト
      *
@@ -358,7 +364,7 @@ public interface Precondition {
      *                                     メソッドから実行されて、引数として渡された {@code map}
      *                                     が空マップの場合
      */
-    static void requireNonEmpty(Map<?, ?> map, Throwable exception) {
+    static void requireNonEmpty(Map<?, ?> map, RuntimeException exception) {
         requireNonNull(map);
         requireNonNull(exception);
 
@@ -368,18 +374,41 @@ public interface Precondition {
     }
 
     /**
+     * 引数として渡された配列が {@code null} または空配列か判定します。引数として渡された配列が {@code null} または空配列の場合は
+     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param 検査対象の配列
+     *
+     * @exception NullPointerException       引数として渡された配列が {@code null} の場合
+     * @exception IllegalArrayFoundException 引数として渡された配列が空配列の場合
+     */
+    static void requireNonEmpty(Object[] array) {
+        requireNonEmpty(Arrays.asList(array));
+    }
+
+    /**
+     * 引数として渡された配列が {@code null} または空配列か判定します。引数として渡された配列が {@code null}
+     * または空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
+     *
+     * @param array
+     * @param exception
+     */
+    static void requireNonEmpty(Object[] array, RuntimeException exception) {
+        requireNonEmpty(Arrays.asList(array), exception);
+    }
+
+    /**
      * 引数として渡された {@code exception} の例外オブジェクトをスローします。
      * <p>
-     * 前提条件を検査する各静的メソッドで前提条件を満たさない値を検知した際にこの {@link #error(Throwable)}
+     * 前提条件を検査する各静的メソッドで前提条件を満たさない値を検知した際にこの {@link #error(RuntimeException)}
      * メソッドを使用してください。
      *
      * @param exception スローされる例外オブジェクト
      */
-    private static void error(Throwable exception) {
-        try {
-            throw exception;
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+    private static void error(RuntimeException exception) {
+        throw exception;
     }
 }
