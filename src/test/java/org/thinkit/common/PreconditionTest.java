@@ -14,6 +14,11 @@
 
 package org.thinkit.common;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
 /**
  * {@link Precondition} インターフェースのテストクラスです。
  *
@@ -23,4 +28,88 @@ package org.thinkit.common;
  */
 final class PreconditionTest {
 
+    /**
+     * {@link Precondition#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNonNull {
+
+        @Test
+        void requireNonNull() {
+            assertThrows(NullPointerException.class, () -> Precondition.requireNonNull(null));
+        }
+    }
+
+    /**
+     * {@link Precondition#requireNonBlank(String)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNonBlank {
+    }
+
+    /**
+     * {@link Precondition#requireNonBlank(String, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNonBlankWithException {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(String)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireStringNonEmpty {
+    }
+
+    /**
+     * {@link Precondition#requireNonEmpty(String, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireStringNonEmptyWithException {
+    }
+
+    /**
+     * {@link Precondition#requirePositive(int)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequirePositive {
+    }
+
+    /**
+     * {@link Precondition#requirePositive(int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequirePositiveWithException {
+    }
 }
