@@ -70,7 +70,7 @@ final class IllegalMapFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessage() {
+    void testConstructorWithMessage() {
         final String message = "This is a test message.";
         final IllegalMapFoundException exception = new IllegalMapFoundException(message);
 
@@ -98,7 +98,7 @@ final class IllegalMapFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessageAndException() {
+    void testConstructorWithMessageAndException() {
         final String message = "This is a test message.";
         IllegalMapFoundException exception = null;
 
@@ -132,7 +132,7 @@ final class IllegalMapFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithException() {
+    void testConstructorWithException() {
 
         IllegalMapFoundException exception = null;
 

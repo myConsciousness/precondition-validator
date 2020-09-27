@@ -47,7 +47,7 @@ final class IllegalArrayFoundExceptionTest {
      * </pre>
      */
     @Test
-     void testDefaultConstructor() {
+    void testDefaultConstructor() {
         assertNotNull(new IllegalArrayFoundException());
     }
 
@@ -70,7 +70,7 @@ final class IllegalArrayFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessage() {
+    void testConstructorWithMessage() {
         final String message = "This is a test message.";
         final IllegalArrayFoundException exception = new IllegalArrayFoundException(message);
 
@@ -98,7 +98,7 @@ final class IllegalArrayFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessageAndException() {
+    void testConstructorWithMessageAndException() {
         final String message = "This is a test message.";
         IllegalArrayFoundException exception = null;
 
@@ -132,7 +132,7 @@ final class IllegalArrayFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithException() {
+    void testConstructorWithException() {
 
         IllegalArrayFoundException exception = null;
 

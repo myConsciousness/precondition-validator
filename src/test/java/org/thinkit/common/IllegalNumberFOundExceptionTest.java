@@ -70,7 +70,7 @@ final class IllegalNumberFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessage() {
+    void testConstructorWithMessage() {
         final String message = "This is a test message.";
         final IllegalNumberFoundException exception = new IllegalNumberFoundException(message);
 
@@ -98,7 +98,7 @@ final class IllegalNumberFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithMessageAndException() {
+    void testConstructorWithMessageAndException() {
         final String message = "This is a test message.";
         IllegalNumberFoundException exception = null;
 
@@ -132,7 +132,7 @@ final class IllegalNumberFoundExceptionTest {
      * </pre>
      */
     @Test
-    public void testConstructorWithException() {
+    void testConstructorWithException() {
 
         IllegalNumberFoundException exception = null;
 
