@@ -307,11 +307,10 @@ public interface Precondition {
     }
 
     /**
-     * 引数として指定された {@code list} が {@code null} または空リストか判定します。引数として渡された {@code list} が
-     * {@code null} または空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
-     * {@link #requireNonEmpty(List)} メソッドから実行され 、引数として渡された {@code list} が
-     * {@code null} または空リストの場合は {@link IllegalArrayFoundException}
-     * を例外オブジェクトとしてスローします。
+     * 引数として指定された {@code list} が {@code null} または空リストか判定します。引数として渡された {@code list}
+     * が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。 {@link #requireNonEmpty(List)}
+     * メソッドから実行され 、引数として渡された {@code list} が空リストの場合は
+     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
      * @param list      検査対象のリスト
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -347,10 +346,10 @@ public interface Precondition {
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップか判定します。引数として指定された {@code map} が
-     * {@code null} または空マップの場合は引数として渡された任意の例外オブジェクトを返却します。
-     * {@link #requireNonEmpty(Map)} メソッドから実行されて、引数として渡された {@code map} が
-     * {@code null} または空マップの場合は {@link IllegalMapFoundException} を例外オブジェクトとしてスローします。
+     * 引数として渡された {@code map} が {@code null} または空マップか判定します。引数として指定された {@code map}
+     * が空マップの場合は引数として渡された任意の例外オブジェクトを返却します。 {@link #requireNonEmpty(Map)}
+     * メソッドから実行されて、引数として渡された {@code map} が空マップの場合は {@link IllegalMapFoundException}
+     * を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(Map)} メソッドを使用してください。
      *
@@ -390,9 +389,9 @@ public interface Precondition {
     }
 
     /**
-     * 引数として渡された配列が {@code null} または空配列か判定します。引数として渡された配列が {@code null}
-     * または空配列の場合は引数として渡された任意の例外オブジェクトをスローします。 {@link #requireNonEmpty(Object[])}
-     * メソッドから実行されて、引数として渡された配列が {@code null} または空配列の場合は
+     * 引数として渡された配列が {@code null}
+     * または空配列か判定します。引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
+     * {@link #requireNonEmpty(Object[])} メソッドから実行されて、引数として渡された配列が空配列の場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
      * @param array     検査対象の配列
