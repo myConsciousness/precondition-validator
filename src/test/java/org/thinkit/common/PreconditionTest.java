@@ -51,7 +51,12 @@ final class PreconditionTest {
     /**
      * 範囲外だった場合の例外メッセージ
      */
-    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS = "Index %s out-of-bounds for range from length 0 to length %s";
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO = "Index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
 
     /**
      * {@link Precondition#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
