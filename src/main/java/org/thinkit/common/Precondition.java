@@ -191,7 +191,7 @@ public interface Precondition {
     static void requireNegative(int number, RuntimeException exception) {
         requireNonNull(exception);
 
-        if (number < 0) {
+        if (number >= 0) {
             throw exception;
         }
     }
