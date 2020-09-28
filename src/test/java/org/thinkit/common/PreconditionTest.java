@@ -14,10 +14,13 @@
 
 package org.thinkit.common;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.ParameterizedTest;
 
 /**
  * {@link Precondition} インターフェースのテストクラスです。
@@ -39,8 +42,13 @@ final class PreconditionTest {
     class TestRequireNonNull {
 
         @Test
-        void requireNonNull() {
+        void testWhenObjectIsNull() {
             assertThrows(NullPointerException.class, () -> Precondition.requireNonNull(null));
+        }
+
+        @Test
+        void testWhenObjectIsNotNull() {
+            assertDoesNotThrow(() -> Precondition.requireNonNull(""));
         }
     }
 
@@ -53,6 +61,17 @@ final class PreconditionTest {
      */
     @Nested
     class TestRequireNonBlankString {
+
+        @Test
+        void testWhenStringIsBlank() {
+            assertThrows(IllegalSequenceFoundException.class, () -> Precondition.requireNonBlank(""));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
+        void testWhenStringIsNotBlank(String testParameter) {
+            assertDoesNotThrow(() -> Precondition.requireNonBlank(testParameter));
+        }
     }
 
     /**
@@ -65,6 +84,11 @@ final class PreconditionTest {
      */
     @Nested
     class TestRequireNonBlankStringWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+
+        }
     }
 
     /**
