@@ -49,6 +49,11 @@ final class PreconditionTest {
     private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER = "Number must be negative but %s was given";
 
     /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS = "Index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
      * {@link Precondition#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -324,6 +329,18 @@ final class PreconditionTest {
      */
     @Nested
     class TestRequireRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(ints = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
+            assertThrows(IndexOutOfBoundsException.class, () -> Precondition.requireRange(testParameter, 0));
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
+            assertDoesNotThrow(() -> Precondition.requireRange(testParameter, 0));
+        }
     }
 
     /**
