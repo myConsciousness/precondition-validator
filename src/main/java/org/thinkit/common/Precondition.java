@@ -237,7 +237,7 @@ public interface Precondition {
     static void requireRange(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
 
-        if (index < 0 || to < index) {
+        if (to < index) {
             throw exception;
         }
     }
