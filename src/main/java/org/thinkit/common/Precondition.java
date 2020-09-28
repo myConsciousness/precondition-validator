@@ -197,9 +197,8 @@ public interface Precondition {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code 0} から {@code to}
-     * で指定された範囲内の数値か判定します。引数として指定された {@code index} が範囲外にある数値である場合は
-     * {@link IndexOutOfBoundsException} が必ず実行時に発生します。
+     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値か判定します。引数として指定された
+     * {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException} が必ず実行時に発生します。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
      * メソッドを使用してください。
@@ -207,8 +206,8 @@ public interface Precondition {
      * @param index 検査対象のインデックス
      * @param to    判定時の上限値
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code number} の数値が {@code 0} から
-     *                                   {@code to} で指定された範囲内に存在しない場合
+     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code to}
+     *                                   で指定された範囲内に存在しない場合
      */
     static void requireRange(int index, int to) {
         requireRange(index, to, new IndexOutOfBoundsException(
@@ -216,9 +215,8 @@ public interface Precondition {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code 0} から {@code to}
-     * で指定された範囲内の数値か判定します。引数として指定された {@code index} が {@code 0} から {@code to}
-     * で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
+     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値か判定します。引数として指定された
+     * {@code index} が {@code to} で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
      * {@link #requireRange(int, int)} メソッドから実行された場合は
      * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
      * <p>
@@ -230,9 +228,8 @@ public interface Precondition {
      *
      * @exception NullPointerException      引数として渡された例外オブジェクトが {@code null} の場合
      * @exception IndexOutOfBoundsException {@link #requireRange(int, int)}
-     *                                      メソッドから実行され、引数として指定された {@code number}
-     *                                      の数値が {@code 0} から {@code to}
-     *                                      で指定された範囲内に存在しない場合
+     *                                      メソッドから実行され、引数として指定された {@code index} の数値が
+     *                                      {@code to} で指定された範囲内に存在しない場合
      */
     static void requireRange(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
@@ -254,7 +251,7 @@ public interface Precondition {
      * @param from  判定時の最低値
      * @param to    判定時の上限値
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code number} の数値が {@code from}
+     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code from}
      *                                   から {@code to} で指定された範囲内に存在しない場合
      */
     static void requireRange(int index, int from, int to) {
@@ -278,7 +275,7 @@ public interface Precondition {
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
      * @exception NullPointerException      引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IndexOutOfBoundsException 引数として指定された {@code number} の数値が
+     * @exception IndexOutOfBoundsException 引数として指定された {@code index} の数値が
      *                                      {@code from} から {@code to}
      *                                      で指定された範囲内に存在しない場合
      */
