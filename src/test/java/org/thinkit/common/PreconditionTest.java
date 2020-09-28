@@ -15,12 +15,13 @@
 package org.thinkit.common;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * {@link Precondition} インターフェースのテストクラスです。
@@ -62,9 +63,16 @@ final class PreconditionTest {
     @Nested
     class TestRequireNonBlankString {
 
+        /**
+         * 例外メッセージ
+         */
+        private static final String EXCEPTION_MESSAGE = "String must not be blank";
+
         @Test
         void testWhenStringIsBlank() {
-            assertThrows(IllegalSequenceFoundException.class, () -> Precondition.requireNonBlank(""));
+            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+                    () -> Precondition.requireNonBlank(""));
+            assertEquals(EXCEPTION_MESSAGE, exception.getMessage());
         }
 
         @ParameterizedTest
@@ -85,9 +93,21 @@ final class PreconditionTest {
     @Nested
     class TestRequireNonBlankStringWithException {
 
-        @Test
-        void testWhenExceptionIsNull() {
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
+        void testWhenExceptionIsNull(String testParameter) {
+            assertThrows(NullPointerException.class, () -> Precondition.requireNonBlank(testParameter, null));
+        }
 
+        @Test
+        void testWhenStringIsBlank() {
+            assertThrows(TestException.class, () -> Precondition.requireNonBlank("", new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
+        void testWhenStringIsNotBlank(String testParameter) {
+            assertDoesNotThrow(() -> Precondition.requireNonBlank(testParameter, new TestException()));
         }
     }
 
