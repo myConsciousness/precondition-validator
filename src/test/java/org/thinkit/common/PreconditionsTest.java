@@ -25,13 +25,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
- * {@link Precondition} インターフェースのテストクラスです。
+ * {@link Preconditions} インターフェースのテストクラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-final class PreconditionTest {
+final class PreconditionsTest {
 
     /**
      * 文字列が空白だった場合の例外メッセージ
@@ -59,7 +59,7 @@ final class PreconditionTest {
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
 
     /**
-     * {@link Precondition#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -70,17 +70,17 @@ final class PreconditionTest {
 
         @Test
         void testWhenObjectIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonNull(null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonNull(null));
         }
 
         @Test
         void testWhenObjectIsNotNull() {
-            assertDoesNotThrow(() -> Precondition.requireNonNull(""));
+            assertDoesNotThrow(() -> Preconditions.requireNonNull(""));
         }
     }
 
     /**
-     * {@link Precondition#requireNonBlank(String)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonBlank(String)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -92,19 +92,19 @@ final class PreconditionTest {
         @Test
         void testWhenStringIsBlank() {
             final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
-                    () -> Precondition.requireNonBlank(""));
+                    () -> Preconditions.requireNonBlank(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
         void testWhenStringIsNotBlank(String testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNonBlank(testParameter));
+            assertDoesNotThrow(() -> Preconditions.requireNonBlank(testParameter));
         }
     }
 
     /**
-     * {@link Precondition#requireNonBlank(String, RuntimeException)}
+     * {@link Preconditions#requireNonBlank(String, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -117,28 +117,28 @@ final class PreconditionTest {
         @ParameterizedTest
         @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
         void testWhenExceptionIsNull(String testParameter) {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonBlank(testParameter, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonBlank(testParameter, null));
         }
 
         @Test
         void testWhenStringIsBlank() {
-            assertThrows(TestException.class, () -> Precondition.requireNonBlank("", new TestException()));
+            assertThrows(TestException.class, () -> Preconditions.requireNonBlank("", new TestException()));
         }
 
         @Test
         void testWhenStringIsBlankAndExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonBlank("", null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonBlank("", null));
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
         void testWhenStringIsNotBlank(String testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNonBlank(testParameter, new TestException()));
+            assertDoesNotThrow(() -> Preconditions.requireNonBlank(testParameter, new TestException()));
         }
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(String)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonEmpty(String)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -150,25 +150,25 @@ final class PreconditionTest {
         @Test
         void testWhenStringIsBlankIsNull() {
             String empty = null;
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonEmpty(empty));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty));
         }
 
         @Test
         void testWhenStringIsBlank() {
             final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
-                    () -> Precondition.requireNonEmpty(""));
+                    () -> Preconditions.requireNonEmpty(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
         void testWhenStringIsNotEmpty(String testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNonEmpty(testParameter));
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(testParameter));
         }
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(String, RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(String, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -180,35 +180,35 @@ final class PreconditionTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonEmpty("", null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty("", null));
         }
 
         @Test
         void testWhenStringIsNull() {
             String empty = null;
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonEmpty(empty, new TestException()));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty, new TestException()));
         }
 
         @Test
         void testWhenStringAndExceptionAreNull() {
             String empty = null;
-            assertThrows(NullPointerException.class, () -> Precondition.requireNonEmpty(empty, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty, null));
         }
 
         @Test
         void testWhenStringIsBlank() {
-            assertThrows(TestException.class, () -> Precondition.requireNonEmpty("", new TestException()));
+            assertThrows(TestException.class, () -> Preconditions.requireNonEmpty("", new TestException()));
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "t", "te", "¥r", "¥" })
         void testWhenStringIsNotBlank(String testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNonEmpty(testParameter, new TestException()));
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(testParameter, new TestException()));
         }
     }
 
     /**
-     * {@link Precondition#requirePositive(int)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requirePositive(int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -221,19 +221,19 @@ final class PreconditionTest {
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
             final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
-                    () -> Precondition.requirePositive(testParameter));
+                    () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_NUMBER, testParameter), exception.getMessage());
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requirePositive(testParameter));
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter));
         }
     }
 
     /**
-     * {@link Precondition#requirePositive(int, RuntimeException)}
+     * {@link Preconditions#requirePositive(int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -245,29 +245,29 @@ final class PreconditionTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requirePositive(0, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(0, null));
         }
 
         @Test
         void testWhenNumberIsNegativeAndExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requirePositive(-1, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(-1, null));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
-            assertThrows(TestException.class, () -> Precondition.requirePositive(testParameter, new TestException()));
+            assertThrows(TestException.class, () -> Preconditions.requirePositive(testParameter, new TestException()));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requirePositive(testParameter, new TestException()));
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
         }
     }
 
     /**
-     * {@link Precondition#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -280,19 +280,19 @@ final class PreconditionTest {
         @ValueSource(ints = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(int testParameter) {
             final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
-                    () -> Precondition.requireNegative(testParameter));
+                    () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER, testParameter), exception.getMessage());
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNegative(testParameter));
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter));
         }
     }
 
     /**
-     * {@link Precondition#requireNegative(int, RuntimeException)}
+     * {@link Preconditions#requireNegative(int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -304,29 +304,29 @@ final class PreconditionTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNegative(-1, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(-1, null));
         }
 
         @Test
         void testWhenNumberIsPositiveAndExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireNegative(0, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(0, null));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(int testParameter) {
-            assertThrows(TestException.class, () -> Precondition.requireNegative(testParameter, new TestException()));
+            assertThrows(TestException.class, () -> Preconditions.requireNegative(testParameter, new TestException()));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireNegative(testParameter, new TestException()));
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
         }
     }
 
     /**
-     * {@link Precondition#requireRange(int, int)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireRange(int, int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -338,18 +338,18 @@ final class PreconditionTest {
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Precondition.requireRange(testParameter, 0));
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(testParameter, 0));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireRange(testParameter, 0));
+            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, 0));
         }
     }
 
     /**
-     * {@link Precondition#requireRange(int, int, RuntimeException)}
+     * {@link Preconditions#requireRange(int, int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -361,24 +361,24 @@ final class PreconditionTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Precondition.requireRange(0, 10, null));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(0, 10, null));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Precondition.requireRange(testParameter, 0));
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(testParameter, 0));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Precondition.requireRange(testParameter, 0));
+            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, 0));
         }
     }
 
     /**
-     * {@link Precondition#requireRange(int, int, RuntimeException)}
+     * {@link Preconditions#requireRange(int, int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -390,7 +390,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireRange(int, int, int, RuntimeException)}
+     * {@link Preconditions#requireRange(int, int, int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -402,7 +402,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(java.util.List)}
+     * {@link Preconditions#requireNonEmpty(java.util.List)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -414,7 +414,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(java.util.List, RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(java.util.List, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -426,7 +426,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(java.util.Map)}
+     * {@link Preconditions#requireNonEmpty(java.util.Map)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -438,7 +438,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(java.util.Map, RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(java.util.Map, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -450,7 +450,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(Object[])} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonEmpty(Object[])} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -461,7 +461,7 @@ final class PreconditionTest {
     }
 
     /**
-     * {@link Precondition#requireNonEmpty(Object[], RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(Object[], RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
