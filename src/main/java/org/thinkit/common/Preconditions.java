@@ -25,7 +25,7 @@ import java.util.Map;
  * @since 1.0
  * @version 1.0
  */
-public interface Precondition {
+public interface Preconditions {
 
     /**
      * 引数として渡された {@code object} オブジェクトの参照が {@code null} であるか判定します。 {@code object}
