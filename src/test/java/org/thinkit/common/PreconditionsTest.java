@@ -338,13 +338,14 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(testParameter, 0));
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(testParameter, testParameter - 1));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, 0));
+            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, testParameter + 1));
         }
     }
 
@@ -367,13 +368,14 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(testParameter, 0));
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(testParameter, testParameter - 1));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, 0));
+            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, testParameter + 1));
         }
     }
 
