@@ -358,6 +358,23 @@ final class PreconditionTest {
      */
     @Nested
     class TestRequireRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Precondition.requireRange(0, 10, null));
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
+            assertThrows(IndexOutOfBoundsException.class, () -> Precondition.requireRange(testParameter, 0));
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
+            assertDoesNotThrow(() -> Precondition.requireRange(testParameter, 0));
+        }
     }
 
     /**
