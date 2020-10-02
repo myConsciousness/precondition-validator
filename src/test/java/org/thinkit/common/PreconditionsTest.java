@@ -602,6 +602,27 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyListWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(List.of(), null));
+        }
+
+        @Test
+        void testWhenListIsNull() {
+            final List<String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty));
+        }
+
+        @Test
+        void testWhenListIsEmpty() {
+            assertThrows(TestException.class, () -> Preconditions.requireNonEmpty(List.of(), new TestException()));
+        }
+
+        @Test
+        void testWhenListIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(List.of("test")));
+        }
     }
 
     /**
