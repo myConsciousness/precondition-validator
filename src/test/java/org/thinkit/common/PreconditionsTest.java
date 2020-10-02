@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Nested;
@@ -63,6 +63,16 @@ final class PreconditionsTest {
      * 範囲外だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
+
+    /**
+     * 空リストだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_LIST = "List must contain at least one or more elements";
+
+    /**
+     * 空マップだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_MAP = "Map must contain at least one or more elements";
 
     /**
      * {@link Preconditions#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
@@ -344,8 +354,10 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
-            assertThrows(IndexOutOfBoundsException.class,
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
                     () -> Preconditions.requireRange(testParameter, testParameter - 1));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 1),
+                    exception.getMessage());
         }
 
         @ParameterizedTest
@@ -445,19 +457,28 @@ final class PreconditionsTest {
         @ParameterizedTest
         @MethodSource("badNegativeNumbersProvider")
         void testWhenOutOfRangeFromNegativeToNegative(int index, int from, int to) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
         }
 
         @ParameterizedTest
         @MethodSource("badNegativeAndPositiveNumbersProvider")
         void testWhenOutOfRangeFromNegativeToPositive(int index, int from, int to) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
         }
 
         @ParameterizedTest
         @MethodSource("badPositiveNumbersProvider")
         void testWhenOutOfRangeFromPositiveToPositive(int index, int from, int to) {
-            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
         }
     }
 
@@ -543,8 +564,7 @@ final class PreconditionsTest {
     }
 
     /**
-     * {@link Preconditions#requireNonEmpty(java.util.List)}
-     * メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonEmpty(List)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -552,10 +572,28 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyList {
+
+        @Test
+        void testWhenListIsNull() {
+            final List<String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty));
+        }
+
+        @Test
+        void testWhenListIsEmpty() {
+            final IllegalArrayFoundException exception = assertThrows(IllegalArrayFoundException.class,
+                    () -> Preconditions.requireNonEmpty(List.of()));
+            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_LIST, exception.getMessage());
+        }
+
+        @Test
+        void testWhenListIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(List.of("test")));
+        }
     }
 
     /**
-     * {@link Preconditions#requireNonEmpty(java.util.List, RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(List, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
