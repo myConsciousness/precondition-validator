@@ -697,6 +697,18 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyArray {
+
+        @Test
+        void testWhenArrayIsEmpty() {
+            final IllegalArrayFoundException exception = assertThrows(IllegalArrayFoundException.class,
+                    () -> Preconditions.requireNonEmpty(new String[] {}));
+            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_LIST, exception.getMessage());
+        }
+
+        @Test
+        void testWhenArrayIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(new String[] { "" }));
+        }
     }
 
     /**
@@ -709,5 +721,21 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyArrayWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(new String[] { "" }, null));
+        }
+
+        @Test
+        void testWhenArrayIsEmpty() {
+            assertThrows(TestException.class,
+                    () -> Preconditions.requireNonEmpty(new String[] {}, new TestException()));
+        }
+
+        @Test
+        void testWhenArrayIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(new String[] { "" }, new TestException()));
+        }
     }
 }
