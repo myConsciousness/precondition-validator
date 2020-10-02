@@ -18,11 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * {@link Preconditions} インターフェースのテストクラスです。
@@ -388,7 +394,71 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
     class TestRequireRangeFromTo {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5, -10, -1), Arguments.of(-2, -10, -1), Arguments.of(-9, -10, -1),
+                    Arguments.of(-1, -10, -1), Arguments.of(-10, -10, -1));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0, -10, -1), Arguments.of(-11, -10, -1));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0, -5, 5), Arguments.of(-4, -5, 5), Arguments.of(4, -5, 5),
+                    Arguments.of(-5, -5, 5), Arguments.of(5, -5, 5));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6, -5, 5), Arguments.of(-6, -5, 5));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5, 0, 10), Arguments.of(1, 0, 10), Arguments.of(9, 0, 10),
+                    Arguments.of(0, 0, 10), Arguments.of(10, 0, 10));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11, 0, 10), Arguments.of(-1, 0, 10));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(int index, int from, int to) {
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(int index, int from, int to) {
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(int index, int from, int to) {
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRange(index, from, to));
+        }
     }
 
     /**
@@ -400,7 +470,76 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
     class TestRequireRangeFromToWithException {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5, -10, -1), Arguments.of(-2, -10, -1), Arguments.of(-9, -10, -1),
+                    Arguments.of(-1, -10, -1), Arguments.of(-10, -10, -1));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0, -10, -1), Arguments.of(-11, -10, -1));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0, -5, 5), Arguments.of(-4, -5, 5), Arguments.of(4, -5, 5),
+                    Arguments.of(-5, -5, 5), Arguments.of(5, -5, 5));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6, -5, 5), Arguments.of(-6, -5, 5));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5, 0, 10), Arguments.of(1, 0, 10), Arguments.of(9, 0, 10),
+                    Arguments.of(0, 0, 10), Arguments.of(10, 0, 10));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11, 0, 10), Arguments.of(-1, 0, 10));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(1, 0, 2, null));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(int index, int from, int to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(int index, int from, int to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(int index, int from, int to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(int index, int from, int to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
     }
 
     /**
