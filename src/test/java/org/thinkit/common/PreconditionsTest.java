@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Nested;
@@ -626,8 +627,7 @@ final class PreconditionsTest {
     }
 
     /**
-     * {@link Preconditions#requireNonEmpty(java.util.Map)}
-     * メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireNonEmpty(Map)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -635,10 +635,28 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyMap {
+
+        @Test
+        void testWhenMapIsNull() {
+            final Map<String, String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty));
+        }
+
+        @Test
+        void testWhenMapIsEmpty() {
+            final IllegalMapFoundException exception = assertThrows(IllegalMapFoundException.class,
+                    () -> Preconditions.requireNonEmpty(Map.of()));
+            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_MAP, exception.getMessage());
+        }
+
+        @Test
+        void testWhenMapIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(Map.of("test", "test")));
+        }
     }
 
     /**
-     * {@link Preconditions#requireNonEmpty(java.util.Map, RuntimeException)}
+     * {@link Preconditions#requireNonEmpty(Map, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -647,6 +665,27 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireNonEmptyMapWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(Map.of("test", "test"), null));
+        }
+
+        @Test
+        void testWhenMapIsNull() {
+            final Map<String, String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty, new TestException()));
+        }
+
+        @Test
+        void testWhenMapIsEmpty() {
+            assertThrows(TestException.class, () -> Preconditions.requireNonEmpty(Map.of(), new TestException()));
+        }
+
+        @Test
+        void testWhenMapIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(Map.of("test", "test"), new TestException()));
+        }
     }
 
     /**
