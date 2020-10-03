@@ -459,8 +459,12 @@ public interface Preconditions {
      * @param sequence  検査対象の文字列
      * @param prefix    接頭語
      * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException 引数として指定された任意の例外オブジェクトが {@code null} の場合
      */
     static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
+        requireNonNull(exception);
+
         if (!sequence.startsWith(prefix)) {
             throw exception;
         }
@@ -497,8 +501,12 @@ public interface Preconditions {
      * @param sequence  検査対象の文字列
      * @param suffix    接尾語
      * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException 引数として指定された任意の例外オブジェクトが {@code null} の場合
      */
     static void requireEndWith(String sequence, String suffix, RuntimeException exception) {
+        requireNonNull(exception);
+
         if (!sequence.endsWith(suffix)) {
             throw exception;
         }
