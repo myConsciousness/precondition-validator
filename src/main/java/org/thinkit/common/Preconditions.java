@@ -487,7 +487,7 @@ public interface Preconditions {
      */
     static void requireEndWith(String sequence, String suffix) {
         requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
-                String.format("String must end with the %s prefix, but %s was passed", suffix, sequence)));
+                String.format("String must end with the %s suffix, but %s was passed", suffix, sequence)));
     }
 
     /**
