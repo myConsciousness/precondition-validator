@@ -752,9 +752,9 @@ final class PreconditionsTest {
     class TestRequireStartWith {
 
         @ParameterizedTest
-        @ValueSource(strings = { "est", "e", "sequence", "est", "tset" })
+        @ValueSource(strings = { "t", "est", "e", "sequence", "est", "tset" })
         void testWhenStringDoesNotStartWith(String testParameter) {
-            final String testSequence = "test sequence";
+            final String testSequence = " test sequence";
             final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
                     () -> Preconditions.requireStartWith(testSequence, testParameter));
             assertEquals(String.format("String must start with the %s prefix, but %s was passed", testParameter,
@@ -762,9 +762,9 @@ final class PreconditionsTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "test sequence", "test", "tes", "te", "t" })
+        @ValueSource(strings = { " ", " test sequence", " test", " tes", " te", " t" })
         void testWhenStringStartsWith(String testParameter) {
-            assertDoesNotThrow(() -> Preconditions.requireStartWith("test sequence", testParameter));
+            assertDoesNotThrow(() -> Preconditions.requireStartWith(" test sequence", testParameter));
         }
     }
 
@@ -778,6 +778,25 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireStartWithWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireStartWith("", "", null));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "est", "e", "sequence", "est", "tset" })
+        void testWhenStringDoesNotStartWith(String testParameter) {
+            assertThrows(TestException.class,
+                    () -> Preconditions.requireStartWith("test sequence", testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test sequence", "test", "tes", "te", "t" })
+        void testWhenStringStartsWith(String testParameter) {
+            assertDoesNotThrow(
+                    () -> Preconditions.requireStartWith("test sequence", testParameter, new TestException()));
+        }
     }
 
     /**
