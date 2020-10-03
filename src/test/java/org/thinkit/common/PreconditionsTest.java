@@ -738,4 +738,53 @@ final class PreconditionsTest {
             assertDoesNotThrow(() -> Preconditions.requireNonEmpty(new String[] { "" }, new TestException()));
         }
     }
+
+    /**
+     * {@link Preconditions#requireStartWith(String, String)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireStartWith {
+
+    }
+
+    /**
+     * {@link Preconditions#requireStartWith(String, String, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireStartWithWithException {
+    }
+
+    /**
+     * {@link Preconditions#requireEndWith(String, String)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireEndWith {
+    }
+
+    /**
+     * {@link Preconditions#requireEndWith(String, String, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireEndWithWithException {
+    }
 }
