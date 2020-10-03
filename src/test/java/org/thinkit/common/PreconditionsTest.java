@@ -748,8 +748,24 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
     class TestRequireStartWith {
 
+        @ParameterizedTest
+        @ValueSource(strings = { "est", "e", "sequence", "est", "tset" })
+        void testWhenStringDoesNotStartWith(String testParameter) {
+            final String testSequence = "test sequence";
+            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+                    () -> Preconditions.requireStartWith(testSequence, testParameter));
+            assertEquals(String.format("String must start with the %s prefix, but %s was passed", testParameter,
+                    testSequence), exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test sequence", "test", "tes", "te", "t" })
+        void testWhenStringStartsWith(String testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireStartWith("test sequence", testParameter));
+        }
     }
 
     /**
