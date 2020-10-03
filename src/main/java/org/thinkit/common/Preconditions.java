@@ -28,8 +28,10 @@ import java.util.Map;
 public interface Preconditions {
 
     /**
-     * 引数として渡された {@code object} オブジェクトの参照が {@code null} であるか判定します。 {@code object}
-     * オブジェクトの参照が {@code null} である場合には {@link NullPointerException} が必ず実行時に発生します。
+     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * <p>
+     * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
+     * が必ず実行時に発生します。
      *
      * @param object 検査対象のオブジェクト
      *
@@ -42,8 +44,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code sequence} オブジェクトの文字列が空文字列であるか判定します。 {@code sequence}
-     * オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException} が必ず実行時に発生します。
+     * 引数として指定された {@code sequence} オブジェクトの文字列が空文字列ではないことを保証します。 
+     * <p>
+     * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
+     * が必ず実行時に発生します。
      * <p>
      * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
@@ -58,8 +62,9 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として与えられた {@code sequence} が空文字列か判定します。与えられた {@code sequence} の値が空文字列の場合は
-     * {@code exception} オブジェクトをスローします。
+     * 引数として与えられた {@code sequence} が空文字列ではないことを保証します。 
+     * <p>
+     * 与えられた {@code sequence} の値が空文字列の場合は {@code exception} オブジェクトをスローします。
      * <p>
      * 任意の例外を指定しない場合は {@link #requireNonBlank(String)} メソッドを使用してください。
      *
@@ -80,7 +85,8 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} 、または文字列が空文字列であるか判定します。
+     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null}
+     * 、または文字列が空文字列ではないことを保証します。 
      * <p>
      * {@code sequence} オブジェクトの参照が {@code null} の場合は {@link NullPointerException}
      * が必ず実行時に発生します。
@@ -102,8 +108,9 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code sequence} の値が {@code null} または空文字列であるか判定します。 {@code null}
-     * または空文字列である場合は例外をスローします。
+     * 引数として渡された {@code sequence} の値が {@code null} または空文字列ではないことを保証します。 
+     * <p>
+     * {@code null} または空文字列である場合は例外をスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(String)} メソッドを使用してください。
      *
@@ -122,8 +129,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が正数であるか判定します。引数として指定された {@code number}
-     * の数値が負数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
+     * 引数として指定された {@code number} の数値が正数であることを保証します。 
+     * <p>
+     * 引数として指定された {@code number} の数値が負数である場合は {@link IllegalNumberFoundException}
+     * が必ず実行時に発生します。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
      * メソッドを使用してください。
@@ -138,7 +147,7 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が正数であるか判定します。
+     * 引数として指定された {@code number} の数値が正数であることを保証します。 
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requirePositive(int)} メソッドを使用してください。
      *
@@ -159,8 +168,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が負数であるか判定します。引数として指定された {@code number}
-     * の数値が正数である場合は {@link IllegalNumberFoundException} が必ず実行時に発生します。
+     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * <p>
+     * 引数として指定された {@code number} の数値が正数である場合は {@link IllegalNumberFoundException}
+     * が必ず実行時に発生します。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
      * メソッドを使用してください。
@@ -175,8 +186,9 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が負数であるか判定します。引数として指定された {@code number}
-     * が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
+     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * <p>
+     * 引数として指定された {@code number} が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNegative(int)} メソッドを使用してください。
      *
@@ -197,8 +209,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値か判定します。引数として指定された
-     * {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException} が必ず実行時に発生します。
+     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
+     * が必ず実行時に発生します。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
      * メソッドを使用してください。
@@ -215,8 +229,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値か判定します。引数として指定された
-     * {@code index} が {@code to} で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
+     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が {@code to}
+     * で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
      * {@link #requireRange(int, int)} メソッドから実行された場合は
      * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
      * <p>
@@ -241,8 +257,10 @@ public interface Preconditions {
 
     /**
      * 引数として指定された {@code index} が {@code from} から {@code to}
-     * で指定された範囲内の数値か判定します。引数として指定された {@code index} が範囲外にある数値である場合は
-     * {@link IndexOutOfBoundsException} が必ず実行時に発生します。
+     * で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
+     * が必ず実行時に発生します。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
      * メソッドを使用してください。
@@ -261,8 +279,9 @@ public interface Preconditions {
 
     /**
      * 引数として指定された {@code index} が {@code from} から {@code to}
-     * で指定された範囲内の数値か判定します。引数として指定された {@code index}
-     * が範囲外にある数値である場合は引数として指定された任意の例外オブジェクトをスローします。
+     * で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が範囲外にある数値である場合は引数として指定された任意の例外オブジェクトをスローします。
      * {@link #requireRange(int, int, int)} メソッドから実行され、引数として指定された {@code index} が
      * {@code from} から {@code to} で指定された範囲内の数値ではない場合は
      * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
@@ -288,7 +307,7 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code list} が {@code null} または空リストか判定します。
+     * 引数として渡された {@code list} が {@code null} または空リストではないことを保証します。 
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
      * メソッドを使用してください。
@@ -304,9 +323,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code list} が {@code null} または空リストか判定します。引数として渡された {@code list}
-     * が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。 {@link #requireNonEmpty(List)}
-     * メソッドから実行され 、引数として渡された {@code list} が空リストの場合は
+     * 引数として指定された {@code list} が {@code null} または空リストではないことを保証します。 
+     * <p>
+     * 引数として渡された {@code list} が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
+     * {@link #requireNonEmpty(List)} メソッドから実行され 、引数として渡された {@code list} が空リストの場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
      * @param list      検査対象のリスト
@@ -329,7 +349,7 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップか判定します。
+     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
      * メソッドを使用してください。
@@ -343,10 +363,11 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップか判定します。引数として指定された {@code map}
-     * が空マップの場合は引数として渡された任意の例外オブジェクトを返却します。 {@link #requireNonEmpty(Map)}
-     * メソッドから実行されて、引数として渡された {@code map} が空マップの場合は {@link IllegalMapFoundException}
-     * を例外オブジェクトとしてスローします。
+     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
+     * <p>
+     * 引数として指定された {@code map} が空マップの場合は引数として渡された任意の例外オブジェクトを返却します。
+     * {@link #requireNonEmpty(Map)} メソッドから実行されて、引数として渡された {@code map} が空マップの場合は
+     * {@link IllegalMapFoundException} を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(Map)} メソッドを使用してください。
      *
@@ -370,8 +391,10 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された配列が {@code null} または空配列か判定します。引数として渡された配列が {@code null} または空配列の場合は
-     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * <p>
+     * 引数として渡された配列が {@code null} または空配列の場合は {@link IllegalArrayFoundException}
+     * を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
      * メソッドを使用してください。
@@ -386,8 +409,9 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された配列が {@code null}
-     * または空配列か判定します。引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
+     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * <p>
+     * 引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
      * {@link #requireNonEmpty(Object[])} メソッドから実行されて、引数として渡された配列が空配列の場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
      *
@@ -402,5 +426,31 @@ public interface Preconditions {
      */
     static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
+    }
+
+    /**
+     * 引数として指定された文字列が {@code prefix} で指定された文字列で始まることを保証します。
+     *
+     * @param sequence
+     * @param prefix
+     */
+    static void requireStartWith(String sequence, String prefix) {
+        requireStartWith(sequence, prefix, new IllegalSequenceFoundException());
+    }
+
+    static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
+        if (!sequence.startsWith(prefix)) {
+            throw exception;
+        }
+    }
+
+    static void requireEndWith(String sequence, String suffix) {
+        requireEndWith(sequence, suffix, new IllegalSequenceFoundException());
+    }
+
+    static void requireEndWith(String sequence, String suffix, RuntimeException exception) {
+        if (!sequence.endsWith(suffix)) {
+            throw exception;
+        }
     }
 }
