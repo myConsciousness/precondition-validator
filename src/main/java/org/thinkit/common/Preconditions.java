@@ -430,12 +430,22 @@ public interface Preconditions {
 
     /**
      * 引数として指定された文字列が {@code prefix} で指定された文字列で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された文字列で始まらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は
+     * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
      *
-     * @param sequence
-     * @param prefix
+     * @param sequence 検査対象の文字列
+     * @param prefix   接頭語
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code prefix}
+     *                                          で指定された接頭語で始まらない場合
      */
     static void requireStartWith(String sequence, String prefix) {
-        requireStartWith(sequence, prefix, new IllegalSequenceFoundException());
+        requireStartWith(sequence, prefix, new IllegalSequenceFoundException(
+                String.format("String must start with the %s prefix, but %s was passed", prefix, sequence)));
     }
 
     static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
@@ -445,7 +455,8 @@ public interface Preconditions {
     }
 
     static void requireEndWith(String sequence, String suffix) {
-        requireEndWith(sequence, suffix, new IllegalSequenceFoundException());
+        requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
+                String.format("String must end with the %s prefix, but %s was passed", suffix, sequence)));
     }
 
     static void requireEndWith(String sequence, String suffix, RuntimeException exception) {
