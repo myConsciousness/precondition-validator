@@ -429,9 +429,9 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された文字列が {@code prefix} で指定された文字列で始まることを保証します。
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された文字列で始まらない場合は、実行時に
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
      * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
      * <p>
      * 任意の例外オブジェクトを指定する場合は
@@ -448,17 +448,56 @@ public interface Preconditions {
                 String.format("String must start with the %s prefix, but %s was passed", prefix, sequence)));
     }
 
+    /**
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
+     * 引数として指定された任意の例外オブジェクトがスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String)} メソッドを使用してください。
+     *
+     * @param sequence  検査対象の文字列
+     * @param prefix    接頭語
+     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     */
     static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
         if (!sequence.startsWith(prefix)) {
             throw exception;
         }
     }
 
+    /**
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param suffix   接尾語
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code suffix}
+     *                                          で指定された接尾語で終わらない場合
+     */
     static void requireEndWith(String sequence, String suffix) {
         requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
                 String.format("String must end with the %s prefix, but %s was passed", suffix, sequence)));
     }
 
+    /**
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
+     * 引数として指定された任意の例外オブジェクトがスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String)} メソッドを使用してください。
+     *
+     * @param sequence  検査対象の文字列
+     * @param suffix    接尾語
+     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     */
     static void requireEndWith(String sequence, String suffix, RuntimeException exception) {
         if (!sequence.endsWith(suffix)) {
             throw exception;
