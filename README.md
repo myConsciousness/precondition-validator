@@ -1,8 +1,8 @@
-# dev-utils
+# Precondition Validator
 
 Development utils main repository.
 
-# License
+## License
 
 ```
 Copyright 2020 Kato Shinya.
@@ -17,3 +17,15 @@ is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND
 or implied. See the License for the specific language governing permissions and limitations under
 the License.
 ```
+
+## More Information
+
+`Precondition Validator` was designed and implemented by Kato Shinya, who works as a freelance developer from Japan.
+
+Regardless of the means or content of communication, I would love to hear from you if you have any questions or concerns. I do not check my email box very often so a response may be delayed, anyway thank you for your interest!
+
+- [Creator Profile](https://github.com/myConsciousness)
+- [License](https://github.com/myConsciousness/precondition-validator/blob/master/LICENSE)
+- [Release Note](https://github.com/myConsciousness/precondition-validator/releases)
+- [Package](https://github.com/myConsciousness/precondition-validator/packages)
+- [File a Bug](https://github.com/myConsciousness/precondition-validator/issues)
