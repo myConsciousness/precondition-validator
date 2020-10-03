@@ -809,6 +809,23 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireEndWith {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "sequence", "c", "ce", "nce", "ence" })
+        void testWhenStringDoesNotEndWith(String testParameter) {
+            final String testSequence = "test sequence ";
+            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+                    () -> Preconditions.requireEndWith(testSequence, testParameter));
+            assertEquals(
+                    String.format("String must end with the %s suffix, but %s was passed", testParameter, testSequence),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { " ", "test sequence ", "e ", "ce ", "nce ", "ence " })
+        void testWhenStringEndsWith(String testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireEndWith("test sequence ", testParameter));
+        }
     }
 
     /**
@@ -821,5 +838,25 @@ final class PreconditionsTest {
      */
     @Nested
     class TestRequireEndWithWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireEndWith("", "", null));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "sequence", "c", "ce", "nce", "ence" })
+        void testWhenStringDoesNotEndWith(String testParameter) {
+            assertThrows(TestException.class,
+                    () -> Preconditions.requireEndWith("test sequence ", testParameter, new TestException()));
+
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { " ", "test sequence ", "e ", "ce ", "nce ", "ence " })
+        void testWhenStringEndsWith(String testParameter) {
+            assertDoesNotThrow(
+                    () -> Preconditions.requireEndWith("test sequence ", testParameter, new TestException()));
+        }
     }
 }
