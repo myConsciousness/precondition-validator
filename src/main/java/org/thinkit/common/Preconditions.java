@@ -155,7 +155,7 @@ public interface Preconditions {
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
      * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IllegalNumberFoundException {@link #requirePositive(int)
+     * @exception IllegalNumberFoundException {@link #requirePositive(int)}
      *                                        メソッドから実行され、指定された {@code number}
      *                                        の数値が負数の場合
      */
@@ -354,7 +354,7 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
      * メソッドを使用してください。
      *
-     * @param list 検査対象のリスト
+     * @param map 検査対象のマップ
      *
      * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
      */
@@ -374,9 +374,9 @@ public interface Preconditions {
      * @param map       検査対象のマップ
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
      *
-     * @exception NullPointerException     引数として渡された {@code map} が
-     *                                     {@null} の場合、または引数として渡された任意の例外オブジェクトが
-     *                                     {@code null} の場合
+     * @exception NullPointerException     引数として渡された {@code map} が {@code ull}
+     *                                     の場合、または引数として渡された任意の例外オブジェクトが {@code null}
+     *                                     の場合
      * @exception IllegalMapFoundException {@link #requireNonEmpty(Map)}
      *                                     メソッドから実行されて、引数として渡された {@code map}
      *                                     が空マップの場合
@@ -399,7 +399,7 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
      * メソッドを使用してください。
      *
-     * @param 検査対象の配列
+     * @param array 検査対象の配列
      *
      * @exception NullPointerException       引数として渡された配列が {@code null} の場合
      * @exception IllegalArrayFoundException 引数として渡された配列が空配列の場合
