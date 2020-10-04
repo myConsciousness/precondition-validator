@@ -35,11 +35,26 @@ public interface Preconditions {
      *
      * @param object 検査対象のオブジェクト
      *
-     * @throws NullPointerException 引数として {@code null} が渡された場合
+     * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
      */
     static void requireNonNull(Object object) {
+        requireNonNull(object, "");
+    }
+
+    /**
+     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * <p>
+     * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
+     * が必ず実行時に発生します。
+     *
+     * @param object  検査対象のオブジェクト
+     * @param message 例外スロー時に出力する詳細メッセージ
+     *
+     * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
+     */
+    static void requireNonNull(Object object, String message) {
         if (object == null) {
-            throw new NullPointerException();
+            throw new NullPointerException(message);
         }
     }
 
