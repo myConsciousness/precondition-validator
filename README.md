@@ -1,6 +1,12 @@
 # Precondition Validator
 
-Development utils main repository.
+## What is it?
+
+**_Make your software more robust by defining clear preconditions!_**
+
+`Precondition Validator` provides several features to ensure that the parameters and data passed at the start of the process meet the preconditions.
+
+Using the `Pre-condition Validator` features, you can safely and easily specify preconditions at the start of the process.
 
 ## License
 
