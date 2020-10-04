@@ -464,6 +464,30 @@ public interface Preconditions {
     }
 
     /**
+     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は
+     * {@link #requireStartWith(String, String, int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param prefix   接頭語
+     * @param offset   接頭語の検索開始位置
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が指定された検索開始位置から
+     *                                          {@code prefix} で指定された接頭語で始まらない場合
+     */
+    static void requireStartWith(String sequence, String prefix, int offset) {
+        if (!sequence.startsWith(prefix, offset)) {
+            throw new IllegalSequenceFoundException(
+                    String.format("String must start with the %s prefix from %s index, but %s was passed"));
+        }
+    }
+
+    /**
      * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
      * <p>
      * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
