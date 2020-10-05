@@ -81,6 +81,6 @@ test {
 
 task("reference", type: Javadoc) {
     source = sourceSets.main.allJava
-    title = 'reference'
+    title = 'Precondition Validator'
     destinationDir = file('./docs')
 }
