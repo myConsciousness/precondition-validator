@@ -92,6 +92,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として指定された文字列が <code>suffix</code> で指定された接尾語で終わることを保証します。</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireEndWith(java.lang.String,java.lang.String,java.lang.String)">requireEndWith(String, String, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された文字列が <code>suffix</code> で指定された接尾語で終わることを保証します。</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNegative(int)">requireNegative(int)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
@@ -124,6 +128,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 </div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.Object%5B%5D,java.lang.String)">requireNonEmpty(Object[], String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 </div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String)">requireNonEmpty(String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
@@ -146,11 +154,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として指定された <code>list</code> が <code>null</code> または空リストではないことを保証します。 </div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.util.List,java.lang.String)">requireNonEmpty(List&lt;?&gt;, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 </div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.util.Map)">requireNonEmpty(Map&lt;?, ?&gt;)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.util.Map,java.lang.RuntimeException)">requireNonEmpty(Map&lt;?, ?&gt;, RuntimeException)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.util.Map,java.lang.String)">requireNonEmpty(Map&lt;?, ?&gt;, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
 </dd>
@@ -213,7 +229,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireStartWith(java.lang.String,java.lang.String,int,java.lang.String)">requireStartWith(String, String, int, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)">requireStartWith(String, String, RuntimeException)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireStartWith(java.lang.String,java.lang.String,java.lang.String)">requireStartWith(String, String, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </dd>
