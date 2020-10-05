@@ -77,5 +77,8 @@ test {
 task("reference", type: Javadoc) {
     source = sourceSets.main.allJava
     title = 'Precondition Validator'
+    options.links("https://docs.oracle.com/en/java/javase/13/docs/api/")
+    options.charSet("utf-8")
+    options.showFromPublic()
     destinationDir = file('./docs')
 }
