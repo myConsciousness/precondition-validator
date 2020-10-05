@@ -482,8 +482,8 @@ public interface Preconditions {
      */
     static void requireStartWith(String sequence, String prefix, int offset) {
         if (!sequence.startsWith(prefix, offset)) {
-            throw new IllegalSequenceFoundException(
-                    String.format("String must start with the %s prefix from %s index, but %s was given"));
+            throw new IllegalSequenceFoundException(String.format(
+                    "String must start with the %s prefix from %s index, but %s was given", prefix, offset, sequence));
         }
     }
 
