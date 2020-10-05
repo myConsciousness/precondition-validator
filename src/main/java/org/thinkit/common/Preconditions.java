@@ -1130,7 +1130,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
-     * Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException();
+     * Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
      * </pre>
@@ -1138,7 +1138,7 @@ public interface Preconditions {
      * <pre>
      * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
      * <code>
-     * Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException();
+     * Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException());
      * </code>
      * </pre>
      *
@@ -1164,6 +1164,20 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は
      * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * Preconditions.requireStartWith("test", "est");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "test");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param prefix   接頭語
      *
@@ -1185,6 +1199,20 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は
      * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireStartWith("test", "est", "any message");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "test", "any message");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param prefix   接頭語
      * @param message  例外スロー時に出力される詳細メッセージ
@@ -1205,6 +1233,20 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は
      * {@link #requireStartWith(String, String, int, RuntimeException)}
      * メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * Preconditions.requireStartWith("test", "st", 1);
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "est", 1);
+     * </code>
+     * </pre>
      *
      * @param sequence 検査対象の文字列
      * @param prefix   接頭語
@@ -1229,6 +1271,21 @@ public interface Preconditions {
      * {@link #requireStartWith(String, String, int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireStartWith("test", "st", 1, "any message");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "est", 1, "any message");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param prefix   接頭語
      * @param offset   接頭語の検索開始位置
@@ -1249,6 +1306,20 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String)} メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireStartWith("test", "est", new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "test", new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
      * @param sequence  検査対象の文字列
      * @param prefix    接頭語
      * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
@@ -1267,6 +1338,20 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String, int)}
      * メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireStartWith("test", "st", 1, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireStartWith("test", "est", 1, new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param sequence  検査対象の文字列
      * @param prefix    接頭語
