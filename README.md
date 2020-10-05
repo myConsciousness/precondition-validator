@@ -15,6 +15,57 @@ Using the `Pre-condition Validator` features, you can safely and easily specify 
 - Tested secure precondition checking process
 - Easy and straightforward
 
+## How To Use
+
+### 1. Add the dependencies
+
+> **_Note:_**<br>
+> Replace version you want to use. Check the latest [Packages](https://github.com/myConsciousness/precondition-validator/packages).<br>
+> Please contact me for a token to download the package.
+
+**_Maven_**
+
+```xml
+<dependency>
+  <groupId>org.thinkit.common</groupId>
+  <artifactId>precondition-validator</artifactId>
+  <version>v1.0.3</version>
+</dependency>
+
+<servers>
+  <server>
+    <id>github</id>
+    <username>myConsciousness</username>
+    <password>xxxxxxxxxxxxxxxxxx</password>
+  </server>
+</servers>
+```
+
+**_Gradle_**
+
+```gradle
+repositories {
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/myConsciousness/precondition-validator")
+        credentials {
+          username = "myConsciousness"
+          password = "xxxxxxxxxxxxxxxxxx"
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.thinkit.common:precondition-validator:v1.0.3'
+}
+```
+
+### 2. Add an import for [**_Preconditions_**](https://github.com/myConsciousness/precondition-validator/blob/master/src/main/java/org/thinkit/common/Preconditions.java)
+
+```java
+import org.thinkit.common.Preconditions;
+```
+
 ## License
 
 ```
