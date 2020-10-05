@@ -460,7 +460,7 @@ public interface Preconditions {
      */
     static void requireStartWith(String sequence, String prefix) {
         requireStartWith(sequence, prefix, new IllegalSequenceFoundException(
-                String.format("String must start with the %s prefix, but %s was passed", prefix, sequence)));
+                String.format("String must start with the %s prefix, but %s was given", prefix, sequence)));
     }
 
     /**
@@ -483,7 +483,7 @@ public interface Preconditions {
     static void requireStartWith(String sequence, String prefix, int offset) {
         if (!sequence.startsWith(prefix, offset)) {
             throw new IllegalSequenceFoundException(
-                    String.format("String must start with the %s prefix from %s index, but %s was passed"));
+                    String.format("String must start with the %s prefix from %s index, but %s was given"));
         }
     }
 
@@ -550,7 +550,7 @@ public interface Preconditions {
      */
     static void requireEndWith(String sequence, String suffix) {
         requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
-                String.format("String must end with the %s suffix, but %s was passed", suffix, sequence)));
+                String.format("String must end with the %s suffix, but %s was given", suffix, sequence)));
     }
 
     /**
