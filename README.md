@@ -68,7 +68,7 @@ import org.thinkit.common.Preconditions;
 
 ### 3. Define preconditions
 
-The following is an example using [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String)>).
+The following is an example using [Preconditions#requireNonEmpty(Object[])](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.Object[])>) and [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String)>).
 
 > **_Note:_**</br>
 > The reference for all validation methods is [here](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html).
