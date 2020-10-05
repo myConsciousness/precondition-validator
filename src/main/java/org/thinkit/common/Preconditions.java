@@ -26,6 +26,8 @@ import java.util.Map;
  * また、任意の例外オブジェクトや例外発生時の詳細メッセージを指定できるオプションを各検証メソッドに実装しているため、
  * 使用しているアプリの実装に合わせて前提条件のチェック処理を行うことができます。任意の例外オブジェクトは {@link RuntimeException}
  * を継承している必要があります。
+ * <p>
+ * 引数として渡されたデータが所定の前提条件を満たしている場合は、該当検査メソッドは検査以外の処理を行わずそのまま終了します。
  *
  * <pre>
  * 例えば、メソッドの開始条件として必ず空ではない文字列が必要な以下のような場合を提示します。
@@ -56,6 +58,24 @@ public interface Preconditions {
      * <p>
      * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
      * が必ず実行時に発生します。
+     * <p>
+     * 例外発生時に任意の詳細メッセージを出力する場合は {@link #requireNonNull(Object, String)}
+     * メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された object が null の場合は NullPointerException がスローされます。
+     * <code>
+     * Preconditions.requireNonNull(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonNull("test");
+     * </code>
+     * </pre>
      *
      * @param object 検査対象のオブジェクト
      *
@@ -70,6 +90,21 @@ public interface Preconditions {
      * <p>
      * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
      * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     *
+     * <pre>
+     * 引数として渡された object が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireNonNull(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonNull("test", "any message");
+     * </code>
+     * </pre>
      *
      * @param object  検査対象のオブジェクト
      * @param message 例外スロー時に出力する詳細メッセージ
@@ -90,6 +125,25 @@ public interface Preconditions {
      * <p>
      * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
+     * <p>
+     * 例外発生時に任意の詳細メッセージを出力する場合は {@link #requireNonBlank(String, String)}
+     * メソッドを使用してください。また、例外発生時に任意の例外オブジェクトをスローする場合は
+     * {@link #requireNonBlank(String, RuntimeException)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+     * <code>
+     * Preconditions.requireNonBlank("");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonBlank("test");
+     * </code>
+     * </pre>
      *
      * @param sequence 検査対象の文字列
      *
@@ -108,6 +162,22 @@ public interface Preconditions {
      * <p>
      * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
+     *
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireNonBlank("", "any message");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonBlank("test", "any message");
+     * </code>
+     * </pre>
      *
      * @param sequence 検査対象の文字列
      * @param message  例外スロー時に出力する詳細メッセージ
