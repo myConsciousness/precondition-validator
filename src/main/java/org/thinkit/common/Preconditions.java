@@ -510,6 +510,30 @@ public interface Preconditions {
     }
 
     /**
+     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、引数として渡された任意の
+     * 例外オブジェクトがスローされます。
+     * <p>
+     * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String, int)}
+     * メソッドを使用してください。
+     *
+     * @param sequence  検査対象の文字列
+     * @param prefix    接頭語
+     * @param offset    接頭語の検索開始位置
+     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     *
+     * @exception NullPointerException 引数として渡された任意の例外オブジェクトが {@code null} の場合
+     */
+    static void requireStartWith(String sequence, String prefix, int offset, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (!sequence.startsWith(prefix, offset)) {
+            throw exception;
+        }
+    }
+
+    /**
      * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
      * <p>
      * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
