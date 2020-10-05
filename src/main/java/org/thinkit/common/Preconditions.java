@@ -483,6 +483,23 @@ public interface Preconditions {
     }
 
     /**
+     * 引数として渡された {@code list} が {@code null} または空リストではないことを保証します。 
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
+     * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     *
+     * @param list    検査対象のリスト
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
+     *                                       が渡された場合
+     * @exception IllegalArrayFoundException 引数として渡された {@code list} が空リストの場合
+     */
+    static void requireNonEmpty(List<?> list, String message) {
+        requireNonEmpty(list, new IllegalArrayFoundException(message));
+    }
+
+    /**
      * 引数として指定された {@code list} が {@code null} または空リストではないことを保証します。 
      * <p>
      * 引数として渡された {@code list} が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
@@ -520,6 +537,21 @@ public interface Preconditions {
      */
     static void requireNonEmpty(Map<?, ?> map) {
         requireNonEmpty(map, new IllegalMapFoundException("Map must contain at least one or more elements"));
+    }
+
+    /**
+     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
+     * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     *
+     * @param map     検査対象のマップ
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
+     */
+    static void requireNonEmpty(Map<?, ?> map, String message) {
+        requireNonEmpty(map, new IllegalMapFoundException(message));
     }
 
     /**
@@ -571,6 +603,25 @@ public interface Preconditions {
     /**
      * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
      * <p>
+     * 引数として渡された配列が {@code null} または空配列の場合は {@link IllegalArrayFoundException}
+     * を例外オブジェクトとしてスローします。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param array   検査対象の配列
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @exception NullPointerException       引数として渡された配列が {@code null} の場合
+     * @exception IllegalArrayFoundException 引数として渡された配列が空配列の場合
+     */
+    static void requireNonEmpty(Object[] array, String message) {
+        requireNonEmpty(Arrays.asList(array), message);
+    }
+
+    /**
+     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * <p>
      * 引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
      * {@link #requireNonEmpty(Object[])} メソッドから実行されて、引数として渡された配列が空配列の場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
@@ -609,6 +660,27 @@ public interface Preconditions {
     }
 
     /**
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
+     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は
+     * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param prefix   接頭語
+     * @param message  例外スロー時に出力される詳細メッセージ
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code prefix}
+     *                                          で指定された接頭語で始まらない場合
+     */
+    static void requireStartWith(String sequence, String prefix, String message) {
+        requireStartWith(sequence, prefix, new IllegalSequenceFoundException(message));
+    }
+
+    /**
      * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
      * <p>
      * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
@@ -626,10 +698,31 @@ public interface Preconditions {
      *                                          {@code prefix} で指定された接頭語で始まらない場合
      */
     static void requireStartWith(String sequence, String prefix, int offset) {
-        if (!sequence.startsWith(prefix, offset)) {
-            throw new IllegalSequenceFoundException(String.format(
-                    "String must start with the %s prefix from %s index, but %s was given", prefix, offset, sequence));
-        }
+        requireStartWith(sequence, prefix, offset, new IllegalSequenceFoundException(String.format(
+                "String must start with the %s prefix from %s index, but %s was given", prefix, offset, sequence)));
+    }
+
+    /**
+     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
+     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は
+     * {@link #requireStartWith(String, String, int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param prefix   接頭語
+     * @param offset   接頭語の検索開始位置
+     * @param message  例外スロー時に出力される詳細メッセージ
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が指定された検索開始位置から
+     *                                          {@code prefix} で指定された接頭語で始まらない場合
+     */
+    static void requireStartWith(String sequence, String prefix, int offset, String message) {
+        requireStartWith(sequence, prefix, offset, new IllegalSequenceFoundException(message));
     }
 
     /**
@@ -647,11 +740,7 @@ public interface Preconditions {
      * @exception NullPointerException 引数として指定された任意の例外オブジェクトが {@code null} の場合
      */
     static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
-        requireNonNull(exception);
-
-        if (!sequence.startsWith(prefix)) {
-            throw exception;
-        }
+        requireStartWith(sequence, prefix, 0, exception);
     }
 
     /**
@@ -696,6 +785,27 @@ public interface Preconditions {
     static void requireEndWith(String sequence, String suffix) {
         requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
                 String.format("String must end with the %s suffix, but %s was given", suffix, sequence)));
+    }
+
+    /**
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * <p>
+     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
+     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
+     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param suffix   接尾語
+     * @param message  例外スロー時に出力される詳細メッセージ
+     *
+     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code suffix}
+     *                                          で指定された接尾語で終わらない場合
+     */
+    static void requireEndWith(String sequence, String suffix, String message) {
+        requireEndWith(sequence, suffix, new IllegalSequenceFoundException(message));
     }
 
     /**
