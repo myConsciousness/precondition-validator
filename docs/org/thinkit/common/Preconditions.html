@@ -89,6 +89,8 @@ loadScripts(document, 'script');</script>
  また、任意の例外オブジェクトや例外発生時の詳細メッセージを指定できるオプションを各検証メソッドに実装しているため、
  使用しているアプリの実装に合わせて前提条件のチェック処理を行うことができます。任意の例外オブジェクトは <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>RuntimeException</code></a>
  を継承している必要があります。
+ <p>
+ 引数として渡されたデータが所定の前提条件を満たしている場合は、該当検査メソッドは検査以外の処理を行わずそのまま終了します。
 
  <pre>
  例えば、メソッドの開始条件として必ず空ではない文字列が必要な以下のような場合を提示します。
@@ -471,7 +473,25 @@ int&nbsp;offset,
 <div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 
  <p>
  <code>object</code> オブジェクトの参照が <code>null</code> である場合には <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>NullPointerException</code></a>
- が必ず実行時に発生します。</div>
+ が必ず実行時に発生します。
+ <p>
+ 例外発生時に任意の詳細メッセージを出力する場合は <a href="#requireNonNull(java.lang.Object,java.lang.String)"><code>requireNonNull(Object, String)</code></a>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された object が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonNull(null);
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonNull("test");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>object</code> - 検査対象のオブジェクト</dd>
@@ -488,7 +508,23 @@ int&nbsp;offset,
 <div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 
  <p>
  <code>object</code> オブジェクトの参照が <code>null</code> である場合には <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>NullPointerException</code></a>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。</div>
+ が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+
+ <pre>
+ 引数として渡された object が null の場合は NullPointerException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonNull(null, "any message");
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonNull("test", "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>object</code> - 検査対象のオブジェクト</dd>
@@ -508,7 +544,26 @@ int&nbsp;offset,
  が必ず実行時に発生します。
  <p>
  引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code> である可能性がある場合は
- <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。</div>
+ <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+ <p>
+ 例外発生時に任意の詳細メッセージを出力する場合は <a href="#requireNonBlank(java.lang.String,java.lang.String)"><code>requireNonBlank(String, String)</code></a>
+ メソッドを使用してください。また、例外発生時に任意の例外オブジェクトをスローする場合は
+ <a href="#requireNonBlank(java.lang.String,java.lang.RuntimeException)"><code>requireNonBlank(String, RuntimeException)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ <code>
+ Preconditions.requireNonBlank("");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonBlank("test");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -529,7 +584,23 @@ int&nbsp;offset,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code> である可能性がある場合は
- <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。</div>
+ <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonBlank("", "any message");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonBlank("test", "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -547,9 +618,24 @@ int&nbsp;offset,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink">RuntimeException</a>&nbsp;exception)</span></div>
 <div class="block">引数として与えられた <code>sequence</code> が空文字列ではないことを保証します。 
  <p>
- 与えられた <code>sequence</code> の値が空文字列の場合は <code>exception</code> オブジェクトをスローします。
+ 引数として与えられた <code>sequence</code> の値が空文字列の場合は <code>exception</code> オブジェクトをスローします。
  <p>
- 任意の例外を指定しない場合は <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a> メソッドを使用してください。</div>
+ 任意の例外を指定しない場合は <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonBlank("", new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonBlank("test", new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -576,7 +662,30 @@ int&nbsp;offset,
  が必ず実行時に発生します。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null);
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty("");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty("test");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -601,7 +710,31 @@ int&nbsp;offset,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(null, "any message");
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty("", "any message");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty("test", "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -621,7 +754,30 @@ int&nbsp;offset,
  <p>
  <code>null</code> または空文字列である場合は例外をスローします。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonEmpty("", new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty("test", new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -644,7 +800,22 @@ int&nbsp;offset,
  が必ず実行時に発生します。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
+ <code>
+ Preconditions.requirePositive(-1);
+ &gt;&gt; IllegalNumberFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requirePositive(0);
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -664,7 +835,23 @@ int&nbsp;offset,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requirePositive(-1, "any message");
+ &gt;&gt; IllegalNumberFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requirePositive(0, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -681,7 +868,22 @@ int&nbsp;offset,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink">RuntimeException</a>&nbsp;exception)</span></div>
 <div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requirePositive(int)"><code>requirePositive(int)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requirePositive(int)"><code>requirePositive(int)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が負数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requirePositive(-1, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requirePositive(0, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -704,7 +906,22 @@ int&nbsp;offset,
  が必ず実行時に発生します。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+ <code>
+ Preconditions.requireNegative(0);
+ &gt;&gt; IllegalNumberFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNegative(-1);
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -724,7 +941,23 @@ int&nbsp;offset,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNegative(0, "any message");
+ &gt;&gt; IllegalNumberFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNegative(-1, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -743,7 +976,22 @@ int&nbsp;offset,
  <p>
  引数として指定された <code>number</code> が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNegative(int)"><code>requireNegative(int)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireNegative(int)"><code>requireNegative(int)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された number が正数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNegative(0, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNegative(-1, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - 検査対象の数値</dd>
@@ -767,7 +1015,22 @@ int&nbsp;to)</span></div>
  が必ず実行時に発生します。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+ <code>
+ Preconditions.requireRange(10, 9);
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 10);
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -790,7 +1053,23 @@ int&nbsp;to,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireRange(10, 9, "any message");
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 10, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -815,7 +1094,22 @@ int&nbsp;to,
  <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> メソッドから実行された場合は
  <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>IndexOutOfBoundsException</code></a> を例外オブジェクトとしてスローします。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が to で指定された数値よりも大きい場合は引数として指定された任意の例外がスローされます。
+ <code>
+ Preconditions.requireRange(10, 9, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 10, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -842,7 +1136,22 @@ int&nbsp;to)</span></div>
  が必ず実行時に発生します。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+ <code>
+ Preconditions.requireRange(10, 0, 9);
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 0, 10);
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -868,7 +1177,23 @@ int&nbsp;to,
  が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireRange(10, 0, 9, "any message");
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 0, 10, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -896,7 +1221,22 @@ int&nbsp;to,
  <code>from</code> から <code>to</code> で指定された範囲内の数値ではない場合は
  <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html?is-external=true" title="class or interface in java.lang" class="externalLink"><code>IndexOutOfBoundsException</code></a> を例外オブジェクトとしてスローします。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内ではない場合は引数として渡された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireRange(10, 0, 9, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireRange(9, 0, 10, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>index</code> - 検査対象のインデックス</dd>
@@ -918,7 +1258,30 @@ int&nbsp;to,
 <div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された list が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null);
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(List.of());
+ &gt;&gt; IllegalArrayFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(List.of("test"));
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>list</code> - 検査対象のリスト</dd>
@@ -937,7 +1300,32 @@ int&nbsp;to,
 <div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a>
- メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。</div>
+ メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+
+ <pre>
+ 引数として渡された list が null の場合は NullPointerException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(null, "any message");
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(List.of(), "any message");
+ &gt;&gt; IllegalArrayFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(List.of("test"), "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>list</code> - 検査対象のリスト</dd>
@@ -958,7 +1346,30 @@ int&nbsp;to,
  <p>
  引数として渡された <code>list</code> が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
  <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> メソッドから実行され 、引数として渡された <code>list</code> が空リストの場合は
- <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。</div>
+ <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。
+
+ <pre>
+ 引数として渡された list が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonEmpty(List.of(), new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(List.of("test"), new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>list</code> - 検査対象のリスト</dd>
@@ -980,7 +1391,30 @@ int&nbsp;to,
 <div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された map が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null);
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(Map.of());
+ &gt;&gt; IllegalMapFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(Map.of("test", "test"));
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>map</code> - 検査対象のマップ</dd>
@@ -997,7 +1431,32 @@ int&nbsp;to,
 <div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a>
- メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。</div>
+ メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+
+ <pre>
+ 引数として渡された map が null の場合は NullPointerException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(null, "any message");
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(Map.of(), "any message");
+ &gt;&gt; IllegalMapFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(Map.of("test", "test"), "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>map</code> - 検査対象のマップ</dd>
@@ -1018,7 +1477,30 @@ int&nbsp;to,
  <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> メソッドから実行されて、引数として渡された <code>map</code> が空マップの場合は
  <code>IllegalMapFoundException</code> を例外オブジェクトとしてスローします。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として渡された map が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が空マップの場合は引数として渡された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(Map.of("test", "test"), new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>map</code> - 検査対象のマップ</dd>
@@ -1043,7 +1525,30 @@ int&nbsp;to,
  を例外オブジェクトとしてスローします。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された array が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null);
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(new String[] {});
+ &gt;&gt; IllegalArrayFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(new String[] { "" });
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>array</code> - 検査対象の配列</dd>
@@ -1064,7 +1569,32 @@ int&nbsp;to,
  を例外オブジェクトとしてスローします。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として渡された array が null の場合は NullPointerException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(null, "any message");
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireNonEmpty(new String[] {}, "any message");
+ &gt;&gt; IllegalArrayFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(new String[] { "" }, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>array</code> - 検査対象の配列</dd>
@@ -1084,7 +1614,30 @@ int&nbsp;to,
  <p>
  引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
  <a href="#requireNonEmpty(java.lang.Object%5B%5D)"><code>requireNonEmpty(Object[])</code></a> メソッドから実行されて、引数として渡された配列が空配列の場合は
- <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。</div>
+ <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。
+
+ <pre>
+ 引数として渡された array が null の場合は NullPointerException がスローされます。
+ <code>
+ Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+ &gt;&gt; NullPointerException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>array</code> - 検査対象の配列</dd>
@@ -1109,7 +1662,22 @@ int&nbsp;to,
  <code>IllegalSequenceFoundException</code> が例外オブジェクトとしてスローされます。
  <p>
  任意の例外オブジェクトを指定する場合は
- <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。</div>
+ <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ <code>
+ Preconditions.requireStartWith("test", "est");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "test");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1133,7 +1701,23 @@ int&nbsp;to,
  <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は
- <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。</div>
+ <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireStartWith("test", "est", "any message");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "test", "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1158,7 +1742,22 @@ int&nbsp;offset)</span></div>
  <p>
  任意の例外オブジェクトを指定する場合は
  <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ <code>
+ Preconditions.requireStartWith("test", "st", 1);
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "est", 1);
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1185,7 +1784,23 @@ int&nbsp;offset,
  <p>
  任意の例外オブジェクトを指定する場合は
  <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireStartWith("test", "st", 1, "any message");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "est", 1, "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1209,7 +1824,22 @@ int&nbsp;offset,
  引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まらない場合は、実行時に
  引数として指定された任意の例外オブジェクトがスローされます。
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireStartWith(java.lang.String,java.lang.String)"><code>requireStartWith(String, String)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定しない場合は <a href="#requireStartWith(java.lang.String,java.lang.String)"><code>requireStartWith(String, String)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireStartWith("test", "est", new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "test", new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1233,7 +1863,22 @@ int&nbsp;offset,
  例外オブジェクトがスローされます。
  <p>
  任意の例外オブジェクトを指定しない場合は <a href="#requireStartWith(java.lang.String,java.lang.String,int)"><code>requireStartWith(String, String, int)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireStartWith("test", "st", 1, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireStartWith("test", "est", 1, new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1256,7 +1901,22 @@ int&nbsp;offset,
  <code>IllegalSequenceFoundException</code> が例外オブジェクトとしてスローされます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireEndWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireEndWith(String, String, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
+ <code>
+ Preconditions.requireEndWith("test", "es");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireEndWith("test", "est");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1280,7 +1940,23 @@ int&nbsp;offset,
  <code>message</code> が詳細メッセージとして例外発生時に出力されます。
  <p>
  任意の例外オブジェクトを指定する場合は <a href="#requireEndWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireEndWith(String, String, RuntimeException)</code></a>
- メソッドを使用してください。</div>
+ メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
+ 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ <code>
+ Preconditions.requireEndWith("test", "es", "any message");
+ &gt;&gt; IllegalSequenceFoundException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireEndWith("test", "est", "any message");
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
@@ -1303,7 +1979,22 @@ int&nbsp;offset,
  引数として指定された文字列が <code>suffix</code> で指定された接尾語で終わらない場合は、実行時に
  引数として指定された任意の例外オブジェクトがスローされます。
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireEndWith(java.lang.String,java.lang.String)"><code>requireEndWith(String, String)</code></a> メソッドを使用してください。</div>
+ 任意の例外オブジェクトを指定する場合は <a href="#requireEndWith(java.lang.String,java.lang.String)"><code>requireEndWith(String, String)</code></a> メソッドを使用してください。
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireEndWith("test", "es", new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireEndWith("test", "est", new AnyRuntimeException());
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sequence</code> - 検査対象の文字列</dd>
