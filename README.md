@@ -66,6 +66,30 @@ dependencies {
 import org.thinkit.common.Preconditions;
 ```
 
+### 3. Define preconditions
+
+The following is an example using [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String)>).
+
+> **_Note:_**</br>
+> The reference for all validation methods is [here](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html).
+
+```java
+import org.thinkit.common.Preconditions;
+
+public class DemoPreconditions {
+
+     /**
+      * Entry point for apps that are expected to be passed a non-empty string...
+      */
+     public static void main(String[] args) {
+          // Validate that args is not an empty array
+          // and that args[0] is not an empty string.
+          Preconditions.requireNonEmpty(args);
+          Preconditions.requireNonEmpty(args[0]);
+     }
+}
+```
+
 ## License
 
 ```
@@ -94,3 +118,7 @@ Regardless of the means or content of communication, I would love to hear from y
 - [Package](https://github.com/myConsciousness/precondition-validator/packages)
 - [File a Bug](https://github.com/myConsciousness/precondition-validator/issues)
 - [Reference](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html)
+
+```
+
+```
