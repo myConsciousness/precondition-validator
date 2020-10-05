@@ -163,7 +163,6 @@ public interface Preconditions {
      * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
      *
-     *
      * <pre>
      * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
@@ -192,9 +191,24 @@ public interface Preconditions {
     /**
      * 引数として与えられた {@code sequence} が空文字列ではないことを保証します。 
      * <p>
-     * 与えられた {@code sequence} の値が空文字列の場合は {@code exception} オブジェクトをスローします。
+     * 引数として与えられた {@code sequence} の値が空文字列の場合は {@code exception} オブジェクトをスローします。
      * <p>
      * 任意の例外を指定しない場合は {@link #requireNonBlank(String)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requireNonBlank("", new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonBlank("test", new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param sequence  検査対象の文字列
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -225,6 +239,29 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+     * <code>
+     * Preconditions.requireNonEmpty(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+     * <code>
+     * Preconditions.requireNonEmpty("");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty("test");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      *
      * @throws NullPointerException          引数として {@code null} が渡された場合
@@ -248,6 +285,29 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された sequence が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireNonEmpty(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireNonEmpty("", "any message");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty("test", "any message");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param message  例外スロー時に出力される詳細メッセージ
      *
@@ -265,6 +325,29 @@ public interface Preconditions {
      * {@code null} または空文字列である場合は例外をスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(String)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+     * <code>
+     * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requireNonEmpty("", new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty("test", new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param sequence  検査対象の文字列
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -289,6 +372,21 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
+     * <code>
+     * Preconditions.requirePositive(-1);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requirePositive(0);
+     * </code>
+     * </pre>
+     *
      * @param number 検査対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が負数の場合
@@ -307,6 +405,21 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requirePositive(-1, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requirePositive(0, "any message");
+     * </code>
+     * </pre>
+     *
      * @param number  検査対象の数値
      * @param message 例外スロー時に出力される詳細メッセージ
      *
@@ -320,6 +433,21 @@ public interface Preconditions {
      * 引数として指定された {@code number} の数値が正数であることを保証します。 
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requirePositive(int)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された number が負数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requirePositive(-1, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requirePositive(0, new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param number    検査対象の数値
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -346,6 +474,21 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+     * <code>
+     * Preconditions.requireNegative(0);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNegative(-1);
+     * </code>
+     * </pre>
+     *
      * @param number 検査対象の数値
      *
      * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
@@ -364,6 +507,21 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireNegative(0, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNegative(-1, "any message");
+     * </code>
+     * </pre>
+     *
      * @param number  検査対象の数値
      * @param message 例外スロー時に出力される詳細メッセージ
      *
@@ -379,6 +537,21 @@ public interface Preconditions {
      * 引数として指定された {@code number} が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNegative(int)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された number が正数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requireNegative(0, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNegative(-1, new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param number    検査対象の数値
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -405,6 +578,20 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+     * Preconditions.requireRange(10, 9);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 10);
+     * </code>
+     * </pre>
+     *
      * @param index 検査対象のインデックス
      * @param to    判定時の上限値
      *
@@ -424,6 +611,20 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
      * メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireRange(10, 9, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 10, "any message");
+     * </code>
+     * </pre>
      *
      * @param index   検査対象のインデックス
      * @param to      判定時の上限値
@@ -445,6 +646,20 @@ public interface Preconditions {
      * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された index が to で指定された数値よりも大きい場合は引数として指定された任意の例外がスローされます。
+     * Preconditions.requireRange(10, 9, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 10, new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param index     検査対象のインデックス
      * @param to        判定時の上限値
@@ -473,6 +688,20 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+     * Preconditions.requireRange(10, 0, 9);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 0, 10);
+     * </code>
+     * </pre>
+     *
      * @param index 検査対象のインデックス
      * @param from  判定時の最低値
      * @param to    判定時の上限値
@@ -494,6 +723,20 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
      * メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireRange(10, 0, 9, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 0, 10, "any message");
+     * </code>
+     * </pre>
      *
      * @param index   検査対象のインデックス
      * @param from    判定時の最低値
@@ -517,6 +760,20 @@ public interface Preconditions {
      * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int, int)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内ではない場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireRange(10, 0, 9, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireRange(9, 0, 10, new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param index     検査対象のインデックス
      * @param from      判定時の最低値
@@ -542,6 +799,27 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+     * Preconditions.requireNonEmpty(List.of());
+     * &gt;&gt; IllegalArrayFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(List.of("test"));
+     * </code>
+     * </pre>
+     *
      * @param list 検査対象のリスト
      *
      * @exception NullPointerException       引数として渡された {@code list} が {@code null}
@@ -557,6 +835,27 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
      * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     *
+     * <pre>
+     * 引数として渡された list が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(List.of(), "any message");
+     * &gt;&gt; IllegalArrayFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(List.of("test"), "any message");
+     * </code>
+     * </pre>
      *
      * @param list    検査対象のリスト
      * @param message 例外スロー時に出力される詳細メッセージ
@@ -575,6 +874,27 @@ public interface Preconditions {
      * 引数として渡された {@code list} が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
      * {@link #requireNonEmpty(List)} メソッドから実行され 、引数として渡された {@code list} が空リストの場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     *
+     * <pre>
+     * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireNonEmpty(List.of(), new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(List.of("test"), new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param list      検査対象のリスト
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
@@ -601,6 +921,27 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が空リストの場合は IllegalMapFoundException がスローされます。
+     * Preconditions.requireNonEmpty(Map.of());
+     * &gt;&gt; IllegalMapFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(Map.of("test", "test"));
+     * </code>
+     * </pre>
+     *
      * @param map 検査対象のマップ
      *
      * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
@@ -614,6 +955,27 @@ public interface Preconditions {
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
      * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     *
+     * <pre>
+     * 引数として渡された map が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が空リストの場合は IllegalMapFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(Map.of(), "any message");
+     * &gt;&gt; IllegalMapFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(Map.of("test", "test"), "any message");
+     * </code>
+     * </pre>
      *
      * @param map     検査対象のマップ
      * @param message 例外スロー時に出力される詳細メッセージ
@@ -632,6 +994,27 @@ public interface Preconditions {
      * {@link IllegalMapFoundException} を例外オブジェクトとしてスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(Map)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(Map.of("test", "test"), new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param map       検査対象のマップ
      * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
