@@ -69,7 +69,7 @@ public interface Preconditions {
      * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
      * <p>
      * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
-     * が必ず実行時に発生します。
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
      *
      * @param object  検査対象のオブジェクト
      * @param message 例外スロー時に出力する詳細メッセージ
@@ -98,6 +98,25 @@ public interface Preconditions {
      */
     static void requireNonBlank(String sequence) {
         requireNonBlank(sequence, new IllegalSequenceFoundException("String must not be blank"));
+    }
+
+    /**
+     * 引数として指定された {@code sequence} オブジェクトの文字列が空文字列ではないことを保証します。 
+     * <p>
+     * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
+     * {@link #requireNonEmpty(String)} メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param message  例外スロー時に出力する詳細メッセージ
+     *
+     * @throws NullPointerException          引数として {@code null} が渡された場合
+     * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
+     */
+    static void requireNonBlank(String sequence, String message) {
+        requireNonBlank(sequence, new IllegalSequenceFoundException(message));
     }
 
     /**
@@ -147,6 +166,30 @@ public interface Preconditions {
     }
 
     /**
+     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null}
+     * 、または文字列が空文字列ではないことを保証します。 
+     * <p>
+     * {@code sequence} オブジェクトの参照が {@code null} の場合は {@link NullPointerException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(String, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param sequence 検査対象の文字列
+     * @param message  例外スロー時に出力される詳細メッセージ
+     *
+     * @throws NullPointerException          引数として {@code null} が渡された場合
+     * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
+     */
+    static void requireNonEmpty(String sequence, String message) {
+        requireNonNull(sequence, message);
+        requireNonBlank(sequence, message);
+    }
+
+    /**
      * 引数として渡された {@code sequence} の値が {@code null} または空文字列ではないことを保証します。 
      * <p>
      * {@code null} または空文字列である場合は例外をスローします。
@@ -183,6 +226,24 @@ public interface Preconditions {
     static void requirePositive(int number) {
         requirePositive(number,
                 new IllegalNumberFoundException(String.format("Number must be positive but %s was given", number)));
+    }
+
+    /**
+     * 引数として指定された {@code number} の数値が正数であることを保証します。 
+     * <p>
+     * 引数として指定された {@code number} の数値が負数である場合は {@link IllegalNumberFoundException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param number  検査対象の数値
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が負数の場合
+     */
+    static void requirePositive(int number, String message) {
+        requirePositive(number, new IllegalNumberFoundException(message));
     }
 
     /**
