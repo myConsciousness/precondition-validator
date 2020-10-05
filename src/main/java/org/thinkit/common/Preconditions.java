@@ -31,10 +31,10 @@ import java.util.Map;
  * 例えば、メソッドの開始条件として必ず空ではない文字列が必要な以下のような場合を提示します。
  * <code>
  * Preconditions.requireNonEmpty(null);
- * >> NullPointerException
+ * &gt;&gt; NullPointerException
  *
  * Preconditions.requireNonEmpty("");
- * >> IllegalSequenceFoundException
+ * &gt;&gt; IllegalSequenceFoundException
  * </code>
  *
  * また、以下のように任意の例外オブジェクトや詳細メッセージを指定することができます。
