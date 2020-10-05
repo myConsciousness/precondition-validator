@@ -748,7 +748,6 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
-    @TestInstance(Lifecycle.PER_CLASS)
     class TestRequireStartWith {
 
         @ParameterizedTest
@@ -757,7 +756,7 @@ final class PreconditionsTest {
             final String testSequence = " test sequence";
             final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
                     () -> Preconditions.requireStartWith(testSequence, testParameter));
-            assertEquals(String.format("String must start with the %s prefix, but %s was passed", testParameter,
+            assertEquals(String.format("String must start with the %s prefix, but %s was given", testParameter,
                     testSequence), exception.getMessage());
         }
 
@@ -765,6 +764,50 @@ final class PreconditionsTest {
         @ValueSource(strings = { " ", " test sequence", " test", " tes", " te", " t" })
         void testWhenStringStartsWith(String testParameter) {
             assertDoesNotThrow(() -> Preconditions.requireStartWith(" test sequence", testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireStartWith(String, String, int)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireStartWithStringWithOffset {
+
+        Stream<Arguments> stringAndOffsetProvider() {
+            int offset = 0;
+            return Stream.of(Arguments.of(" test sequence", " test sequence", offset++),
+                    Arguments.of(" test sequence", "test", offset++), Arguments.of(" test sequence", "est ", offset++),
+                    Arguments.of(" test sequence", "st s", offset++), Arguments.of(" test sequence", "t se", offset++),
+                    Arguments.of(" test sequence", " sequence", offset++));
+        }
+
+        Stream<Arguments> badStringAndOffsetProvider() {
+            int offset = 0;
+            return Stream.of(Arguments.of(" test sequence", "test sequence", offset++),
+                    Arguments.of(" test sequence", "est", offset++), Arguments.of(" test sequence", "st s", offset++),
+                    Arguments.of(" test sequence", "t se", offset++), Arguments.of(" test sequence", " seq", offset++),
+                    Arguments.of(" test sequence", "sequence", offset++));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badStringAndOffsetProvider")
+        void testWhenStringDoesNotStartWith(String sequence, String prefix, int offset) {
+            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+                    () -> Preconditions.requireStartWith(sequence, prefix, offset));
+            assertEquals(String.format("String must start with the %s prefix from %s index, but %s was given", prefix,
+                    offset, sequence), exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @MethodSource("stringAndOffsetProvider")
+        void testWhenStringStartsWith(String sequence, String prefix, int offset) {
+            assertDoesNotThrow(() -> Preconditions.requireStartWith(sequence, prefix, offset));
         }
     }
 
@@ -777,7 +820,7 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireStartWithWithException {
+    class TestRequireStartWithStringWithException {
 
         @Test
         void testWhenExceptionIsNull() {
@@ -817,7 +860,7 @@ final class PreconditionsTest {
             final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
                     () -> Preconditions.requireEndWith(testSequence, testParameter));
             assertEquals(
-                    String.format("String must end with the %s suffix, but %s was passed", testParameter, testSequence),
+                    String.format("String must end with the %s suffix, but %s was given", testParameter, testSequence),
                     exception.getMessage());
         }
 
@@ -837,7 +880,7 @@ final class PreconditionsTest {
      * @version 1.0
      */
     @Nested
-    class TestRequireEndWithWithException {
+    class TestRequireEndWithStringWithException {
 
         @Test
         void testWhenExceptionIsNull() {
