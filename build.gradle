@@ -78,3 +78,9 @@ test {
         exceptionFormat 'full'
     }
 }
+
+task("reference", type: Javadoc) {
+    source = sourceSets.main.allJava
+    title = 'reference'
+    destinationDir = file('./docs')
+}
