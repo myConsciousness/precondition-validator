@@ -929,7 +929,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空リストの場合は IllegalMapFoundException がスローされます。
+     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
      * Preconditions.requireNonEmpty(Map.of());
      * &gt;&gt; IllegalMapFoundException
      * </code>
@@ -964,7 +964,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空リストの場合は IllegalMapFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * Preconditions.requireNonEmpty(Map.of(), "any message");
      * &gt;&gt; IllegalMapFoundException
      * </code>
@@ -1003,7 +1003,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * 引数として渡された map が空マップの場合は引数として渡された任意の例外オブジェクトがスローされます。
      * Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -1044,6 +1044,27 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+     * Preconditions.requireNonEmpty(new String[] {});
+     * &gt;&gt; IllegalArrayFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(new String[] { "" });
+     * </code>
+     * </pre>
+     *
      * @param array 検査対象の配列
      *
      * @exception NullPointerException       引数として渡された配列が {@code null} の場合
@@ -1062,6 +1083,27 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として渡された array が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * Preconditions.requireNonEmpty(new String[] {}, "any message");
+     * &gt;&gt; IllegalArrayFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(new String[] { "" }, "any message");
+     * </code>
+     * </pre>
+     *
      * @param array   検査対象の配列
      * @param message 例外スロー時に出力される詳細メッセージ
      *
@@ -1078,6 +1120,27 @@ public interface Preconditions {
      * 引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
      * {@link #requireNonEmpty(Object[])} メソッドから実行されて、引数として渡された配列が空配列の場合は
      * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     *
+     * <pre>
+     * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException();
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException();
+     * </code>
+     * </pre>
      *
      * @param array     検査対象の配列
      * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
