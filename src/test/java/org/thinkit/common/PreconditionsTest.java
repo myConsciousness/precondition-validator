@@ -328,12 +328,14 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(-1, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(-1, emptyException));
         }
 
         @Test
         void testWhenNumberIsPositiveAndExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(0, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(0, emptyException));
         }
 
         @ParameterizedTest
@@ -388,7 +390,8 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(0, 10, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(0, 10, emptyException));
         }
 
         @ParameterizedTest
@@ -537,7 +540,8 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(1, 0, 2, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(1, 0, 2, emptyException));
         }
 
         @ParameterizedTest
@@ -613,7 +617,8 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(List.of(), null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(List.of(), emptyException));
         }
 
         @Test
@@ -675,7 +680,9 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(Map.of("test", "test"), null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireNonEmpty(Map.of("test", "test"), emptyException));
         }
 
         @Test
@@ -731,7 +738,9 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(new String[] { "" }, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireNonEmpty(new String[] { "" }, emptyException));
         }
 
         @Test
@@ -831,7 +840,8 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireStartWith("", "", null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireStartWith("", "", emptyException));
         }
 
         @ParameterizedTest
@@ -879,7 +889,9 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireStartWith("test", "test", 0, null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireStartWith("test", "test", 0, emptyException));
         }
 
         @ParameterizedTest
@@ -939,7 +951,8 @@ final class PreconditionsTest {
 
         @Test
         void testWhenExceptionIsNull() {
-            assertThrows(NullPointerException.class, () -> Preconditions.requireEndWith("", "", null));
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireEndWith("", "", emptyException));
         }
 
         @ParameterizedTest
