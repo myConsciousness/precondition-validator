@@ -92,7 +92,8 @@ public interface Preconditions {
      * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
      *
      * <pre>
-     * 引数として渡された object が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された object が null の場合は NullPointerException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
      * Preconditions.requireNonNull(null, "any message");
      * &gt;&gt; NullPointerException
@@ -164,7 +165,8 @@ public interface Preconditions {
      * {@link #requireNonEmpty(String)} メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
      * Preconditions.requireNonBlank("", "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -294,7 +296,8 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
      * Preconditions.requireNonEmpty("", "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -406,7 +409,8 @@ public interface Preconditions {
      * メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
      * Preconditions.requirePositive(-1, "any message");
      * &gt;&gt; IllegalNumberFoundException
@@ -508,7 +512,8 @@ public interface Preconditions {
      * メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
      * <code>
      * Preconditions.requireNegative(0, "any message");
      * &gt;&gt; IllegalNumberFoundException
@@ -580,6 +585,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+     * <code>
      * Preconditions.requireRange(10, 9);
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
@@ -613,7 +619,9 @@ public interface Preconditions {
      * メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireRange(10, 9, "any message");
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
@@ -649,6 +657,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された index が to で指定された数値よりも大きい場合は引数として指定された任意の例外がスローされます。
+     * <code>
      * Preconditions.requireRange(10, 9, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -690,6 +699,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+     * <code>
      * Preconditions.requireRange(10, 0, 9);
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
@@ -725,7 +735,9 @@ public interface Preconditions {
      * メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireRange(10, 0, 9, "any message");
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
@@ -763,6 +775,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された index が from と to で指定された範囲内ではない場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireRange(10, 0, 9, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -801,6 +814,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
      * </code>
@@ -808,6 +822,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(List.of());
      * &gt;&gt; IllegalArrayFoundException
      * </code>
@@ -837,14 +852,18 @@ public interface Preconditions {
      * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
      *
      * <pre>
-     * 引数として渡された list が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
      * </code>
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(List.of(), "any message");
      * &gt;&gt; IllegalArrayFoundException
      * </code>
@@ -877,6 +896,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
      * </code>
@@ -884,6 +904,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された list が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(List.of(), new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -923,6 +944,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
      * </code>
@@ -930,6 +952,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(Map.of());
      * &gt;&gt; IllegalMapFoundException
      * </code>
@@ -957,14 +980,18 @@ public interface Preconditions {
      * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
      *
      * <pre>
-     * 引数として渡された map が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
      * </code>
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(Map.of(), "any message");
      * &gt;&gt; IllegalMapFoundException
      * </code>
@@ -997,6 +1024,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
      * </code>
@@ -1004,6 +1032,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された map が空マップの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -1046,6 +1075,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
      * </code>
@@ -1053,6 +1083,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(new String[] {});
      * &gt;&gt; IllegalArrayFoundException
      * </code>
@@ -1084,14 +1115,18 @@ public interface Preconditions {
      * メソッドを使用してください。
      *
      * <pre>
-     * 引数として渡された array が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
      * </code>
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireNonEmpty(new String[] {}, "any message");
      * &gt;&gt; IllegalArrayFoundException
      * </code>
@@ -1123,6 +1158,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
      * </code>
@@ -1130,6 +1166,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -1166,6 +1203,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * <code>
      * Preconditions.requireStartWith("test", "est");
      * &gt;&gt; IllegalSequenceFoundException
      * </code>
@@ -1200,7 +1238,9 @@ public interface Preconditions {
      * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireStartWith("test", "est", "any message");
      * &gt;&gt; IllegalSequenceFoundException
      * </code>
@@ -1236,6 +1276,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * <code>
      * Preconditions.requireStartWith("test", "st", 1);
      * &gt;&gt; IllegalSequenceFoundException
      * </code>
@@ -1274,6 +1315,7 @@ public interface Preconditions {
      * <pre>
      * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
      * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
      * Preconditions.requireStartWith("test", "st", 1, "any message");
      * &gt;&gt; IllegalSequenceFoundException
      * </code>
@@ -1308,6 +1350,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireStartWith("test", "est", new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -1341,6 +1384,7 @@ public interface Preconditions {
      *
      * <pre>
      * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
      * Preconditions.requireStartWith("test", "st", 1, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
@@ -1377,6 +1421,21 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
+     * <code>
+     * Preconditions.requireEndWith("test", "es");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireEndWith("test", "est");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param suffix   接尾語
      *
@@ -1398,6 +1457,22 @@ public interface Preconditions {
      * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
      * メソッドを使用してください。
      *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
+     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * <code>
+     * Preconditions.requireEndWith("test", "es", "any message");
+     * &gt;&gt; IllegalSequenceFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireEndWith("test", "est", "any message");
+     * </code>
+     * </pre>
+     *
      * @param sequence 検査対象の文字列
      * @param suffix   接尾語
      * @param message  例外スロー時に出力される詳細メッセージ
@@ -1416,6 +1491,21 @@ public interface Preconditions {
      * 引数として指定された任意の例外オブジェクトがスローされます。
      * <p>
      * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String)} メソッドを使用してください。
+     *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requireEndWith("test", "es", new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireEndWith("test", "est", new AnyRuntimeException());
+     * </code>
+     * </pre>
      *
      * @param sequence  検査対象の文字列
      * @param suffix    接尾語
