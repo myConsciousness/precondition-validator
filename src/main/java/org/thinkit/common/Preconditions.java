@@ -288,6 +288,24 @@ public interface Preconditions {
     /**
      * 引数として指定された {@code number} の数値が負数であることを保証します。 
      * <p>
+     * 引数として指定された {@code number} の数値が正数である場合は {@link IllegalNumberFoundException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param number  検査対象の数値
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
+     */
+    static void requireNegative(int number, String message) {
+        requireNegative(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * <p>
      * 引数として指定された {@code number} が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
      * <p>
      * 任意の例外オブジェクトを指定しない場合は {@link #requireNegative(int)} メソッドを使用してください。
@@ -326,6 +344,26 @@ public interface Preconditions {
     static void requireRange(int index, int to) {
         requireRange(index, to, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length 0 to length %s", index, to)));
+    }
+
+    /**
+     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param index   検査対象のインデックス
+     * @param to      判定時の上限値
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code to}
+     *                                   で指定された範囲内に存在しない場合
+     */
+    static void requireRange(int index, int to, String message) {
+        requireRange(index, to, new IndexOutOfBoundsException(message));
     }
 
     /**
@@ -375,6 +413,28 @@ public interface Preconditions {
     static void requireRange(int index, int from, int to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * 引数として指定された {@code index} が {@code from} から {@code to}
+     * で指定された範囲内の数値であることを保証します。 
+     * <p>
+     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
+     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * <p>
+     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
+     * メソッドを使用してください。
+     *
+     * @param index   検査対象のインデックス
+     * @param from    判定時の最低値
+     * @param to      判定時の上限値
+     * @param message 例外スロー時に出力される詳細メッセージ
+     *
+     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code from}
+     *                                   から {@code to} で指定された範囲内に存在しない場合
+     */
+    static void requireRange(int index, int from, int to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
     /**
