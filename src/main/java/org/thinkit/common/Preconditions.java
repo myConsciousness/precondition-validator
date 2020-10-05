@@ -19,7 +19,31 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 前提条件を判定する処理を定義したインターフェースです。
+ * {@link Preconditions} インターフェースは処理開始時における引数やデータの前提条件を保証する機能を提供します。
+ * <p>
+ * {@link Preconditions} インターフェースが提供している各機能は前提条件をチェックし、
+ * チェック対象のデータが前提条件を満たしていなかった場合はチェック処理に対応した例外を必ずスローします。
+ * また、任意の例外オブジェクトや例外発生時の詳細メッセージを指定できるオプションを各検証メソッドに実装しているため、
+ * 使用しているアプリの実装に合わせて前提条件のチェック処理を行うことができます。任意の例外オブジェクトは {@link RuntimeException}
+ * を継承している必要があります。
+ *
+ * <pre>
+ * 例えば、メソッドの開始条件として必ず空ではない文字列が必要な以下のような場合を提示します。
+ * <code>
+ * Preconditions.requireNonEmpty(null);
+ * >> NullPointerException
+ *
+ * Preconditions.requireNonEmpty("");
+ * >> IllegalSequenceFoundException
+ * </code>
+ *
+ * また、以下のように任意の例外オブジェクトや詳細メッセージを指定することができます。
+ * <code>
+ * Preconditions.requireNonEmpty("", "any exception message");
+ * Preconditions.requireNonEmpty("", new AnyRuntimeException());
+ * Preconditions.requireNonEmpty("", new AnyRuntimeException("any exception message"));
+ * </code>
+ * </pre>
  *
  * @author Kato Shinya
  * @since 1.0
