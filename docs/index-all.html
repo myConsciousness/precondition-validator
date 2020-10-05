@@ -100,6 +100,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNegative(int,java.lang.String)">requireNegative(int, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonBlank(java.lang.String)">requireNonBlank(String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 </div>
@@ -107,6 +111,10 @@ loadScripts(document, 'script');</script>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonBlank(java.lang.String,java.lang.RuntimeException)">requireNonBlank(String, RuntimeException)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として与えられた <code>sequence</code> が空文字列ではないことを保証します。 </div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonBlank(java.lang.String,java.lang.String)">requireNonBlank(String, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.Object%5B%5D)">requireNonEmpty(Object[])</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
@@ -124,6 +132,11 @@ loadScripts(document, 'script');</script>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String,java.lang.RuntimeException)">requireNonEmpty(String, RuntimeException)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として渡された <code>sequence</code> の値が <code>null</code> または空文字列ではないことを保証します。 </div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String,java.lang.String)">requireNonEmpty(String, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
+ 、または文字列が空文字列ではないことを保証します。 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireNonEmpty(java.util.List)">requireNonEmpty(List&lt;?&gt;)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
@@ -157,6 +170,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requirePositive(int,java.lang.String)">requirePositive(int, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireRange(int,int)">requireRange(int, int)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
@@ -171,7 +188,16 @@ loadScripts(document, 'script');</script>
 <div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
  で指定された範囲内の数値であることを保証します。 </div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireRange(int,int,int,java.lang.String)">requireRange(int, int, int, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
+ で指定された範囲内の数値であることを保証します。 </div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireRange(int,int,java.lang.RuntimeException)">requireRange(int, int, RuntimeException)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
+<dd>
+<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/thinkit/common/Preconditions.html#requireRange(int,int,java.lang.String)">requireRange(int, int, String)</a></span> - Static method in interface org.thinkit.common.<a href="org/thinkit/common/Preconditions.html" title="interface in org.thinkit.common">Preconditions</a></dt>
 <dd>
 <div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
 </dd>
