@@ -843,6 +843,54 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requireStartWith(String, String, int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireStartWithStringWithOffsetAndException {
+
+        Stream<Arguments> stringAndOffsetProvider() {
+            int offset = 0;
+            return Stream.of(Arguments.of(" test sequence", " test sequence", offset++),
+                    Arguments.of(" test sequence", "test", offset++), Arguments.of(" test sequence", "est ", offset++),
+                    Arguments.of(" test sequence", "st s", offset++), Arguments.of(" test sequence", "t se", offset++),
+                    Arguments.of(" test sequence", " sequence", offset++));
+        }
+
+        Stream<Arguments> badStringAndOffsetProvider() {
+            int offset = 0;
+            return Stream.of(Arguments.of(" test sequence", "test sequence", offset++),
+                    Arguments.of(" test sequence", "est", offset++), Arguments.of(" test sequence", "st s", offset++),
+                    Arguments.of(" test sequence", "t se", offset++), Arguments.of(" test sequence", " seq", offset++),
+                    Arguments.of(" test sequence", "sequence", offset++));
+        }
+
+        @Test
+        void testWhenExceptionIsNull() {
+            assertThrows(NullPointerException.class, () -> Preconditions.requireStartWith("test", "test", 0, null));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badStringAndOffsetProvider")
+        void testWhenStringDoesNotStartWith(String sequence, String prefix, int offset) {
+            assertThrows(TestException.class,
+                    () -> Preconditions.requireStartWith(sequence, prefix, offset, new TestException()));
+
+        }
+
+        @ParameterizedTest
+        @MethodSource("stringAndOffsetProvider")
+        void testWhenStringStartsWith(String sequence, String prefix, int offset) {
+            assertDoesNotThrow(() -> Preconditions.requireStartWith(sequence, prefix, offset, new TestException()));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireEndWith(String, String)}
      * メソッドのテストケースを管理するインナークラスです。
      *
