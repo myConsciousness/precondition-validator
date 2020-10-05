@@ -79,7 +79,7 @@ import org.thinkit.common.Preconditions;
 public class DemoPreconditions {
 
      /**
-      * Entry point for apps that are expected to be passed a non-empty string...
+      * Entry point for app that are expected to be given a non-empty string...
       */
      public static void main(String[] args) {
           // Validate that args is not an empty array
