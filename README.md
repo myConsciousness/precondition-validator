@@ -108,7 +108,7 @@ the License.
 
 ## More Information
 
-`Precondition Validator` was designed and implemented by Kato Shinya, who works as a freelance developer from Japan.
+`Precondition Validator` was designed and implemented by Kato Shinya, who works as a freelance developer.
 
 Regardless of the means or content of communication, I would love to hear from you if you have any questions or concerns. I do not check my email box very often so a response may be delayed, anyway thank you for your interest!
 
