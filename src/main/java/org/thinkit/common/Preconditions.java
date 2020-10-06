@@ -82,7 +82,7 @@ public interface Preconditions {
      * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
      */
     static void requireNonNull(Object object) {
-        requireNonNull(object, "");
+        requireNonNull(object, new NullPointerException());
     }
 
     /**
@@ -113,8 +113,35 @@ public interface Preconditions {
      * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
      */
     static void requireNonNull(Object object, String message) {
+        requireNonNull(object, new NullPointerException(message));
+    }
+
+    /**
+     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * <p>
+     * {@code object} オブジェクトの参照が {@code null} である場合には引数として指定された任意の例がオブジェクトがスローされます。
+     *
+     * <pre>
+     * 引数として渡された object が null の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * <code>
+     * Preconditions.requireNonNull(null, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * <code>
+     * Preconditions.requireNonNull("test", new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param object    検査対象のオブジェクト
+     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     */
+    static void requireNonNull(Object object, RuntimeException exception) {
         if (object == null) {
-            throw new NullPointerException(message);
+            throw exception;
         }
     }
 
