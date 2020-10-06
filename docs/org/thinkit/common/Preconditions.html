@@ -308,20 +308,28 @@ loadScripts(document, 'script');</script>
 </tr>
 <tr class="altColor" id="i22">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireNonNull(java.lang.Object,java.lang.String)">requireNonNull</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a>&nbsp;object,
-<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;message)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireNonNull(java.lang.Object,java.lang.RuntimeException)">requireNonNull</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a>&nbsp;object,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="colLast">
 <div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 </div>
 </td>
 </tr>
 <tr class="rowColor" id="i23">
 <td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireNonNull(java.lang.Object,java.lang.String)">requireNonNull</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a>&nbsp;object,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;message)</code></th>
+<td class="colLast">
+<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 </div>
+</td>
+</tr>
+<tr class="altColor" id="i24">
+<td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requirePositive(int)">requirePositive</a></span>&#8203;(int&nbsp;number)</code></th>
 <td class="colLast">
 <div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
 </td>
 </tr>
-<tr class="altColor" id="i24">
+<tr class="rowColor" id="i25">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requirePositive(int,java.lang.RuntimeException)">requirePositive</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink">RuntimeException</a>&nbsp;exception)</code></th>
@@ -329,7 +337,7 @@ loadScripts(document, 'script');</script>
 <div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
 </td>
 </tr>
-<tr class="rowColor" id="i25">
+<tr class="altColor" id="i26">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requirePositive(int,java.lang.String)">requirePositive</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;message)</code></th>
@@ -337,7 +345,7 @@ loadScripts(document, 'script');</script>
 <div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
 </td>
 </tr>
-<tr class="altColor" id="i26">
+<tr class="rowColor" id="i27">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to)</code></th>
@@ -345,7 +353,7 @@ int&nbsp;to)</code></th>
 <div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="rowColor" id="i27">
+<tr class="altColor" id="i28">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int,int)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
@@ -355,7 +363,7 @@ int&nbsp;to)</code></th>
  で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="altColor" id="i28">
+<tr class="rowColor" id="i29">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int,int,java.lang.RuntimeException)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
@@ -366,7 +374,7 @@ int&nbsp;to,
  で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="rowColor" id="i29">
+<tr class="altColor" id="i30">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int,int,java.lang.String)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
@@ -377,7 +385,7 @@ int&nbsp;to,
  で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="altColor" id="i30">
+<tr class="rowColor" id="i31">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int,java.lang.RuntimeException)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to,
@@ -386,7 +394,7 @@ int&nbsp;to,
 <div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="rowColor" id="i31">
+<tr class="altColor" id="i32">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireRange(int,int,java.lang.String)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to,
@@ -395,7 +403,7 @@ int&nbsp;to,
 <div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
 </td>
 </tr>
-<tr class="altColor" id="i32">
+<tr class="rowColor" id="i33">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix)</code></th>
@@ -403,7 +411,7 @@ int&nbsp;to,
 <div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </td>
 </tr>
-<tr class="rowColor" id="i33">
+<tr class="altColor" id="i34">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String,int)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix,
@@ -412,7 +420,7 @@ int&nbsp;offset)</code></th>
 <div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </td>
 </tr>
-<tr class="altColor" id="i34">
+<tr class="rowColor" id="i35">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix,
@@ -422,7 +430,7 @@ int&nbsp;offset,
 <div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </td>
 </tr>
-<tr class="rowColor" id="i35">
+<tr class="altColor" id="i36">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix,
@@ -432,7 +440,7 @@ int&nbsp;offset,
 <div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </td>
 </tr>
-<tr class="altColor" id="i36">
+<tr class="rowColor" id="i37">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix,
@@ -441,7 +449,7 @@ int&nbsp;offset,
 <div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
 </td>
 </tr>
-<tr class="rowColor" id="i37">
+<tr class="altColor" id="i38">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;prefix,
@@ -531,6 +539,36 @@ int&nbsp;offset,
 <dd><code>message</code> - 例外スロー時に出力する詳細メッセージ</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang" class="externalLink">NullPointerException</a></code> - 引数として渡された <code>object</code> が <code>null</code> の場合</dd>
+</dl>
+</section>
+</li>
+<li class="blockList">
+<section class="detail">
+<h3><a id="requireNonNull(java.lang.Object,java.lang.RuntimeException)">requireNonNull</a></h3>
+<div class="memberSignature"><span class="modifiers">static</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">requireNonNull</span>&#8203;(<span class="arguments"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a>&nbsp;object,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang" class="externalLink">RuntimeException</a>&nbsp;exception)</span></div>
+<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 
+ <p>
+ <code>object</code> オブジェクトの参照が <code>null</code> である場合には引数として指定された任意の例がオブジェクトがスローされます。
+
+ <pre>
+ 引数として渡された object が null の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ <code>
+ Preconditions.requireNonNull(null, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ <code>
+ Preconditions.requireNonNull("test", new AnyRuntimeException());
+ </code>
+ </pre></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>object</code> - 検査対象のオブジェクト</dd>
+<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
 </dl>
 </section>
 </li>
