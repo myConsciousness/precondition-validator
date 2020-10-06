@@ -29,7 +29,7 @@ Using the `Precondition Validator` features, you can safely and easily specify p
 <dependency>
   <groupId>org.thinkit.common</groupId>
   <artifactId>precondition-validator</artifactId>
-  <version>v1.0.3</version>
+  <version>v1.0.8</version>
 </dependency>
 
 <servers>
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.common:precondition-validator:v1.0.3'
+    implementation 'org.thinkit.common:precondition-validator:v1.0.8'
 }
 ```
 
