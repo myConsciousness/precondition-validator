@@ -472,17 +472,19 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が正数であることを保証します。 
+     * Ensures that the {@code number} argument is a positive number. 
      * <p>
-     * 引数として指定された {@code number} の数値が負数である場合は {@link IllegalNumberFoundException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requirePositive(int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the argument number is negative IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requirePositive(-1, "any message");
      * &gt;&gt; IllegalNumberFoundException
@@ -490,16 +492,17 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+     * If the number passed as an argument is a positive number, it does nothing and exits the validation process.
      * <code>
      * Preconditions.requirePositive(0, "any message");
      * </code>
      * </pre>
      *
-     * @param number  検査対象の数値
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param number  The number to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が負数の場合
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a negative number
      */
     static void requirePositive(int number, String message) {
         requirePositive(number, new IllegalNumberFoundException(message));
