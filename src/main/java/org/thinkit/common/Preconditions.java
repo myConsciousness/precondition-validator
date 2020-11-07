@@ -65,14 +65,14 @@ public interface Preconditions {
      * Ensures that the reference to the {@code object} object passed as an argument
      * is not {@code null} . 
      * <p>
-     * A {@link NullPointerException} is always raised at runtime if the reference
-     * to the {@code object} object is {@code null} .
+     * {@link NullPointerException} is always raised at runtime if the reference to
+     * the {@code object} object is {@code null} .
      * <p>
      * Use the {@link #requireNonNull(Object, String)} method if you want to print
      * an arbitrary detailed message when an exception is raised.
      *
      * <pre>
-     * 引数として渡された object が null の場合は NullPointerException がスローされます。
+     * If the object passed as an argument is null, NullPointerException will be thrown.
      * <code>
      * Preconditions.requireNonNull(null);
      * &gt;&gt; NullPointerException
@@ -80,29 +80,33 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * If the object passed as an argument is not null, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonNull("test");
      * </code>
      * </pre>
      *
-     * @param object 検査対象のオブジェクト
+     * @param object Object to be validated
      *
-     * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
+     * @throws NullPointerException If {@code object} passed as an argument is
+     *                              {@code null}
      */
     static void requireNonNull(Object object) {
         requireNonNull(object, new NullPointerException());
     }
 
     /**
-     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * Ensures that the reference to the {@code object} object passed as an argument
+     * is not {@code null} . 
      * <p>
-     * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the {@code object} object is referenced by {@code null} , then
+     * {@link NullPointerException} is always raised at runtime. The {@code message}
+     * passed as an argument is output as a detailed message when an exception
+     * occurs.
      *
      * <pre>
-     * 引数として渡された object が null の場合は NullPointerException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the object passed as an argument is null, NullPointerException will be thrown.
+     * The message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonNull(null, "any message");
      * &gt;&gt; NullPointerException
@@ -110,28 +114,31 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * If the object passed as an argument is not null, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonNull("test", "any message");
      * </code>
      * </pre>
      *
-     * @param object  検査対象のオブジェクト
-     * @param message 例外スロー時に出力する詳細メッセージ
+     * @param object  Object to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws NullPointerException 引数として渡された {@code object} が {@code null} の場合
+     * @throws NullPointerException If {@code object} passed as an argument is
+     *                              {@code null}
      */
     static void requireNonNull(Object object, String message) {
         requireNonNull(object, new NullPointerException(message));
     }
 
     /**
-     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * Ensures that the reference to the {@code object} object passed as an argument
+     * is not {@code null} . 
      * <p>
-     * {@code object} オブジェクトの参照が {@code null} である場合には引数として指定された任意の例がオブジェクトがスローされます。
+     * If the reference to a {@code object} object is {@code null} , any exception
+     * object specified as an argument will be thrown.
      *
      * <pre>
-     * 引数として渡された object が null の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the object passed as an argument is null, then any exception object specified as an argument will be thrown.
      * <code>
      * Preconditions.requireNonNull(null, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -139,14 +146,15 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+     * If the object passed as an argument is not null, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonNull("test", new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param object    検査対象のオブジェクト
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param object    Object to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      */
     static void requireNonNull(Object object, RuntimeException exception) {
         if (object == null) {
@@ -155,20 +163,23 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code sequence} オブジェクトの文字列が空文字列ではないことを保証します。 
+     * Ensures that the string of the {@code sequence} object given as an argument
+     * is not an empty string. 
      * <p>
-     * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
-     * が必ず実行時に発生します。
+     * {@link IllegalSequenceFoundException} is always raised at runtime if the
+     * string of the {@code sequence} object is an empty string.
      * <p>
-     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
-     * {@link #requireNonEmpty(String)} メソッドを使用してください。
+     * Use the {@link #requireNonEmpty(String)} method if a reference to a
+     * {@code sequence} object specified as an argument is likely to be {@code null}
+     * .
      * <p>
-     * 例外発生時に任意の詳細メッセージを出力する場合は {@link #requireNonBlank(String, String)}
-     * メソッドを使用してください。また、例外発生時に任意の例外オブジェクトをスローする場合は
-     * {@link #requireNonBlank(String, RuntimeException)} メソッドを使用してください。
+     * Use the {@link #requireNonBlank(String, String)} method if you want to print
+     * out an arbitrary detailed message when an exception is thrown. Also, to throw
+     * an arbitrary exception object when an exception is thrown, use the
+     * {@link #requireNonBlank(String, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
      * <code>
      * Preconditions.requireNonBlank("");
      * &gt;&gt; IllegalSequenceFoundException
@@ -176,33 +187,39 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+     * If the argument sequence is not an empty string, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonBlank("test");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
+     * @param sequence The string to be validated
      *
-     * @throws NullPointerException          引数として {@code null} が渡された場合
-     * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
+     * @throws NullPointerException          If {@code null} is passed as an
+     *                                       argument
+     * @throws IllegalSequenceFoundException If an empty string is passed as an
+     *                                       argument
      */
     static void requireNonBlank(String sequence) {
         requireNonBlank(sequence, new IllegalSequenceFoundException("String must not be blank"));
     }
 
     /**
-     * 引数として指定された {@code sequence} オブジェクトの文字列が空文字列ではないことを保証します。 
+     * Ensures that the string of the {@code sequence} object given as an argument
+     * is not an empty string. 
      * <p>
-     * {@code sequence} オブジェクトの文字列が空文字列の場合は {@link IllegalSequenceFoundException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the string of a {@code sequence} object is an empty string,
+     * {@link IllegalSequenceFoundException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
      * <p>
-     * 引数として指定された {@code sequence} オブジェクトの参照が {@code null} である可能性がある場合は
-     * {@link #requireNonEmpty(String)} メソッドを使用してください。
+     * Use the {@link #requireNonEmpty(String)} method if a reference to a
+     * {@code sequence} object specified as an argument is likely to be {@code null}
+     * .
      *
      * <pre>
-     * 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+     * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonBlank("", "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -210,17 +227,19 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+     * If the argument sequence is not an empty string, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonBlank("test", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param message  例外スロー時に出力する詳細メッセージ
+     * @param sequence The string to be validated
+     * @param message  Detailed messages to be output on exception throwing
      *
-     * @throws NullPointerException          引数として {@code null} が渡された場合
-     * @throws IllegalSequenceFoundException 引数として空文字列が渡された場合
+     * @throws NullPointerException          If {@code null} is passed as an
+     *                                       argument
+     * @throws IllegalSequenceFoundException If an empty string is passed as an
+     *                                       argument
      */
     static void requireNonBlank(String sequence, String message) {
         requireNonBlank(sequence, new IllegalSequenceFoundException(message));
