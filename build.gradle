@@ -15,7 +15,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'com.palantir.git-version' version '0.12.2'
+    id 'com.palantir.git-version' version '0.12.3'
 }
 
 publishing {
@@ -71,11 +71,11 @@ test {
     }
 }
 
-task("reference", type: Javadoc) {
-    source = sourceSets.main.allJava
-    title = 'Precondition Validator'
+javadoc {
+    title = 'Preconditions Validator'
     options.links('https://docs.oracle.com/en/java/javase/13/docs/api/')
     options.charSet("utf-8")
     options.showFromPublic()
     destinationDir = file('./docs')
+    failOnError = false
 }
