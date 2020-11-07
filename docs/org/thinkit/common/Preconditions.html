@@ -181,7 +181,8 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonBlank(java.lang.String)">requireNonBlank</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that the string of the <code>sequence</code> object given as an argument
+ is not an empty string. </div>
 </td>
 </tr>
 <tr class="row-color" id="i7">
@@ -189,7 +190,7 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonBlank(java.lang.String,java.lang.RuntimeException)">requireNonBlank</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として与えられた <code>sequence</code> が空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that <code>sequence</code> given as an argument is not an empty string. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i8">
@@ -197,7 +198,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonBlank(java.lang.String,java.lang.String)">requireNonBlank</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that the string of the <code>sequence</code> object given as an argument
+ is not an empty string. </div>
 </td>
 </tr>
 <tr class="row-color" id="i9">
@@ -227,8 +229,8 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.String)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
- 、または文字列が空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that the reference to the <code>sequence</code> object specified as an
+ argument is not <code>null</code> or the string is not an empty string. </div>
 </td>
 </tr>
 <tr class="row-color" id="i13">
@@ -307,7 +309,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonNull(java.lang.Object,java.lang.RuntimeException)">requireNonNull</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 </div>
+<div class="block">Ensures that the reference to the <code>object</code> object passed as an argument
+ is not <code>null</code> . </div>
 </td>
 </tr>
 <tr class="row-color" id="i23">
@@ -315,7 +318,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonNull(java.lang.Object,java.lang.String)">requireNonNull</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 </div>
+<div class="block">Ensures that the reference to the <code>object</code> object passed as an argument
+ is not <code>null</code> . </div>
 </td>
 </tr>
 <tr class="alt-color" id="i24">
@@ -475,14 +479,14 @@ int&nbsp;offset,
 <div class="block">Ensures that the reference to the <code>object</code> object passed as an argument
  is not <code>null</code> . 
  <p>
- A <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime if the reference
- to the <code>object</code> object is <code>null</code> .
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime if the reference to
+ the <code>object</code> object is <code>null</code> .
  <p>
  Use the <a href="#requireNonNull(java.lang.Object,java.lang.String)"><code>requireNonNull(Object, String)</code></a> method if you want to print
  an arbitrary detailed message when an exception is raised.
 
  <pre>
- 引数として渡された object が null の場合は NullPointerException がスローされます。
+ If the object passed as an argument is null, NullPointerException will be thrown.
  <code>
  Preconditions.requireNonNull(null);
  &gt;&gt; NullPointerException
@@ -490,16 +494,17 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ If the object passed as an argument is not null, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonNull("test");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>object</code> - 検査対象のオブジェクト</dd>
+<dd><code>object</code> - Object to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>object</code> が <code>null</code> の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>object</code> passed as an argument is
+                              <code>null</code></dd>
 </dl>
 </section>
 </li>
@@ -508,14 +513,17 @@ int&nbsp;offset,
 <h3>requireNonNull</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonNull</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 
+<div class="block">Ensures that the reference to the <code>object</code> object passed as an argument
+ is not <code>null</code> . 
  <p>
- <code>object</code> オブジェクトの参照が <code>null</code> である場合には <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the <code>object</code> object is referenced by <code>null</code> , then
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime. The <code>message</code>
+ passed as an argument is output as a detailed message when an exception
+ occurs.
 
  <pre>
- 引数として渡された object が null の場合は NullPointerException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the object passed as an argument is null, NullPointerException will be thrown.
+ The message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonNull(null, "any message");
  &gt;&gt; NullPointerException
@@ -523,17 +531,18 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ If the object passed as an argument is not null, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonNull("test", "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>object</code> - 検査対象のオブジェクト</dd>
-<dd><code>message</code> - 例外スロー時に出力する詳細メッセージ</dd>
+<dd><code>object</code> - Object to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>object</code> が <code>null</code> の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>object</code> passed as an argument is
+                              <code>null</code></dd>
 </dl>
 </section>
 </li>
@@ -542,12 +551,14 @@ int&nbsp;offset,
 <h3>requireNonNull</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonNull</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として渡された <code>object</code> オブジェクトの参照が <code>null</code> ではないことを保証します。 
+<div class="block">Ensures that the reference to the <code>object</code> object passed as an argument
+ is not <code>null</code> . 
  <p>
- <code>object</code> オブジェクトの参照が <code>null</code> である場合には引数として指定された任意の例がオブジェクトがスローされます。
+ If the reference to a <code>object</code> object is <code>null</code> , any exception
+ object specified as an argument will be thrown.
 
  <pre>
- 引数として渡された object が null の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ If the object passed as an argument is null, then any exception object specified as an argument will be thrown.
  <code>
  Preconditions.requireNonNull(null, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -555,15 +566,16 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された object が null ではない場合は何もせず当該検証処理を終了します。
+ If the object passed as an argument is not null, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonNull("test", new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>object</code> - 検査対象のオブジェクト</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>object</code> - Object to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 </dl>
 </section>
 </li>
@@ -571,20 +583,23 @@ int&nbsp;offset,
 <section class="detail" id="requireNonBlank(java.lang.String)">
 <h3>requireNonBlank</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonBlank</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence)</span></div>
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 
+<div class="block">Ensures that the string of the <code>sequence</code> object given as an argument
+ is not an empty string. 
  <p>
- <code>sequence</code> オブジェクトの文字列が空文字列の場合は <code>IllegalSequenceFoundException</code>
- が必ず実行時に発生します。
+ <code>IllegalSequenceFoundException</code> is always raised at runtime if the
+ string of the <code>sequence</code> object is an empty string.
  <p>
- 引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code> である可能性がある場合は
- <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+ Use the <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> method if a reference to a
+ <code>sequence</code> object specified as an argument is likely to be <code>null</code>
+ .
  <p>
- 例外発生時に任意の詳細メッセージを出力する場合は <a href="#requireNonBlank(java.lang.String,java.lang.String)"><code>requireNonBlank(String, String)</code></a>
- メソッドを使用してください。また、例外発生時に任意の例外オブジェクトをスローする場合は
- <a href="#requireNonBlank(java.lang.String,java.lang.RuntimeException)"><code>requireNonBlank(String, RuntimeException)</code></a> メソッドを使用してください。
+ Use the <a href="#requireNonBlank(java.lang.String,java.lang.String)"><code>requireNonBlank(String, String)</code></a> method if you want to print
+ out an arbitrary detailed message when an exception is thrown. Also, to throw
+ an arbitrary exception object when an exception is thrown, use the
+ <a href="#requireNonBlank(java.lang.String,java.lang.RuntimeException)"><code>requireNonBlank(String, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
  <code>
  Preconditions.requireNonBlank("");
  &gt;&gt; IllegalSequenceFoundException
@@ -592,17 +607,19 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not an empty string, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireNonBlank("test");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として <code>null</code> が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として空文字列が渡された場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
+                                       argument</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
+                                       argument</dd>
 </dl>
 </section>
 </li>
@@ -611,17 +628,21 @@ int&nbsp;offset,
 <h3>requireNonBlank</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonBlank</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの文字列が空文字列ではないことを保証します。 
+<div class="block">Ensures that the string of the <code>sequence</code> object given as an argument
+ is not an empty string. 
  <p>
- <code>sequence</code> オブジェクトの文字列が空文字列の場合は <code>IllegalSequenceFoundException</code>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the string of a <code>sequence</code> object is an empty string,
+ <code>IllegalSequenceFoundException</code> will always be raised at runtime. The
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code> である可能性がある場合は
- <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+ Use the <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> method if a reference to a
+ <code>sequence</code> object specified as an argument is likely to be <code>null</code>
+ .
 
  <pre>
- 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+ A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonBlank("", "any message");
  &gt;&gt; IllegalSequenceFoundException
@@ -629,18 +650,20 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not an empty string, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireNonBlank("test", "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>message</code> - 例外スロー時に出力する詳細メッセージ</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として <code>null</code> が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として空文字列が渡された場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
+                                       argument</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
+                                       argument</dd>
 </dl>
 </section>
 </li>
@@ -649,14 +672,14 @@ int&nbsp;offset,
 <h3>requireNonBlank</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonBlank</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として与えられた <code>sequence</code> が空文字列ではないことを保証します。 
+<div class="block">Ensures that <code>sequence</code> given as an argument is not an empty string. 
  <p>
- 引数として与えられた <code>sequence</code> の値が空文字列の場合は <code>exception</code> オブジェクトをスローします。
- <p>
- 任意の例外を指定しない場合は <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a> メソッドを使用してください。
+ Throws an <code>exception</code> object if the argument <code>sequence</code> is an
+ empty string. If you do not specify any exceptions, use the
+ <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a> method.
 
  <pre>
- 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ If the argument sequence is an empty string, any exception object specified as an argument will be thrown.
  <code>
  Preconditions.requireNonBlank("", new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -664,20 +687,24 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not an empty string, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireNonBlank("test", new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a>
-                                          メソッドから実行され、引数として渡された
-                                          <code>sequence</code> が空文字列の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                          argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If executed by the
+                                          <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a>
+                                          method and the <code>sequence</code>
+                                          passed as an argument is an empty
+                                          string</dd>
 </dl>
 </section>
 </li>
@@ -685,20 +712,19 @@ int&nbsp;offset,
 <section class="detail" id="requireNonEmpty(java.lang.String)">
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence)</span></div>
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
- 、または文字列が空文字列ではないことを保証します。 
+<div class="block">Ensures that the reference to the <code>sequence</code> object specified as an
+ argument is not <code>null</code> or the string is not an empty string. 
  <p>
- <code>sequence</code> オブジェクトの参照が <code>null</code> の場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a>
- が必ず実行時に発生します。
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime if the reference to
+ a <code>sequence</code> object is <code>null</code> . And
+ <code>IllegalSequenceFoundException</code> is always raised at runtime if the
+ string of the <code>sequence</code> object is an empty string.
  <p>
- <code>sequence</code> オブジェクトの文字列が空文字列の場合は <code>IllegalSequenceFoundException</code>
- が必ず実行時に発生します。
- <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+ NullPointerException will be thrown if the argument passed to sequence is null.
  <code>
  Preconditions.requireNonEmpty(null);
  &gt;&gt; NullPointerException
@@ -706,7 +732,7 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
+ IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
  <code>
  Preconditions.requireNonEmpty("");
  &gt;&gt; IllegalSequenceFoundException
@@ -714,17 +740,19 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonEmpty("test");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として <code>null</code> が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として空文字列が渡された場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
+                                       argument</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
+                                       argument</dd>
 </dl>
 </section>
 </li>
