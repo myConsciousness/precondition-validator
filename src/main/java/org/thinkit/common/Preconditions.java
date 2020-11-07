@@ -19,18 +19,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * {@link Preconditions} インターフェースは処理開始時における引数やデータの前提条件を保証する機能を提供します。
+ * The {@link Preconditions} interface provides a way to guarantee the
+ * preconditions for arguments and data at the start of the process.
  * <p>
- * {@link Preconditions} インターフェースが提供している各機能は前提条件をチェックし、
- * チェック対象のデータが前提条件を満たしていなかった場合はチェック処理に対応した例外を必ずスローします。
- * また、任意の例外オブジェクトや例外発生時の詳細メッセージを指定できるオプションを各検証メソッドに実装しているため、
- * 使用しているアプリの実装に合わせて前提条件のチェック処理を行うことができます。任意の例外オブジェクトは {@link RuntimeException}
- * を継承している必要があります。
+ * Each of the features provided by the {@link Preconditions} interface
+ * validates for preconditions, and if the data being validated does not meet
+ * the preconditions, it will always throw an exception corresponding to the
+ * validation process.
  * <p>
- * 引数として渡されたデータが所定の前提条件を満たしている場合は、該当検査メソッドは検査以外の処理を行わずそのまま終了します。
+ * In addition, each validation method has an option that allows you to specify
+ * an arbitrary exception object or detailed message when an exception occurs,
+ * so you can validate preconditions according to the implementation of your
+ * application. The optional exception object must inherit from
+ * {@link RuntimeException} .
+ * <p>
+ * If the data passed as an argument satisfies the specified prerequisites, the
+ * validation method terminates without performing any processing other than
+ * checking.
  *
  * <pre>
- * 例えば、メソッドの開始条件として必ず空ではない文字列が必要な以下のような場合を提示します。
+ * For example, here is an example of the following case where a non-empty string is required as a condition for starting a method:
  * <code>
  * Preconditions.requireNonEmpty(null);
  * &gt;&gt; NullPointerException
@@ -39,7 +47,7 @@ import java.util.Map;
  * &gt;&gt; IllegalSequenceFoundException
  * </code>
  *
- * また、以下のように任意の例外オブジェクトや詳細メッセージを指定することができます。
+ * You can also specify arbitrary exception objects and detailed messages as follows:
  * <code>
  * Preconditions.requireNonEmpty("", "any exception message");
  * Preconditions.requireNonEmpty("", new AnyRuntimeException());
@@ -54,13 +62,14 @@ import java.util.Map;
 public interface Preconditions {
 
     /**
-     * 引数として渡された {@code object} オブジェクトの参照が {@code null} ではないことを保証します。 
+     * Ensures that the reference to the {@code object} object passed as an argument
+     * is not {@code null} . 
      * <p>
-     * {@code object} オブジェクトの参照が {@code null} である場合には {@link NullPointerException}
-     * が必ず実行時に発生します。
+     * A {@link NullPointerException} is always raised at runtime if the reference
+     * to the {@code object} object is {@code null} .
      * <p>
-     * 例外発生時に任意の詳細メッセージを出力する場合は {@link #requireNonNull(Object, String)}
-     * メソッドを使用してください。
+     * Use the {@link #requireNonNull(Object, String)} method if you want to print
+     * an arbitrary detailed message when an exception is raised.
      *
      * <pre>
      * 引数として渡された object が null の場合は NullPointerException がスローされます。
