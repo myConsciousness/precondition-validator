@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.thinkit.common","l":"Preconditions"}]
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"org.thinkit.common","l":"Preconditions"}];updateSearchResults();
