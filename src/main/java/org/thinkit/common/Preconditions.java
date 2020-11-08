@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The {@link Preconditions} interface provides a way to guarantee the
+ * The {@link Preconditions} interface provides a way to ensure the
  * preconditions for arguments and data at the start of the process.
  * <p>
  * Each of the features provided by the {@link Preconditions} interface
