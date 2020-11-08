@@ -664,12 +664,12 @@ public interface Preconditions {
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
-     * {@link #requireRange(int, int, RuntimeException)} method.
+     * {@link #requireRangeTo(int, int, RuntimeException)} method.
      *
      * <pre>
      * If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
      * <code>
-     * Preconditions.requireRange(10, 9);
+     * Preconditions.requireRangeTo(10, 9);
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
      * </pre>
@@ -677,7 +677,7 @@ public interface Preconditions {
      * <pre>
      * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
-     * Preconditions.requireRange(9, 10);
+     * Preconditions.requireRangeTo(9, 10);
      * </code>
      * </pre>
      *
@@ -688,8 +688,8 @@ public interface Preconditions {
      *                                   does not exist within the range specified
      *                                   by {@code to}
      */
-    static void requireRange(int index, int to) {
-        requireRange(index, to, new IndexOutOfBoundsException(
+    static void requireRangeTo(int index, int to) {
+        requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
 
@@ -709,7 +709,7 @@ public interface Preconditions {
      * If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
      * A message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
-     * Preconditions.requireRange(10, 9, "any message");
+     * Preconditions.requireRangeTo(10, 9, "any message");
      * &gt;&gt; IndexOutOfBoundsException
      * </code>
      * </pre>
@@ -717,7 +717,7 @@ public interface Preconditions {
      * <pre>
      * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
-     * Preconditions.requireRange(9, 10, "any message");
+     * Preconditions.requireRangeTo(9, 10, "any message");
      * </code>
      * </pre>
      *
@@ -728,8 +728,8 @@ public interface Preconditions {
      * @throws IndexOutOfBoundsException If the argument {@code index} does not fall
      *                                   within the range specified by {@code to}
      */
-    static void requireRange(int index, int to, String message) {
-        requireRange(index, to, new IndexOutOfBoundsException(message));
+    static void requireRangeTo(int index, int to, String message) {
+        requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
     /**
@@ -740,12 +740,12 @@ public interface Preconditions {
      * by {@code to} , throw any exception object specified as an argument.
      * <p>
      * If you do not specify an arbitrary exception object, use the
-     * {@link #requireRange(int, int)} method.
+     * {@link #requireRangeTo(int, int)} method.
      *
      * <pre>
      * If the index passed as an argument is greater than the number specified by to, any of the specified exceptions will be thrown.
      * <code>
-     * Preconditions.requireRange(10, 9, new AnyRuntimeException());
+     * Preconditions.requireRangeTo(10, 9, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
      * </pre>
@@ -753,7 +753,7 @@ public interface Preconditions {
      * <pre>
      * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
-     * Preconditions.requireRange(9, 10, new AnyRuntimeException());
+     * Preconditions.requireRangeTo(9, 10, new AnyRuntimeException());
      * </code>
      * </pre>
      *
@@ -768,7 +768,7 @@ public interface Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRange(int index, int to, RuntimeException exception) {
+    static void requireRangeTo(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {

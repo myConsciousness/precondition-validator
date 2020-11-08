@@ -365,7 +365,7 @@ final class PreconditionsTest {
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
             final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
-                    () -> Preconditions.requireRange(testParameter, testParameter - 1));
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 1));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 1),
                     exception.getMessage());
         }
@@ -373,7 +373,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, testParameter + 1));
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 1));
         }
     }
 
@@ -391,20 +391,20 @@ final class PreconditionsTest {
         @Test
         void testWhenExceptionIsNull() {
             RuntimeException emptyException = null;
-            assertThrows(NullPointerException.class, () -> Preconditions.requireRange(0, 10, emptyException));
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(0, 10, emptyException));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 1, 10, 100, 150, 1000 })
         void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
             assertThrows(IndexOutOfBoundsException.class,
-                    () -> Preconditions.requireRange(testParameter, testParameter - 1));
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 1));
         }
 
         @ParameterizedTest
         @ValueSource(ints = { -100, -50, -10, -1 })
         void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
-            assertDoesNotThrow(() -> Preconditions.requireRange(testParameter, testParameter + 1));
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 1));
         }
     }
 
