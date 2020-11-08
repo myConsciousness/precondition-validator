@@ -360,15 +360,6 @@ loadScripts(document, 'script');</script>
 </tr>
 <tr class="row-color" id="i27">
 <td class="col-first"><code>static void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int)">requireRange</a></span>&#8203;(int&nbsp;index,
-int&nbsp;to)</code></th>
-<td class="col-last">
-<div class="block">Ensures that the <code>index</code> argument is a number within the range
- specified by <code>to</code> . </div>
-</td>
-</tr>
-<tr class="alt-color" id="i28">
-<td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int,int)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
 int&nbsp;to)</code></th>
@@ -377,7 +368,7 @@ int&nbsp;to)</code></th>
  <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
-<tr class="row-color" id="i29">
+<tr class="alt-color" id="i28">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int,int,java.lang.RuntimeException)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
@@ -388,7 +379,7 @@ int&nbsp;to,
  <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
-<tr class="alt-color" id="i30">
+<tr class="row-color" id="i29">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int,int,java.lang.String)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;from,
@@ -399,9 +390,47 @@ int&nbsp;to,
  <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
+<tr class="alt-color" id="i30">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeFrom(int,int)">requireRangeFrom</a></span>&#8203;(int&nbsp;index,
+int&nbsp;from)</code></th>
+<td class="col-last">
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . </div>
+</td>
+</tr>
 <tr class="row-color" id="i31">
 <td class="col-first"><code>static void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int,java.lang.RuntimeException)">requireRange</a></span>&#8203;(int&nbsp;index,
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeFrom(int,int,java.lang.RuntimeException)">requireRangeFrom</a></span>&#8203;(int&nbsp;index,
+int&nbsp;from,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
+<td class="col-last">
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . </div>
+</td>
+</tr>
+<tr class="alt-color" id="i32">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeFrom(int,int,java.lang.String)">requireRangeFrom</a></span>&#8203;(int&nbsp;index,
+int&nbsp;from,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
+<td class="col-last">
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . </div>
+</td>
+</tr>
+<tr class="row-color" id="i33">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeTo(int,int)">requireRangeTo</a></span>&#8203;(int&nbsp;index,
+int&nbsp;to)</code></th>
+<td class="col-last">
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . </div>
+</td>
+</tr>
+<tr class="alt-color" id="i34">
+<td class="col-first"><code>static void</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeTo(int,int,java.lang.RuntimeException)">requireRangeTo</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
@@ -409,9 +438,9 @@ int&nbsp;to,
  specified by <code>to</code> . </div>
 </td>
 </tr>
-<tr class="alt-color" id="i32">
+<tr class="row-color" id="i35">
 <td class="col-first"><code>static void</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int,java.lang.String)">requireRange</a></span>&#8203;(int&nbsp;index,
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRangeTo(int,int,java.lang.String)">requireRangeTo</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
@@ -419,7 +448,7 @@ int&nbsp;to,
  specified by <code>to</code> . </div>
 </td>
 </tr>
-<tr class="row-color" id="i33">
+<tr class="alt-color" id="i36">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix)</code></th>
@@ -428,7 +457,7 @@ int&nbsp;to,
  <code>prefix</code> .</div>
 </td>
 </tr>
-<tr class="alt-color" id="i34">
+<tr class="row-color" id="i37">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String,int)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
@@ -438,7 +467,7 @@ int&nbsp;offset)</code></th>
  at the specified search start point.</div>
 </td>
 </tr>
-<tr class="row-color" id="i35">
+<tr class="alt-color" id="i38">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
@@ -449,7 +478,7 @@ int&nbsp;offset,
  at the specified search start point.</div>
 </td>
 </tr>
-<tr class="alt-color" id="i36">
+<tr class="row-color" id="i39">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
@@ -460,7 +489,7 @@ int&nbsp;offset,
  at the specified search start point.</div>
 </td>
 </tr>
-<tr class="row-color" id="i37">
+<tr class="alt-color" id="i40">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
@@ -470,7 +499,7 @@ int&nbsp;offset,
  <code>prefix</code> .</div>
 </td>
 </tr>
-<tr class="alt-color" id="i38">
+<tr class="row-color" id="i41">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
@@ -1110,9 +1139,136 @@ int&nbsp;offset,
 </section>
 </li>
 <li>
-<section class="detail" id="requireRange(int,int)">
-<h3>requireRange</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
+<section class="detail" id="requireRangeFrom(int,int)">
+<h3>requireRangeFrom</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeFrom</span>&#8203;(<span class="parameters">int&nbsp;index,
+int&nbsp;from)</span></div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . 
+ <p>
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime.
+ <p>
+ To specify an arbitrary exception object, use the
+ <a href="#requireRangeFrom(int,int,java.lang.RuntimeException)"><code>requireRangeFrom(int, int, RuntimeException)</code></a> method.
+
+ <pre>
+ If the index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+ <code>
+ Preconditions.requireRangeFrom(10, 9);
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ If the index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+ <code>
+ Preconditions.requireRangeFrom(9, 10);
+ </code>
+ </pre></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The lower limit</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code> argument
+                                   does not exist within the range specified
+                                   by <code>from</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="requireRangeFrom(int,int,java.lang.String)">
+<h3>requireRangeFrom</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeFrom</span>&#8203;(<span class="parameters">int&nbsp;index,
+int&nbsp;from,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . 
+ <p>
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime. And the
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
+ <p>
+ To specify an arbitrary exception object, use the
+ <a href="#requireRangeFrom(int,int,java.lang.RuntimeException)"><code>requireRangeFrom(int, int, RuntimeException)</code></a> method.
+
+ <pre>
+ If the index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+ A message passed as an argument is output as a detailed message when an exception occurs.
+ <code>
+ Preconditions.requireRangeFrom(10, 9, "any message");
+ &gt;&gt; IndexOutOfBoundsException
+ </code>
+ </pre>
+
+ <pre>
+ If the index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+ <code>
+ Preconditions.requireRangeFrom(9, 10, "any message");
+ </code>
+ </pre></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The lower limit</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the argument <code>index</code> does not fall
+                                   within the range specified by <code>from</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="requireRangeFrom(int,int,java.lang.RuntimeException)">
+<h3>requireRangeFrom</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeFrom</span>&#8203;(<span class="parameters">int&nbsp;index,
+int&nbsp;from,
+<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>from</code> . 
+ <p>
+ If <code>index</code> specified as an argument is not within the range specified
+ by <code>to</code> , throw any exception object specified as an argument.
+ <p>
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requireRangeFrom(int,int)"><code>requireRangeFrom(int, int)</code></a> method.
+
+ <pre>
+ If the index passed as an argument is less than the number specified by from, any of the specified exceptions will be thrown.
+ <code>
+ Preconditions.requireRangeFrom(10, 9, new AnyRuntimeException());
+ &gt;&gt; AnyRuntimeException
+ </code>
+ </pre>
+
+ <pre>
+ If the index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+ <code>
+ Preconditions.requireRangeFrom(9, 10, new AnyRuntimeException());
+ </code>
+ </pre></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The lower limit</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                      argument is <code>null</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code>
+                                      specified as an argument does not fall
+                                      within the range specified by
+                                      <code>from</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="requireRangeTo(int,int)">
+<h3>requireRangeTo</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeTo</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to)</span></div>
 <div class="block">Ensures that the <code>index</code> argument is a number within the range
  specified by <code>to</code> . 
@@ -1121,12 +1277,12 @@ int&nbsp;to)</span></div>
  <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime.
  <p>
  To specify an arbitrary exception object, use the
- <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a> method.
+ <a href="#requireRangeTo(int,int,java.lang.RuntimeException)"><code>requireRangeTo(int, int, RuntimeException)</code></a> method.
 
  <pre>
  If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
  <code>
- Preconditions.requireRange(10, 9);
+ Preconditions.requireRangeTo(10, 9);
  &gt;&gt; IndexOutOfBoundsException
  </code>
  </pre>
@@ -1134,7 +1290,7 @@ int&nbsp;to)</span></div>
  <pre>
  If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
- Preconditions.requireRange(9, 10);
+ Preconditions.requireRangeTo(9, 10);
  </code>
  </pre></div>
 <dl class="notes">
@@ -1149,9 +1305,9 @@ int&nbsp;to)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="requireRange(int,int,java.lang.String)">
-<h3>requireRange</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
+<section class="detail" id="requireRangeTo(int,int,java.lang.String)">
+<h3>requireRangeTo</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeTo</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
 <div class="block">Ensures that the <code>index</code> argument is a number within the range
@@ -1163,13 +1319,13 @@ int&nbsp;to,
  exception occurs.
  <p>
  To specify an arbitrary exception object, use the
- <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a> method.
+ <a href="#requireRangeTo(int,int,java.lang.RuntimeException)"><code>requireRangeTo(int, int, RuntimeException)</code></a> method.
 
  <pre>
  If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
  A message passed as an argument is output as a detailed message when an exception occurs.
  <code>
- Preconditions.requireRange(10, 9, "any message");
+ Preconditions.requireRangeTo(10, 9, "any message");
  &gt;&gt; IndexOutOfBoundsException
  </code>
  </pre>
@@ -1177,7 +1333,7 @@ int&nbsp;to,
  <pre>
  If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
- Preconditions.requireRange(9, 10, "any message");
+ Preconditions.requireRangeTo(9, 10, "any message");
  </code>
  </pre></div>
 <dl class="notes">
@@ -1192,9 +1348,9 @@ int&nbsp;to,
 </section>
 </li>
 <li>
-<section class="detail" id="requireRange(int,int,java.lang.RuntimeException)">
-<h3>requireRange</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
+<section class="detail" id="requireRangeTo(int,int,java.lang.RuntimeException)">
+<h3>requireRangeTo</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRangeTo</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
 <div class="block">Ensures that the <code>index</code> argument is a number within the range
@@ -1204,12 +1360,12 @@ int&nbsp;to,
  by <code>to</code> , throw any exception object specified as an argument.
  <p>
  If you do not specify an arbitrary exception object, use the
- <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> method.
+ <a href="#requireRangeTo(int,int)"><code>requireRangeTo(int, int)</code></a> method.
 
  <pre>
  If the index passed as an argument is greater than the number specified by to, any of the specified exceptions will be thrown.
  <code>
- Preconditions.requireRange(10, 9, new AnyRuntimeException());
+ Preconditions.requireRangeTo(10, 9, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
  </code>
  </pre>
@@ -1217,7 +1373,7 @@ int&nbsp;to,
  <pre>
  If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
- Preconditions.requireRange(9, 10, new AnyRuntimeException());
+ Preconditions.requireRangeTo(9, 10, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
