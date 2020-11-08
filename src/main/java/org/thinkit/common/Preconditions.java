@@ -163,15 +163,14 @@ public interface Preconditions {
     }
 
     /**
-     * Ensures that the string of the {@code sequence} object given as an argument
-     * is not an empty string. 
+     * Ensures that the string of the {@code string} object given as an argument is
+     * not an empty string. 
      * <p>
      * {@link IllegalSequenceFoundException} is always raised at runtime if the
-     * string of the {@code sequence} object is an empty string.
+     * string of the {@code string} object is an empty string.
      * <p>
      * Use the {@link #requireNonEmpty(String)} method if a reference to a
-     * {@code sequence} object specified as an argument is likely to be {@code null}
-     * .
+     * {@code string} object specified as an argument is likely to be {@code null} .
      * <p>
      * Use the {@link #requireNonBlank(String, String)} method if you want to print
      * out an arbitrary detailed message when an exception is thrown. Also, to throw
@@ -179,7 +178,7 @@ public interface Preconditions {
      * {@link #requireNonBlank(String, RuntimeException)} method.
      *
      * <pre>
-     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+     * IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
      * <code>
      * Preconditions.requireNonBlank("");
      * &gt;&gt; IllegalSequenceFoundException
@@ -187,38 +186,37 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not an empty string, the function does nothing and ends the validation process.
+     * If the argument string is not an empty string, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonBlank("test");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
+     * @param string The string to be validated
      *
      * @throws NullPointerException          If {@code null} is passed as an
      *                                       argument
      * @throws IllegalSequenceFoundException If an empty string is passed as an
      *                                       argument
      */
-    static void requireNonBlank(String sequence) {
-        requireNonBlank(sequence, new IllegalSequenceFoundException("String must not be blank"));
+    static void requireNonBlank(String string) {
+        requireNonBlank(string, new IllegalSequenceFoundException("String must not be blank"));
     }
 
     /**
-     * Ensures that the string of the {@code sequence} object given as an argument
-     * is not an empty string. 
+     * Ensures that the string of the {@code string} object given as an argument is
+     * not an empty string. 
      * <p>
-     * If the string of a {@code sequence} object is an empty string,
+     * If the string of a {@code string} object is an empty string,
      * {@link IllegalSequenceFoundException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
      * Use the {@link #requireNonEmpty(String)} method if a reference to a
-     * {@code sequence} object specified as an argument is likely to be {@code null}
-     * .
+     * {@code string} object specified as an argument is likely to be {@code null} .
      *
      * <pre>
-     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+     * IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonBlank("", "any message");
@@ -227,33 +225,33 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not an empty string, the function does nothing and ends the validation process.
+     * If the argument string is not an empty string, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonBlank("test", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
-     * @param message  Detailed messages to be output on exception throwing
+     * @param string  The string to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
      * @throws NullPointerException          If {@code null} is passed as an
      *                                       argument
      * @throws IllegalSequenceFoundException If an empty string is passed as an
      *                                       argument
      */
-    static void requireNonBlank(String sequence, String message) {
-        requireNonBlank(sequence, new IllegalSequenceFoundException(message));
+    static void requireNonBlank(String string, String message) {
+        requireNonBlank(string, new IllegalSequenceFoundException(message));
     }
 
     /**
-     * Ensures that {@code sequence} given as an argument is not an empty string. 
+     * Ensures that {@code string} given as an argument is not an empty string. 
      * <p>
-     * Throws an {@code exception} object if the argument {@code sequence} is an
-     * empty string. If you do not specify any exceptions, use the
+     * Throws an {@code exception} object if the argument {@code string} is an empty
+     * string. If you do not specify any exceptions, use the
      * {@link #requireNonBlank(String)} method.
      *
      * <pre>
-     * If the argument sequence is an empty string, any exception object specified as an argument will be thrown.
+     * If the argument string is an empty string, any exception object specified as an argument will be thrown.
      * <code>
      * Preconditions.requireNonBlank("", new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -261,13 +259,13 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not an empty string, the function does nothing and ends the validation process.
+     * If the argument string is not an empty string, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonBlank("test", new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param sequence  The string to be validated
+     * @param string    The string to be validated
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
@@ -275,32 +273,31 @@ public interface Preconditions {
      *                                          argument is {@code null}
      * @exception IllegalSequenceFoundException If executed by the
      *                                          {@link #requireNonBlank(String)}
-     *                                          method and the {@code sequence}
-     *                                          passed as an argument is an empty
-     *                                          string
+     *                                          method and the {@code string} passed
+     *                                          as an argument is an empty string
      */
-    static void requireNonBlank(String sequence, RuntimeException exception) {
+    static void requireNonBlank(String string, RuntimeException exception) {
         requireNonNull(exception);
 
-        if (sequence.isEmpty()) {
+        if (string.isEmpty()) {
             throw exception;
         }
     }
 
     /**
-     * Ensures that the reference to the {@code sequence} object specified as an
+     * Ensures that the reference to the {@code string} object specified as an
      * argument is not {@code null} or the string is not an empty string. 
      * <p>
      * {@link NullPointerException} is always raised at runtime if the reference to
-     * a {@code sequence} object is {@code null} . And
+     * a {@code string} object is {@code null} . And
      * {@link IllegalSequenceFoundException} is always raised at runtime if the
-     * string of the {@code sequence} object is an empty string.
+     * string of the {@code string} object is an empty string.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(String, RuntimeException)} method.
      *
      * <pre>
-     * NullPointerException will be thrown if the argument passed to sequence is null.
+     * NullPointerException will be thrown if the argument passed to string is null.
      * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
@@ -308,7 +305,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+     * IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
      * <code>
      * Preconditions.requireNonEmpty("");
      * &gt;&gt; IllegalSequenceFoundException
@@ -316,34 +313,34 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
+     * If the argument string is not null and is not an empty string, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonEmpty("test");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
+     * @param string The string to be validated
      *
      * @throws NullPointerException          If {@code null} is passed as an
      *                                       argument
      * @throws IllegalSequenceFoundException If an empty string is passed as an
      *                                       argument
      */
-    static void requireNonEmpty(String sequence) {
-        requireNonNull(sequence);
-        requireNonBlank(sequence);
+    static void requireNonEmpty(String string) {
+        requireNonNull(string);
+        requireNonBlank(string);
     }
 
     /**
-     * Ensures that the reference to the {@code sequence} object specified as an
+     * Ensures that the reference to the {@code string} object specified as an
      * argument is not {@code null} or the string is not an empty string. 
      * <p>
-     * If the {@code sequence} object is referenced by {@code null} , then
+     * If the {@code string} object is referenced by {@code null} , then
      * {@link NullPointerException} is always raised at runtime. The {@code message}
      * passed as an argument is output as a detailed message when an exception
      * occurs.
      * <p>
-     * If the string of a {@code sequence} object is an empty string,
+     * If the string of a {@code string} object is an empty string,
      * {@link IllegalSequenceFoundException} is always raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
@@ -352,7 +349,7 @@ public interface Preconditions {
      * {@link #requireNonEmpty(String, RuntimeException)} method.
      *
      * <pre>
-     * If the sequence argument is null, NullPointerException will be thrown.
+     * If the string argument is null, NullPointerException will be thrown.
      * A message passed as an argument will be printed as a detailed message if an exception is raised.
      * <code>
      * Preconditions.requireNonEmpty(null, "any message");
@@ -361,7 +358,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+     * IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty("", "any message");
@@ -370,27 +367,27 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
+     * If the argument string is not null and is not an empty string, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonEmpty("test", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
-     * @param message  Detailed messages to be output on exception throwing
+     * @param string  The string to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
      * @throws NullPointerException          If {@code null} is passed as an
      *                                       argument
      * @throws IllegalSequenceFoundException If an empty string is passed as an
      *                                       argument
      */
-    static void requireNonEmpty(String sequence, String message) {
-        requireNonNull(sequence, message);
-        requireNonBlank(sequence, message);
+    static void requireNonEmpty(String string, String message) {
+        requireNonNull(string, message);
+        requireNonBlank(string, message);
     }
 
     /**
-     * Ensures that the value of {@code sequence} passed as an argument is not
+     * Ensures that the value of {@code string} passed as an argument is not
      * {@code null} or an empty string. 
      * <p>
      * Throws an exception if it is {@code null} or an empty string. If you do not
@@ -398,7 +395,7 @@ public interface Preconditions {
      * {@link #requireNonEmpty(String)} method.
      *
      * <pre>
-     * NullPointerException will be thrown if the argument passed to sequence is null.
+     * NullPointerException will be thrown if the argument passed to string is null.
      * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
@@ -406,7 +403,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is an empty string, any exception object specified as an argument will be thrown.
+     * If the argument string is an empty string, any exception object specified as an argument will be thrown.
      * <code>
      * Preconditions.requireNonEmpty("", new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -414,27 +411,27 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
+     * If the argument string is not null and is not an empty string, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNonEmpty("test", new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param sequence  The string to be validated
+     * @param string    The string to be validated
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
      * @exception NullPointerException          If the exception object passed as an
      *                                          argument is {@code null} or if the
-     *                                          {@code sequence} passed as an
-     *                                          argument is {@code null}
-     * @exception IllegalSequenceFoundException If {@code sequence} passed as an
+     *                                          {@code string} passed as an argument
+     *                                          is {@code null}
+     * @exception IllegalSequenceFoundException If {@code string} passed as an
      *                                          argument is an empty string
      */
-    static void requireNonEmpty(String sequence, RuntimeException exception) {
+    static void requireNonEmpty(String string, RuntimeException exception) {
         requireNonNull(exception);
-        requireNonNull(sequence);
-        requireNonBlank(sequence, exception);
+        requireNonNull(string);
+        requireNonBlank(string, exception);
     }
 
     /**
@@ -1337,7 +1334,7 @@ public interface Preconditions {
      * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the sequence specified as an argument does not begin with a prefix, IllegalSequenceFoundException will be thrown.
+     * If the string specified as an argument does not begin with a prefix, IllegalSequenceFoundException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "est");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1345,22 +1342,22 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
+     * If the string argument begins with a prefix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "test");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
-     * @param prefix   The prefix
+     * @param string The string to be validated
+     * @param prefix The prefix
      *
      * @exception IllegalSequenceFoundException If a string passed as an argument
      *                                          does not start with a prefix
      *                                          specified by {@code prefix}
      */
-    static void requireStartWith(String sequence, String prefix) {
-        requireStartWith(sequence, prefix, new IllegalSequenceFoundException(
-                String.format("String must start with the %s prefix, but %s was given", prefix, sequence)));
+    static void requireStartWith(String string, String prefix) {
+        requireStartWith(string, prefix, new IllegalSequenceFoundException(
+                String.format("String must start with the %s prefix, but %s was given", prefix, string)));
     }
 
     /**
@@ -1376,7 +1373,7 @@ public interface Preconditions {
      * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the sequence argument does not begin with the prefix prefix, IllegalSequenceFoundException will be thrown.
+     * If the string argument does not begin with the prefix prefix, IllegalSequenceFoundException will be thrown.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireStartWith("test", "est", "any message");
@@ -1385,22 +1382,22 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
+     * If the string argument begins with a prefix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "test", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
-     * @param prefix   The prefix
-     * @param message  Detailed messages to be output on exception throwing
+     * @param string  The string to be validated
+     * @param prefix  The prefix
+     * @param message Detailed messages to be output on exception throwing
      *
      * @exception IllegalSequenceFoundException If a string passed as an argument
      *                                          does not start with a prefix
      *                                          specified by {@code prefix}
      */
-    static void requireStartWith(String sequence, String prefix, String message) {
-        requireStartWith(sequence, prefix, new IllegalSequenceFoundException(message));
+    static void requireStartWith(String string, String prefix, String message) {
+        requireStartWith(string, prefix, new IllegalSequenceFoundException(message));
     }
 
     /**
@@ -1415,7 +1412,7 @@ public interface Preconditions {
      * {@link #requireStartWith(String, String, int, RuntimeException)} method.
      *
      * <pre>
-     * If the sequence specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalSequenceFoundException will be thrown.
+     * If the string specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalSequenceFoundException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1);
      * &gt;&gt; IllegalSequenceFoundException
@@ -1423,40 +1420,41 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * If the sequence specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
+     * If the string specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "est", 1);
      * </code>
      * </pre>
      *
-     * @param sequence The string to be validated
-     * @param prefix   The prefix
-     * @param offset   The offset
+     * @param string The string to be validated
+     * @param prefix The prefix
+     * @param offset The offset
      *
      * @exception IllegalSequenceFoundException If a string passed as an argument
      *                                          does not start with a prefix
      *                                          specified by {@code prefix} from the
      *                                          specified search start point
      */
-    static void requireStartWith(String sequence, String prefix, int offset) {
-        requireStartWith(sequence, prefix, offset, new IllegalSequenceFoundException(String.format(
-                "String must start with the %s prefix from %s index, but %s was given", prefix, offset, sequence)));
+    static void requireStartWith(String string, String prefix, int offset) {
+        requireStartWith(string, prefix, offset, new IllegalSequenceFoundException(String.format(
+                "String must start with the %s prefix from %s index, but %s was given", prefix, offset, string)));
     }
 
     /**
-     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that the argument starts with the prefix specified by {@code prefix}
+     * at the specified search start point.
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
-     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the argument doesn't start with a prefix specified by {@code prefix}, then
+     * {@link IllegalSequenceFoundException} will be thrown at runtime as an
+     * exception object. The {@code message} passed as an argument will be printed
+     * as a detailed message when the exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は
-     * {@link #requireStartWith(String, String, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the string argument does not begin at the search start position specified by offset and the prefix specified by prefix, an IllegalSequenceFoundException will be thrown.
+     * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1, "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1464,34 +1462,39 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the string specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "est", 1, "any message");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param prefix   接頭語
-     * @param offset   接頭語の検索開始位置
-     * @param message  例外スロー時に出力される詳細メッセージ
+     * @param string  The string to be validated
+     * @param prefix  The prefix
+     * @param offset  The offset
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が指定された検索開始位置から
-     *                                          {@code prefix} で指定された接頭語で始まらない場合
+     * @exception IllegalSequenceFoundException If a string passed as an argument
+     *                                          does not begin with the prefix
+     *                                          specified by {@code prefix} at the
+     *                                          specified search start position
      */
-    static void requireStartWith(String sequence, String prefix, int offset, String message) {
-        requireStartWith(sequence, prefix, offset, new IllegalSequenceFoundException(message));
+    static void requireStartWith(String string, String prefix, int offset, String message) {
+        requireStartWith(string, prefix, offset, new IllegalSequenceFoundException(message));
     }
 
     /**
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that a given string begins with the prefix specified by
+     * {@code prefix} .
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
-     * 引数として指定された任意の例外オブジェクトがスローされます。
+     * If a string specified as an argument does not begin with a prefix specified
+     * by {@code prefix} , any exception object specified as an argument will be
+     * thrown at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String)} method.
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the string argument does not begin with the prefix prefix, then any exception object specified as an argument is thrown.
      * <code>
      * Preconditions.requireStartWith("test", "est", new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -1499,33 +1502,36 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the string argument begins with a prefix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "test", new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param sequence  検査対象の文字列
-     * @param prefix    接頭語
-     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     * @param string    The string to be validated
+     * @param prefix    The prefix
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException 引数として指定された任意の例外オブジェクトが {@code null} の場合
+     * @exception NullPointerException If any exception object specified as an
+     *                                 argument is {@code null}
      */
-    static void requireStartWith(String sequence, String prefix, RuntimeException exception) {
-        requireStartWith(sequence, prefix, 0, exception);
+    static void requireStartWith(String string, String prefix, RuntimeException exception) {
+        requireStartWith(string, prefix, 0, exception);
     }
 
     /**
-     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that the argument starts with the prefix specified by {@code prefix}
+     * at the specified search start point.
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、引数として渡された任意の
-     * 例外オブジェクトがスローされます。
+     * If the string specified as an argument does not begin with a prefix specified
+     * by {@code prefix}, any exception object passed as an argument is thrown.
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireStartWith(String, String, int)}
-     * メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String, int)} method.
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the string specified as an argument does not begin at the search start position specified by offset and prefixed by prefix, then any exception object specified as an argument is thrown.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -1533,38 +1539,42 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the string specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "est", 1, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param sequence  検査対象の文字列
-     * @param prefix    接頭語
-     * @param offset    接頭語の検索開始位置
-     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     * @param string    The string to be validated
+     * @param prefix    The prefix
+     * @param offset    The offset
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException 引数として渡された任意の例外オブジェクトが {@code null} の場合
+     * @exception NullPointerException If any exception object passed as an argument
+     *                                 is {@code null}
      */
-    static void requireStartWith(String sequence, String prefix, int offset, RuntimeException exception) {
+    static void requireStartWith(String string, String prefix, int offset, RuntimeException exception) {
         requireNonNull(exception);
 
-        if (!sequence.startsWith(prefix, offset)) {
+        if (!string.startsWith(prefix, offset)) {
             throw exception;
         }
     }
 
     /**
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * Ensures that the string specified as an argument ends with the suffix
+     * specified by {@code suffix} .
      * <p>
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * If the string specified as an argument does not end with the suffix specified
+     * by {@code suffix} , then {@link IllegalSequenceFoundException} is thrown as
+     * an exception object at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireEndWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
+     * If the string specified as an argument does not end with the suffix specified by suffix, IllegalSequenceFoundException will be thrown.
      * <code>
      * Preconditions.requireEndWith("test", "es");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1572,36 +1582,39 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * If the string argument ends with a suffix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireEndWith("test", "est");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param suffix   接尾語
+     * @param string The string to be validated
+     * @param suffix The suffix
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code suffix}
-     *                                          で指定された接尾語で終わらない場合
+     * @exception IllegalSequenceFoundException If the string passed as an argument
+     *                                          does not end with the suffix
+     *                                          specified by {@code suffix}
      */
-    static void requireEndWith(String sequence, String suffix) {
-        requireEndWith(sequence, suffix, new IllegalSequenceFoundException(
-                String.format("String must end with the %s suffix, but %s was given", suffix, sequence)));
+    static void requireEndWith(String string, String suffix) {
+        requireEndWith(string, suffix, new IllegalSequenceFoundException(
+                String.format("String must end with the %s suffix, but %s was given", suffix, string)));
     }
 
     /**
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * Ensures that the string specified as an argument ends with the suffix
+     * specified by {@code suffix} .
      * <p>
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
-     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the string passed as an argument does not end with the suffix specified by
+     * {@code suffix}, {@link IllegalSequenceFoundException} will be thrown as an
+     * exception object at runtime. Any {@code message} passed as an argument will
+     * be printed as a detail message when the exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireEndWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は IllegalSequenceFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the string argument does not end with the suffix specified by suffix, IllegalSequenceFoundException will be thrown.
+     * A message passed as an argument will be printed as a detailed message if an exception is thrown.
      * <code>
      * Preconditions.requireEndWith("test", "es", "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1609,33 +1622,37 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * If the string argument ends with a suffix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireEndWith("test", "est", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param suffix   接尾語
-     * @param message  例外スロー時に出力される詳細メッセージ
+     * @param string  The string to be validated
+     * @param suffix  The suffix
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code suffix}
-     *                                          で指定された接尾語で終わらない場合
+     * @exception IllegalSequenceFoundException If the string passed as an argument
+     *                                          does not end with the suffix
+     *                                          specified by {@code suffix}
      */
-    static void requireEndWith(String sequence, String suffix, String message) {
-        requireEndWith(sequence, suffix, new IllegalSequenceFoundException(message));
+    static void requireEndWith(String string, String suffix, String message) {
+        requireEndWith(string, suffix, new IllegalSequenceFoundException(message));
     }
 
     /**
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わることを保証します。
+     * Ensures that the string specified as an argument ends with the suffix
+     * specified by {@code suffix} .
      * <p>
-     * 引数として指定された文字列が {@code suffix} で指定された接尾語で終わらない場合は、実行時に
-     * 引数として指定された任意の例外オブジェクトがスローされます。
+     * If the string specified as an argument does not end with the suffix specified
+     * by {@code suffix} , then any exception object specified as an argument will
+     * be thrown at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireEndWith(String, String)} メソッドを使用してください。
+     * If you want to specify an arbitrary exception object, use the
+     * {@link #requireEndWith(String, String)} method.
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わらない場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the string specified as an argument does not end with the suffix specified by suffix, then any exception object specified as an argument is thrown.
      * <code>
      * Preconditions.requireEndWith("test", "es", new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -1643,22 +1660,24 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が suffix で指定された接尾語で終わる場合は何もせず当該検証処理を終了します。
+     * If the string argument ends with a suffix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireEndWith("test", "est", new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param sequence  検査対象の文字列
-     * @param suffix    接尾語
-     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     * @param string    The string to be validated
+     * @param suffix    The suffix
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException 引数として指定された任意の例外オブジェクトが {@code null} の場合
+     * @exception NullPointerException If any exception object specified as an
+     *                                 argument is {@code null}
      */
-    static void requireEndWith(String sequence, String suffix, RuntimeException exception) {
+    static void requireEndWith(String string, String suffix, RuntimeException exception) {
         requireNonNull(exception);
 
-        if (!sequence.endsWith(suffix)) {
+        if (!string.endsWith(suffix)) {
             throw exception;
         }
     }
