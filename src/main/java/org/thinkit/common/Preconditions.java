@@ -824,7 +824,7 @@ public interface Preconditions {
      * exception occurs.
      * <p>
      * To specify an arbitrary exception object, use the
-     * {@link #requireRange(int, int, RuntimeException)} method.
+     * {@link #requireRangeTo(int, int, RuntimeException)} method.
      *
      * <pre>
      * If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
