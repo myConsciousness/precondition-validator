@@ -33,7 +33,7 @@ import java.util.Map;
  * application. The optional exception object must inherit from
  * {@link RuntimeException} .
  * <p>
- * If the data passed as an argument satisfies the specified prerequisites, the
+ * If the data passed as an argument satisfies the specified preconditions, the
  * validation method terminates without performing any processing other than
  * checking.
  *
@@ -1048,13 +1048,14 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
+     * Ensures that {@code map} passed as an argument is not {@code null} or an
+     * empty map. 
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Map, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * If the map argument is null, NullPointerException will be thrown.
      * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
@@ -1062,7 +1063,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+     * IllegalMapFoundException will be thrown if the map passed as an argument is an empty map.
      * <code>
      * Preconditions.requireNonEmpty(Map.of());
      * &gt;&gt; IllegalMapFoundException
@@ -1070,29 +1071,33 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(Map.of("test", "test"));
      * </code>
      * </pre>
      *
-     * @param map 検査対象のマップ
+     * @param map The map to be validated
      *
-     * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
+     * @throws IllegalMapFoundException If the {@code map} passed as an argument
+     *                                  does not contain any elements
      */
     static void requireNonEmpty(Map<?, ?> map) {
         requireNonEmpty(map, new IllegalMapFoundException("Map must contain at least one or more elements"));
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
+     * Ensures that {@code map} passed as an argument is not {@code null} or an
+     * empty map. 
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Map, RuntimeException)}
-     * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Map, RuntimeException)} method. The {@code message}
+     * passed as an argument will be printed as a detailed message when an exception
+     * is thrown.
      *
      * <pre>
-     * 引数として渡された map が null の場合は NullPointerException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the map argument is null, NullPointerException will be thrown.
+     * A message passed as an argument will be printed as a detailed message if an exception is raised.
      * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
@@ -1100,8 +1105,8 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the map argument is an empty map, IllegalMapFoundException will be thrown.
+     * The message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(Map.of(), "any message");
      * &gt;&gt; IllegalMapFoundException
@@ -1109,32 +1114,36 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(Map.of("test", "test"), "any message");
      * </code>
      * </pre>
      *
-     * @param map     検査対象のマップ
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param map     The map to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalMapFoundException 引数として渡された {@code list} に要素が含まれていない場合
+     * @throws IllegalMapFoundException If the {@code map} passed as an argument
+     *                                  does not contain any elements
      */
     static void requireNonEmpty(Map<?, ?> map, String message) {
         requireNonEmpty(map, new IllegalMapFoundException(message));
     }
 
     /**
-     * 引数として渡された {@code map} が {@code null} または空マップではないことを保証します。 
+     * Ensures that {@code map} passed as an argument is not {@code null} or an
+     * empty map. 
      * <p>
-     * 引数として指定された {@code map} が空マップの場合は引数として渡された任意の例外オブジェクトを返却します。
-     * {@link #requireNonEmpty(Map)} メソッドから実行されて、引数として渡された {@code map} が空マップの場合は
-     * {@link IllegalMapFoundException} を例外オブジェクトとしてスローします。
+     * If {@code map} is an empty map, any exception object passed as an argument
+     * will be returned. Executed by the {@link #requireNonEmpty(Map)} method, if
+     * the {@code map} passed as argument is an empty map, throws
+     * {@link IllegalMapFoundException} as an exception object.
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireNonEmpty(Map)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Map)} method.
      *
      * <pre>
-     * 引数として渡された map が null の場合は NullPointerException がスローされます。
+     * If the map argument is null, NullPointerException will be thrown.
      * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
@@ -1142,7 +1151,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が空マップの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * If the map argument is an empty map, any exception object passed as an argument will be thrown.
      * <code>
      * Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -1150,21 +1159,21 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+     * If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(Map.of("test", "test"), new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param map       検査対象のマップ
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param map       The map to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException     引数として渡された {@code map} が {@code ull}
-     *                                     の場合、または引数として渡された任意の例外オブジェクトが {@code null}
-     *                                     の場合
-     * @exception IllegalMapFoundException {@link #requireNonEmpty(Map)}
-     *                                     メソッドから実行されて、引数として渡された {@code map}
-     *                                     が空マップの場合
+     * @exception NullPointerException     If {@code map} passed as an argument is
+     *                                     {@code null} , or if any exception object
+     *                                     passed as an argument is {@code null}
+     * @exception IllegalMapFoundException If the {@code map} argument is an empty
+     *                                     map
      */
     static void requireNonEmpty(Map<?, ?> map, RuntimeException exception) {
         requireNonNull(map);
@@ -1176,16 +1185,17 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * Ensures that the array passed as an argument is not {@code null} or an empty
+     * array. 
      * <p>
-     * 引数として渡された配列が {@code null} または空配列の場合は {@link IllegalArrayFoundException}
-     * を例外オブジェクトとしてスローします。
+     * Throws {@link IllegalArrayFoundException} if the argument is either
+     * {@code null} or an empty array.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Object[], RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * NullPointerException will be thrown if the argument passed to array is null.
      * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
@@ -1193,7 +1203,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+     * IllegalArrayFoundException will be thrown if the array argument is an empty array.
      * <code>
      * Preconditions.requireNonEmpty(new String[] {});
      * &gt;&gt; IllegalArrayFoundException
@@ -1201,33 +1211,37 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireNonEmpty(new String[] { "" });
      * </code>
      * </pre>
      *
-     * @param array 検査対象の配列
+     * @param array The array to be validated
      *
-     * @exception NullPointerException       引数として渡された配列が {@code null} の場合
-     * @exception IllegalArrayFoundException 引数として渡された配列が空配列の場合
+     * @exception NullPointerException       If the array passed as an argument is
+     *                                       {@code null}
+     * @exception IllegalArrayFoundException If the array passed as an argument is
+     *                                       an empty array
      */
     static void requireNonEmpty(Object[] array) {
         requireNonEmpty(Arrays.asList(array));
     }
 
     /**
-     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * Ensures that the array passed as an argument is not {@code null} or an empty
+     * array. 
      * <p>
-     * 引数として渡された配列が {@code null} または空配列の場合は {@link IllegalArrayFoundException}
-     * を例外オブジェクトとしてスローします。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * Throws {@link IllegalArrayFoundException} if the array argument is
+     * {@code null} or an empty array. The {@code message} passed as an argument
+     * will be printed as a detailed message when an exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(Object[], RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Object[], RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された array が null の場合は NullPointerException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the array argument is null, NullPointerException will be thrown.
+     * A message passed as an argument will be printed as a detailed message when an exception is raised.
      * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
@@ -1235,8 +1249,8 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * IllegalArrayFoundException is thrown if the array argument is an empty array.
+     * The message argument is output as a detailed message when an exception is raised.
      * <code>
      * Preconditions.requireNonEmpty(new String[] {}, "any message");
      * &gt;&gt; IllegalArrayFoundException
@@ -1244,31 +1258,36 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireNonEmpty(new String[] { "" }, "any message");
      * </code>
      * </pre>
      *
-     * @param array   検査対象の配列
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param array   The array to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @exception NullPointerException       引数として渡された配列が {@code null} の場合
-     * @exception IllegalArrayFoundException 引数として渡された配列が空配列の場合
+     * @exception NullPointerException       If the array passed as an argument is
+     *                                       {@code null}
+     * @exception IllegalArrayFoundException If the array passed as an argument is
+     *                                       an empty array
      */
     static void requireNonEmpty(Object[] array, String message) {
         requireNonEmpty(Arrays.asList(array), message);
     }
 
     /**
-     * 引数として渡された配列が {@code null} または空配列ではないことを保証します。 
+     * Ensures that the array passed as a number is not {@code null} or an empty
+     * array. 
      * <p>
-     * 引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
-     * {@link #requireNonEmpty(Object[])} メソッドから実行されて、引数として渡された配列が空配列の場合は
-     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     * If the array passed as an argument is an empty array, throw an arbitrary
+     * exception object passed as an argument. Execute a
+     * {@link #requireNonEmpty(Object[])} method and then throw
+     * {@link IllegalArrayFoundException} if the array passed in as argument is an
+     * empty array.
      *
      * <pre>
-     * 引数として渡された array が null の場合は NullPointerException がスローされます。
+     * A NullPointerException will be thrown if the argument passed to array is null.
      * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
@@ -1276,7 +1295,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * If the array argument is an empty array, then any exception object passed as an argument will be thrown.
      * <code>
      * Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -1284,36 +1303,42 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+     * If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param array     検査対象の配列
-     * @param exception 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト
+     * @param array     The array to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException       引数として渡された配列が {@code null}
-     *                                       の場合、または引数として渡された例外オブジェクトが {@code null}
-     *                                       の場合
-     * @exception IllegalArrayFoundException {@link #requireNonEmpty(Object[])}
-     *                                       メソッドから実行されて、引数として渡された配列が空配列の場合
+     * @exception NullPointerException       If the array passed as an argument is
+     *                                       {@@code null} or if the exception
+     *                                       object passed as an argument is
+     *                                       {@code null}
+     * @exception IllegalArrayFoundException If the method
+     *                                       {@link #requireNonEmpty(Object[])} is
+     *                                       executed and the array passed as an
+     *                                       argument is an empty array
      */
     static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
     }
 
     /**
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that a given string begins with the prefix specified by
+     * {@code prefix} .
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * If the argument does not begin with a prefix specified by {@code prefix},
+     * {@link IllegalSequenceFoundException} will be thrown as an exception object
+     * at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は
-     * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * If the sequence specified as an argument does not begin with a prefix, IllegalSequenceFoundException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "est");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1321,17 +1346,18 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "test");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param prefix   接頭語
+     * @param sequence The string to be validated
+     * @param prefix   The prefix
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code prefix}
-     *                                          で指定された接頭語で始まらない場合
+     * @exception IllegalSequenceFoundException If a string passed as an argument
+     *                                          does not start with a prefix
+     *                                          specified by {@code prefix}
      */
     static void requireStartWith(String sequence, String prefix) {
         requireStartWith(sequence, prefix, new IllegalSequenceFoundException(
@@ -1339,18 +1365,20 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that a given string begins with the prefix specified by
+     * {@code prefix} .
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。引数として渡された
-     * {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the argument doesn't start with a prefix specified by {@code prefix}, then
+     * {@link IllegalSequenceFoundException} will be thrown at runtime as an
+     * exception object. The {@code message} passed as an argument will be printed
+     * as a detailed message when the exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は
-     * {@link #requireStartWith(String, String, RuntimeException)} メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the sequence argument does not begin with the prefix prefix, IllegalSequenceFoundException will be thrown.
+     * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireStartWith("test", "est", "any message");
      * &gt;&gt; IllegalSequenceFoundException
@@ -1358,35 +1386,37 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "test", "any message");
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param prefix   接頭語
-     * @param message  例外スロー時に出力される詳細メッセージ
+     * @param sequence The string to be validated
+     * @param prefix   The prefix
+     * @param message  Detailed messages to be output on exception throwing
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が {@code prefix}
-     *                                          で指定された接頭語で始まらない場合
+     * @exception IllegalSequenceFoundException If a string passed as an argument
+     *                                          does not start with a prefix
+     *                                          specified by {@code prefix}
      */
     static void requireStartWith(String sequence, String prefix, String message) {
         requireStartWith(sequence, prefix, new IllegalSequenceFoundException(message));
     }
 
     /**
-     * 引数として指定された文字列が指定された検索開始位置から {@code prefix} で指定された接頭語で始まることを保証します。
+     * Ensures that the argument starts with the prefix specified by {@code prefix}
+     * at the specified search start point.
      * <p>
-     * 引数として指定された文字列が {@code prefix} で指定された接頭語で始まらない場合は、実行時に
-     * {@link IllegalSequenceFoundException} が例外オブジェクトとしてスローされます。
+     * If the argument does not begin with a prefix specified by {@code prefix},
+     * {@link IllegalSequenceFoundException} will be thrown as an exception object
+     * at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は
-     * {@link #requireStartWith(String, String, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireStartWith(String, String, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+     * If the sequence specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalSequenceFoundException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1);
      * &gt;&gt; IllegalSequenceFoundException
@@ -1394,18 +1424,20 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+     * If the sequence specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
      * <code>
      * Preconditions.requireStartWith("test", "est", 1);
      * </code>
      * </pre>
      *
-     * @param sequence 検査対象の文字列
-     * @param prefix   接頭語
-     * @param offset   接頭語の検索開始位置
+     * @param sequence The string to be validated
+     * @param prefix   The prefix
+     * @param offset   The offset
      *
-     * @exception IllegalSequenceFoundException 引数として渡された文字列が指定された検索開始位置から
-     *                                          {@code prefix} で指定された接頭語で始まらない場合
+     * @exception IllegalSequenceFoundException If a string passed as an argument
+     *                                          does not start with a prefix
+     *                                          specified by {@code prefix} from the
+     *                                          specified search start point
      */
     static void requireStartWith(String sequence, String prefix, int offset) {
         requireStartWith(sequence, prefix, offset, new IllegalSequenceFoundException(String.format(
