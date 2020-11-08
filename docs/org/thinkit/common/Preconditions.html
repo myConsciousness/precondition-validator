@@ -85,7 +85,7 @@ loadScripts(document, 'script');</script>
  application. The optional exception object must inherit from
  <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link"><code>RuntimeException</code></a> .
  <p>
- If the data passed as an argument satisfies the specified prerequisites, the
+ If the data passed as an argument satisfies the specified preconditions, the
  validation method terminates without performing any processing other than
  checking.
 
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNegative(int)">requireNegative</a></span>&#8203;(int&nbsp;number)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
+<div class="block">Ensures that the argument <code>number</code> is a negative number. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i4">
@@ -166,7 +166,7 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNegative(int,java.lang.RuntimeException)">requireNegative</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
+<div class="block">Ensures that the argument <code>number</code> is a negative number. </div>
 </td>
 </tr>
 <tr class="row-color" id="i5">
@@ -174,7 +174,7 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNegative(int,java.lang.String)">requireNegative</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 </div>
+<div class="block">Ensures that the argument <code>number</code> is a negative number. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i6">
@@ -206,7 +206,8 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.Object%5B%5D)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 </div>
+<div class="block">Ensures that the array passed as an argument is not <code>null</code> or an empty
+ array. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i10">
@@ -214,7 +215,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 </div>
+<div class="block">Ensures that the array passed as a number is not <code>null</code> or an empty
+ array. </div>
 </td>
 </tr>
 <tr class="row-color" id="i11">
@@ -222,7 +224,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.String)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 </div>
+<div class="block">Ensures that the array passed as an argument is not <code>null</code> or an empty
+ array. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i12">
@@ -238,7 +241,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>sequence</code> の値が <code>null</code> または空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that the value of <code>sequence</code> passed as an argument is not
+ <code>null</code> or an empty string. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i14">
@@ -246,15 +250,16 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.lang.String,java.lang.String)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
- 、または文字列が空文字列ではないことを保証します。 </div>
+<div class="block">Ensures that the reference to the <code>sequence</code> object specified as an
+ argument is not <code>null</code> or the string is not an empty string. </div>
 </td>
 </tr>
 <tr class="row-color" id="i15">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.List)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 </div>
+<div class="block">Ensures that <code>list</code> passed as an argument is not <code>null</code> or an
+ empty list. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i16">
@@ -262,7 +267,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>list</code> が <code>null</code> または空リストではないことを保証します。 </div>
+<div class="block">Ensures that <code>list</code> given as an argument is not <code>null</code> or an
+ empty list. </div>
 </td>
 </tr>
 <tr class="row-color" id="i17">
@@ -270,14 +276,16 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.List,java.lang.String)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 </div>
+<div class="block">Ensures that <code>list</code> passed as an argument is not <code>null</code> or an
+ empty list. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i18">
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.Map)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. </div>
 </td>
 </tr>
 <tr class="row-color" id="i19">
@@ -285,7 +293,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i20">
@@ -293,7 +302,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireNonEmpty(java.util.Map,java.lang.String)">requireNonEmpty</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 </div>
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. </div>
 </td>
 </tr>
 <tr class="row-color" id="i21">
@@ -326,7 +336,7 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code>static void</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requirePositive(int)">requirePositive</a></span>&#8203;(int&nbsp;number)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
+<div class="block">Ensures that the <code>number</code> argument is a positive number. </div>
 </td>
 </tr>
 <tr class="row-color" id="i25">
@@ -334,7 +344,7 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requirePositive(int,java.lang.RuntimeException)">requirePositive</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
+<div class="block">Ensures that the <code>number</code> argument is a positive number. </div>
 </td>
 </tr>
 <tr class="alt-color" id="i26">
@@ -342,7 +352,7 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requirePositive(int,java.lang.String)">requirePositive</a></span>&#8203;(int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 </div>
+<div class="block">Ensures that the <code>number</code> argument is a positive number. </div>
 </td>
 </tr>
 <tr class="row-color" id="i27">
@@ -350,7 +360,8 @@ loadScripts(document, 'script');</script>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireRange(int,int)">requireRange</a></span>&#8203;(int&nbsp;index,
 int&nbsp;to)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . </div>
 </td>
 </tr>
 <tr class="alt-color" id="i28">
@@ -359,8 +370,8 @@ int&nbsp;to)</code></th>
 int&nbsp;from,
 int&nbsp;to)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
 <tr class="row-color" id="i29">
@@ -370,8 +381,8 @@ int&nbsp;from,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
 <tr class="alt-color" id="i30">
@@ -381,8 +392,8 @@ int&nbsp;from,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . </div>
 </td>
 </tr>
 <tr class="row-color" id="i31">
@@ -391,7 +402,8 @@ int&nbsp;to,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . </div>
 </td>
 </tr>
 <tr class="alt-color" id="i32">
@@ -400,7 +412,8 @@ int&nbsp;to,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 </div>
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . </div>
 </td>
 </tr>
 <tr class="row-color" id="i33">
@@ -408,7 +421,8 @@ int&nbsp;to,
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#requireStartWith(java.lang.String,java.lang.String)">requireStartWith</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
+<div class="block">Ensures that a given string begins with the prefix specified by
+ <code>prefix</code> .</div>
 </td>
 </tr>
 <tr class="alt-color" id="i34">
@@ -417,7 +431,8 @@ int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
 int&nbsp;offset)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
+<div class="block">Ensures that the argument starts with the prefix specified by <code>prefix</code>
+ at the specified search start point.</div>
 </td>
 </tr>
 <tr class="row-color" id="i35">
@@ -455,7 +470,8 @@ int&nbsp;offset,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></th>
 <td class="col-last">
-<div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。</div>
+<div class="block">Ensures that a given string begins with the prefix specified by
+ <code>prefix</code> .</div>
 </td>
 </tr>
 </tbody>
@@ -761,20 +777,25 @@ int&nbsp;offset,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>sequence</code> オブジェクトの参照が <code>null</code>
- 、または文字列が空文字列ではないことを保証します。 
+<div class="block">Ensures that the reference to the <code>sequence</code> object specified as an
+ argument is not <code>null</code> or the string is not an empty string. 
  <p>
- <code>sequence</code> オブジェクトの参照が <code>null</code> の場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the <code>sequence</code> object is referenced by <code>null</code> , then
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime. The <code>message</code>
+ passed as an argument is output as a detailed message when an exception
+ occurs.
  <p>
- <code>sequence</code> オブジェクトの文字列が空文字列の場合は <code>IllegalSequenceFoundException</code>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the string of a <code>sequence</code> object is an empty string,
+ <code>IllegalSequenceFoundException</code> is always raised at runtime. The
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された sequence が null の場合は NullPointerException がスローされます。引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the sequence argument is null, NullPointerException will be thrown.
+ A message passed as an argument will be printed as a detailed message if an exception is raised.
  <code>
  Preconditions.requireNonEmpty(null, "any message");
  &gt;&gt; NullPointerException
@@ -782,8 +803,8 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列の場合は IllegalSequenceFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ IllegalSequenceFoundException will be thrown if the argument passed to sequence is an empty string.
+ A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty("", "any message");
  &gt;&gt; IllegalSequenceFoundException
@@ -791,18 +812,20 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonEmpty("test", "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として <code>null</code> が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として空文字列が渡された場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
+                                       argument</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
+                                       argument</dd>
 </dl>
 </section>
 </li>
@@ -811,14 +834,15 @@ int&nbsp;offset,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として渡された <code>sequence</code> の値が <code>null</code> または空文字列ではないことを保証します。 
+<div class="block">Ensures that the value of <code>sequence</code> passed as an argument is not
+ <code>null</code> or an empty string. 
  <p>
- <code>null</code> または空文字列である場合は例外をスローします。
- <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> メソッドを使用してください。
+ Throws an exception if it is <code>null</code> or an empty string. If you do not
+ specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> method.
 
  <pre>
- 引数として渡された sequence が null の場合は NullPointerException がスローされます。
+ NullPointerException will be thrown if the argument passed to sequence is null.
  <code>
  Preconditions.requireNonEmpty(null, new AnyRuntimeException());
  &gt;&gt; NullPointerException
@@ -826,7 +850,7 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が空文字列の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ If the argument sequence is an empty string, any exception object specified as an argument will be thrown.
  <code>
  Preconditions.requireNonEmpty("", new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -834,20 +858,23 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された sequence が null ではなく、かつ空文字列ではない場合は何もせず当該検証処理を終了します。
+ If the argument sequence is not null and is not an empty string, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNonEmpty("test", new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code>
-                                          の場合、または引数として渡された <code>sequence</code> が
-                                          <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として渡された <code>sequence</code> が空文字列の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                          argument is <code>null</code> or if the
+                                          <code>sequence</code> passed as an
+                                          argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If <code>sequence</code> passed as an
+                                          argument is an empty string</dd>
 </dl>
 </section>
 </li>
@@ -855,16 +882,16 @@ int&nbsp;offset,
 <section class="detail" id="requirePositive(int)">
 <h3>requirePositive</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requirePositive</span>&#8203;(<span class="parameters">int&nbsp;number)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 
+<div class="block">Ensures that the <code>number</code> argument is a positive number. 
  <p>
- 引数として指定された <code>number</code> の数値が負数である場合は <code>IllegalNumberFoundException</code>
- が必ず実行時に発生します。
+ If the argument <code>number</code> is negative,
+ <code>IllegalNumberFoundException</code> is always raised at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
+ IllegalNumberFoundException will be thrown if the number passed as an argument is negative.
  <code>
  Preconditions.requirePositive(-1);
  &gt;&gt; IllegalNumberFoundException
@@ -872,16 +899,17 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ If the number passed as a number is positive, it does nothing and ends the validation process.
  <code>
  Preconditions.requirePositive(0);
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
+<dd><code>number</code> - The number to be validated</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - 引数として指定された <code>number</code> の数値が負数の場合</dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the number of <code>number</code> specified
+                                     as an argument is a negative number</dd>
 </dl>
 </section>
 </li>
@@ -890,17 +918,19 @@ int&nbsp;offset,
 <h3>requirePositive</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requirePositive</span>&#8203;(<span class="parameters">int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 
+<div class="block">Ensures that the <code>number</code> argument is a positive number. 
  <p>
- 引数として指定された <code>number</code> の数値が負数である場合は <code>IllegalNumberFoundException</code>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the argument <code>number</code> is negative,
+ <code>IllegalNumberFoundException</code> will always be raised at runtime. The
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requirePositive(int,java.lang.RuntimeException)"><code>requirePositive(int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された number が負数の場合は IllegalNumberFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the argument number is negative IllegalNumberFoundException will be thrown.
+ The message passed as an argument will be output as a detailed message when an exception occurs.
  <code>
  Preconditions.requirePositive(-1, "any message");
  &gt;&gt; IllegalNumberFoundException
@@ -908,17 +938,18 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ If the number passed as an argument is a positive number, it does nothing and exits the validation process.
  <code>
  Preconditions.requirePositive(0, "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>number</code> - The number to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - 引数として指定された <code>number</code> の数値が負数の場合</dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the number of <code>number</code> specified
+                                     as an argument is a negative number</dd>
 </dl>
 </section>
 </li>
@@ -927,12 +958,13 @@ int&nbsp;offset,
 <h3>requirePositive</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requirePositive</span>&#8203;(<span class="parameters">int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が正数であることを保証します。 
+<div class="block">Ensures that the <code>number</code> argument is a positive number. 
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requirePositive(int)"><code>requirePositive(int)</code></a> メソッドを使用してください。
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requirePositive(int)"><code>requirePositive(int)</code></a> method.
 
  <pre>
- 引数として渡された number が負数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ If the number passed as an argument is negative, then any exception object specified as an argument will be thrown.
  <code>
  Preconditions.requirePositive(-1, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -940,20 +972,21 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+ If the number passed as an argument is a positive number, it does nothing and exits the validation process.
  <code>
  Preconditions.requirePositive(0, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>number</code> - The number to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - <a href="#requirePositive(int)"><code>requirePositive(int)</code></a>
-                                        メソッドから実行され、指定された <code>number</code>
-                                        の数値が負数の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                        argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the specified <code>number</code> is
+                                        negative</dd>
 </dl>
 </section>
 </li>
@@ -961,16 +994,16 @@ int&nbsp;offset,
 <section class="detail" id="requireNegative(int)">
 <h3>requireNegative</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNegative</span>&#8203;(<span class="parameters">int&nbsp;number)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 
+<div class="block">Ensures that the argument <code>number</code> is a negative number. 
  <p>
- 引数として指定された <code>number</code> の数値が正数である場合は <code>IllegalNumberFoundException</code>
- が必ず実行時に発生します。
+ If the argument <code>number</code> is positive,
+ <code>IllegalNumberFoundException</code> is always raised at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+ IllegalNumberFoundException will be thrown if the number passed as an argument is positive.
  <code>
  Preconditions.requireNegative(0);
  &gt;&gt; IllegalNumberFoundException
@@ -978,16 +1011,17 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ If number passed as an argument is a negative number, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNegative(-1);
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
+<dd><code>number</code> - The number to be validated</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - 引数として指定された <code>number</code> の数値が正数の場合</dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the number of <code>number</code> specified
+                                     as an argument is a positive number</dd>
 </dl>
 </section>
 </li>
@@ -996,17 +1030,19 @@ int&nbsp;offset,
 <h3>requireNegative</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNegative</span>&#8203;(<span class="parameters">int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 
+<div class="block">Ensures that the argument <code>number</code> is a negative number. 
  <p>
- 引数として指定された <code>number</code> の数値が正数である場合は <code>IllegalNumberFoundException</code>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the argument <code>number</code> is a positive number,
+ <code>IllegalNumberFoundException</code> will always be raised at runtime. And the
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNegative(int,java.lang.RuntimeException)"><code>requireNegative(int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the number argument is positive, IllegalNumberFoundException will be thrown.
+ The message passed as an argument will be output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNegative(0, "any message");
  &gt;&gt; IllegalNumberFoundException
@@ -1014,17 +1050,18 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ If number passed as an argument is a negative number, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNegative(-1, "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>number</code> - The number to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - 引数として指定された <code>number</code> の数値が正数の場合</dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the number of <code>number</code> specified
+                                     as an argument is a positive number</dd>
 </dl>
 </section>
 </li>
@@ -1033,14 +1070,16 @@ int&nbsp;offset,
 <h3>requireNegative</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNegative</span>&#8203;(<span class="parameters">int&nbsp;number,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として指定された <code>number</code> の数値が負数であることを保証します。 
+<div class="block">Ensures that the argument <code>number</code> is a negative number. 
  <p>
- 引数として指定された <code>number</code> が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
+ If <code>number</code> is a positive number, throw any exception object specified
+ as an argument.
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNegative(int)"><code>requireNegative(int)</code></a> メソッドを使用してください。
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requireNegative(int)"><code>requireNegative(int)</code></a> method.
 
  <pre>
- 引数として渡された number が正数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+ If the number passed as an argument is positive, any exception object specified as an argument will be thrown.
  <code>
  Preconditions.requireNegative(0, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1048,20 +1087,22 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+ If number passed as an argument is a negative number, it does nothing and ends the validation process.
  <code>
  Preconditions.requireNegative(-1, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>number</code> - 検査対象の数値</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>number</code> - The number to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - <a href="#requireNegative(int)"><code>requireNegative(int)</code></a>
-                                        メソッドから実行され、引数として渡された <code>number</code>
-                                        の数値が正数の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                        argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalNumberFoundException</code> - If the value of the <code>number</code>
+                                        passed as an argument is a positive
+                                        number</dd>
 </dl>
 </section>
 </li>
@@ -1070,16 +1111,17 @@ int&nbsp;offset,
 <h3>requireRange</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が範囲外にある数値である場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a>
- が必ず実行時に発生します。
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+ If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
  <code>
  Preconditions.requireRange(10, 9);
  &gt;&gt; IndexOutOfBoundsException
@@ -1087,18 +1129,19 @@ int&nbsp;to)</span></div>
  </pre>
 
  <pre>
- 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
  Preconditions.requireRange(9, 10);
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>to</code> - The upper limit</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - 引数として指定された <code>index</code> の数値が <code>to</code>
-                                   で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code> argument
+                                   does not exist within the range specified
+                                   by <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1108,17 +1151,20 @@ int&nbsp;to)</span></div>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が範囲外にある数値である場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime. And the
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int,java.lang.RuntimeException)"><code>requireRange(int, int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
+ A message passed as an argument is output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireRange(10, 9, "any message");
  &gt;&gt; IndexOutOfBoundsException
@@ -1126,19 +1172,19 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
  Preconditions.requireRange(9, 10, "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>to</code> - The upper limit</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - 引数として指定された <code>index</code> の数値が <code>to</code>
-                                   で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the argument <code>index</code> does not fall
+                                   within the range specified by <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1148,17 +1194,17 @@ int&nbsp;to,
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>to</code> で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is a number within the range
+ specified by <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が <code>to</code>
- で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
- <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> メソッドから実行された場合は
- <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> を例外オブジェクトとしてスローします。
+ If <code>index</code> specified as an argument is not within the range specified
+ by <code>to</code> , throw any exception object specified as an argument.
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> メソッドを使用してください。
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a> method.
 
  <pre>
- 引数として渡された index が to で指定された数値よりも大きい場合は引数として指定された任意の例外がスローされます。
+ If the index passed as an argument is greater than the number specified by to, any of the specified exceptions will be thrown.
  <code>
  Preconditions.requireRange(10, 9, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1166,21 +1212,23 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
  <code>
  Preconditions.requireRange(9, 10, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>to</code> - The upper limit</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code> の場合</dd>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - <a href="#requireRange(int,int)"><code>requireRange(int, int)</code></a>
-                                      メソッドから実行され、引数として指定された <code>index</code> の数値が
-                                      <code>to</code> で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                      argument is <code>null</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code>
+                                      specified as an argument does not fall
+                                      within the range specified by <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1190,17 +1238,17 @@ int&nbsp;to,
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireRange</span>&#8203;(<span class="parameters">int&nbsp;index,
 int&nbsp;from,
 int&nbsp;to)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が範囲外にある数値である場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a>
- が必ず実行時に発生します。
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> is always raised at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+ IndexOutOfBoundsException will be thrown if the index passed as an argument is not within the range specified by from and to.
  <code>
  Preconditions.requireRange(10, 0, 9);
  &gt;&gt; IndexOutOfBoundsException
@@ -1208,19 +1256,20 @@ int&nbsp;to)</span></div>
  </pre>
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
  <code>
  Preconditions.requireRange(9, 0, 10);
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>from</code> - 判定時の最低値</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The lower limit</dd>
+<dd><code>to</code> - The upper limit</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - 引数として指定された <code>index</code> の数値が <code>from</code>
-                                   から <code>to</code> で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code> argument
+                                   does not fall within the range specified by
+                                   <code>from</code> to <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1231,18 +1280,20 @@ int&nbsp;to)</span></div>
 int&nbsp;from,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が範囲外にある数値である場合は <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a>
- が必ず実行時に発生します。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the <code>index</code> argument is an out-of-range number,
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> will always be raised at runtime. The
+ <code>message</code> passed as an argument is output as a detailed message when an
+ exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int,int,java.lang.RuntimeException)"><code>requireRange(int, int, int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ IndexOutOfBoundsException will be thrown if the index passed as an argument is not within the range specified by from and to.
+ A message passed as an argument is output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireRange(10, 0, 9, "any message");
  &gt;&gt; IndexOutOfBoundsException
@@ -1250,20 +1301,21 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
  <code>
  Preconditions.requireRange(9, 0, 10, "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>from</code> - 判定時の最低値</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The lower limit</dd>
+<dd><code>to</code> - The upper limit</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - 引数として指定された <code>index</code> の数値が <code>from</code>
-                                   から <code>to</code> で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code> argument
+                                   does not fall within the range specified by
+                                   <code>from</code> to <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1274,18 +1326,20 @@ int&nbsp;to,
 int&nbsp;from,
 int&nbsp;to,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として指定された <code>index</code> が <code>from</code> から <code>to</code>
- で指定された範囲内の数値であることを保証します。 
+<div class="block">Ensures that the <code>index</code> argument is within the range specified by
+ <code>from</code> to <code>to</code> . 
  <p>
- 引数として指定された <code>index</code> が範囲外にある数値である場合は引数として指定された任意の例外オブジェクトをスローします。
- <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a> メソッドから実行され、引数として指定された <code>index</code> が
- <code>from</code> から <code>to</code> で指定された範囲内の数値ではない場合は
- <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> を例外オブジェクトとしてスローします。
+ Throws an arbitrary exception object if the argument <code>index</code> is an
+ out-of-range number. Execute from the <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a>
+ method, and throw <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link"><code>IndexOutOfBoundsException</code></a> as an exception object if
+ the <code>index</code> argument is not a number within the range specified by
+ <code>from</code> to <code>to</code> .
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a> メソッドを使用してください。
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requireRange(int,int,int)"><code>requireRange(int, int, int)</code></a> method.
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内ではない場合は引数として渡された任意の例外オブジェクトがスローされます。
+ If the index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
  <code>
  Preconditions.requireRange(10, 0, 9, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1293,22 +1347,24 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+ If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
  <code>
  Preconditions.requireRange(9, 0, 10, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>index</code> - 検査対象のインデックス</dd>
-<dd><code>from</code> - 判定時の最低値</dd>
-<dd><code>to</code> - 判定時の上限値</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>index</code> - The index to be validated</dd>
+<dd><code>from</code> - The upper limit</dd>
+<dd><code>to</code> - The lower limit</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された例外オブジェクトが <code>null</code> の場合</dd>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - 引数として指定された <code>index</code> の数値が
-                                      <code>from</code> から <code>to</code>
-                                      で指定された範囲内に存在しない場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
+                                      argument is <code>null</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IndexOutOfBoundsException.html" title="class or interface in java.lang" class="external-link">IndexOutOfBoundsException</a></code> - If the number of the <code>index</code>
+                                      argument does not fall within the range
+                                      specified by <code>from</code> to <code>to</code></dd>
 </dl>
 </section>
 </li>
@@ -1316,13 +1372,14 @@ int&nbsp;to,
 <section class="detail" id="requireNonEmpty(java.util.List)">
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list)</span></div>
-<div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 
+<div class="block">Ensures that <code>list</code> passed as an argument is not <code>null</code> or an
+ empty list. 
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された list が null の場合は NullPointerException がスローされます。
+ NullPointerException will be thrown if the list passed as an argument is null.
  <code>
  Preconditions.requireNonEmpty(null);
  &gt;&gt; NullPointerException
@@ -1330,7 +1387,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+ IllegalArrayFoundException will be thrown if the list passed as an argument is an empty list.
  <code>
  Preconditions.requireNonEmpty(List.of());
  &gt;&gt; IllegalArrayFoundException
@@ -1338,18 +1395,19 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
  <code>
  Preconditions.requireNonEmpty(List.of("test"));
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>list</code> - 検査対象のリスト</dd>
+<dd><code>list</code> - The list to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>list</code> が <code>null</code>
-                                       が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - 引数として渡された <code>list</code> が空リストの場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an
+                                       argument and <code>null</code> is passed</dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If <code>list</code> passed as an argument
+                                       is an empty list</dd>
 </dl>
 </section>
 </li>
@@ -1358,14 +1416,17 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として渡された <code>list</code> が <code>null</code> または空リストではないことを保証します。 
+<div class="block">Ensures that <code>list</code> passed as an argument is not <code>null</code> or an
+ empty list. 
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a>
- メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ To specify an arbitrary exception object, use
+ <a href="#requireNonEmpty(java.util.List,java.lang.RuntimeException)"><code>requireNonEmpty(List, RuntimeException)</code></a> method. The <code>message</code>
+ passed as an argument will be printed as a detailed message when an exception
+ is thrown.
 
  <pre>
- 引数として渡された list が null の場合は NullPointerException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the list argument is null, NullPointerException will be thrown.
+ A message passed as an argument will be output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty(null, "any message");
  &gt;&gt; NullPointerException
@@ -1373,8 +1434,8 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ IllegalArrayFoundException is thrown if the list argument is an empty list.
+ The message argument is output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty(List.of(), "any message");
  &gt;&gt; IllegalArrayFoundException
@@ -1382,19 +1443,20 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
  <code>
  Preconditions.requireNonEmpty(List.of("test"), "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>list</code> - 検査対象のリスト</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>list</code> - The list to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>list</code> が <code>null</code>
-                                       が渡された場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - 引数として渡された <code>list</code> が空リストの場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an
+                                       argument and <code>null</code> is passed</dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If <code>list</code> passed as an argument
+                                       is an empty list</dd>
 </dl>
 </section>
 </li>
@@ -1403,14 +1465,16 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;?&gt;&nbsp;list,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として指定された <code>list</code> が <code>null</code> または空リストではないことを保証します。 
+<div class="block">Ensures that <code>list</code> given as an argument is not <code>null</code> or an
+ empty list. 
  <p>
- 引数として渡された <code>list</code> が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
- <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> メソッドから実行され 、引数として渡された <code>list</code> が空リストの場合は
- <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。
+ If <code>list</code> is an empty list, throw any exception object passed as an
+ argument. If it is executed by the <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> method and
+ <code>list</code> is an empty list, it throws <code>IllegalArrayFoundException</code>
+ as an exception object.
 
  <pre>
- 引数として渡された list が null の場合は NullPointerException がスローされます。
+ NullPointerException will be thrown if the list passed as an argument is null.
  <code>
  Preconditions.requireNonEmpty(null, new AnyRuntimeException());
  &gt;&gt; NullPointerException
@@ -1418,7 +1482,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+ If the list passed as an argument is an empty list, any exception object passed as an argument is thrown.
  <code>
  Preconditions.requireNonEmpty(List.of(), new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1426,22 +1490,25 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+ If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
  <code>
  Preconditions.requireNonEmpty(List.of("test"), new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>list</code> - 検査対象のリスト</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>list</code> - The list to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>list</code> が <code>null</code>
-                                       の場合、または引数として渡された例外オブジェクトが <code>null</code>
-                                       の場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a>
-                                       メソッドから実行され、引数として渡された <code>list</code>
-                                       が空リストの場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> passed as an argument
+                                       is <code>null</code> or if the exception
+                                       object passed as an argument is
+                                       <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If it is executed by the
+                                       <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> method
+                                       and the <code>list</code> passed as an
+                                       argument is an empty list</dd>
 </dl>
 </section>
 </li>
@@ -1449,13 +1516,14 @@ int&nbsp;to,
 <section class="detail" id="requireNonEmpty(java.util.Map)">
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map)</span></div>
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. 
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された map が null の場合は NullPointerException がスローされます。
+ If the map argument is null, NullPointerException will be thrown.
  <code>
  Preconditions.requireNonEmpty(null);
  &gt;&gt; NullPointerException
@@ -1463,7 +1531,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
+ IllegalMapFoundException will be thrown if the map passed as an argument is an empty map.
  <code>
  Preconditions.requireNonEmpty(Map.of());
  &gt;&gt; IllegalMapFoundException
@@ -1471,16 +1539,17 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
  <code>
  Preconditions.requireNonEmpty(Map.of("test", "test"));
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>map</code> - 検査対象のマップ</dd>
+<dd><code>map</code> - The map to be validated</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalMapFoundException</code> - 引数として渡された <code>list</code> に要素が含まれていない場合</dd>
+<dd><code>org.thinkit.common.IllegalMapFoundException</code> - If the <code>map</code> passed as an argument
+                                  does not contain any elements</dd>
 </dl>
 </section>
 </li>
@@ -1489,14 +1558,17 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. 
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a>
- メソッドを使用してください。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.util.Map,java.lang.RuntimeException)"><code>requireNonEmpty(Map, RuntimeException)</code></a> method. The <code>message</code>
+ passed as an argument will be printed as a detailed message when an exception
+ is thrown.
 
  <pre>
- 引数として渡された map が null の場合は NullPointerException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the map argument is null, NullPointerException will be thrown.
+ A message passed as an argument will be printed as a detailed message if an exception is raised.
  <code>
  Preconditions.requireNonEmpty(null, "any message");
  &gt;&gt; NullPointerException
@@ -1504,8 +1576,8 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が空マップの場合は IllegalMapFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the map argument is an empty map, IllegalMapFoundException will be thrown.
+ The message passed as an argument is output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty(Map.of(), "any message");
  &gt;&gt; IllegalMapFoundException
@@ -1513,17 +1585,18 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
  <code>
  Preconditions.requireNonEmpty(Map.of("test", "test"), "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>map</code> - 検査対象のマップ</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>map</code> - The map to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalMapFoundException</code> - 引数として渡された <code>list</code> に要素が含まれていない場合</dd>
+<dd><code>org.thinkit.common.IllegalMapFoundException</code> - If the <code>map</code> passed as an argument
+                                  does not contain any elements</dd>
 </dl>
 </section>
 </li>
@@ -1532,16 +1605,19 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;?,&#8203;?&gt;&nbsp;map,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として渡された <code>map</code> が <code>null</code> または空マップではないことを保証します。 
+<div class="block">Ensures that <code>map</code> passed as an argument is not <code>null</code> or an
+ empty map. 
  <p>
- 引数として指定された <code>map</code> が空マップの場合は引数として渡された任意の例外オブジェクトを返却します。
- <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> メソッドから実行されて、引数として渡された <code>map</code> が空マップの場合は
- <code>IllegalMapFoundException</code> を例外オブジェクトとしてスローします。
+ If <code>map</code> is an empty map, any exception object passed as an argument
+ will be returned. Executed by the <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> method, if
+ the <code>map</code> passed as argument is an empty map, throws
+ <code>IllegalMapFoundException</code> as an exception object.
  <p>
- 任意の例外オブジェクトを指定しない場合は <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> メソッドを使用してください。
+ If you do not specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a> method.
 
  <pre>
- 引数として渡された map が null の場合は NullPointerException がスローされます。
+ If the map argument is null, NullPointerException will be thrown.
  <code>
  Preconditions.requireNonEmpty(null, new AnyRuntimeException());
  &gt;&gt; NullPointerException
@@ -1549,7 +1625,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が空マップの場合は引数として渡された任意の例外オブジェクトがスローされます。
+ If the map argument is an empty map, any exception object passed as an argument will be thrown.
  <code>
  Preconditions.requireNonEmpty(Map.of(), new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1557,22 +1633,22 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された map が null ではなく、かつ空マップではない場合は何もせず当該検証処理を終了します。
+ If the map passed as an argument is not null and is not an empty map, the validation process is ended without doing anything.
  <code>
  Preconditions.requireNonEmpty(Map.of("test", "test"), new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>map</code> - 検査対象のマップ</dd>
-<dd><code>exception</code> - 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>map</code> - The map to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された <code>map</code> が <code>ull</code>
-                                     の場合、または引数として渡された任意の例外オブジェクトが <code>null</code>
-                                     の場合</dd>
-<dd><code>org.thinkit.common.IllegalMapFoundException</code> - <a href="#requireNonEmpty(java.util.Map)"><code>requireNonEmpty(Map)</code></a>
-                                     メソッドから実行されて、引数として渡された <code>map</code>
-                                     が空マップの場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>map</code> passed as an argument is
+                                     <code>null</code> , or if any exception object
+                                     passed as an argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalMapFoundException</code> - If the <code>map</code> argument is an empty
+                                     map</dd>
 </dl>
 </section>
 </li>
@@ -1580,16 +1656,17 @@ int&nbsp;to,
 <section class="detail" id="requireNonEmpty(java.lang.Object[])">
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array)</span></div>
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 
+<div class="block">Ensures that the array passed as an argument is not <code>null</code> or an empty
+ array. 
  <p>
- 引数として渡された配列が <code>null</code> または空配列の場合は <code>IllegalArrayFoundException</code>
- を例外オブジェクトとしてスローします。
+ Throws <code>IllegalArrayFoundException</code> if the argument is either
+ <code>null</code> or an empty array.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された array が null の場合は NullPointerException がスローされます。
+ NullPointerException will be thrown if the argument passed to array is null.
  <code>
  Preconditions.requireNonEmpty(null);
  &gt;&gt; NullPointerException
@@ -1597,7 +1674,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
+ IllegalArrayFoundException will be thrown if the array argument is an empty array.
  <code>
  Preconditions.requireNonEmpty(new String[] {});
  &gt;&gt; IllegalArrayFoundException
@@ -1605,17 +1682,19 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
  <code>
  Preconditions.requireNonEmpty(new String[] { "" });
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>array</code> - 検査対象の配列</dd>
+<dd><code>array</code> - The array to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された配列が <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - 引数として渡された配列が空配列の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the array passed as an argument is
+                                       <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If the array passed as an argument is
+                                       an empty array</dd>
 </dl>
 </section>
 </li>
@@ -1624,17 +1703,19 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 
+<div class="block">Ensures that the array passed as an argument is not <code>null</code> or an empty
+ array. 
  <p>
- 引数として渡された配列が <code>null</code> または空配列の場合は <code>IllegalArrayFoundException</code>
- を例外オブジェクトとしてスローします。引数として渡された <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ Throws <code>IllegalArrayFoundException</code> if the array argument is
+ <code>null</code> or an empty array. The <code>message</code> passed as an argument
+ will be printed as a detailed message when an exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireNonEmpty(java.lang.Object%5B%5D,java.lang.RuntimeException)"><code>requireNonEmpty(Object[], RuntimeException)</code></a> method.
 
  <pre>
- 引数として渡された array が null の場合は NullPointerException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the array argument is null, NullPointerException will be thrown.
+ A message passed as an argument will be printed as a detailed message when an exception is raised.
  <code>
  Preconditions.requireNonEmpty(null, "any message");
  &gt;&gt; NullPointerException
@@ -1642,8 +1723,8 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が空配列の場合は IllegalArrayFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ IllegalArrayFoundException is thrown if the array argument is an empty array.
+ The message argument is output as a detailed message when an exception is raised.
  <code>
  Preconditions.requireNonEmpty(new String[] {}, "any message");
  &gt;&gt; IllegalArrayFoundException
@@ -1651,18 +1732,20 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
  <code>
  Preconditions.requireNonEmpty(new String[] { "" }, "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>array</code> - 検査対象の配列</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>array</code> - The array to be validated</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された配列が <code>null</code> の場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - 引数として渡された配列が空配列の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the array passed as an argument is
+                                       <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If the array passed as an argument is
+                                       an empty array</dd>
 </dl>
 </section>
 </li>
@@ -1671,14 +1754,17 @@ int&nbsp;to,
 <h3>requireNonEmpty</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireNonEmpty</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>[]&nbsp;array,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a>&nbsp;exception)</span></div>
-<div class="block">引数として渡された配列が <code>null</code> または空配列ではないことを保証します。 
+<div class="block">Ensures that the array passed as a number is not <code>null</code> or an empty
+ array. 
  <p>
- 引数として渡された配列が空配列の場合は引数として渡された任意の例外オブジェクトをスローします。
- <a href="#requireNonEmpty(java.lang.Object%5B%5D)"><code>requireNonEmpty(Object[])</code></a> メソッドから実行されて、引数として渡された配列が空配列の場合は
- <code>IllegalArrayFoundException</code> を例外オブジェクトとしてスローします。
+ If the array passed as an argument is an empty array, throw an arbitrary
+ exception object passed as an argument. Execute a
+ <a href="#requireNonEmpty(java.lang.Object%5B%5D)"><code>requireNonEmpty(Object[])</code></a> method and then throw
+ <code>IllegalArrayFoundException</code> if the array passed in as argument is an
+ empty array.
 
  <pre>
- 引数として渡された array が null の場合は NullPointerException がスローされます。
+ A NullPointerException will be thrown if the argument passed to array is null.
  <code>
  Preconditions.requireNonEmpty(null, new AnyRuntimeException());
  &gt;&gt; NullPointerException
@@ -1686,7 +1772,7 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が空配列の場合は引数として渡された任意の例外オブジェクトがスローされます。
+ If the array argument is an empty array, then any exception object passed as an argument will be thrown.
  <code>
  Preconditions.requireNonEmpty(new String[] {}, new AnyRuntimeException());
  &gt;&gt; AnyRuntimeException
@@ -1694,21 +1780,24 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として渡された array が null ではなく、かつ空配列ではない場合は何もせず当該検証処理を終了します。
+ If the array argument is non-null and is not an empty array, the function does nothing and exits the validation process.
  <code>
  Preconditions.requireNonEmpty(new String[] { "" }, new AnyRuntimeException());
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>array</code> - 検査対象の配列</dd>
-<dd><code>exception</code> - 前提条件を満たしていなかった場合にスローされる任意の例外オブジェクト</dd>
+<dd><code>array</code> - The array to be validated</dd>
+<dd><code>exception</code> - Any exception object that is thrown if the preconditions are
+                  not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - 引数として渡された配列が <code>null</code>
-                                       の場合、または引数として渡された例外オブジェクトが <code>null</code>
-                                       の場合</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - <a href="#requireNonEmpty(java.lang.Object%5B%5D)"><code>requireNonEmpty(Object[])</code></a>
-                                       メソッドから実行されて、引数として渡された配列が空配列の場合</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the array passed as an argument is
+                                       <code>null</code> or if the exception object
+                                       passed as an argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If the method
+                                       <a href="#requireNonEmpty(java.lang.Object%5B%5D)"><code>requireNonEmpty(Object[])</code></a> is
+                                       executed and the array passed as an
+                                       argument is an empty array</dd>
 </dl>
 </section>
 </li>
@@ -1717,16 +1806,18 @@ int&nbsp;to,
 <h3>requireStartWith</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireStartWith</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix)</span></div>
-<div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。
+<div class="block">Ensures that a given string begins with the prefix specified by
+ <code>prefix</code> .
  <p>
- 引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まらない場合は、実行時に
- <code>IllegalSequenceFoundException</code> が例外オブジェクトとしてスローされます。
+ If the argument does not begin with a prefix specified by <code>prefix</code>,
+ <code>IllegalSequenceFoundException</code> will be thrown as an exception object
+ at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は
- <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ If the sequence specified as an argument does not begin with a prefix, IllegalSequenceFoundException will be thrown.
  <code>
  Preconditions.requireStartWith("test", "est");
  &gt;&gt; IllegalSequenceFoundException
@@ -1734,18 +1825,19 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireStartWith("test", "test");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>prefix</code> - 接頭語</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>prefix</code> - The prefix</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として渡された文字列が <code>prefix</code>
-                                          で指定された接頭語で始まらない場合</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
+                                          does not start with a prefix
+                                          specified by <code>prefix</code></dd>
 </dl>
 </section>
 </li>
@@ -1755,18 +1847,20 @@ int&nbsp;to,
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireStartWith</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
-<div class="block">引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まることを保証します。
+<div class="block">Ensures that a given string begins with the prefix specified by
+ <code>prefix</code> .
  <p>
- 引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まらない場合は、実行時に
- <code>IllegalSequenceFoundException</code> が例外オブジェクトとしてスローされます。引数として渡された
- <code>message</code> が詳細メッセージとして例外発生時に出力されます。
+ If the argument doesn't start with a prefix specified by <code>prefix</code>, then
+ <code>IllegalSequenceFoundException</code> will be thrown at runtime as an
+ exception object. The <code>message</code> passed as an argument will be printed
+ as a detailed message when the exception occurs.
  <p>
- 任意の例外オブジェクトを指定する場合は
- <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- 引数として指定された sequence が prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
- 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+ If the sequence argument does not begin with the prefix prefix, IllegalSequenceFoundException will be thrown.
+ A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireStartWith("test", "est", "any message");
  &gt;&gt; IllegalSequenceFoundException
@@ -1774,19 +1868,20 @@ int&nbsp;to,
  </pre>
 
  <pre>
- 引数として指定された sequence が prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ If the sequence argument begins with a prefix, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireStartWith("test", "test", "any message");
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>prefix</code> - 接頭語</dd>
-<dd><code>message</code> - 例外スロー時に出力される詳細メッセージ</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>prefix</code> - The prefix</dd>
+<dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として渡された文字列が <code>prefix</code>
-                                          で指定された接頭語で始まらない場合</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
+                                          does not start with a prefix
+                                          specified by <code>prefix</code></dd>
 </dl>
 </section>
 </li>
@@ -1796,17 +1891,18 @@ int&nbsp;to,
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="member-name">requireStartWith</span>&#8203;(<span class="parameters"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sequence,
 <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prefix,
 int&nbsp;offset)</span></div>
-<div class="block">引数として指定された文字列が指定された検索開始位置から <code>prefix</code> で指定された接頭語で始まることを保証します。
+<div class="block">Ensures that the argument starts with the prefix specified by <code>prefix</code>
+ at the specified search start point.
  <p>
- 引数として指定された文字列が <code>prefix</code> で指定された接頭語で始まらない場合は、実行時に
- <code>IllegalSequenceFoundException</code> が例外オブジェクトとしてスローされます。
+ If the argument does not begin with a prefix specified by <code>prefix</code>,
+ <code>IllegalSequenceFoundException</code> will be thrown as an exception object
+ at runtime.
  <p>
- 任意の例外オブジェクトを指定する場合は
- <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a>
- メソッドを使用してください。
+ To specify an arbitrary exception object, use the
+ <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a> method.
 
  <pre>
- 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まらない場合は IllegalSequenceFoundException がスローされます。
+ If the sequence specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalSequenceFoundException will be thrown.
  <code>
  Preconditions.requireStartWith("test", "st", 1);
  &gt;&gt; IllegalSequenceFoundException
@@ -1814,19 +1910,21 @@ int&nbsp;offset)</span></div>
  </pre>
 
  <pre>
- 引数として指定された sequence が offset で指定された検索開始位置から prefix で指定された接頭語で始まる場合は何もせず当該検証処理を終了します。
+ If the sequence specified as an argument begins with a prefix specified by prefix from the search start position specified by offset, the function does nothing and ends the validation process.
  <code>
  Preconditions.requireStartWith("test", "est", 1);
  </code>
  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>sequence</code> - 検査対象の文字列</dd>
-<dd><code>prefix</code> - 接頭語</dd>
-<dd><code>offset</code> - 接頭語の検索開始位置</dd>
+<dd><code>sequence</code> - The string to be validated</dd>
+<dd><code>prefix</code> - The prefix</dd>
+<dd><code>offset</code> - The offset</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - 引数として渡された文字列が指定された検索開始位置から
-                                          <code>prefix</code> で指定された接頭語で始まらない場合</dd>
+<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
+                                          does not start with a prefix
+                                          specified by <code>prefix</code> from the
+                                          specified search start point</dd>
 </dl>
 </section>
 </li>
