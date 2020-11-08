@@ -1314,9 +1314,8 @@ public interface Preconditions {
      *                  not met
      *
      * @exception NullPointerException       If the array passed as an argument is
-     *                                       {@@code null} or if the exception
-     *                                       object passed as an argument is
-     *                                       {@code null}
+     *                                       {@code null} or if the exception object
+     *                                       passed as an argument is {@code null}
      * @exception IllegalArrayFoundException If the method
      *                                       {@link #requireNonEmpty(Object[])} is
      *                                       executed and the array passed as an
