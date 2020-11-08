@@ -509,12 +509,13 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が正数であることを保証します。 
+     * Ensures that the {@code number} argument is a positive number. 
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requirePositive(int)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requirePositive(int)} method.
      *
      * <pre>
-     * 引数として渡された number が負数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the number passed as an argument is negative, then any exception object specified as an argument will be thrown.
      * <code>
      * Preconditions.requirePositive(-1, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -522,19 +523,20 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された number が正数の場合は何もせず当該検証処理を終了します。
+     * If the number passed as an argument is a positive number, it does nothing and exits the validation process.
      * <code>
      * Preconditions.requirePositive(0, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param number    検査対象の数値
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param number    The number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IllegalNumberFoundException {@link #requirePositive(int)}
-     *                                        メソッドから実行され、指定された {@code number}
-     *                                        の数値が負数の場合
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the specified {@code number} is
+     *                                        negative
      */
     static void requirePositive(int number, RuntimeException exception) {
         requireNonNull(exception);
@@ -545,16 +547,16 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * Ensures that the argument {@code number} is a negative number. 
      * <p>
-     * 引数として指定された {@code number} の数値が正数である場合は {@link IllegalNumberFoundException}
-     * が必ず実行時に発生します。
+     * If the argument {@code number} is positive,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
+     * IllegalNumberFoundException will be thrown if the number passed as an argument is positive.
      * <code>
      * Preconditions.requireNegative(0);
      * &gt;&gt; IllegalNumberFoundException
@@ -562,15 +564,16 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * If number passed as an argument is a negative number, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNegative(-1);
      * </code>
      * </pre>
      *
-     * @param number 検査対象の数値
+     * @param number The number to be validated
      *
-     * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive number
      */
     static void requireNegative(int number) {
         requireNegative(number,
@@ -578,17 +581,19 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * Ensures that the argument {@code number} is a negative number. 
      * <p>
-     * 引数として指定された {@code number} の数値が正数である場合は {@link IllegalNumberFoundException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the argument {@code number} is a positive number,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNegative(int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された number が正数の場合は IllegalNumberFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the number argument is positive, IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNegative(0, "any message");
      * &gt;&gt; IllegalNumberFoundException
@@ -596,30 +601,33 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * If number passed as an argument is a negative number, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNegative(-1, "any message");
      * </code>
      * </pre>
      *
-     * @param number  検査対象の数値
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param number  The number to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException 引数として指定された {@code number} の数値が正数の場合
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive number
      */
     static void requireNegative(int number, String message) {
         requireNegative(number, new IllegalNumberFoundException(message));
     }
 
     /**
-     * 引数として指定された {@code number} の数値が負数であることを保証します。 
+     * Ensures that the argument {@code number} is a negative number. 
      * <p>
-     * 引数として指定された {@code number} が正数である場合は引数として指定された任意の例外オブジェクトをスローします。
+     * If {@code number} is a positive number, throw any exception object specified
+     * as an argument.
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireNegative(int)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNegative(int)} method.
      *
      * <pre>
-     * 引数として渡された number が正数の場合は引数として指定された任意の例外オブジェクトがスローされます。
+     * If the number passed as an argument is positive, any exception object specified as an argument will be thrown.
      * <code>
      * Preconditions.requireNegative(0, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -627,19 +635,21 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された number が負数の場合は何もせず当該検証処理を終了します。
+     * If number passed as an argument is a negative number, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireNegative(-1, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param number    検査対象の数値
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param number    The number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException        引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IllegalNumberFoundException {@link #requireNegative(int)}
-     *                                        メソッドから実行され、引数として渡された {@code number}
-     *                                        の数値が正数の場合
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the value of the {@code number}
+     *                                        passed as an argument is a positive
+     *                                        number
      */
     static void requireNegative(int number, RuntimeException exception) {
         requireNonNull(exception);
@@ -650,16 +660,17 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is a number within the range
+     * specified by {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
-     * が必ず実行時に発生します。
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
+     * If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
      * <code>
      * Preconditions.requireRange(10, 9);
      * &gt;&gt; IndexOutOfBoundsException
@@ -667,17 +678,18 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireRange(9, 10);
      * </code>
      * </pre>
      *
-     * @param index 検査対象のインデックス
-     * @param to    判定時の上限値
+     * @param index The index to be validated
+     * @param to    The upper limit
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code to}
-     *                                   で指定された範囲内に存在しない場合
+     * @throws IndexOutOfBoundsException If the number of the {@code index} argument
+     *                                   does not exist within the range specified
+     *                                   by {@code to}
      */
     static void requireRange(int index, int to) {
         requireRange(index, to, new IndexOutOfBoundsException(
@@ -685,17 +697,20 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is a number within the range
+     * specified by {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値よりも大きい場合は IndexOutOfBoundsException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the index passed as an argument is greater than the number specified by to, IndexOutOfBoundsException will be thrown.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireRange(10, 9, "any message");
      * &gt;&gt; IndexOutOfBoundsException
@@ -703,35 +718,35 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireRange(9, 10, "any message");
      * </code>
      * </pre>
      *
-     * @param index   検査対象のインデックス
-     * @param to      判定時の上限値
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param index   The index to be validated
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code to}
-     *                                   で指定された範囲内に存在しない場合
+     * @throws IndexOutOfBoundsException If the argument {@code index} does not fall
+     *                                   within the range specified by {@code to}
      */
     static void requireRange(int index, int to, String message) {
         requireRange(index, to, new IndexOutOfBoundsException(message));
     }
 
     /**
-     * 引数として指定された {@code index} が {@code to} で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is a number within the range
+     * specified by {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が {@code to}
-     * で指定された範囲内の数値ではない場合は、引数として指定された任意の例外オブジェクトをスローします。
-     * {@link #requireRange(int, int)} メソッドから実行された場合は
-     * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
+     * If {@code index} specified as an argument is not within the range specified
+     * by {@code to} , throw any exception object specified as an argument.
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int)} method.
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値よりも大きい場合は引数として指定された任意の例外がスローされます。
+     * If the index passed as an argument is greater than the number specified by to, any of the specified exceptions will be thrown.
      * <code>
      * Preconditions.requireRange(10, 9, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -739,20 +754,22 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が to で指定された数値以下の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is less than or equal to the value specified by "to", this function does nothing and exits the validation process.
      * <code>
      * Preconditions.requireRange(9, 10, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param index     検査対象のインデックス
-     * @param to        判定時の上限値
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param index     The index to be validated
+     * @param to        The upper limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException      引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IndexOutOfBoundsException {@link #requireRange(int, int)}
-     *                                      メソッドから実行され、引数として指定された {@code index} の数値が
-     *                                      {@code to} で指定された範囲内に存在しない場合
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the number of the {@code index}
+     *                                      specified as an argument does not fall
+     *                                      within the range specified by {@code to}
      */
     static void requireRange(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
@@ -763,17 +780,17 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code from} から {@code to}
-     * で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
-     * が必ず実行時に発生します。
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
+     * IndexOutOfBoundsException will be thrown if the index passed as an argument is not within the range specified by from and to.
      * <code>
      * Preconditions.requireRange(10, 0, 9);
      * &gt;&gt; IndexOutOfBoundsException
@@ -781,18 +798,19 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireRange(9, 0, 10);
      * </code>
      * </pre>
      *
-     * @param index 検査対象のインデックス
-     * @param from  判定時の最低値
-     * @param to    判定時の上限値
+     * @param index The index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code from}
-     *                                   から {@code to} で指定された範囲内に存在しない場合
+     * @throws IndexOutOfBoundsException If the number of the {@code index} argument
+     *                                   does not fall within the range specified by
+     *                                   {@code from} to {@code to}
      */
     static void requireRange(int index, int from, int to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
@@ -800,18 +818,20 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として指定された {@code index} が {@code from} から {@code to}
-     * で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が範囲外にある数値である場合は {@link IndexOutOfBoundsException}
-     * が必ず実行時に発生します。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireRange(int, int, int, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int, int, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内ではない場合は IndexOutOfBoundsException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * IndexOutOfBoundsException will be thrown if the index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireRange(10, 0, 9, "any message");
      * &gt;&gt; IndexOutOfBoundsException
@@ -819,37 +839,40 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireRange(9, 0, 10, "any message");
      * </code>
      * </pre>
      *
-     * @param index   検査対象のインデックス
-     * @param from    判定時の最低値
-     * @param to      判定時の上限値
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param index   The index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IndexOutOfBoundsException 引数として指定された {@code index} の数値が {@code from}
-     *                                   から {@code to} で指定された範囲内に存在しない場合
+     * @throws IndexOutOfBoundsException If the number of the {@code index} argument
+     *                                   does not fall within the range specified by
+     *                                   {@code from} to {@code to}
      */
     static void requireRange(int index, int from, int to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
     /**
-     * 引数として指定された {@code index} が {@code from} から {@code to}
-     * で指定された範囲内の数値であることを保証します。 
+     * Ensures that the {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
      * <p>
-     * 引数として指定された {@code index} が範囲外にある数値である場合は引数として指定された任意の例外オブジェクトをスローします。
-     * {@link #requireRange(int, int, int)} メソッドから実行され、引数として指定された {@code index} が
-     * {@code from} から {@code to} で指定された範囲内の数値ではない場合は
-     * {@link IndexOutOfBoundsException} を例外オブジェクトとしてスローします。
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the {@link #requireRange(int, int, int)}
+     * method, and throw {@link IndexOutOfBoundsException} as an exception object if
+     * the {@code index} argument is not a number within the range specified by
+     * {@code from} to {@code to} .
      * <p>
-     * 任意の例外オブジェクトを指定しない場合は {@link #requireRange(int, int, int)} メソッドを使用してください。
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(int, int, int)} method.
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内ではない場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * If the index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
      * <code>
      * Preconditions.requireRange(10, 0, 9, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -857,21 +880,23 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された index が from と to で指定された範囲内の場合は何もせず当該検証処理を終了します。
+     * If the index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
      * <code>
      * Preconditions.requireRange(9, 0, 10, new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param index     検査対象のインデックス
-     * @param from      判定時の最低値
-     * @param to        判定時の上限値
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param index     The index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException      引数として渡された例外オブジェクトが {@code null} の場合
-     * @exception IndexOutOfBoundsException 引数として指定された {@code index} の数値が
-     *                                      {@code from} から {@code to}
-     *                                      で指定された範囲内に存在しない場合
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the number of the {@code index}
+     *                                      argument does not fall within the range
+     *                                      specified by {@code from} to {@code to}
      */
     static void requireRange(int index, int from, int to, RuntimeException exception) {
         requireNonNull(exception);
@@ -882,13 +907,14 @@ public interface Preconditions {
     }
 
     /**
-     * 引数として渡された {@code list} が {@code null} または空リストではないことを保証します。 
+     * Ensures that {@code list} passed as an argument is not {@code null} or an
+     * empty list. 
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
-     * メソッドを使用してください。
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(List, RuntimeException)} method.
      *
      * <pre>
-     * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * NullPointerException will be thrown if the list passed as an argument is null.
      * <code>
      * Preconditions.requireNonEmpty(null);
      * &gt;&gt; NullPointerException
@@ -896,7 +922,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
+     * IllegalArrayFoundException will be thrown if the list passed as an argument is an empty list.
      * <code>
      * Preconditions.requireNonEmpty(List.of());
      * &gt;&gt; IllegalArrayFoundException
@@ -904,31 +930,35 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(List.of("test"));
      * </code>
      * </pre>
      *
-     * @param list 検査対象のリスト
+     * @param list The list to be validated
      *
-     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
-     *                                       が渡された場合
-     * @exception IllegalArrayFoundException 引数として渡された {@code list} が空リストの場合
+     * @exception NullPointerException       If {@code list} is passed as an
+     *                                       argument and {@code null} is passed
+     * @exception IllegalArrayFoundException If {@code list} passed as an argument
+     *                                       is an empty list
      */
     static void requireNonEmpty(List<?> list) {
         requireNonEmpty(list, new IllegalArrayFoundException("List must contain at least one or more elements"));
     }
 
     /**
-     * 引数として渡された {@code list} が {@code null} または空リストではないことを保証します。 
+     * Ensures that {@code list} passed as an argument is not {@code null} or an
+     * empty list. 
      * <p>
-     * 任意の例外オブジェクトを指定する場合は {@link #requireNonEmpty(List, RuntimeException)}
-     * メソッドを使用してください。引数として渡された {@code message} が詳細メッセージとして例外発生時に出力されます。
+     * To specify an arbitrary exception object, use
+     * {@link #requireNonEmpty(List, RuntimeException)} method. The {@code message}
+     * passed as an argument will be printed as a detailed message when an exception
+     * is thrown.
      *
      * <pre>
-     * 引数として渡された list が null の場合は NullPointerException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * If the list argument is null, NullPointerException will be thrown.
+     * A message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(null, "any message");
      * &gt;&gt; NullPointerException
@@ -936,8 +966,8 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が空リストの場合は IllegalArrayFoundException がスローされます。
-     * 引数として渡された message が例外発生時に詳細メッセージとして出力されます。
+     * IllegalArrayFoundException is thrown if the list argument is an empty list.
+     * The message argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(List.of(), "any message");
      * &gt;&gt; IllegalArrayFoundException
@@ -945,32 +975,35 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(List.of("test"), "any message");
      * </code>
      * </pre>
      *
-     * @param list    検査対象のリスト
-     * @param message 例外スロー時に出力される詳細メッセージ
+     * @param list    The list to be validated
+     * @param message Detailed messages to be output on exception throwing
      *
-     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
-     *                                       が渡された場合
-     * @exception IllegalArrayFoundException 引数として渡された {@code list} が空リストの場合
+     * @exception NullPointerException       If {@code list} is passed as an
+     *                                       argument and {@code null} is passed
+     * @exception IllegalArrayFoundException If {@code list} passed as an argument
+     *                                       is an empty list
      */
     static void requireNonEmpty(List<?> list, String message) {
         requireNonEmpty(list, new IllegalArrayFoundException(message));
     }
 
     /**
-     * 引数として指定された {@code list} が {@code null} または空リストではないことを保証します。 
+     * Ensures that {@code list} given as an argument is not {@code null} or an
+     * empty list. 
      * <p>
-     * 引数として渡された {@code list} が空リストの場合は引数として渡された任意の例外オブジェクトをスローします。
-     * {@link #requireNonEmpty(List)} メソッドから実行され 、引数として渡された {@code list} が空リストの場合は
-     * {@link IllegalArrayFoundException} を例外オブジェクトとしてスローします。
+     * If {@code list} is an empty list, throw any exception object passed as an
+     * argument. If it is executed by the {@link #requireNonEmpty(List)} method and
+     * {@code list} is an empty list, it throws {@link IllegalArrayFoundException}
+     * as an exception object.
      *
      * <pre>
-     * 引数として渡された list が null の場合は NullPointerException がスローされます。
+     * NullPointerException will be thrown if the list passed as an argument is null.
      * <code>
      * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
      * &gt;&gt; NullPointerException
@@ -978,7 +1011,7 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が空リストの場合は引数として渡された任意の例外オブジェクトがスローされます。
+     * If the list passed as an argument is an empty list, any exception object passed as an argument is thrown.
      * <code>
      * Preconditions.requireNonEmpty(List.of(), new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
@@ -986,21 +1019,24 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * 引数として渡された list が null ではなく、かつ空リストではない場合は何もせず当該検証処理を終了します。
+     * If the list passed as an argument is not null and is not an empty list, the validation process is terminated without doing anything.
      * <code>
      * Preconditions.requireNonEmpty(List.of("test"), new AnyRuntimeException());
      * </code>
      * </pre>
      *
-     * @param list      検査対象のリスト
-     * @param exception 前提条件を満たさなかった場合にスローされる任意の例外オブジェクト
+     * @param list      The list to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
      *
-     * @exception NullPointerException       引数として渡された {@code list} が {@code null}
-     *                                       の場合、または引数として渡された例外オブジェクトが {@code null}
-     *                                       の場合
-     * @exception IllegalArrayFoundException {@link #requireNonEmpty(List)}
-     *                                       メソッドから実行され、引数として渡された {@code list}
-     *                                       が空リストの場合
+     * @exception NullPointerException       If {@code list} passed as an argument
+     *                                       is {@code null} or if the exception
+     *                                       object passed as an argument is
+     *                                       {@code null}
+     * @exception IllegalArrayFoundException If it is executed by the
+     *                                       {@link #requireNonEmpty(List)} method
+     *                                       and the {@code list} passed as an
+     *                                       argument is an empty list
      */
     static void requireNonEmpty(List<?> list, RuntimeException exception) {
         requireNonNull(list);
