@@ -58,6 +58,11 @@ final class PreconditionsTest {
     /**
      * 範囲外だった場合の例外メッセージ
      */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM = "Index %s out-of-bounds for range from length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO = "Index %s out-of-bounds for range from length 0 to length %s";
 
     /**
@@ -352,7 +357,64 @@ final class PreconditionsTest {
     }
 
     /**
-     * {@link Preconditions#requireRange(int, int)} メソッドのテストケースを管理するインナークラスです。
+     * {@link Preconditions#requireRangeFrom(int, int)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeFrom {
+
+        @ParameterizedTest
+        @ValueSource(ints = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, testParameter + 1));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM, testParameter, testParameter + 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, testParameter - 1));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(int, int, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireRangeFromWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeFrom(0, 10, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(int testParameter) {
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, testParameter + 1));
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(int testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, testParameter - 1));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(int, int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -378,7 +440,7 @@ final class PreconditionsTest {
     }
 
     /**
-     * {@link Preconditions#requireRange(int, int, RuntimeException)}
+     * {@link Preconditions#requireRangeTo(int, int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
