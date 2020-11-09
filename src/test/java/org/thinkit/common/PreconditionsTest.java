@@ -358,7 +358,8 @@ final class PreconditionsTest {
         @Test
         void testWhenExceptionIsNull() {
             RuntimeException emptyException = null;
-            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(0L, emptyException));
+            short number = 0;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
         }
 
         @Test
@@ -377,6 +378,70 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(short testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requirePositive(byte)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireBytePositive {
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -1, -2, -10, -100 })
+        void testWhenNumberIsNegative(byte testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requirePositive(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_BYTE_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 0, 1, 2, 10, 100 })
+        void testWhenNumberIsPositive(byte testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requirePositive(byte, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireBytePositiveWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte number = 0;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsNegativeAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte number = -1;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -1, -2, -10, -100 })
+        void testWhenNumberIsNegative(byte testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 0, 1, 2, 10, 100 })
+        void testWhenNumberIsPositive(byte testParameter) {
             assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
         }
     }
@@ -564,6 +629,70 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(shorts = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(short testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(byte)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireByteNegative {
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 0, 1, 2, 10, 100 })
+        void testWhenNumberIsPositive(byte testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requireNegative(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_BYTE_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -1, -2, -10, -100 })
+        void testWhenNumberIsNegative(byte testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(byte, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireBytesNegativeWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte number = -1;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsPositiveAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte number = 0;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 0, 1, 2, 10, 100 })
+        void testWhenNumberIsPositive(byte testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -1, -2, -10, -100 })
+        void testWhenNumberIsNegative(byte testParameter) {
             assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
         }
     }
@@ -1343,6 +1472,16 @@ final class PreconditionsTest {
      * short数値が正数だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_SHORT_NUMBER = "Short number must be negative but %s was given";
+
+    /**
+     * byte数値が負数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_BYTE_NUMBER = "Byte number must be positive but %s was given";
+
+    /**
+     * byte数値が正数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_BYTE_NUMBER = "Byte number must be negative but %s was given";
 
     /**
      * 範囲外だった場合の例外メッセージ
