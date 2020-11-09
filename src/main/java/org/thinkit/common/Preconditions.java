@@ -17,6 +17,7 @@ package org.thinkit.common;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * The {@link Preconditions} interface provides a way to ensure the
@@ -1293,6 +1294,143 @@ public interface Preconditions {
         requireNonNull(exception);
 
         if (map.isEmpty()) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that {@code set} passed as an argument is not {@code null} or an
+     * empty set. 
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Set, RuntimeException)} method.
+     *
+     * <pre>
+     * If the set argument is null, NullPointerException will be thrown.
+     * <code>
+     * Preconditions.requireNonEmpty(null);
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * IllegalSetFoundException will be thrown if the set passed as an argument is an empty set.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of());
+     * &gt;&gt; IllegalSetFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the set passed as an argument is not null and is not an empty set, the validation process is ended without doing anything.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of("test"));
+     * </code>
+     * </pre>
+     *
+     * @param set The set to be validated
+     *
+     * @throws IllegalSetFoundException If the {@code set} passed as an argument
+     *                                  does not contain any elements
+     */
+    static void requireNonEmpty(Set<?> set) {
+        requireNonEmpty(set, new IllegalSetFoundException("Set must contain at least one or more elements"));
+    }
+
+    /**
+     * Ensures that {@code set} passed as an argument is not {@code null} or an
+     * empty set. 
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Set, RuntimeException)} method. The {@code message}
+     * passed as an argument will be printed as a detailed message when an exception
+     * is thrown.
+     *
+     * <pre>
+     * If the set argument is null, NullPointerException will be thrown.
+     * A message passed as an argument will be printed as a detailed message if an exception is raised.
+     * <code>
+     * Preconditions.requireNonEmpty(null, "any message");
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the set argument is an empty set, IllegalSetFoundException will be thrown.
+     * The message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of(), "any message");
+     * &gt;&gt; IllegalSetFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the set passed as an argument is not null and is not an empty set, the validation process is ended without doing anything.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of("test"), "any message");
+     * </code>
+     * </pre>
+     *
+     * @param set     The set to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalSetFoundException If the {@code set} passed as an argument
+     *                                  does not contain any elements
+     */
+    static void requireNonEmpty(Set<?> set, String message) {
+        requireNonEmpty(set, new IllegalSetFoundException(message));
+    }
+
+    /**
+     * Ensures that {@code set} passed as an argument is not {@code null} or an
+     * empty set. 
+     * <p>
+     * If {@code set} is an empty set, any exception object passed as an argument
+     * will be returned. Executed by the {@link #requireNonEmpty(Set)} method, if
+     * the {@code set} passed as argument is an empty set, throws
+     * {@link IllegalSetFoundException} as an exception object.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNonEmpty(Set)} method.
+     *
+     * <pre>
+     * If the set argument is null, NullPointerException will be thrown.
+     * <code>
+     * Preconditions.requireNonEmpty(null, new AnyRuntimeException());
+     * &gt;&gt; NullPointerException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the set argument is an empty set, any exception object passed as an argument will be thrown.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of(), new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the set passed as an argument is not null and is not an empty set, the validation process is ended without doing anything.
+     * <code>
+     * Preconditions.requireNonEmpty(Set.of("test"), new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param set       The set to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException     If {@code set} passed as an argument is
+     *                                     {@code null} , or if any exception object
+     *                                     passed as an argument is {@code null}
+     * @exception IllegalSetFoundException If the {@code set} argument is an empty
+     *                                     set
+     */
+    static void requireNonEmpty(Set<?> set, RuntimeException exception) {
+        requireNonNull(set);
+        requireNonNull(exception);
+
+        if (set.isEmpty()) {
             throw exception;
         }
     }
