@@ -42,56 +42,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 final class PreconditionsTest {
 
     /**
-     * 文字列が空白だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_BLANK_STRING = "String must not be blank";
-
-    /**
-     * 数値が負数だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_NUMBER = "Number must be positive but %s was given";
-
-    /**
-     * 数値が正数だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER = "Number must be negative but %s was given";
-
-    /**
-     * 範囲外だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM = "Index %s out-of-bounds for range from length %s";
-
-    /**
-     * 範囲外だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO = "Index %s out-of-bounds for range from length 0 to length %s";
-
-    /**
-     * 範囲外だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
-
-    /*
-     * 空配列だった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_ARRAY = "Array must contain at least one or more elements";
-
-    /*
-     * 空リストだった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_LIST = "List must contain at least one or more elements";
-
-    /**
-     * 空マップだった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_MAP = "Map must contain at least one or more elements";
-
-    /**
-     * 空セットだった場合の例外メッセージ
-     */
-    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_SET = "Set must contain at least one or more elements";
-
-    /**
      * {@link Preconditions#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -307,6 +257,68 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requirePositive(long)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongPositive {
+
+        @ParameterizedTest
+        @ValueSource(longs = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(long testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requirePositive(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_LONG_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requirePositive(long, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongPositiveWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(0L, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsNegativeAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(-1L, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(long testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -363,6 +375,68 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(long)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongNegative {
+
+        @ParameterizedTest
+        @ValueSource(longs = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(long testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requireNegative(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_LONG_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(long, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongNegativeWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(-1L, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsPositiveAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(0L, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(long testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(long testParameter) {
             assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
         }
     }
@@ -1107,4 +1181,64 @@ final class PreconditionsTest {
                     () -> Preconditions.requireEndWith("test sequence ", testParameter, new TestException()));
         }
     }
+
+    /**
+     * 文字列が空白だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_BLANK_STRING = "String must not be blank";
+
+    /**
+     * 数値が負数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_NUMBER = "Number must be positive but %s was given";
+
+    /**
+     * 数値が正数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER = "Number must be negative but %s was given";
+
+    /**
+     * 数値が負数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_LONG_NUMBER = "Long number must be positive but %s was given";
+
+    /**
+     * 数値が正数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_LONG_NUMBER = "Long number must be negative but %s was given";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM = "Index %s out-of-bounds for range from length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO = "Index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
+
+    /*
+     * 空配列だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_ARRAY = "Array must contain at least one or more elements";
+
+    /*
+     * 空リストだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_LIST = "List must contain at least one or more elements";
+
+    /**
+     * 空マップだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_MAP = "Map must contain at least one or more elements";
+
+    /**
+     * 空セットだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_SET = "Set must contain at least one or more elements";
 }
