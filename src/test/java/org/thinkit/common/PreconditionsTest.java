@@ -447,6 +447,70 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requirePositive(float)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatPositive {
+
+        @ParameterizedTest
+        @ValueSource(floats = { -0.1f, 0.01f - 0.2f, -10.0f, -100.0f })
+        void testWhenNumberIsNegative(float testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requirePositive(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_FLOAT_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { 0.0f, 0.01f, 0.1f, 0.2f, 10.0f, 100.0f })
+        void testWhenNumberIsPositive(float testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requirePositive(float, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatPositiveWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            float number = 0.0f;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsNegativeAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            float number = -1.0f;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { -0.1f, 0.01f - 0.2f, -10.0f, -100.0f })
+        void testWhenNumberIsNegative(float testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { 0.0f, 0.01f, 0.1f, 0.2f, 10.0f, 100.0f })
+        void testWhenNumberIsPositive(float testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -693,6 +757,70 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(bytes = { -1, -2, -10, -100 })
         void testWhenNumberIsNegative(byte testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(float)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatNegative {
+
+        @ParameterizedTest
+        @ValueSource(floats = { 0.0f, 0.01f, 0.1f, 0.2f, 10.0f, 100.0f })
+        void testWhenNumberIsPositive(float testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requireNegative(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_FLOAT_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { -0.1f, 0.01f - 0.2f, -10.0f, -100.0f })
+        void testWhenNumberIsNegative(float testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(float, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatNegativeWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            float number = -1.0f;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsPositiveAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            float number = 0.0f;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { 0.0f, 0.01f, 0.1f, 0.2f, 10.0f, 100.0f })
+        void testWhenNumberIsPositive(float testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { -0.1f, 0.01f - 0.2f, -10.0f, -100.0f })
+        void testWhenNumberIsNegative(float testParameter) {
             assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
         }
     }
@@ -1482,6 +1610,16 @@ final class PreconditionsTest {
      * byte数値が正数だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_BYTE_NUMBER = "Byte number must be negative but %s was given";
+
+    /**
+     * byte数値が負数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_FLOAT_NUMBER = "Float number must be positive but %s was given";
+
+    /**
+     * byte数値が正数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_FLOAT_NUMBER = "Float number must be negative but %s was given";
 
     /**
      * 範囲外だった場合の例外メッセージ
