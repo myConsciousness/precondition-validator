@@ -96,7 +96,7 @@ loadScripts(document, 'script');</script>
  &gt;&gt; NullPointerException
 
  Preconditions.requireNonEmpty("");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
 
  You can also specify arbitrary exception objects and detailed messages as follows:
@@ -637,8 +637,8 @@ int&nbsp;offset,
 <div class="block">Ensures that the string of the <code>string</code> object given as an argument is
  not an empty string. 
  <p>
- <code>IllegalSequenceFoundException</code> is always raised at runtime if the
- string of the <code>string</code> object is an empty string.
+ <code>IllegalStringFoundException</code> is always raised at runtime if the string
+ of the <code>string</code> object is an empty string.
  <p>
  Use the <a href="#requireNonEmpty(java.lang.String)"><code>requireNonEmpty(String)</code></a> method if a reference to a
  <code>string</code> object specified as an argument is likely to be <code>null</code> .
@@ -649,10 +649,10 @@ int&nbsp;offset,
  <a href="#requireNonBlank(java.lang.String,java.lang.RuntimeException)"><code>requireNonBlank(String, RuntimeException)</code></a> method.
 
  <pre>
- IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
+ IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
  <code>
  Preconditions.requireNonBlank("");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -666,10 +666,9 @@ int&nbsp;offset,
 <dt>Parameters:</dt>
 <dd><code>string</code> - The string to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
-                                       argument</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
-                                       argument</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If an empty string is passed as an
+                                     argument</dd>
 </dl>
 </section>
 </li>
@@ -682,7 +681,7 @@ int&nbsp;offset,
  not an empty string. 
  <p>
  If the string of a <code>string</code> object is an empty string,
- <code>IllegalSequenceFoundException</code> will always be raised at runtime. The
+ <code>IllegalStringFoundException</code> will always be raised at runtime. The
  <code>message</code> passed as an argument is output as a detailed message when an
  exception occurs.
  <p>
@@ -690,11 +689,11 @@ int&nbsp;offset,
  <code>string</code> object specified as an argument is likely to be <code>null</code> .
 
  <pre>
- IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
+ IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
  A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonBlank("", "any message");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -709,10 +708,9 @@ int&nbsp;offset,
 <dd><code>string</code> - The string to be validated</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
-                                       argument</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
-                                       argument</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If an empty string is passed as an
+                                     argument</dd>
 </dl>
 </section>
 </li>
@@ -748,11 +746,11 @@ int&nbsp;offset,
                   not met</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
-                                          argument is <code>null</code></dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If executed by the
-                                          <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a>
-                                          method and the <code>string</code> passed
-                                          as an argument is an empty string</dd>
+                                        argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If executed by the
+                                        <a href="#requireNonBlank(java.lang.String)"><code>requireNonBlank(String)</code></a>
+                                        method and the <code>string</code> passed
+                                        as an argument is an empty string</dd>
 </dl>
 </section>
 </li>
@@ -765,8 +763,8 @@ int&nbsp;offset,
  <p>
  <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link"><code>NullPointerException</code></a> is always raised at runtime if the reference to
  a <code>string</code> object is <code>null</code> . And
- <code>IllegalSequenceFoundException</code> is always raised at runtime if the
- string of the <code>string</code> object is an empty string.
+ <code>IllegalStringFoundException</code> is always raised at runtime if the string
+ of the <code>string</code> object is an empty string.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireNonEmpty(java.lang.String,java.lang.RuntimeException)"><code>requireNonEmpty(String, RuntimeException)</code></a> method.
@@ -780,10 +778,10 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
+ IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
  <code>
  Preconditions.requireNonEmpty("");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -797,10 +795,9 @@ int&nbsp;offset,
 <dt>Parameters:</dt>
 <dd><code>string</code> - The string to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
-                                       argument</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
-                                       argument</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If an empty string is passed as an
+                                     argument</dd>
 </dl>
 </section>
 </li>
@@ -818,7 +815,7 @@ int&nbsp;offset,
  occurs.
  <p>
  If the string of a <code>string</code> object is an empty string,
- <code>IllegalSequenceFoundException</code> is always raised at runtime. The
+ <code>IllegalStringFoundException</code> is always raised at runtime. The
  <code>message</code> passed as an argument is output as a detailed message when an
  exception occurs.
  <p>
@@ -835,11 +832,11 @@ int&nbsp;offset,
  </pre>
 
  <pre>
- IllegalSequenceFoundException will be thrown if the argument passed to string is an empty string.
+ IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
  A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty("", "any message");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -854,10 +851,9 @@ int&nbsp;offset,
 <dd><code>string</code> - The string to be validated</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an
-                                       argument</dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If an empty string is passed as an
-                                       argument</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If an empty string is passed as an
+                                     argument</dd>
 </dl>
 </section>
 </li>
@@ -902,11 +898,11 @@ int&nbsp;offset,
                   not met</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If the exception object passed as an
-                                          argument is <code>null</code> or if the
-                                          <code>string</code> passed as an argument
-                                          is <code>null</code></dd>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If <code>string</code> passed as an
-                                          argument is an empty string</dd>
+                                        argument is <code>null</code> or if the
+                                        <code>string</code> passed as an argument
+                                        is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If <code>string</code> passed as an
+                                        argument is an empty string</dd>
 </dl>
 </section>
 </li>
@@ -1969,17 +1965,17 @@ int&nbsp;to,
  <code>prefix</code> .
  <p>
  If the argument does not begin with a prefix specified by <code>prefix</code>,
- <code>IllegalSequenceFoundException</code> will be thrown as an exception object
- at runtime.
+ <code>IllegalStringFoundException</code> will be thrown as an exception object at
+ runtime.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- If the string specified as an argument does not begin with a prefix, IllegalSequenceFoundException will be thrown.
+ If the string specified as an argument does not begin with a prefix, IllegalStringFoundException will be thrown.
  <code>
  Preconditions.requireStartWith("test", "est");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -1994,9 +1990,9 @@ int&nbsp;to,
 <dd><code>string</code> - The string to be validated</dd>
 <dd><code>prefix</code> - The prefix</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
-                                          does not start with a prefix
-                                          specified by <code>prefix</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If a string passed as an argument does
+                                        not start with a prefix specified by
+                                        <code>prefix</code></dd>
 </dl>
 </section>
 </li>
@@ -2010,19 +2006,19 @@ int&nbsp;to,
  <code>prefix</code> .
  <p>
  If the argument doesn't start with a prefix specified by <code>prefix</code>, then
- <code>IllegalSequenceFoundException</code> will be thrown at runtime as an
- exception object. The <code>message</code> passed as an argument will be printed
- as a detailed message when the exception occurs.
+ <code>IllegalStringFoundException</code> will be thrown at runtime as an exception
+ object. The <code>message</code> passed as an argument will be printed as a
+ detailed message when the exception occurs.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireStartWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireStartWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- If the string argument does not begin with the prefix prefix, IllegalSequenceFoundException will be thrown.
+ If the string argument does not begin with the prefix prefix, IllegalStringFoundException will be thrown.
  A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireStartWith("test", "est", "any message");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -2038,9 +2034,9 @@ int&nbsp;to,
 <dd><code>prefix</code> - The prefix</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
-                                          does not start with a prefix
-                                          specified by <code>prefix</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If a string passed as an argument does
+                                        not start with a prefix specified by
+                                        <code>prefix</code></dd>
 </dl>
 </section>
 </li>
@@ -2054,17 +2050,17 @@ int&nbsp;offset)</span></div>
  at the specified search start point.
  <p>
  If the argument does not begin with a prefix specified by <code>prefix</code>,
- <code>IllegalSequenceFoundException</code> will be thrown as an exception object
- at runtime.
+ <code>IllegalStringFoundException</code> will be thrown as an exception object at
+ runtime.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a> method.
 
  <pre>
- If the string specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalSequenceFoundException will be thrown.
+ If the string specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalStringFoundException will be thrown.
  <code>
  Preconditions.requireStartWith("test", "st", 1);
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -2080,10 +2076,10 @@ int&nbsp;offset)</span></div>
 <dd><code>prefix</code> - The prefix</dd>
 <dd><code>offset</code> - The offset</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
-                                          does not start with a prefix
-                                          specified by <code>prefix</code> from the
-                                          specified search start point</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If a string passed as an argument does
+                                        not start with a prefix specified by
+                                        <code>prefix</code> from the specified
+                                        search start point</dd>
 </dl>
 </section>
 </li>
@@ -2098,19 +2094,19 @@ int&nbsp;offset,
  at the specified search start point.
  <p>
  If the argument doesn't start with a prefix specified by <code>prefix</code>, then
- <code>IllegalSequenceFoundException</code> will be thrown at runtime as an
- exception object. The <code>message</code> passed as an argument will be printed
- as a detailed message when the exception occurs.
+ <code>IllegalStringFoundException</code> will be thrown at runtime as an exception
+ object. The <code>message</code> passed as an argument will be printed as a
+ detailed message when the exception occurs.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireStartWith(java.lang.String,java.lang.String,int,java.lang.RuntimeException)"><code>requireStartWith(String, String, int, RuntimeException)</code></a> method.
 
  <pre>
- If the string argument does not begin at the search start position specified by offset and the prefix specified by prefix, an IllegalSequenceFoundException will be thrown.
+ If the string argument does not begin at the search start position specified by offset and the prefix specified by prefix, an IllegalStringFoundException will be thrown.
  A message passed as an argument will be printed as a detailed message when an exception occurs.
  <code>
  Preconditions.requireStartWith("test", "st", 1, "any message");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -2127,10 +2123,10 @@ int&nbsp;offset,
 <dd><code>offset</code> - The offset</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If a string passed as an argument
-                                          does not begin with the prefix
-                                          specified by <code>prefix</code> at the
-                                          specified search start position</dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If a string passed as an argument does
+                                        not begin with the prefix specified by
+                                        <code>prefix</code> at the specified search
+                                        start position</dd>
 </dl>
 </section>
 </li>
@@ -2228,17 +2224,17 @@ int&nbsp;offset,
  specified by <code>suffix</code> .
  <p>
  If the string specified as an argument does not end with the suffix specified
- by <code>suffix</code> , then <code>IllegalSequenceFoundException</code> is thrown as
- an exception object at runtime.
+ by <code>suffix</code> , then <code>IllegalStringFoundException</code> is thrown as an
+ exception object at runtime.
  <p>
  To specify an arbitrary exception object, use the
  <a href="#requireEndWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireEndWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- If the string specified as an argument does not end with the suffix specified by suffix, IllegalSequenceFoundException will be thrown.
+ If the string specified as an argument does not end with the suffix specified by suffix, IllegalStringFoundException will be thrown.
  <code>
  Preconditions.requireEndWith("test", "es");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -2253,9 +2249,9 @@ int&nbsp;offset,
 <dd><code>string</code> - The string to be validated</dd>
 <dd><code>suffix</code> - The suffix</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If the string passed as an argument
-                                          does not end with the suffix
-                                          specified by <code>suffix</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If the string passed as an argument
+                                        does not end with the suffix specified
+                                        by <code>suffix</code></dd>
 </dl>
 </section>
 </li>
@@ -2269,7 +2265,7 @@ int&nbsp;offset,
  specified by <code>suffix</code> .
  <p>
  If the string passed as an argument does not end with the suffix specified by
- <code>suffix</code>, <code>IllegalSequenceFoundException</code> will be thrown as an
+ <code>suffix</code>, <code>IllegalStringFoundException</code> will be thrown as an
  exception object at runtime. Any <code>message</code> passed as an argument will
  be printed as a detail message when the exception occurs.
  <p>
@@ -2277,11 +2273,11 @@ int&nbsp;offset,
  <a href="#requireEndWith(java.lang.String,java.lang.String,java.lang.RuntimeException)"><code>requireEndWith(String, String, RuntimeException)</code></a> method.
 
  <pre>
- If the string argument does not end with the suffix specified by suffix, IllegalSequenceFoundException will be thrown.
+ If the string argument does not end with the suffix specified by suffix, IllegalStringFoundException will be thrown.
  A message passed as an argument will be printed as a detailed message if an exception is thrown.
  <code>
  Preconditions.requireEndWith("test", "es", "any message");
- &gt;&gt; IllegalSequenceFoundException
+ &gt;&gt; IllegalStringFoundException
  </code>
  </pre>
 
@@ -2297,9 +2293,9 @@ int&nbsp;offset,
 <dd><code>suffix</code> - The suffix</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code>org.thinkit.common.IllegalSequenceFoundException</code> - If the string passed as an argument
-                                          does not end with the suffix
-                                          specified by <code>suffix</code></dd>
+<dd><code>org.thinkit.common.IllegalStringFoundException</code> - If the string passed as an argument
+                                        does not end with the suffix specified
+                                        by <code>suffix</code></dd>
 </dl>
 </section>
 </li>
