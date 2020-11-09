@@ -886,6 +886,117 @@ public interface Preconditions {
     }
 
     /**
+     * Ensures that the {@code number} argument is a positive float number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(float, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the float number passed as an argument is negative.
+     * <code>
+     * Preconditions.requirePositive(-1.0f);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as a number is positive, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requirePositive(0.0f);
+     * </code>
+     * </pre>
+     *
+     * @param number The float number to be validated
+     *
+     * @throws IllegalNumberFoundException If the float number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(float number) {
+        requirePositive(number, new IllegalNumberFoundException(
+                String.format("Float number must be positive but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive float number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(float, RuntimeException)} method.
+     *
+     * <pre>
+     * If the argument float number is negative IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requirePositive(-1.0f, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requirePositive(0.0f, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The float number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the float number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(float number, String message) {
+        requirePositive(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive float number. 
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requirePositive(float)} method.
+     *
+     * <pre>
+     * If the float number passed as an argument is negative, then any exception object specified as an argument will be thrown.
+     * <code>
+     * Preconditions.requirePositive(-1.0f, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requirePositive(0.0f, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The float number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the specified float {@code number}
+     *                                        is negative
+     */
+    static void requirePositive(float number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number < 0.0f) {
+            throw exception;
+        }
+    }
+
+    /**
      * Ensures that the argument {@code number} is a negative number. 
      * <p>
      * If the argument {@code number} is positive,
@@ -1345,6 +1456,119 @@ public interface Preconditions {
         requireNonNull(exception);
 
         if (number >= 0) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative float number. 
+     * <p>
+     * If the argument {@code number} is positive,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(float, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the float number passed as an argument is positive.
+     * <code>
+     * Preconditions.requireNegative(0.0f);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1.0f);
+     * </code>
+     * </pre>
+     *
+     * @param number The float number to be validated
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive float number
+     */
+    static void requireNegative(float number) {
+        requireNegative(number, new IllegalNumberFoundException(
+                String.format("Float number must be negative but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative float number. 
+     * <p>
+     * If the argument {@code number} is a positive number,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(float, RuntimeException)} method.
+     *
+     * <pre>
+     * If the float number argument is positive, IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireNegative(0.0f, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1.0f, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The float number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive float number
+     */
+    static void requireNegative(float number, String message) {
+        requireNegative(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative float number. 
+     * <p>
+     * If {@code number} is a positive number, throw any exception object specified
+     * as an argument.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNegative(float)} method.
+     *
+     * <pre>
+     * If the float number passed as an argument is positive, any exception object specified as an argument will be thrown.
+     * <code>
+     * Preconditions.requireNegative(0.0f, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1.0f, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The float number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the value of the {@code number}
+     *                                        passed as an argument is a positive
+     *                                        float number
+     */
+    static void requireNegative(float number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number >= 0.0f) {
             throw exception;
         }
     }
