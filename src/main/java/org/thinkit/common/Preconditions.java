@@ -541,6 +541,117 @@ public interface Preconditions {
     }
 
     /**
+     * Ensures that the {@code number} argument is a positive long number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(long, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the long number passed as an argument is negative.
+     * <code>
+     * Preconditions.requirePositive(-1L);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as a number is positive, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requirePositive(0L);
+     * </code>
+     * </pre>
+     *
+     * @param number The long number to be validated
+     *
+     * @throws IllegalNumberFoundException If the long number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(long number) {
+        requirePositive(number, new IllegalNumberFoundException(
+                String.format("Long number must be positive but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive long number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(long, RuntimeException)} method.
+     *
+     * <pre>
+     * If the argument long number is negative IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requirePositive(-1L, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requirePositive(0L, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The long number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the long number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(long number, String message) {
+        requirePositive(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive long number. 
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requirePositive(long)} method.
+     *
+     * <pre>
+     * If the long number passed as an argument is negative, then any exception object specified as an argument will be thrown.
+     * <code>
+     * Preconditions.requirePositive(-1L, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requirePositive(0L, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The long number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the specified long {@code number}
+     *                                        is negative
+     */
+    static void requirePositive(long number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number < 0L) {
+            throw exception;
+        }
+    }
+
+    /**
      * Ensures that the argument {@code number} is a negative number. 
      * <p>
      * If the argument {@code number} is positive,
@@ -646,6 +757,119 @@ public interface Preconditions {
      *                                        number
      */
     static void requireNegative(int number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number >= 0) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative long number. 
+     * <p>
+     * If the argument {@code number} is positive,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(int, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the long number passed as an argument is positive.
+     * <code>
+     * Preconditions.requireNegative(0L);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1L);
+     * </code>
+     * </pre>
+     *
+     * @param number The number to be validated
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive long number
+     */
+    static void requireNegative(long number) {
+        requireNegative(number, new IllegalNumberFoundException(
+                String.format("Long number must be negative but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative long number. 
+     * <p>
+     * If the argument {@code number} is a positive number,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(long, RuntimeException)} method.
+     *
+     * <pre>
+     * If the long number argument is positive, IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireNegative(0L, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1L, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The long number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive long number
+     */
+    static void requireNegative(long number, String message) {
+        requireNegative(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative long number. 
+     * <p>
+     * If {@code number} is a positive number, throw any exception object specified
+     * as an argument.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNegative(long)} method.
+     *
+     * <pre>
+     * If the long number passed as an argument is positive, any exception object specified as an argument will be thrown.
+     * <code>
+     * Preconditions.requireNegative(0L, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireNegative(-1L, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The long number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the value of the {@code number}
+     *                                        passed as an argument is a positive
+     *                                        long number
+     */
+    static void requireNegative(long number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0) {
