@@ -16,13 +16,13 @@ package org.thinkit.common;
 
 /**
  * Thrown to indicate that a method has been passed an illegal or inappropriate
- * sequence.
+ * string.
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-final class IllegalSequenceFoundException extends RuntimeException {
+final class IllegalStringFoundException extends RuntimeException {
 
     /**
      * serialVersionUID
@@ -30,20 +30,20 @@ final class IllegalSequenceFoundException extends RuntimeException {
     private static final long serialVersionUID = 0L;
 
     /**
-     * Constructs an <code>IllegalSequenceFoundException</code> with no detail
+     * Constructs an <code>IllegalStringFoundException</code> with no detail
      * message.
      */
-    public IllegalSequenceFoundException() {
+    public IllegalStringFoundException() {
         super();
     }
 
     /**
-     * Constructs an <code>IllegalSequenceFoundException</code> with the specified
+     * Constructs an <code>IllegalStringFoundException</code> with the specified
      * detail message.
      *
      * @param s the detail message.
      */
-    public IllegalSequenceFoundException(String s) {
+    public IllegalStringFoundException(String s) {
         super(s);
     }
 
@@ -61,7 +61,7 @@ final class IllegalSequenceFoundException extends RuntimeException {
      *                unknown.)
      * @since 1.0
      */
-    public IllegalSequenceFoundException(String message, Throwable cause) {
+    public IllegalStringFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -78,7 +78,7 @@ final class IllegalSequenceFoundException extends RuntimeException {
      *              unknown.)
      * @since 1.0
      */
-    public IllegalSequenceFoundException(Throwable cause) {
+    public IllegalStringFoundException(Throwable cause) {
         super(cause);
     }
 }
