@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Nested;
@@ -84,6 +85,11 @@ final class PreconditionsTest {
      * 空マップだった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_EMPTY_MAP = "Map must contain at least one or more elements";
+
+    /**
+     * 空セットだった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_SET = "Set must contain at least one or more elements";
 
     /**
      * {@link Preconditions#requireNonNull(Object)} メソッドのテストケースを管理するインナークラスです。
@@ -766,6 +772,70 @@ final class PreconditionsTest {
         @Test
         void testWhenMapIsNotEmpty() {
             assertDoesNotThrow(() -> Preconditions.requireNonEmpty(Map.of("test", "test"), new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNonEmpty(Set)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNonEmptySet {
+
+        @Test
+        void testWhenSetIsNull() {
+            final Set<String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty));
+        }
+
+        @Test
+        void testWhenSetIsEmpty() {
+            final IllegalSetFoundException exception = assertThrows(IllegalSetFoundException.class,
+                    () -> Preconditions.requireNonEmpty(Set.of()));
+            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_SET, exception.getMessage());
+        }
+
+        @Test
+        void testWhenMapIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(Set.of("test")));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNonEmpty(Set, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireNonEmptySetWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireNonEmpty(Set.of("test"), emptyException));
+        }
+
+        @Test
+        void testWhenSetIsNull() {
+            final Set<String> empty = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNonEmpty(empty, new TestException()));
+        }
+
+        @Test
+        void testWhenSetIsEmpty() {
+            assertThrows(TestException.class, () -> Preconditions.requireNonEmpty(Set.of(), new TestException()));
+        }
+
+        @Test
+        void testWhenSetIsNotEmpty() {
+            assertDoesNotThrow(() -> Preconditions.requireNonEmpty(Set.of("test"), new TestException()));
         }
     }
 
