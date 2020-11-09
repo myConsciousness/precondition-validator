@@ -1036,10 +1036,10 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalArrayFoundException will be thrown if the list passed as an argument is an empty list.
+     * IllegalListFoundException will be thrown if the list passed as an argument is an empty list.
      * <code>
      * Preconditions.requireNonEmpty(List.of());
-     * &gt;&gt; IllegalArrayFoundException
+     * &gt;&gt; IllegalListFoundException
      * </code>
      * </pre>
      *
@@ -1052,13 +1052,13 @@ public interface Preconditions {
      *
      * @param list The list to be validated
      *
-     * @exception NullPointerException       If {@code list} is passed as an
-     *                                       argument and {@code null} is passed
-     * @exception IllegalArrayFoundException If {@code list} passed as an argument
-     *                                       is an empty list
+     * @exception NullPointerException      If {@code list} is passed as an argument
+     *                                      and {@code null} is passed
+     * @exception IllegalListFoundException If {@code list} passed as an argument is
+     *                                      an empty list
      */
     static void requireNonEmpty(List<?> list) {
-        requireNonEmpty(list, new IllegalArrayFoundException("List must contain at least one or more elements"));
+        requireNonEmpty(list, new IllegalListFoundException("List must contain at least one or more elements"));
     }
 
     /**
@@ -1080,11 +1080,11 @@ public interface Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalArrayFoundException is thrown if the list argument is an empty list.
+     * IllegalListFoundException is thrown if the list argument is an empty list.
      * The message argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(List.of(), "any message");
-     * &gt;&gt; IllegalArrayFoundException
+     * &gt;&gt; IllegalListFoundException
      * </code>
      * </pre>
      *
@@ -1098,13 +1098,13 @@ public interface Preconditions {
      * @param list    The list to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception NullPointerException       If {@code list} is passed as an
-     *                                       argument and {@code null} is passed
-     * @exception IllegalArrayFoundException If {@code list} passed as an argument
-     *                                       is an empty list
+     * @exception NullPointerException      If {@code list} is passed as an argument
+     *                                      and {@code null} is passed
+     * @exception IllegalListFoundException If {@code list} passed as an argument is
+     *                                      an empty list
      */
     static void requireNonEmpty(List<?> list, String message) {
-        requireNonEmpty(list, new IllegalArrayFoundException(message));
+        requireNonEmpty(list, new IllegalListFoundException(message));
     }
 
     /**
@@ -1113,8 +1113,8 @@ public interface Preconditions {
      * <p>
      * If {@code list} is an empty list, throw any exception object passed as an
      * argument. If it is executed by the {@link #requireNonEmpty(List)} method and
-     * {@code list} is an empty list, it throws {@link IllegalArrayFoundException}
-     * as an exception object.
+     * {@code list} is an empty list, it throws {@link IllegalListFoundException} as
+     * an exception object.
      *
      * <pre>
      * NullPointerException will be thrown if the list passed as an argument is null.
@@ -1143,14 +1143,13 @@ public interface Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
-     * @exception NullPointerException       If {@code list} passed as an argument
-     *                                       is {@code null} or if the exception
-     *                                       object passed as an argument is
-     *                                       {@code null}
-     * @exception IllegalArrayFoundException If it is executed by the
-     *                                       {@link #requireNonEmpty(List)} method
-     *                                       and the {@code list} passed as an
-     *                                       argument is an empty list
+     * @exception NullPointerException      If {@code list} passed as an argument is
+     *                                      {@code null} or if the exception object
+     *                                      passed as an argument is {@code null}
+     * @exception IllegalListFoundException If it is executed by the
+     *                                      {@link #requireNonEmpty(List)} method
+     *                                      and the {@code list} passed as an
+     *                                      argument is an empty list
      */
     static void requireNonEmpty(List<?> list, RuntimeException exception) {
         requireNonNull(list);
@@ -1339,7 +1338,8 @@ public interface Preconditions {
      *                                       an empty array
      */
     static void requireNonEmpty(Object[] array) {
-        requireNonEmpty(Arrays.asList(array));
+        requireNonEmpty(Arrays.asList(array),
+                new IllegalArrayFoundException("Array must contain at least one or more elements"));
     }
 
     /**
@@ -1387,7 +1387,7 @@ public interface Preconditions {
      *                                       an empty array
      */
     static void requireNonEmpty(Object[] array, String message) {
-        requireNonEmpty(Arrays.asList(array), message);
+        requireNonEmpty(Arrays.asList(array), new IllegalArrayFoundException(message));
     }
 
     /**
