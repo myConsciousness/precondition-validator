@@ -1,20 +1,7 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Precondition Validator](#precondition-validator)
-  - [What is it?](#what-is-it)
-  - [Benefits](#benefits)
-  - [How To Use](#how-to-use)
-    - [1. Add the dependencies](#1-add-the-dependencies)
-    - [2. Add an import for **_Preconditions_**](#2-add-an-import-for-_preconditions_)
-    - [3. Define preconditions](#3-define-preconditions)
-  - [License](#license)
-  - [More Information](#more-information)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Precondition Validator
+
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## What is it?
 
