@@ -70,7 +70,12 @@ final class PreconditionsTest {
      */
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM_TO = "Index %s out-of-bounds for range from length %s to length %s";
 
-    /**
+    /*
+     * 空配列だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_EMPTY_ARRAY = "Array must contain at least one or more elements";
+
+    /*
      * 空リストだった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_EMPTY_LIST = "List must contain at least one or more elements";
@@ -655,7 +660,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenListIsEmpty() {
-            final IllegalArrayFoundException exception = assertThrows(IllegalArrayFoundException.class,
+            final IllegalListFoundException exception = assertThrows(IllegalListFoundException.class,
                     () -> Preconditions.requireNonEmpty(List.of()));
             assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_LIST, exception.getMessage());
         }
@@ -778,7 +783,7 @@ final class PreconditionsTest {
         void testWhenArrayIsEmpty() {
             final IllegalArrayFoundException exception = assertThrows(IllegalArrayFoundException.class,
                     () -> Preconditions.requireNonEmpty(new String[] {}));
-            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_LIST, exception.getMessage());
+            assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_ARRAY, exception.getMessage());
         }
 
         @Test
