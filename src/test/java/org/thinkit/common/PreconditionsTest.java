@@ -319,6 +319,69 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requirePositive(short)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortPositive {
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(short testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requirePositive(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_SHORT_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(short testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requirePositive(short, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortPositiveWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(0L, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsNegativeAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            short number = -1;
+            assertThrows(NullPointerException.class, () -> Preconditions.requirePositive(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(short testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(short testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requirePositive(testParameter, new TestException()));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireNegative(int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -437,6 +500,70 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(longs = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(short)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortNegative {
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(short testParameter) {
+            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+                    () -> Preconditions.requireNegative(testParameter));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_SHORT_NUMBER, testParameter),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(short testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireNegative(short, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortNegativeWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            short number = -1;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @Test
+        void testWhenNumberIsPositiveAndExceptionIsNull() {
+            RuntimeException emptyException = null;
+            short number = 0;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireNegative(number, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
+        void testWhenNumberIsPositive(short testParameter) {
+            assertThrows(TestException.class, () -> Preconditions.requireNegative(testParameter, new TestException()));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -1, -10, -100, -150, -500 })
+        void testWhenNumberIsNegative(short testParameter) {
             assertDoesNotThrow(() -> Preconditions.requireNegative(testParameter, new TestException()));
         }
     }
@@ -1198,14 +1325,24 @@ final class PreconditionsTest {
     private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER = "Number must be negative but %s was given";
 
     /**
-     * 数値が負数だった場合の例外メッセージ
+     * long数値が負数だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_LONG_NUMBER = "Long number must be positive but %s was given";
 
     /**
-     * 数値が正数だった場合の例外メッセージ
+     * long数値が正数だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_LONG_NUMBER = "Long number must be negative but %s was given";
+
+    /**
+     * short数値が負数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_NEGATIVE_SHORT_NUMBER = "Short number must be positive but %s was given";
+
+    /**
+     * short数値が正数だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FOR_POSITIVE_SHORT_NUMBER = "Short number must be negative but %s was given";
 
     /**
      * 範囲外だった場合の例外メッセージ
