@@ -22,23 +22,23 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**
- * {@link IllegalSequenceFoundException} クラスのテストクラスです。
+ * {@link IllegalStringFoundException} クラスのテストクラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-final class IllegalSequenceFoundExceptionTest {
+final class IllegalStringFoundExceptionTest {
 
     /**
      * <pre>
      * ❏ 概要
-     * {@link IllegalSequenceFoundException} クラスのデフォルトコンストラクタの機能を確認する。
+     * {@link IllegalStringFoundException} クラスのデフォルトコンストラクタの機能を確認する。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link IllegalSequenceFoundException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException} の生成されたインスタンスが {@code null} ではないこと。
      * </pre>
      *
      * <pre>
@@ -48,20 +48,20 @@ final class IllegalSequenceFoundExceptionTest {
      */
     @Test
     void testDefaultConstructor() {
-        assertNotNull(new IllegalSequenceFoundException());
+        assertNotNull(new IllegalStringFoundException());
     }
 
     /**
      * <pre>
      * ❏ 概要
-     * {@link IllegalSequenceFoundException} クラスのコンストラクタの機能を確認する。
+     * {@link IllegalStringFoundException} クラスのコンストラクタの機能を確認する。
      * インスタンス生成時には引数として任意の文字列を渡すこととする。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link IllegalSequenceFoundException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link IllegalSequenceFoundException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
+     * ・{@link IllegalStringFoundException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
      * </pre>
      *
      * <pre>
@@ -72,7 +72,7 @@ final class IllegalSequenceFoundExceptionTest {
     @Test
     void testConstructorWithMessage() {
         final String message = "This is a test message.";
-        final IllegalSequenceFoundException exception = new IllegalSequenceFoundException(message);
+        final IllegalStringFoundException exception = new IllegalStringFoundException(message);
 
         assertNotNull(exception);
         assertEquals(message, exception.getMessage());
@@ -87,9 +87,9 @@ final class IllegalSequenceFoundExceptionTest {
      *
      * <pre>
      * ❏ 観点
-     * ・{@link IllegalSequenceFoundException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link IllegalSequenceFoundException#getCause()} の返却値が {@code null} ではないこと。
-     * ・{@link IllegalSequenceFoundException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
+     * ・{@link IllegalStringFoundException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException#getCause()} の返却値が {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
      * </pre>
      *
      * <pre>
@@ -100,12 +100,12 @@ final class IllegalSequenceFoundExceptionTest {
     @Test
     void testConstructorWithMessageAndException() {
         final String message = "This is a test message.";
-        IllegalSequenceFoundException exception = null;
+        IllegalStringFoundException exception = null;
 
         try {
             new ArrayList<>(0).get(1);
         } catch (IndexOutOfBoundsException e) {
-            exception = new IllegalSequenceFoundException(message, e);
+            exception = new IllegalStringFoundException(message, e);
         }
 
         assertNotNull(exception);
@@ -122,8 +122,8 @@ final class IllegalSequenceFoundExceptionTest {
      *
      * <pre>
      * ❏ 観点
-     * ・{@link IllegalSequenceFoundException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link IllegalSequenceFoundException#getCause()} の返却値が {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link IllegalStringFoundException#getCause()} の返却値が {@code null} ではないこと。
      * </pre>
      *
      * <pre>
@@ -134,12 +134,12 @@ final class IllegalSequenceFoundExceptionTest {
     @Test
     void testConstructorWithException() {
 
-        IllegalSequenceFoundException exception = null;
+        IllegalStringFoundException exception = null;
 
         try {
             new ArrayList<>(0).get(1);
         } catch (IndexOutOfBoundsException e) {
-            exception = new IllegalSequenceFoundException(e);
+            exception = new IllegalStringFoundException(e);
         }
 
         assertNotNull(exception);

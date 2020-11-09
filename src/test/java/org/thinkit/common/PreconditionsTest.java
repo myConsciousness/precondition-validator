@@ -113,7 +113,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenStringIsBlank() {
-            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
                     () -> Preconditions.requireNonBlank(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
@@ -180,7 +180,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenStringIsBlank() {
-            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
                     () -> Preconditions.requireNonEmpty(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
@@ -832,7 +832,7 @@ final class PreconditionsTest {
         @ValueSource(strings = { "t", "est", "e", "sequence", "est", "tset" })
         void testWhenStringDoesNotStartWith(String testParameter) {
             final String testSequence = " test sequence";
-            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
                     () -> Preconditions.requireStartWith(testSequence, testParameter));
             assertEquals(String.format("String must start with the %s prefix, but %s was given", testParameter,
                     testSequence), exception.getMessage());
@@ -876,7 +876,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @MethodSource("badStringAndOffsetProvider")
         void testWhenStringDoesNotStartWith(String sequence, String prefix, int offset) {
-            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
                     () -> Preconditions.requireStartWith(sequence, prefix, offset));
             assertEquals(String.format("String must start with the %s prefix from %s index, but %s was given", prefix,
                     offset, sequence), exception.getMessage());
@@ -986,7 +986,7 @@ final class PreconditionsTest {
         @ValueSource(strings = { "test", "sequence", "c", "ce", "nce", "ence" })
         void testWhenStringDoesNotEndWith(String testParameter) {
             final String testSequence = "test sequence ";
-            final IllegalSequenceFoundException exception = assertThrows(IllegalSequenceFoundException.class,
+            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
                     () -> Preconditions.requireEndWith(testSequence, testParameter));
             assertEquals(
                     String.format("String must end with the %s suffix, but %s was given", testParameter, testSequence),
