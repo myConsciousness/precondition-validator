@@ -1542,10 +1542,10 @@ int&nbsp;to,
  </pre>
 
  <pre>
- IllegalArrayFoundException will be thrown if the list passed as an argument is an empty list.
+ IllegalListFoundException will be thrown if the list passed as an argument is an empty list.
  <code>
  Preconditions.requireNonEmpty(List.of());
- &gt;&gt; IllegalArrayFoundException
+ &gt;&gt; IllegalListFoundException
  </code>
  </pre>
 
@@ -1559,10 +1559,10 @@ int&nbsp;to,
 <dt>Parameters:</dt>
 <dd><code>list</code> - The list to be validated</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an
-                                       argument and <code>null</code> is passed</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If <code>list</code> passed as an argument
-                                       is an empty list</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an argument
+                                      and <code>null</code> is passed</dd>
+<dd><code>org.thinkit.common.IllegalListFoundException</code> - If <code>list</code> passed as an argument is
+                                      an empty list</dd>
 </dl>
 </section>
 </li>
@@ -1589,11 +1589,11 @@ int&nbsp;to,
  </pre>
 
  <pre>
- IllegalArrayFoundException is thrown if the list argument is an empty list.
+ IllegalListFoundException is thrown if the list argument is an empty list.
  The message argument is output as a detailed message when an exception occurs.
  <code>
  Preconditions.requireNonEmpty(List.of(), "any message");
- &gt;&gt; IllegalArrayFoundException
+ &gt;&gt; IllegalListFoundException
  </code>
  </pre>
 
@@ -1608,10 +1608,10 @@ int&nbsp;to,
 <dd><code>list</code> - The list to be validated</dd>
 <dd><code>message</code> - Detailed messages to be output on exception throwing</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an
-                                       argument and <code>null</code> is passed</dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If <code>list</code> passed as an argument
-                                       is an empty list</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> is passed as an argument
+                                      and <code>null</code> is passed</dd>
+<dd><code>org.thinkit.common.IllegalListFoundException</code> - If <code>list</code> passed as an argument is
+                                      an empty list</dd>
 </dl>
 </section>
 </li>
@@ -1625,8 +1625,8 @@ int&nbsp;to,
  <p>
  If <code>list</code> is an empty list, throw any exception object passed as an
  argument. If it is executed by the <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> method and
- <code>list</code> is an empty list, it throws <code>IllegalArrayFoundException</code>
- as an exception object.
+ <code>list</code> is an empty list, it throws <code>IllegalListFoundException</code> as
+ an exception object.
 
  <pre>
  NullPointerException will be thrown if the list passed as an argument is null.
@@ -1656,14 +1656,13 @@ int&nbsp;to,
 <dd><code>exception</code> - Any exception object that is thrown if the preconditions are
                   not met</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> passed as an argument
-                                       is <code>null</code> or if the exception
-                                       object passed as an argument is
-                                       <code>null</code></dd>
-<dd><code>org.thinkit.common.IllegalArrayFoundException</code> - If it is executed by the
-                                       <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> method
-                                       and the <code>list</code> passed as an
-                                       argument is an empty list</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>list</code> passed as an argument is
+                                      <code>null</code> or if the exception object
+                                      passed as an argument is <code>null</code></dd>
+<dd><code>org.thinkit.common.IllegalListFoundException</code> - If it is executed by the
+                                      <a href="#requireNonEmpty(java.util.List)"><code>requireNonEmpty(List)</code></a> method
+                                      and the <code>list</code> passed as an
+                                      argument is an empty list</dd>
 </dl>
 </section>
 </li>
