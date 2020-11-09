@@ -652,6 +652,123 @@ public interface Preconditions {
     }
 
     /**
+     * Ensures that the {@code number} argument is a positive short number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(short, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the short number passed as an argument is negative.
+     * <code>
+     * short number = -1;
+     * Preconditions.requirePositive(number);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as a number is positive, it does nothing and ends the validation process.
+     * <code>
+     * short number = 0;
+     * Preconditions.requirePositive(number);
+     * </code>
+     * </pre>
+     *
+     * @param number The short number to be validated
+     *
+     * @throws IllegalNumberFoundException If the short number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(short number) {
+        requirePositive(number, new IllegalNumberFoundException(
+                String.format("Short number must be positive but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive short number. 
+     * <p>
+     * If the argument {@code number} is negative,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requirePositive(short, RuntimeException)} method.
+     *
+     * <pre>
+     * If the argument short number is negative IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * short number = -1;
+     * Preconditions.requirePositive(number, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * short number = 0;
+     * Preconditions.requirePositive(number, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The short number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the short number of {@code number}
+     *                                     specified as an argument is a negative
+     *                                     number
+     */
+    static void requirePositive(short number, String message) {
+        requirePositive(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the {@code number} argument is a positive short number. 
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requirePositive(short)} method.
+     *
+     * <pre>
+     * If the short number passed as an argument is negative, then any exception object specified as an argument will be thrown.
+     * <code>
+     * short number = -1;
+     * Preconditions.requirePositive(number, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as an argument is a positive number, it does nothing and exits the validation process.
+     * <code>
+     * short number = 0;
+     * Preconditions.requirePositive(number, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The short number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the specified short {@code number}
+     *                                        is negative
+     */
+    static void requirePositive(short number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number < 0L) {
+            throw exception;
+        }
+    }
+
+    /**
      * Ensures that the argument {@code number} is a negative number. 
      * <p>
      * If the argument {@code number} is positive,
@@ -771,7 +888,7 @@ public interface Preconditions {
      * {@link IllegalNumberFoundException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
-     * {@link #requireNegative(int, RuntimeException)} method.
+     * {@link #requireNegative(long, RuntimeException)} method.
      *
      * <pre>
      * IllegalNumberFoundException will be thrown if the long number passed as an argument is positive.
@@ -788,7 +905,7 @@ public interface Preconditions {
      * </code>
      * </pre>
      *
-     * @param number The number to be validated
+     * @param number The long number to be validated
      *
      * @throws IllegalNumberFoundException If the number of {@code number} specified
      *                                     as an argument is a positive long number
@@ -870,6 +987,125 @@ public interface Preconditions {
      *                                        long number
      */
     static void requireNegative(long number, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (number >= 0) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative short number. 
+     * <p>
+     * If the argument {@code number} is positive,
+     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(short, RuntimeException)} method.
+     *
+     * <pre>
+     * IllegalNumberFoundException will be thrown if the short number passed as an argument is positive.
+     * <code>
+     * short number = 0;
+     * Preconditions.requireNegative(number);
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * short number = -1;
+     * Preconditions.requireNegative(number);
+     * </code>
+     * </pre>
+     *
+     * @param number The short number to be validated
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive short number
+     */
+    static void requireNegative(short number) {
+        requireNegative(number, new IllegalNumberFoundException(
+                String.format("Short number must be negative but %s was given", number)));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative short number. 
+     * <p>
+     * If the argument {@code number} is a positive number,
+     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireNegative(short, RuntimeException)} method.
+     *
+     * <pre>
+     * If the short number argument is positive, IllegalNumberFoundException will be thrown.
+     * The message passed as an argument will be output as a detailed message when an exception occurs.
+     * <code>
+     * short number = -1;
+     * Preconditions.requireNegative(number, "any message");
+     * &gt;&gt; IllegalNumberFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * short number = -1;
+     * Preconditions.requireNegative(number, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param number  The short number to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     *                                     as an argument is a positive short number
+     */
+    static void requireNegative(short number, String message) {
+        requireNegative(number, new IllegalNumberFoundException(message));
+    }
+
+    /**
+     * Ensures that the argument {@code number} is a negative short number. 
+     * <p>
+     * If {@code number} is a positive number, throw any exception object specified
+     * as an argument.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireNegative(short)} method.
+     *
+     * <pre>
+     * If the short number passed as an argument is positive, any exception object specified as an argument will be thrown.
+     * <code>
+     * short number = 0;
+     * Preconditions.requireNegative(number, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short number passed as an argument is a negative number, it does nothing and ends the validation process.
+     * <code>
+     * short number = -1;
+     * Preconditions.requireNegative(number, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param number    The short number to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException        If the exception object passed as an
+     *                                        argument is {@code null}
+     * @exception IllegalNumberFoundException If the value of the {@code number}
+     *                                        passed as an argument is a positive
+     *                                        short number
+     */
+    static void requireNegative(short number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0) {
