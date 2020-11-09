@@ -4,14 +4,15 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [What is it?](#what-is-it)
-- [Benefits](#benefits)
-- [How To Use](#how-to-use)
-  - [1. Add the dependencies](#1-add-the-dependencies)
-  - [2. Add an import for **_Preconditions_**](#2-add-an-import-for-_preconditions_)
-  - [3. Define preconditions](#3-define-preconditions)
-- [License](#license)
-- [More Information](#more-information)
+- [Precondition Validator](#precondition-validator)
+  - [What is it?](#what-is-it)
+  - [Benefits](#benefits)
+  - [How To Use](#how-to-use)
+    - [1. Add the dependencies](#1-add-the-dependencies)
+    - [2. Add an import for **_Preconditions_**](#2-add-an-import-for-preconditions)
+    - [3. Define preconditions](#3-define-preconditions)
+  - [License](#license)
+  - [More Information](#more-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
