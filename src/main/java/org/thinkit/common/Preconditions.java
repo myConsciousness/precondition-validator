@@ -2311,6 +2311,250 @@ public interface Preconditions {
     }
 
     /**
+     * Ensures that the float {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(float, float, RuntimeException)} method.
+     *
+     * <pre>
+     * If the float index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0f, 9.0f);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0f, 10.0f);
+     * </code>
+     * </pre>
+     *
+     * @param index The float index to be validated
+     * @param from  The lower limit
+     *
+     * @throws IndexOutOfBoundsException If the float number of the {@code index}
+     *                                   argument does not exist within the range
+     *                                   specified by {@code from}
+     */
+    static void requireRangeFrom(float index, float from) {
+        requireRangeFrom(index, from, new IndexOutOfBoundsException(
+                String.format("Float index %s out-of-bounds for range from length %s", index, from)));
+    }
+
+    /**
+     * Ensures that the float {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(float, float, RuntimeException)} method.
+     *
+     * <pre>
+     * If the float index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0f, 9.0f, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0f, 10.0f, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The float index to be validated
+     * @param from    The lower limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the argument float {@code index} does
+     *                                   not fall within the range specified by
+     *                                   {@code from}
+     */
+    static void requireRangeFrom(float index, float from, String message) {
+        requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the float {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If {@code index} specified as an argument is not within the range specified
+     * by {@code to} , throw any exception object specified as an argument.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(float, float)} method.
+     *
+     * <pre>
+     * If the float index passed as an argument is less than the number specified by from, any of the specified exceptions will be thrown.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0f, 9.0f, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0f, 10.0f, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The float index to be validated
+     * @param from      The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the float number of the {@code index}
+     *                                      specified as an argument does not fall
+     *                                      within the range specified by
+     *                                      {@code from}
+     */
+    static void requireRangeFrom(float index, float from, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(double, double, RuntimeException)} method.
+     *
+     * <pre>
+     * If the double index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0d, 9.0d);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0d, 10.0d);
+     * </code>
+     * </pre>
+     *
+     * @param index The double index to be validated
+     * @param from  The lower limit
+     *
+     * @throws IndexOutOfBoundsException If the double number of the {@code index}
+     *                                   argument does not exist within the range
+     *                                   specified by {@code from}
+     */
+    static void requireRangeFrom(double index, double from) {
+        requireRangeFrom(index, from, new IndexOutOfBoundsException(
+                String.format("Double index %s out-of-bounds for range from length %s", index, from)));
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(double, double, RuntimeException)} method.
+     *
+     * <pre>
+     * If the double index passed as an argument is less than the number specified by from, IndexOutOfBoundsException will be thrown.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0d, 9.0d, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0d, 10.0d, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The double index to be validated
+     * @param from    The lower limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the argument double {@code index} does
+     *                                   not fall within the range specified by
+     *                                   {@code from}
+     */
+    static void requireRangeFrom(double index, double from, String message) {
+        requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is a number within the range
+     * specified by {@code from} . 
+     * <p>
+     * If {@code index} specified as an argument is not within the range specified
+     * by {@code to} , throw any exception object specified as an argument.
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRangeFrom(double, double)} method.
+     *
+     * <pre>
+     * If the double index passed as an argument is less than the number specified by from, any of the specified exceptions will be thrown.
+     * <code>
+     * Preconditions.requireRangeFrom(10.0d, 9.0d, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is greater than or equal to the value specified by "from", this function does nothing and exits the validation process.
+     * <code>
+     * Preconditions.requireRangeFrom(9.0d, 10.0d, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The double index to be validated
+     * @param from      The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the double number of the
+     *                                      {@code index} specified as an argument
+     *                                      does not fall within the range specified
+     *                                      by {@code from}
+     */
+    static void requireRangeFrom(double index, double from, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from) {
+            throw exception;
+        }
+    }
+
+    /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code to} . 
      * <p>
