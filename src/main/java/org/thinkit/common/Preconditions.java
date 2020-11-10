@@ -3432,6 +3432,681 @@ public interface Preconditions {
     }
 
     /**
+     * Ensures that the long {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(long, long, long, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the long index passed as an argument is not within the range specified by from and to.
+     * <code>
+     * Preconditions.requireRange(10L, 0L, 9L);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9L, 0L, 10L);
+     * </code>
+     * </pre>
+     *
+     * @param index The long index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
+     *
+     * @throws IndexOutOfBoundsException If the long number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(long index, long from, long to) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(
+                String.format("Long index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * Ensures that the long {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(long, long, long, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the long index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireRange(10L, 0L, 9L, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9L, 0L, 10L, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The long index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the long number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(long index, long from, long to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the long {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the {@link #requireRange(long, long, long)}
+     * method, and throw {@link IndexOutOfBoundsException} as an exception object if
+     * the {@code index} argument is not a number within the range specified by
+     * {@code from} to {@code to} .
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(long, long, long)} method.
+     *
+     * <pre>
+     * If the long index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
+     * <code>
+     * Preconditions.requireRange(10L, 0L, 9L, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the long index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9L, 0L, 10L, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The long index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the long number of the {@code index}
+     *                                      argument does not fall within the range
+     *                                      specified by {@code from} to {@code to}
+     */
+    static void requireRange(long index, long from, long to, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from || to < index) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the short {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(short, short, short, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the short index passed as an argument is not within the range specified by from and to.
+     * <code>
+     * short index = 10;
+     * short from = 0;
+     * short to = 9;
+     * Preconditions.requireRange(index, from, to);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * short index = 9;
+     * short from = 0;
+     * short to = 10;
+     * Preconditions.requireRange(index, from, to);
+     * </code>
+     * </pre>
+     *
+     * @param index The short index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
+     *
+     * @throws IndexOutOfBoundsException If the short number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(short index, short from, short to) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(
+                String.format("Short index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * Ensures that the short {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(short, short, short, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the short index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * short index = 10;
+     * short from = 0;
+     * short to = 9;
+     * Preconditions.requireRange(index, from, to, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * short index = 9;
+     * short from = 0;
+     * short to = 10;
+     * Preconditions.requireRange(index, from, to, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The short index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the short number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(short index, short from, short to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the short {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the
+     * {@link #requireRange(short, short, short)} method, and throw
+     * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
+     * argument is not a number within the range specified by {@code from} to
+     * {@code to} .
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(short, short, short)} method.
+     *
+     * <pre>
+     * If the short index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
+     * <code>
+     * short index = 10;
+     * short from = 0;
+     * short to = 9;
+     * Preconditions.requireRange(index, from, to, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the short index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * short index = 9;
+     * short from = 0;
+     * short to = 10;
+     * Preconditions.requireRange(index, from, to, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The short index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the short number of the {@code index}
+     *                                      argument does not fall within the range
+     *                                      specified by {@code from} to {@code to}
+     */
+    static void requireRange(short index, short from, short to, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from || to < index) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the byte {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(byte, byte, byte, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the byte index passed as an argument is not within the range specified by from and to.
+     * <code>
+     * byte index = 10;
+     * byte from = 0;
+     * byte to = 9;
+     * Preconditions.requireRange(index, from, to);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the byte index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * byte index = 9;
+     * byte from = 0;
+     * byte to = 10;
+     * Preconditions.requireRange(index, from, to);
+     * </code>
+     * </pre>
+     *
+     * @param index The byte index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
+     *
+     * @throws IndexOutOfBoundsException If the byte number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(byte index, byte from, byte to) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(
+                String.format("Byte index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * Ensures that the byte {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(byte, byte, byte, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the byte index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * byte index = 10;
+     * byte from = 0;
+     * byte to = 9;
+     * Preconditions.requireRange(index, from, to, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the byte index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * byte index = 9;
+     * byte from = 0;
+     * byte to = 10;
+     * Preconditions.requireRange(index, from, to, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The byte index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the byte number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(byte index, byte from, byte to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the byte {@code index} argument is within the range specified by
+     * {@code from} to {@code to} . 
+     * <p>
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the {@link #requireRange(byte, byte, byte)}
+     * method, and throw {@link IndexOutOfBoundsException} as an exception object if
+     * the {@code index} argument is not a number within the range specified by
+     * {@code from} to {@code to} .
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(byte, byte, byte)} method.
+     *
+     * <pre>
+     * If the byte index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
+     * <code>
+     * byte index = 10;
+     * byte from = 0;
+     * byte to = 9;
+     * Preconditions.requireRange(index, from, to, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the byte index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * byte index = 9;
+     * byte from = 0;
+     * byte to = 10;
+     * Preconditions.requireRange(index, from, to, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The byte index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the byte number of the {@code index}
+     *                                      argument does not fall within the range
+     *                                      specified by {@code from} to {@code to}
+     */
+    static void requireRange(byte index, byte from, byte to, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from || to < index) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the float {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(float, float, float, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the float index passed as an argument is not within the range specified by from and to.
+     * <code>
+     * Preconditions.requireRange(10.0f, 0.0f, 9.0f);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0f, 0.0f, 10.0f);
+     * </code>
+     * </pre>
+     *
+     * @param index The float index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
+     *
+     * @throws IndexOutOfBoundsException If the float number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(float index, float from, float to) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(
+                String.format("Float index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * Ensures that the float {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(float, float, float, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the float index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireRange(10.0f, 0.0f, 9.0f, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0f, 0.0f, 10.0f, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The float index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the float number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(float index, float from, float to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the float {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the
+     * {@link #requireRange(float, float, float)} method, and throw
+     * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
+     * argument is not a number within the range specified by {@code from} to
+     * {@code to} .
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(float, float, float)} method.
+     *
+     * <pre>
+     * If the float index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
+     * <code>
+     * Preconditions.requireRange(10.0f, 0.0f, 9.0f, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the float index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0f, 0.0f, 10.0f, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The float index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the float number of the {@code index}
+     *                                      argument does not fall within the range
+     *                                      specified by {@code from} to {@code to}
+     */
+    static void requireRange(float index, float from, float to, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from || to < index) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} is always raised at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(double, double, double, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the double index passed as an argument is not within the range specified by from and to.
+     * <code>
+     * Preconditions.requireRange(10.0d, 0.0d, 9.0d);
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0d, 0.0d, 10.0d);
+     * </code>
+     * </pre>
+     *
+     * @param index The double index to be validated
+     * @param from  The lower limit
+     * @param to    The upper limit
+     *
+     * @throws IndexOutOfBoundsException If the double number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(double index, double from, double to) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(
+                String.format("Double index %s out-of-bounds for range from length %s to length %s", index, from, to)));
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * If the {@code index} argument is an out-of-range number,
+     * {@link IndexOutOfBoundsException} will always be raised at runtime. The
+     * {@code message} passed as an argument is output as a detailed message when an
+     * exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireRange(double, double, double, RuntimeException)} method.
+     *
+     * <pre>
+     * IndexOutOfBoundsException will be thrown if the double index passed as an argument is not within the range specified by from and to.
+     * A message passed as an argument is output as a detailed message when an exception occurs.
+     * <code>
+     * Preconditions.requireRange(10.0d, 0.0d, 9.0d, "any message");
+     * &gt;&gt; IndexOutOfBoundsException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0d, 0.0d, 10.0d, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param index   The double index to be validated
+     * @param from    The lower limit
+     * @param to      The upper limit
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @throws IndexOutOfBoundsException If the double number of the {@code index}
+     *                                   argument does not fall within the range
+     *                                   specified by {@code from} to {@code to}
+     */
+    static void requireRange(double index, double from, double to, String message) {
+        requireRange(index, from, to, new IndexOutOfBoundsException(message));
+    }
+
+    /**
+     * Ensures that the double {@code index} argument is within the range specified
+     * by {@code from} to {@code to} . 
+     * <p>
+     * Throws an arbitrary exception object if the argument {@code index} is an
+     * out-of-range number. Execute from the
+     * {@link #requireRange(double, double, double)} method, and throw
+     * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
+     * argument is not a number within the range specified by {@code from} to
+     * {@code to} .
+     * <p>
+     * If you do not specify an arbitrary exception object, use the
+     * {@link #requireRange(double, double, double)} method.
+     *
+     * <pre>
+     * If the double index passed as an argument is not within the range specified by from and to, any exception object passed as an argument will be thrown.
+     * <code>
+     * Preconditions.requireRange(10.0d, 0.0d, 9.0d, new AnyRuntimeException());
+     * &gt;&gt; AnyRuntimeException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the double index passed as an argument is within the range of from and to, it does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireRange(9.0d, 0.0d, 10.0d, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param index     The double index to be validated
+     * @param from      The upper limit
+     * @param to        The lower limit
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException      If the exception object passed as an
+     *                                      argument is {@code null}
+     * @exception IndexOutOfBoundsException If the double number of the
+     *                                      {@code index} argument does not fall
+     *                                      within the range specified by
+     *                                      {@code from} to {@code to}
+     */
+    static void requireRange(double index, double from, double to, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (index < from || to < index) {
+            throw exception;
+        }
+    }
+
+    /**
      * Ensures that {@code list} passed as an argument is not {@code null} or an
      * empty list. 
      * <p>
