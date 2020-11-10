@@ -1011,6 +1011,199 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requireRangeFrom(long, long)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongRangeFrom {
+
+        @ParameterizedTest
+        @ValueSource(longs = { 1L, 10L, 100L, 150L, 1000L })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(long testParameter) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, testParameter + 1));
+            assertEquals(String.format(EXCEPTION_MESSAGE_LONG_FOR_OUT_OF_BOUNDS_FROM, testParameter, testParameter + 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -100L, -50L, -10L, -1L })
+        void testWhenNumberIsInRangeFromNegativeToZero(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, testParameter - 1));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(long, long, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongRangeFromWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeFrom(0L, 10L, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { 1L, 10L, 100L, 150L, 1000L })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(long testParameter) {
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, testParameter + 1));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -100L, -50L, -10L, -1L })
+        void testWhenNumberIsInRangeFromNegativeToZero(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, testParameter - 1));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(short, short)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortRangeFrom {
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(short testParameter) {
+            short offset = 1;
+            short from = (short) (testParameter + offset);
+
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, from));
+            assertEquals(
+                    String.format(EXCEPTION_MESSAGE_SHORT_FOR_OUT_OF_BOUNDS_FROM, testParameter, testParameter + 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(short testParameter) {
+            short offset = 1;
+            short from = (short) (testParameter - offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(short, short, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortRangeFromWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            short index = 0;
+            short from = 10;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeFrom(index, from, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(short testParameter) {
+            short offset = 1;
+            short from = (short) (testParameter + offset);
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -100, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(short testParameter) {
+            short offset = 1;
+            short from = (short) (testParameter - offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(byte, byte)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireByteRangeFrom {
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 1, 2, 10, 99 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(byte testParameter) {
+            byte offset = 1;
+            byte from = (byte) (testParameter + offset);
+
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeFrom(testParameter, from));
+            assertEquals(String.format(EXCEPTION_MESSAGE_BYTE_FOR_OUT_OF_BOUNDS_FROM, testParameter, testParameter + 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -99, -50, -10, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(byte testParameter) {
+            byte offset = 1;
+            byte from = (byte) (testParameter - offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeFrom(byte, byte, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireByteRangeFromWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte index = 0;
+            byte from = 10;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeFrom(index, from, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 1, 2, 10, 99 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(byte testParameter) {
+            byte offset = 1;
+            byte from = (byte) (testParameter + offset);
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -99, -50, -10, -2, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(byte testParameter) {
+            byte offset = 1;
+            byte from = (byte) (testParameter - offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeFrom(testParameter, from));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireRangeTo(int, int)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -1763,6 +1956,21 @@ final class PreconditionsTest {
      * 範囲外だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_FROM = "Index %s out-of-bounds for range from length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_LONG_FOR_OUT_OF_BOUNDS_FROM = "Long index %s out-of-bounds for range from length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_SHORT_FOR_OUT_OF_BOUNDS_FROM = "Short index %s out-of-bounds for range from length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_BYTE_FOR_OUT_OF_BOUNDS_FROM = "Byte index %s out-of-bounds for range from length %s";
 
     /**
      * 範囲外だった場合の例外メッセージ
