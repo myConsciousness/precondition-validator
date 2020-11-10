@@ -1378,6 +1378,314 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requireRangeTo(long, long)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(longs = { 1L, 10L, 100L, 150L, 1000L })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(long testParameter) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 1L));
+            assertEquals(String.format(EXCEPTION_MESSAGE_LONG_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 1L),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -100L, -50L, -10L, -2L, -1L })
+        void testWhenNumberIsInRangeFromNegativeToZero(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 1L));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(long, long, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireLongRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(0L, 10L, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { 1L, 10L, 100L, 150L, 1000L })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(long testParameter) {
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 1L));
+        }
+
+        @ParameterizedTest
+        @ValueSource(longs = { -100L, -50L, -10L, -1L })
+        void testWhenNumberIsInRangeFromNegativeToZero(long testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 1L));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(short, short)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(short testParameter) {
+            short offset = 1;
+            short to = (short) (testParameter - offset);
+
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_SHORT_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -100, -50, -10, -2, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(short testParameter) {
+            short offset = 1;
+            short to = (short) (testParameter + offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, to));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(short, short, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireShortRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            short index = 0;
+            short to = 10;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(index, to, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { 1, 10, 100, 150, 1000 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(short testParameter) {
+            short offset = 1;
+            short to = (short) (testParameter - offset);
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRangeTo(testParameter, to));
+        }
+
+        @ParameterizedTest
+        @ValueSource(shorts = { -100, -50, -10, -2, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(short testParameter) {
+            short offset = 1;
+            short to = (short) (testParameter + offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, to));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(byte, byte)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireByteRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 1, 2, 10, 99 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(byte testParameter) {
+            byte offset = 1;
+            byte to = (byte) (testParameter - offset);
+
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_BYTE_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 1),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -99, -50, -10, -2, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(byte testParameter) {
+            byte offset = 1;
+            byte to = (byte) (testParameter + offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, to));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(byte, byte, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireByteRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            byte index = 0;
+            byte to = 10;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(index, to, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { 1, 10, 99 })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(byte testParameter) {
+            byte offset = 1;
+            byte to = (byte) (testParameter - offset);
+            assertThrows(IndexOutOfBoundsException.class, () -> Preconditions.requireRangeTo(testParameter, to));
+        }
+
+        @ParameterizedTest
+        @ValueSource(bytes = { -99, -50, -10, -2, -1 })
+        void testWhenNumberIsInRangeFromNegativeToZero(byte testParameter) {
+            byte offset = 1;
+            byte to = (byte) (testParameter + offset);
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, to));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(float, float)} メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(floats = { 1.0f, 0.1f, 0.01f, 2.0f, 10.0f, 100.0f, 1000.0f })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(float testParameter) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 0.01f));
+            assertEquals(
+                    String.format(EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 0.01f),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { -1000.0f, -100.0f, -50.0f, -10.0f, -2.0f, -1.0f, -0.1f, -0.01f })
+        void testWhenNumberIsInRangeFromNegativeToZero(float testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 0.01f));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(float, float, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireFloatRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(0.0f, 1.0f, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { -1000.0f, -100.0f, -50.0f, -10.0f, -2.0f, -1.0f, -0.1f, -0.01f })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(float testParameter) {
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 0.01f));
+        }
+
+        @ParameterizedTest
+        @ValueSource(floats = { 1.0f, 0.1f, 0.01f, 2.0f, 10.0f, 100.0f, 1000.0f })
+        void testWhenNumberIsInRangeFromNegativeToZero(float testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 0.01f));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(double, double)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireDoubleRangeTo {
+
+        @ParameterizedTest
+        @ValueSource(doubles = { 1.0d, 0.1d, 0.01d, 2.0d, 10.0d, 100.0d, 1000.0d })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(double testParameter) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 0.01d));
+            assertEquals(
+                    String.format(EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_TO, testParameter, testParameter - 0.01d),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(doubles = { -1000.0d, -100.0d, -50.0d, -10.0d, -2.0d, -1.0d, -0.1d, -0.01d })
+        void testWhenNumberIsInRangeFromNegativeToZero(double testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 0.01d));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRangeTo(double, double, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    class TestRequireDoubleRangeToWithException {
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class, () -> Preconditions.requireRangeTo(0.0d, 1.0d, emptyException));
+        }
+
+        @ParameterizedTest
+        @ValueSource(doubles = { -1000.0d, -100.0d, -50.0d, -10.0d, -2.0d, -1.0d, -0.1d, -0.01d })
+        void testWhenNumberIsOutOfRangeFromPositiveToZero(double testParameter) {
+            assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRangeTo(testParameter, testParameter - 0.01d));
+        }
+
+        @ParameterizedTest
+        @ValueSource(doubles = { 1.0d, 0.1d, 0.01d, 2.0d, 10.0d, 100.0d, 1000.0d })
+        void testWhenNumberIsInRangeFromNegativeToZero(double testParameter) {
+            assertDoesNotThrow(() -> Preconditions.requireRangeTo(testParameter, testParameter + 0.01d));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireRange(int, int, RuntimeException)}
      * メソッドのテストケースを管理するインナークラスです。
      *
@@ -2103,6 +2411,31 @@ final class PreconditionsTest {
      * 範囲外だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_FOR_OUT_OF_BOUNDS_TO = "Index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_LONG_FOR_OUT_OF_BOUNDS_TO = "Long index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_SHORT_FOR_OUT_OF_BOUNDS_TO = "Short index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_BYTE_FOR_OUT_OF_BOUNDS_TO = "Byte index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_TO = "Float index %s out-of-bounds for range from length 0 to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_TO = "Double index %s out-of-bounds for range from length 0 to length %s";
 
     /**
      * 範囲外だった場合の例外メッセージ
