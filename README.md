@@ -1,5 +1,5 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
-![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.8-27ae60.svg?style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.9-27ae60.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
 ![Java CI with Gradle](https://github.com/myConsciousness/precondition-validator/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
@@ -50,7 +50,7 @@ Using the `Precondition Validator` features, you can safely and easily specify p
 <dependency>
   <groupId>org.thinkit.common</groupId>
   <artifactId>precondition-validator</artifactId>
-  <version>v1.0.8</version>
+  <version>v1.0.9</version>
 </dependency>
 
 <servers>
@@ -77,7 +77,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.common:precondition-validator:v1.0.8'
+    implementation 'org.thinkit.common:precondition-validator:v1.0.9'
 }
 ```
 
