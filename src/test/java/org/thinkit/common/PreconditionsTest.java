@@ -2381,6 +2381,346 @@ final class PreconditionsTest {
     }
 
     /**
+     * {@link Preconditions#requireRange(float, float, float)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireFloatRangeFromTo {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5.0f, -10.0f, -1.0f), Arguments.of(-2.0f, -10.0f, -1.0f),
+                    Arguments.of(-9.0f, -10.0f, -1.0f), Arguments.of(-1.0f, -10.0f, -1.0f),
+                    Arguments.of(-10.0f, -10.0f, -1.0f));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0.0f, -10.0f, -1.0f), Arguments.of(-11.0f, -10.0f, -1.0f));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0.0f, -5.0f, 5.0f), Arguments.of(-4.0f, -5.0f, 5.0f),
+                    Arguments.of(4.0f, -5.0f, 5.0f), Arguments.of(-5.0f, -5.0f, 5.0f), Arguments.of(5.0f, -5.0f, 5.0f));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6.0f, -5.0f, 5.0f), Arguments.of(-6.0f, -5.0f, 5.0f));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5.0f, 0.0f, 10.0f), Arguments.of(1.0f, 0.0f, 10.0f),
+                    Arguments.of(9.0f, 0.0f, 10.0f), Arguments.of(0.0f, 0.0f, 10.0f), Arguments.of(10.0f, 0.0f, 10.0f));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11.0f, 0.0f, 10.0f), Arguments.of(-1.0f, 0.0f, 10.0f));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(float index, float from, float to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(float index, float from, float to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(float index, float from, float to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRange(float, float, float, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireFloatRangeFromToWithException {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5.0f, -10.0f, -1.0f), Arguments.of(-2.0f, -10.0f, -1.0f),
+                    Arguments.of(-9.0f, -10.0f, -1.0f), Arguments.of(-1.0f, -10.0f, -1.0f),
+                    Arguments.of(-10.0f, -10.0f, -1.0f));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0.0f, -10.0f, -1.0f), Arguments.of(-11.0f, -10.0f, -1.0f));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0.0f, -5.0f, 5.0f), Arguments.of(-4.0f, -5.0f, 5.0f),
+                    Arguments.of(4.0f, -5.0f, 5.0f), Arguments.of(-5.0f, -5.0f, 5.0f), Arguments.of(5.0f, -5.0f, 5.0f));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6.0f, -5.0f, 5.0f), Arguments.of(-6.0f, -5.0f, 5.0f));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5.0f, 0.0f, 10.0f), Arguments.of(1.0f, 0.0f, 10.0f),
+                    Arguments.of(9.0f, 0.0f, 10.0f), Arguments.of(0.0f, 0.0f, 10.0f), Arguments.of(10.0f, 0.0f, 10.0f));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11.0f, 0.0f, 10.0f), Arguments.of(-1.0f, 0.0f, 10.0f));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireRange(1.0f, 0.0f, 2.0f, emptyException));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(float index, float from, float to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(float index, float from, float to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(float index, float from, float to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(float index, float from, float to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRange(double, double, double)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireDoubleRangeFromTo {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5.0d, -10.0d, -1.0d), Arguments.of(-2.0d, -10.0d, -1.0d),
+                    Arguments.of(-9.0d, -10.0d, -1.0d), Arguments.of(-1.0d, -10.0d, -1.0d),
+                    Arguments.of(-10.0d, -10.0d, -1.0d));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0.0d, -10.0d, -1.0d), Arguments.of(-11.0d, -10.0d, -1.0d));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0.0d, -5.0d, 5.0d), Arguments.of(-4.0d, -5.0d, 5.0d),
+                    Arguments.of(4.0d, -5.0d, 5.0d), Arguments.of(-5.0d, -5.0d, 5.0d), Arguments.of(5.0d, -5.0d, 5.0d));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6.0d, -5.0d, 5.0d), Arguments.of(-6.0d, -5.0d, 5.0d));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5.0d, 0.0d, 10.0d), Arguments.of(1.0d, 0.0d, 10.0d),
+                    Arguments.of(9.0d, 0.0d, 10.0d), Arguments.of(0.0d, 0.0d, 10.0d), Arguments.of(10.0d, 0.0d, 10.0d));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11.0d, 0.0d, 10.0d), Arguments.of(-1.0d, 0.0d, 10.0d));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(double index, double from, double to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(double index, double from, double to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(double index, double from, double to) {
+            final IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                    () -> Preconditions.requireRange(index, from, to));
+            assertEquals(String.format(EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_FROM_TO, index, from, to),
+                    exception.getMessage());
+        }
+    }
+
+    /**
+     * {@link Preconditions#requireRange(double, double, double, RuntimeException)}
+     * メソッドのテストケースを管理するインナークラスです。
+     *
+     * @author Kato Shinya
+     * @since 1.0
+     * @version 1.0
+     */
+    @Nested
+    @TestInstance(Lifecycle.PER_CLASS)
+    class TestRequireDoubleRangeFromToWithException {
+
+        Stream<Arguments> negativeNumbersProvider() {
+            return Stream.of(Arguments.of(-5.0d, -10.0d, -1.0d), Arguments.of(-2.0d, -10.0d, -1.0d),
+                    Arguments.of(-9.0d, -10.0d, -1.0d), Arguments.of(-1.0d, -10.0d, -1.0d),
+                    Arguments.of(-10.0d, -10.0d, -1.0d));
+        }
+
+        Stream<Arguments> badNegativeNumbersProvider() {
+            return Stream.of(Arguments.of(0.0d, -10.0d, -1.0d), Arguments.of(-11.0d, -10.0d, -1.0d));
+        }
+
+        Stream<Arguments> negativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(0.0d, -5.0d, 5.0d), Arguments.of(-4.0d, -5.0d, 5.0d),
+                    Arguments.of(4.0d, -5.0d, 5.0d), Arguments.of(-5.0d, -5.0d, 5.0d), Arguments.of(5.0d, -5.0d, 5.0d));
+        }
+
+        Stream<Arguments> badNegativeAndPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(6.0d, -5.0d, 5.0d), Arguments.of(-6.0d, -5.0d, 5.0d));
+        }
+
+        Stream<Arguments> positiveNumbersProvider() {
+            return Stream.of(Arguments.of(5.0d, 0.0d, 10.0d), Arguments.of(1.0d, 0.0d, 10.0d),
+                    Arguments.of(9.0d, 0.0d, 10.0d), Arguments.of(0.0d, 0.0d, 10.0d), Arguments.of(10.0d, 0.0d, 10.0d));
+        }
+
+        Stream<Arguments> badPositiveNumbersProvider() {
+            return Stream.of(Arguments.of(11.0d, 0.0d, 10.0d), Arguments.of(-1.0d, 0.0d, 10.0d));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeNumbersProvider")
+        void testWhenInRangeFromNegativeToNegative(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @Test
+        void testWhenExceptionIsNull() {
+            RuntimeException emptyException = null;
+            assertThrows(NullPointerException.class,
+                    () -> Preconditions.requireRange(1.0d, 0.0d, 2.0d, emptyException));
+        }
+
+        @ParameterizedTest
+        @MethodSource("negativeAndPositiveNumbersProvider")
+        void testWhenInRangeFromNegativeToPositive(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("positiveNumbersProvider")
+        void testWhenInRangeFromPositiveToPositive(double index, double from, double to) {
+            assertDoesNotThrow(() -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToNegative(double index, double from, double to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badNegativeAndPositiveNumbersProvider")
+        void testWhenOutOfRangeFromNegativeToPositive(double index, double from, double to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+
+        @ParameterizedTest
+        @MethodSource("badPositiveNumbersProvider")
+        void testWhenOutOfRangeFromPositiveToPositive(double index, double from, double to) {
+            assertThrows(TestException.class, () -> Preconditions.requireRange(index, from, to, new TestException()));
+        }
+    }
+
+    /**
      * {@link Preconditions#requireNonEmpty(List)} メソッドのテストケースを管理するインナークラスです。
      *
      * @author Kato Shinya
@@ -2984,6 +3324,16 @@ final class PreconditionsTest {
      * 範囲外だった場合の例外メッセージ
      */
     private static final String EXCEPTION_MESSAGE_BYTE_FOR_OUT_OF_BOUNDS_FROM_TO = "Byte index %s out-of-bounds for range from length %s to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_FLOAT_FOR_OUT_OF_BOUNDS_FROM_TO = "Float index %s out-of-bounds for range from length %s to length %s";
+
+    /**
+     * 範囲外だった場合の例外メッセージ
+     */
+    private static final String EXCEPTION_MESSAGE_DOUBLE_FOR_OUT_OF_BOUNDS_FROM_TO = "Double index %s out-of-bounds for range from length %s to length %s";
 
     /*
      * 空配列だった場合の例外メッセージ
