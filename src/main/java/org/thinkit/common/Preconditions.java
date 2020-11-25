@@ -5021,4 +5021,109 @@ public interface Preconditions {
             throw exception;
         }
     }
+
+    /**
+     * Ensures that the boolean value given as an argument is {@code true} .
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireTrue(boolean, RuntimeException)} method.
+     *
+     * <pre>
+     * If the boolean is false, then {@link IllegalBooleanFoundException} is thrown.
+     * <code>
+     * Preconditions.requireTrue(false);
+     * &gt;&gt; IllegalBooleanFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the boolean is true, the function does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireTrue(true);
+     * </code>
+     * </pre>
+     *
+     * @param bool The value to be validated
+     *
+     * @exception IllegalBooleanFoundException If the boolean value given as an
+     *                                         argument is {@code false}
+     */
+    static void requireTrue(boolean bool) {
+        requireTrue(bool, new IllegalBooleanFoundException("Boolean must be true, but false was given"));
+    }
+
+    /**
+     * Ensures that the boolean value given as an argument is {@code true} .
+     * <p>
+     * If the boolean passed as an argument is {@code false} ,
+     * {@link IllegalBooleanFoundException} will be thrown as an exception object at
+     * runtime. Any {@code message} passed as an argument will be printed as a
+     * detail message when the exception occurs.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireTrue(boolean, RuntimeException)} method.
+     *
+     * <pre>
+     * If the boolean is false, then {@link IllegalBooleanFoundException} is thrown.
+     * <code>
+     * Preconditions.requireTrue(false, "any message");
+     * &gt;&gt; IllegalBooleanFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the boolean is true, the function does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireTrue(true, "any message");
+     * </code>
+     * </pre>
+     *
+     * @param bool    The value to be validated
+     * @param message Detailed messages to be output on exception throwing
+     *
+     * @exception IllegalBooleanFoundException If the boolean value given as an
+     *                                         argument is {@code false}
+     */
+    static void requireTrue(boolean bool, String message) {
+        requireTrue(bool, new IllegalBooleanFoundException(message));
+    }
+
+    /**
+     * Ensures that the boolean value given as an argument is {@code true} .
+     * <p>
+     * If the boolean specified as an argument is {@code false} , then any exception
+     * object specified as an argument will be thrown at runtime.
+     * <p>
+     * To specify an arbitrary exception object, use the
+     * {@link #requireTrue(boolean, RuntimeException)} method.
+     *
+     * <pre>
+     * If the boolean is false, then {@link IllegalBooleanFoundException} is thrown.
+     * <code>
+     * Preconditions.requireTrue(false, "any message");
+     * &gt;&gt; IllegalBooleanFoundException
+     * </code>
+     * </pre>
+     *
+     * <pre>
+     * If the boolean is true, the function does nothing and ends the validation process.
+     * <code>
+     * Preconditions.requireTrue(true, new AnyRuntimeException());
+     * </code>
+     * </pre>
+     *
+     * @param bool      The value to be validated
+     * @param exception Any exception object that is thrown if the preconditions are
+     *                  not met
+     *
+     * @exception NullPointerException If any exception object specified as an
+     *                                 argument is {@code null}
+     */
+    static void requireTrue(boolean bool, RuntimeException exception) {
+        requireNonNull(exception);
+
+        if (!bool) {
+            throw exception;
+        }
+    }
 }
