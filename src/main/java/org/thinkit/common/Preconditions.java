@@ -5171,7 +5171,7 @@ public interface Preconditions {
      * <pre>
      * If the boolean is true, then {@link IllegalBooleanFoundException} is thrown.
      * <code>
-     * Preconditions.requireFalse(false, "any message");
+     * Preconditions.requireFalse(true, "any message");
      * &gt;&gt; IllegalBooleanFoundException
      * </code>
      * </pre>
@@ -5179,7 +5179,7 @@ public interface Preconditions {
      * <pre>
      * If the boolean is false, the function does nothing and ends the validation process.
      * <code>
-     * Preconditions.requireFalse(true, "any message");
+     * Preconditions.requireFalse(false, "any message");
      * </code>
      * </pre>
      *
@@ -5203,17 +5203,17 @@ public interface Preconditions {
      * objects.
      *
      * <pre>
-     * If the boolean is false, then any exception object specified as an argument is thrown.
+     * If the boolean is true, then any exception object specified as an argument is thrown.
      * <code>
-     * Preconditions.requireFalse(false, new AnyRuntimeException());
+     * Preconditions.requireFalse(true, new AnyRuntimeException());
      * &gt;&gt; AnyRuntimeException
      * </code>
      * </pre>
      *
      * <pre>
-     * If the boolean is true, the function does nothing and ends the validation process.
+     * If the boolean is false, the function does nothing and ends the validation process.
      * <code>
-     * Preconditions.requireFalse(true, new AnyRuntimeException());
+     * Preconditions.requireFalse(false, new AnyRuntimeException());
      * </code>
      * </pre>
      *
