@@ -5094,8 +5094,8 @@ public interface Preconditions {
      * If the boolean specified as an argument is {@code false} , then any exception
      * object specified as an argument will be thrown at runtime.
      * <p>
-     * To specify an arbitrary exception object, use the
-     * {@link #requireTrue(boolean, RuntimeException)} method.
+     * Use {@link #requireTrue(boolean)} method if you do not specify any exception
+     * objects.
      *
      * <pre>
      * If the boolean is false, then any exception object specified as an argument thrown.
@@ -5199,8 +5199,8 @@ public interface Preconditions {
      * If the boolean specified as an argument is {@code true} , then any exception
      * object specified as an argument will be thrown at runtime.
      * <p>
-     * To specify an arbitrary exception object, use the
-     * {@link #requireFalse(boolean, RuntimeException)} method.
+     * Use {@link #requireFalse(boolean)} method if you do not specify any exception
+     * objects.
      *
      * <pre>
      * If the boolean is false, then any exception object specified as an argument is thrown.
