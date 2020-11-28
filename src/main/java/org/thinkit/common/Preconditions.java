@@ -60,7 +60,7 @@ import java.util.Set;
  * @since 1.0
  * @version 1.0
  */
-public interface Preconditions {
+public final class Preconditions {
 
     /**
      * Ensures that the reference to the {@code object} object passed as an argument
