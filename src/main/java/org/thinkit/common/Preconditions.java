@@ -20,10 +20,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * The {@link Preconditions} interface provides a way to ensure the
+ * The {@link Preconditions} provides a way to ensure the
  * preconditions for arguments and data at the start of the process.
  * <p>
- * Each of the features provided by the {@link Preconditions} interface
+ * Each of the features provided by the {@link Preconditions}
  * validates for preconditions, and if the data being validated does not meet
  * the preconditions, it will always throw an exception corresponding to the
  * validation process.
@@ -61,6 +61,12 @@ import java.util.Set;
  * @version 1.0
  */
 public final class Preconditions {
+
+    /**
+     * Default constructor
+     */
+    private Preconditions() {
+    }
 
     /**
      * Ensures that the reference to the {@code object} object passed as an argument
