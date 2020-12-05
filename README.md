@@ -1,5 +1,5 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
-![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.9-27ae60.svg?style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/Latest_Version-v1.1.0-27ae60.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
 ![Java CI with Gradle](https://github.com/myConsciousness/precondition-validator/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
@@ -7,6 +7,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Precondition Validator](#precondition-validator)
@@ -31,10 +32,9 @@ Using the `Precondition Validator` features, you can safely and easily specify p
 
 ## Benefits
 
-- No need to write a redundant checking process for preconditions
-- It can be implemented intuitively
-- Tested secure precondition checking process
-- Easy and straightforward
+- No need to write a redundant validation process for preconditions
+- Tested and secure validation process
+- Easy and intuitive operation
 
 ## How To Use
 
@@ -50,7 +50,7 @@ Using the `Precondition Validator` features, you can safely and easily specify p
 <dependency>
   <groupId>org.thinkit.common</groupId>
   <artifactId>precondition-validator</artifactId>
-  <version>v1.0.9</version>
+  <version>v1.1.0</version>
 </dependency>
 
 <servers>
@@ -77,25 +77,25 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.common:precondition-validator:v1.0.9'
+    implementation 'org.thinkit.common:precondition-validator:v1.1.0'
 }
 ```
 
-### 2. Add an import for [**_Preconditions_**](https://github.com/myConsciousness/precondition-validator/blob/master/src/main/java/org/thinkit/common/Preconditions.java)
+### 2. Add an import for [**_Preconditions_**](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html)
 
 ```java
-import org.thinkit.common.Preconditions;
+import org.thinkit.common.base.precondition.Preconditions;
 ```
 
 ### 3. Define preconditions
 
-The following is an example using [Preconditions#requireNonEmpty(Object[])](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.Object[])>) and [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html#requireNonEmpty(java.lang.String)>).
+The following is an example using [Preconditions#requireNonEmpty(Object[])](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html#requireNonEmpty(java.lang.Object[])>) and [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html#requireNonEmpty(java.lang.String)>).
 
 > **_Note:_**</br>
-> The reference for all validation methods is [here](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html).
+> The reference for all validation methods is [here](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html).
 
 ```java
-import org.thinkit.common.Preconditions;
+import org.thinkit.common.base.precondition.Preconditions;
 
 public class DemoPreconditions {
 
@@ -139,4 +139,4 @@ Regardless of the means or content of communication, I would love to hear from y
 - [Release Note](https://github.com/myConsciousness/precondition-validator/releases)
 - [Package](https://github.com/myConsciousness/precondition-validator/packages)
 - [File a Bug](https://github.com/myConsciousness/precondition-validator/issues)
-- [Reference](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/Preconditions.html)
+- [Reference](https://myconsciousness.github.io/precondition-validator/)
