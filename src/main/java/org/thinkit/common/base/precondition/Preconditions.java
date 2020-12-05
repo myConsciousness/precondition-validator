@@ -12,20 +12,22 @@
  * the License.
  */
 
-package org.thinkit.common;
+package org.thinkit.common.base.precondition;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.thinkit.common.base.precondition.exception.PreconditionFailedException;
+
 /**
- * The {@link Preconditions} provides a way to ensure the
- * preconditions for arguments and data at the start of the process.
+ * The {@link Preconditions} provides a way to ensure the preconditions for
+ * arguments and data at the start of the process.
  * <p>
- * Each of the features provided by the {@link Preconditions}
- * validates for preconditions, and if the data being validated does not meet
- * the preconditions, it will always throw an exception corresponding to the
+ * Each of the features provided by the {@link Preconditions} validates for
+ * preconditions, and if the data being validated does not meet the
+ * preconditions, it will always throw an exception corresponding to the
  * validation process.
  * <p>
  * In addition, each validation method has an option that allows you to specify
@@ -45,7 +47,7 @@ import java.util.Set;
  * &gt;&gt; NullPointerException
  *
  * Preconditions.requireNonEmpty("");
- * &gt;&gt; IllegalStringFoundException
+ * &gt;&gt; PreconditionFailedException
  * </code>
  *
  * You can also specify arbitrary exception objects and detailed messages as follows:
@@ -173,7 +175,7 @@ public final class Preconditions {
      * Ensures that the string of the {@code string} object given as an argument is
      * not an empty string. 
      * <p>
-     * {@link IllegalStringFoundException} is always raised at runtime if the string
+     * {@link PreconditionFailedException} is always raised at runtime if the string
      * of the {@code string} object is an empty string.
      * <p>
      * Use the {@link #requireNonEmpty(String)} method if a reference to a
@@ -185,10 +187,10 @@ public final class Preconditions {
      * {@link #requireNonBlank(String, RuntimeException)} method.
      *
      * <pre>
-     * IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
+     * PreconditionFailedException will be thrown if the argument passed to string is an empty string.
      * <code>
      * Preconditions.requireNonBlank("");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -202,11 +204,11 @@ public final class Preconditions {
      * @param string The string to be validated
      *
      * @throws NullPointerException        If {@code null} is passed as an argument
-     * @throws IllegalStringFoundException If an empty string is passed as an
+     * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
     static void requireNonBlank(String string) {
-        requireNonBlank(string, new IllegalStringFoundException("String must not be blank"));
+        requireNonBlank(string, new PreconditionFailedException("String must not be blank"));
     }
 
     /**
@@ -214,7 +216,7 @@ public final class Preconditions {
      * not an empty string. 
      * <p>
      * If the string of a {@code string} object is an empty string,
-     * {@link IllegalStringFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -222,11 +224,11 @@ public final class Preconditions {
      * {@code string} object specified as an argument is likely to be {@code null} .
      *
      * <pre>
-     * IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
+     * PreconditionFailedException will be thrown if the argument passed to string is an empty string.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonBlank("", "any message");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -241,11 +243,11 @@ public final class Preconditions {
      * @param message Detailed messages to be output on exception throwing
      *
      * @throws NullPointerException        If {@code null} is passed as an argument
-     * @throws IllegalStringFoundException If an empty string is passed as an
+     * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
     static void requireNonBlank(String string, String message) {
-        requireNonBlank(string, new IllegalStringFoundException(message));
+        requireNonBlank(string, new PreconditionFailedException(message));
     }
 
     /**
@@ -276,7 +278,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalStringFoundException If executed by the
+     * @exception PreconditionFailedException If executed by the
      *                                        {@link #requireNonBlank(String)}
      *                                        method and the {@code string} passed
      *                                        as an argument is an empty string
@@ -295,7 +297,7 @@ public final class Preconditions {
      * <p>
      * {@link NullPointerException} is always raised at runtime if the reference to
      * a {@code string} object is {@code null} . And
-     * {@link IllegalStringFoundException} is always raised at runtime if the string
+     * {@link PreconditionFailedException} is always raised at runtime if the string
      * of the {@code string} object is an empty string.
      * <p>
      * To specify an arbitrary exception object, use the
@@ -310,10 +312,10 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
+     * PreconditionFailedException will be thrown if the argument passed to string is an empty string.
      * <code>
      * Preconditions.requireNonEmpty("");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -327,7 +329,7 @@ public final class Preconditions {
      * @param string The string to be validated
      *
      * @throws NullPointerException        If {@code null} is passed as an argument
-     * @throws IllegalStringFoundException If an empty string is passed as an
+     * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
     static void requireNonEmpty(String string) {
@@ -345,7 +347,7 @@ public final class Preconditions {
      * occurs.
      * <p>
      * If the string of a {@code string} object is an empty string,
-     * {@link IllegalStringFoundException} is always raised at runtime. The
+     * {@link PreconditionFailedException} is always raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -362,11 +364,11 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalStringFoundException will be thrown if the argument passed to string is an empty string.
+     * PreconditionFailedException will be thrown if the argument passed to string is an empty string.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty("", "any message");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -381,7 +383,7 @@ public final class Preconditions {
      * @param message Detailed messages to be output on exception throwing
      *
      * @throws NullPointerException        If {@code null} is passed as an argument
-     * @throws IllegalStringFoundException If an empty string is passed as an
+     * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
     static void requireNonEmpty(String string, String message) {
@@ -428,7 +430,7 @@ public final class Preconditions {
      *                                        argument is {@code null} or if the
      *                                        {@code string} passed as an argument
      *                                        is {@code null}
-     * @exception IllegalStringFoundException If {@code string} passed as an
+     * @exception PreconditionFailedException If {@code string} passed as an
      *                                        argument is an empty string
      */
     static void requireNonEmpty(String string, RuntimeException exception) {
@@ -441,16 +443,16 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(int, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the number passed as an argument is negative.
      * <code>
      * Preconditions.requirePositive(-1);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -463,19 +465,19 @@ public final class Preconditions {
      *
      * @param number The number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a negative number
      */
     static void requirePositive(int number) {
         requirePositive(number,
-                new IllegalNumberFoundException(String.format("Number must be positive but %s was given", number)));
+                new PreconditionFailedException(String.format("Number must be positive but %s was given", number)));
     }
 
     /**
      * Ensures that the {@code number} argument is a positive number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -483,11 +485,11 @@ public final class Preconditions {
      * {@link #requirePositive(int, RuntimeException)} method.
      *
      * <pre>
-     * If the argument number is negative IllegalNumberFoundException will be thrown.
+     * If the argument number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requirePositive(-1, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -501,11 +503,11 @@ public final class Preconditions {
      * @param number  The number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a negative number
      */
     static void requirePositive(int number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -535,7 +537,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified {@code number} is
+     * @exception PreconditionFailedException If the specified {@code number} is
      *                                        negative
      */
     static void requirePositive(int number, RuntimeException exception) {
@@ -550,16 +552,16 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive long number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(long, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the long number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the long number passed as an argument is negative.
      * <code>
      * Preconditions.requirePositive(-1L);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -572,12 +574,12 @@ public final class Preconditions {
      *
      * @param number The long number to be validated
      *
-     * @throws IllegalNumberFoundException If the long number of {@code number}
+     * @throws PreconditionFailedException If the long number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(long number) {
-        requirePositive(number, new IllegalNumberFoundException(
+        requirePositive(number, new PreconditionFailedException(
                 String.format("Long number must be positive but %s was given", number)));
     }
 
@@ -585,7 +587,7 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive long number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -593,11 +595,11 @@ public final class Preconditions {
      * {@link #requirePositive(long, RuntimeException)} method.
      *
      * <pre>
-     * If the argument long number is negative IllegalNumberFoundException will be thrown.
+     * If the argument long number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requirePositive(-1L, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -611,12 +613,12 @@ public final class Preconditions {
      * @param number  The long number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the long number of {@code number}
+     * @throws PreconditionFailedException If the long number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(long number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -646,7 +648,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified long {@code number}
+     * @exception PreconditionFailedException If the specified long {@code number}
      *                                        is negative
      */
     static void requirePositive(long number, RuntimeException exception) {
@@ -661,17 +663,17 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive short number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(short, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the short number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the short number passed as an argument is negative.
      * <code>
      * short number = -1;
      * Preconditions.requirePositive(number);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -685,12 +687,12 @@ public final class Preconditions {
      *
      * @param number The short number to be validated
      *
-     * @throws IllegalNumberFoundException If the short number of {@code number}
+     * @throws PreconditionFailedException If the short number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(short number) {
-        requirePositive(number, new IllegalNumberFoundException(
+        requirePositive(number, new PreconditionFailedException(
                 String.format("Short number must be positive but %s was given", number)));
     }
 
@@ -698,7 +700,7 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive short number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -706,12 +708,12 @@ public final class Preconditions {
      * {@link #requirePositive(short, RuntimeException)} method.
      *
      * <pre>
-     * If the argument short number is negative IllegalNumberFoundException will be thrown.
+     * If the argument short number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * short number = -1;
      * Preconditions.requirePositive(number, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -726,12 +728,12 @@ public final class Preconditions {
      * @param number  The short number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the short number of {@code number}
+     * @throws PreconditionFailedException If the short number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(short number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -763,7 +765,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified short {@code number}
+     * @exception PreconditionFailedException If the specified short {@code number}
      *                                        is negative
      */
     static void requirePositive(short number, RuntimeException exception) {
@@ -778,17 +780,17 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive byte number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(byte, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the byte number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the byte number passed as an argument is negative.
      * <code>
      * byte number = -1;
      * Preconditions.requirePositive(number);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -802,12 +804,12 @@ public final class Preconditions {
      *
      * @param number The byte number to be validated
      *
-     * @throws IllegalNumberFoundException If the byte number of {@code number}
+     * @throws PreconditionFailedException If the byte number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(byte number) {
-        requirePositive(number, new IllegalNumberFoundException(
+        requirePositive(number, new PreconditionFailedException(
                 String.format("Byte number must be positive but %s was given", number)));
     }
 
@@ -815,7 +817,7 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive byte number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -823,12 +825,12 @@ public final class Preconditions {
      * {@link #requirePositive(byte, RuntimeException)} method.
      *
      * <pre>
-     * If the argument byte number is negative IllegalNumberFoundException will be thrown.
+     * If the argument byte number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * byte number = -1;
      * Preconditions.requirePositive(number, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -843,12 +845,12 @@ public final class Preconditions {
      * @param number  The byte number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the byte number of {@code number}
+     * @throws PreconditionFailedException If the byte number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(byte number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -880,7 +882,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified byte {@code number}
+     * @exception PreconditionFailedException If the specified byte {@code number}
      *                                        is negative
      */
     static void requirePositive(byte number, RuntimeException exception) {
@@ -895,16 +897,16 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive float number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(float, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the float number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the float number passed as an argument is negative.
      * <code>
      * Preconditions.requirePositive(-1.0f);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -917,12 +919,12 @@ public final class Preconditions {
      *
      * @param number The float number to be validated
      *
-     * @throws IllegalNumberFoundException If the float number of {@code number}
+     * @throws PreconditionFailedException If the float number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(float number) {
-        requirePositive(number, new IllegalNumberFoundException(
+        requirePositive(number, new PreconditionFailedException(
                 String.format("Float number must be positive but %s was given", number)));
     }
 
@@ -930,7 +932,7 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive float number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -938,11 +940,11 @@ public final class Preconditions {
      * {@link #requirePositive(float, RuntimeException)} method.
      *
      * <pre>
-     * If the argument float number is negative IllegalNumberFoundException will be thrown.
+     * If the argument float number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requirePositive(-1.0f, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -956,12 +958,12 @@ public final class Preconditions {
      * @param number  The float number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the float number of {@code number}
+     * @throws PreconditionFailedException If the float number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(float number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -991,7 +993,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified float {@code number}
+     * @exception PreconditionFailedException If the specified float {@code number}
      *                                        is negative
      */
     static void requirePositive(float number, RuntimeException exception) {
@@ -1006,16 +1008,16 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive double number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(double, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the double number passed as an argument is negative.
+     * PreconditionFailedException will be thrown if the double number passed as an argument is negative.
      * <code>
      * Preconditions.requirePositive(-1.0d);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1028,12 +1030,12 @@ public final class Preconditions {
      *
      * @param number The double number to be validated
      *
-     * @throws IllegalNumberFoundException If the double number of {@code number}
+     * @throws PreconditionFailedException If the double number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(double number) {
-        requirePositive(number, new IllegalNumberFoundException(
+        requirePositive(number, new PreconditionFailedException(
                 String.format("Double number must be positive but %s was given", number)));
     }
 
@@ -1041,7 +1043,7 @@ public final class Preconditions {
      * Ensures that the {@code number} argument is a positive double number. 
      * <p>
      * If the argument {@code number} is negative,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. The
+     * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1049,11 +1051,11 @@ public final class Preconditions {
      * {@link #requirePositive(double, RuntimeException)} method.
      *
      * <pre>
-     * If the argument double number is negative IllegalNumberFoundException will be thrown.
+     * If the argument double number is negative PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requirePositive(-1.0d, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1067,12 +1069,12 @@ public final class Preconditions {
      * @param number  The double number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the double number of {@code number}
+     * @throws PreconditionFailedException If the double number of {@code number}
      *                                     specified as an argument is a negative
      *                                     number
      */
     static void requirePositive(double number, String message) {
-        requirePositive(number, new IllegalNumberFoundException(message));
+        requirePositive(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1102,7 +1104,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the specified double {@code number}
+     * @exception PreconditionFailedException If the specified double {@code number}
      *                                        is negative
      */
     static void requirePositive(double number, RuntimeException exception) {
@@ -1117,16 +1119,16 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(int, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the number passed as an argument is positive.
      * <code>
      * Preconditions.requireNegative(0);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1139,19 +1141,19 @@ public final class Preconditions {
      *
      * @param number The number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive number
      */
     static void requireNegative(int number) {
         requireNegative(number,
-                new IllegalNumberFoundException(String.format("Number must be negative but %s was given", number)));
+                new PreconditionFailedException(String.format("Number must be negative but %s was given", number)));
     }
 
     /**
      * Ensures that the argument {@code number} is a negative number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1159,11 +1161,11 @@ public final class Preconditions {
      * {@link #requireNegative(int, RuntimeException)} method.
      *
      * <pre>
-     * If the number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNegative(0, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1177,11 +1179,11 @@ public final class Preconditions {
      * @param number  The number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive number
      */
     static void requireNegative(int number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1214,7 +1216,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        number
      */
@@ -1230,16 +1232,16 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative long number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(long, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the long number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the long number passed as an argument is positive.
      * <code>
      * Preconditions.requireNegative(0L);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1252,11 +1254,11 @@ public final class Preconditions {
      *
      * @param number The long number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive long number
      */
     static void requireNegative(long number) {
-        requireNegative(number, new IllegalNumberFoundException(
+        requireNegative(number, new PreconditionFailedException(
                 String.format("Long number must be negative but %s was given", number)));
     }
 
@@ -1264,7 +1266,7 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative long number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1272,11 +1274,11 @@ public final class Preconditions {
      * {@link #requireNegative(long, RuntimeException)} method.
      *
      * <pre>
-     * If the long number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the long number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNegative(0L, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1290,11 +1292,11 @@ public final class Preconditions {
      * @param number  The long number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive long number
      */
     static void requireNegative(long number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1327,7 +1329,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        long number
      */
@@ -1343,17 +1345,17 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative short number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(short, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the short number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the short number passed as an argument is positive.
      * <code>
      * short number = 0;
      * Preconditions.requireNegative(number);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1367,11 +1369,11 @@ public final class Preconditions {
      *
      * @param number The short number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive short number
      */
     static void requireNegative(short number) {
-        requireNegative(number, new IllegalNumberFoundException(
+        requireNegative(number, new PreconditionFailedException(
                 String.format("Short number must be negative but %s was given", number)));
     }
 
@@ -1379,7 +1381,7 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative short number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1387,12 +1389,12 @@ public final class Preconditions {
      * {@link #requireNegative(short, RuntimeException)} method.
      *
      * <pre>
-     * If the short number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the short number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * short number = -1;
      * Preconditions.requireNegative(number, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1407,11 +1409,11 @@ public final class Preconditions {
      * @param number  The short number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive short number
      */
     static void requireNegative(short number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1446,7 +1448,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        short number
      */
@@ -1462,17 +1464,17 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative byte number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(byte, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the byte number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the byte number passed as an argument is positive.
      * <code>
      * byte number = 0;
      * Preconditions.requireNegative(number);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1486,11 +1488,11 @@ public final class Preconditions {
      *
      * @param number The byte number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive byte number
      */
     static void requireNegative(byte number) {
-        requireNegative(number, new IllegalNumberFoundException(
+        requireNegative(number, new PreconditionFailedException(
                 String.format("Byte number must be negative but %s was given", number)));
     }
 
@@ -1498,7 +1500,7 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative byte number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1506,12 +1508,12 @@ public final class Preconditions {
      * {@link #requireNegative(byte, RuntimeException)} method.
      *
      * <pre>
-     * If the byte number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the byte number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * byte number = -1;
      * Preconditions.requireNegative(number, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1526,11 +1528,11 @@ public final class Preconditions {
      * @param number  The byte number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive byte number
      */
     static void requireNegative(byte number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1565,7 +1567,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        byte number
      */
@@ -1581,16 +1583,16 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative float number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(float, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the float number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the float number passed as an argument is positive.
      * <code>
      * Preconditions.requireNegative(0.0f);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1603,11 +1605,11 @@ public final class Preconditions {
      *
      * @param number The float number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive float number
      */
     static void requireNegative(float number) {
-        requireNegative(number, new IllegalNumberFoundException(
+        requireNegative(number, new PreconditionFailedException(
                 String.format("Float number must be negative but %s was given", number)));
     }
 
@@ -1615,7 +1617,7 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative float number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1623,11 +1625,11 @@ public final class Preconditions {
      * {@link #requireNegative(float, RuntimeException)} method.
      *
      * <pre>
-     * If the float number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the float number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNegative(0.0f, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1641,11 +1643,11 @@ public final class Preconditions {
      * @param number  The float number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive float number
      */
     static void requireNegative(float number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1678,7 +1680,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        float number
      */
@@ -1694,16 +1696,16 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative double number. 
      * <p>
      * If the argument {@code number} is positive,
-     * {@link IllegalNumberFoundException} is always raised at runtime.
+     * {@link PreconditionFailedException} is always raised at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(double, RuntimeException)} method.
      *
      * <pre>
-     * IllegalNumberFoundException will be thrown if the double number passed as an argument is positive.
+     * PreconditionFailedException will be thrown if the double number passed as an argument is positive.
      * <code>
      * Preconditions.requireNegative(0.0d);
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1716,12 +1718,12 @@ public final class Preconditions {
      *
      * @param number The double number to be validated
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive double
      *                                     number
      */
     static void requireNegative(double number) {
-        requireNegative(number, new IllegalNumberFoundException(
+        requireNegative(number, new PreconditionFailedException(
                 String.format("Double number must be negative but %s was given", number)));
     }
 
@@ -1729,7 +1731,7 @@ public final class Preconditions {
      * Ensures that the argument {@code number} is a negative double number. 
      * <p>
      * If the argument {@code number} is a positive number,
-     * {@link IllegalNumberFoundException} will always be raised at runtime. And the
+     * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
      * <p>
@@ -1737,11 +1739,11 @@ public final class Preconditions {
      * {@link #requireNegative(double, RuntimeException)} method.
      *
      * <pre>
-     * If the double number argument is positive, IllegalNumberFoundException will be thrown.
+     * If the double number argument is positive, PreconditionFailedException will be thrown.
      * The message passed as an argument will be output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNegative(0.0d, "any message");
-     * &gt;&gt; IllegalNumberFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -1755,12 +1757,12 @@ public final class Preconditions {
      * @param number  The double number to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalNumberFoundException If the number of {@code number} specified
+     * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive double
      *                                     number
      */
     static void requireNegative(double number, String message) {
-        requireNegative(number, new IllegalNumberFoundException(message));
+        requireNegative(number, new PreconditionFailedException(message));
     }
 
     /**
@@ -1793,7 +1795,7 @@ public final class Preconditions {
      *
      * @exception NullPointerException        If the exception object passed as an
      *                                        argument is {@code null}
-     * @exception IllegalNumberFoundException If the value of the {@code number}
+     * @exception PreconditionFailedException If the value of the {@code number}
      *                                        passed as an argument is a positive
      *                                        double number
      */
@@ -4128,10 +4130,10 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalListFoundException will be thrown if the list passed as an argument is an empty list.
+     * PreconditionFailedException will be thrown if the list passed as an argument is an empty list.
      * <code>
      * Preconditions.requireNonEmpty(List.of());
-     * &gt;&gt; IllegalListFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4144,13 +4146,13 @@ public final class Preconditions {
      *
      * @param list The list to be validated
      *
-     * @exception NullPointerException      If {@code list} is passed as an argument
-     *                                      and {@code null} is passed
-     * @exception IllegalListFoundException If {@code list} passed as an argument is
-     *                                      an empty list
+     * @exception NullPointerException        If {@code list} is passed as an
+     *                                        argument and {@code null} is passed
+     * @exception PreconditionFailedException If {@code list} passed as an argument
+     *                                        is an empty list
      */
     static void requireNonEmpty(List<?> list) {
-        requireNonEmpty(list, new IllegalListFoundException("List must contain at least one or more elements"));
+        requireNonEmpty(list, new PreconditionFailedException("List must contain at least one or more elements"));
     }
 
     /**
@@ -4172,11 +4174,11 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalListFoundException is thrown if the list argument is an empty list.
+     * PreconditionFailedException is thrown if the list argument is an empty list.
      * The message argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(List.of(), "any message");
-     * &gt;&gt; IllegalListFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4190,13 +4192,13 @@ public final class Preconditions {
      * @param list    The list to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception NullPointerException      If {@code list} is passed as an argument
-     *                                      and {@code null} is passed
-     * @exception IllegalListFoundException If {@code list} passed as an argument is
-     *                                      an empty list
+     * @exception NullPointerException        If {@code list} is passed as an
+     *                                        argument and {@code null} is passed
+     * @exception PreconditionFailedException If {@code list} passed as an argument
+     *                                        is an empty list
      */
     static void requireNonEmpty(List<?> list, String message) {
-        requireNonEmpty(list, new IllegalListFoundException(message));
+        requireNonEmpty(list, new PreconditionFailedException(message));
     }
 
     /**
@@ -4205,8 +4207,8 @@ public final class Preconditions {
      * <p>
      * If {@code list} is an empty list, throw any exception object passed as an
      * argument. If it is executed by the {@link #requireNonEmpty(List)} method and
-     * {@code list} is an empty list, it throws {@link IllegalListFoundException} as
-     * an exception object.
+     * {@code list} is an empty list, it throws {@link PreconditionFailedException}
+     * as an exception object.
      *
      * <pre>
      * NullPointerException will be thrown if the list passed as an argument is null.
@@ -4235,13 +4237,14 @@ public final class Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
-     * @exception NullPointerException      If {@code list} passed as an argument is
-     *                                      {@code null} or if the exception object
-     *                                      passed as an argument is {@code null}
-     * @exception IllegalListFoundException If it is executed by the
-     *                                      {@link #requireNonEmpty(List)} method
-     *                                      and the {@code list} passed as an
-     *                                      argument is an empty list
+     * @exception NullPointerException        If {@code list} passed as an argument
+     *                                        is {@code null} or if the exception
+     *                                        object passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If it is executed by the
+     *                                        {@link #requireNonEmpty(List)} method
+     *                                        and the {@code list} passed as an
+     *                                        argument is an empty list
      */
     static void requireNonEmpty(List<?> list, RuntimeException exception) {
         requireNonNull(list);
@@ -4268,10 +4271,10 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalMapFoundException will be thrown if the map passed as an argument is an empty map.
+     * PreconditionFailedException will be thrown if the map passed as an argument is an empty map.
      * <code>
      * Preconditions.requireNonEmpty(Map.of());
-     * &gt;&gt; IllegalMapFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4284,11 +4287,11 @@ public final class Preconditions {
      *
      * @param map The map to be validated
      *
-     * @throws IllegalMapFoundException If the {@code map} passed as an argument
-     *                                  does not contain any elements
+     * @throws PreconditionFailedException If the {@code map} passed as an argument
+     *                                     does not contain any elements
      */
     static void requireNonEmpty(Map<?, ?> map) {
-        requireNonEmpty(map, new IllegalMapFoundException("Map must contain at least one or more elements"));
+        requireNonEmpty(map, new PreconditionFailedException("Map must contain at least one or more elements"));
     }
 
     /**
@@ -4310,11 +4313,11 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * If the map argument is an empty map, IllegalMapFoundException will be thrown.
+     * If the map argument is an empty map, PreconditionFailedException will be thrown.
      * The message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(Map.of(), "any message");
-     * &gt;&gt; IllegalMapFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4328,11 +4331,11 @@ public final class Preconditions {
      * @param map     The map to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalMapFoundException If the {@code map} passed as an argument
-     *                                  does not contain any elements
+     * @throws PreconditionFailedException If the {@code map} passed as an argument
+     *                                     does not contain any elements
      */
     static void requireNonEmpty(Map<?, ?> map, String message) {
-        requireNonEmpty(map, new IllegalMapFoundException(message));
+        requireNonEmpty(map, new PreconditionFailedException(message));
     }
 
     /**
@@ -4342,7 +4345,7 @@ public final class Preconditions {
      * If {@code map} is an empty map, any exception object passed as an argument
      * will be returned. Executed by the {@link #requireNonEmpty(Map)} method, if
      * the {@code map} passed as argument is an empty map, throws
-     * {@link IllegalMapFoundException} as an exception object.
+     * {@link PreconditionFailedException} as an exception object.
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Map)} method.
@@ -4374,11 +4377,12 @@ public final class Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
-     * @exception NullPointerException     If {@code map} passed as an argument is
-     *                                     {@code null} , or if any exception object
-     *                                     passed as an argument is {@code null}
-     * @exception IllegalMapFoundException If the {@code map} argument is an empty
-     *                                     map
+     * @exception NullPointerException        If {@code map} passed as an argument
+     *                                        is {@code null} , or if any exception
+     *                                        object passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If the {@code map} argument is an
+     *                                        empty map
      */
     static void requireNonEmpty(Map<?, ?> map, RuntimeException exception) {
         requireNonNull(map);
@@ -4405,10 +4409,10 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalSetFoundException will be thrown if the set passed as an argument is an empty set.
+     * PreconditionFailedException will be thrown if the set passed as an argument is an empty set.
      * <code>
      * Preconditions.requireNonEmpty(Set.of());
-     * &gt;&gt; IllegalSetFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4421,11 +4425,11 @@ public final class Preconditions {
      *
      * @param set The set to be validated
      *
-     * @throws IllegalSetFoundException If the {@code set} passed as an argument
-     *                                  does not contain any elements
+     * @throws PreconditionFailedException If the {@code set} passed as an argument
+     *                                     does not contain any elements
      */
     static void requireNonEmpty(Set<?> set) {
-        requireNonEmpty(set, new IllegalSetFoundException("Set must contain at least one or more elements"));
+        requireNonEmpty(set, new PreconditionFailedException("Set must contain at least one or more elements"));
     }
 
     /**
@@ -4447,11 +4451,11 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * If the set argument is an empty set, IllegalSetFoundException will be thrown.
+     * If the set argument is an empty set, PreconditionFailedException will be thrown.
      * The message passed as an argument is output as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireNonEmpty(Set.of(), "any message");
-     * &gt;&gt; IllegalSetFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4465,11 +4469,11 @@ public final class Preconditions {
      * @param set     The set to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @throws IllegalSetFoundException If the {@code set} passed as an argument
-     *                                  does not contain any elements
+     * @throws PreconditionFailedException If the {@code set} passed as an argument
+     *                                     does not contain any elements
      */
     static void requireNonEmpty(Set<?> set, String message) {
-        requireNonEmpty(set, new IllegalSetFoundException(message));
+        requireNonEmpty(set, new PreconditionFailedException(message));
     }
 
     /**
@@ -4479,7 +4483,7 @@ public final class Preconditions {
      * If {@code set} is an empty set, any exception object passed as an argument
      * will be returned. Executed by the {@link #requireNonEmpty(Set)} method, if
      * the {@code set} passed as argument is an empty set, throws
-     * {@link IllegalSetFoundException} as an exception object.
+     * {@link PreconditionFailedException} as an exception object.
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Set)} method.
@@ -4511,11 +4515,12 @@ public final class Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
-     * @exception NullPointerException     If {@code set} passed as an argument is
-     *                                     {@code null} , or if any exception object
-     *                                     passed as an argument is {@code null}
-     * @exception IllegalSetFoundException If the {@code set} argument is an empty
-     *                                     set
+     * @exception NullPointerException        If {@code set} passed as an argument
+     *                                        is {@code null} , or if any exception
+     *                                        object passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If the {@code set} argument is an
+     *                                        empty set
      */
     static void requireNonEmpty(Set<?> set, RuntimeException exception) {
         requireNonNull(set);
@@ -4530,7 +4535,7 @@ public final class Preconditions {
      * Ensures that the array passed as an argument is not {@code null} or an empty
      * array. 
      * <p>
-     * Throws {@link IllegalArrayFoundException} if the argument is either
+     * Throws {@link PreconditionFailedException} if the argument is either
      * {@code null} or an empty array.
      * <p>
      * To specify an arbitrary exception object, use the
@@ -4545,10 +4550,10 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalArrayFoundException will be thrown if the array argument is an empty array.
+     * PreconditionFailedException will be thrown if the array argument is an empty array.
      * <code>
      * Preconditions.requireNonEmpty(new String[] {});
-     * &gt;&gt; IllegalArrayFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4561,21 +4566,21 @@ public final class Preconditions {
      *
      * @param array The array to be validated
      *
-     * @exception NullPointerException       If the array passed as an argument is
-     *                                       {@code null}
-     * @exception IllegalArrayFoundException If the array passed as an argument is
-     *                                       an empty array
+     * @exception NullPointerException        If the array passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If the array passed as an argument is
+     *                                        an empty array
      */
     static void requireNonEmpty(Object[] array) {
         requireNonEmpty(Arrays.asList(array),
-                new IllegalArrayFoundException("Array must contain at least one or more elements"));
+                new PreconditionFailedException("Array must contain at least one or more elements"));
     }
 
     /**
      * Ensures that the array passed as an argument is not {@code null} or an empty
      * array. 
      * <p>
-     * Throws {@link IllegalArrayFoundException} if the array argument is
+     * Throws {@link PreconditionFailedException} if the array argument is
      * {@code null} or an empty array. The {@code message} passed as an argument
      * will be printed as a detailed message when an exception occurs.
      * <p>
@@ -4592,11 +4597,11 @@ public final class Preconditions {
      * </pre>
      *
      * <pre>
-     * IllegalArrayFoundException is thrown if the array argument is an empty array.
+     * PreconditionFailedException is thrown if the array argument is an empty array.
      * The message argument is output as a detailed message when an exception is raised.
      * <code>
      * Preconditions.requireNonEmpty(new String[] {}, "any message");
-     * &gt;&gt; IllegalArrayFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4610,13 +4615,13 @@ public final class Preconditions {
      * @param array   The array to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception NullPointerException       If the array passed as an argument is
-     *                                       {@code null}
-     * @exception IllegalArrayFoundException If the array passed as an argument is
-     *                                       an empty array
+     * @exception NullPointerException        If the array passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If the array passed as an argument is
+     *                                        an empty array
      */
     static void requireNonEmpty(Object[] array, String message) {
-        requireNonEmpty(Arrays.asList(array), new IllegalArrayFoundException(message));
+        requireNonEmpty(Arrays.asList(array), new PreconditionFailedException(message));
     }
 
     /**
@@ -4626,7 +4631,7 @@ public final class Preconditions {
      * If the array passed as an argument is an empty array, throw an arbitrary
      * exception object passed as an argument. Execute a
      * {@link #requireNonEmpty(Object[])} method and then throw
-     * {@link IllegalArrayFoundException} if the array passed in as argument is an
+     * {@link PreconditionFailedException} if the array passed in as argument is an
      * empty array.
      *
      * <pre>
@@ -4656,13 +4661,14 @@ public final class Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      *
-     * @exception NullPointerException       If the array passed as an argument is
-     *                                       {@code null} or if the exception object
-     *                                       passed as an argument is {@code null}
-     * @exception IllegalArrayFoundException If the method
-     *                                       {@link #requireNonEmpty(Object[])} is
-     *                                       executed and the array passed as an
-     *                                       argument is an empty array
+     * @exception NullPointerException        If the array passed as an argument is
+     *                                        {@code null} or if the exception
+     *                                        object passed as an argument is
+     *                                        {@code null}
+     * @exception PreconditionFailedException If the method
+     *                                        {@link #requireNonEmpty(Object[])} is
+     *                                        executed and the array passed as an
+     *                                        argument is an empty array
      */
     static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
@@ -4673,17 +4679,17 @@ public final class Preconditions {
      * {@code prefix} .
      * <p>
      * If the argument does not begin with a prefix specified by {@code prefix},
-     * {@link IllegalStringFoundException} will be thrown as an exception object at
+     * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the string specified as an argument does not begin with a prefix, IllegalStringFoundException will be thrown.
+     * If the string specified as an argument does not begin with a prefix, PreconditionFailedException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "est");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4697,12 +4703,12 @@ public final class Preconditions {
      * @param string The string to be validated
      * @param prefix The prefix
      *
-     * @exception IllegalStringFoundException If a string passed as an argument does
+     * @exception PreconditionFailedException If a string passed as an argument does
      *                                        not start with a prefix specified by
      *                                        {@code prefix}
      */
     static void requireStartWith(String string, String prefix) {
-        requireStartWith(string, prefix, new IllegalStringFoundException(
+        requireStartWith(string, prefix, new PreconditionFailedException(
                 String.format("String must start with the %s prefix, but %s was given", prefix, string)));
     }
 
@@ -4711,7 +4717,7 @@ public final class Preconditions {
      * {@code prefix} .
      * <p>
      * If the argument doesn't start with a prefix specified by {@code prefix}, then
-     * {@link IllegalStringFoundException} will be thrown at runtime as an exception
+     * {@link PreconditionFailedException} will be thrown at runtime as an exception
      * object. The {@code message} passed as an argument will be printed as a
      * detailed message when the exception occurs.
      * <p>
@@ -4719,11 +4725,11 @@ public final class Preconditions {
      * {@link #requireStartWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the string argument does not begin with the prefix prefix, IllegalStringFoundException will be thrown.
+     * If the string argument does not begin with the prefix prefix, PreconditionFailedException will be thrown.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireStartWith("test", "est", "any message");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4738,12 +4744,12 @@ public final class Preconditions {
      * @param prefix  The prefix
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalStringFoundException If a string passed as an argument does
+     * @exception PreconditionFailedException If a string passed as an argument does
      *                                        not start with a prefix specified by
      *                                        {@code prefix}
      */
     static void requireStartWith(String string, String prefix, String message) {
-        requireStartWith(string, prefix, new IllegalStringFoundException(message));
+        requireStartWith(string, prefix, new PreconditionFailedException(message));
     }
 
     /**
@@ -4751,17 +4757,17 @@ public final class Preconditions {
      * at the specified search start point.
      * <p>
      * If the argument does not begin with a prefix specified by {@code prefix},
-     * {@link IllegalStringFoundException} will be thrown as an exception object at
+     * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, int, RuntimeException)} method.
      *
      * <pre>
-     * If the string specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, IllegalStringFoundException will be thrown.
+     * If the string specified as an argument does not begin at the search start position specified by offset and the prefix specified by prefix, PreconditionFailedException will be thrown.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1);
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4776,13 +4782,13 @@ public final class Preconditions {
      * @param prefix The prefix
      * @param offset The offset
      *
-     * @exception IllegalStringFoundException If a string passed as an argument does
+     * @exception PreconditionFailedException If a string passed as an argument does
      *                                        not start with a prefix specified by
      *                                        {@code prefix} from the specified
      *                                        search start point
      */
     static void requireStartWith(String string, String prefix, int offset) {
-        requireStartWith(string, prefix, offset, new IllegalStringFoundException(String.format(
+        requireStartWith(string, prefix, offset, new PreconditionFailedException(String.format(
                 "String must start with the %s prefix from %s index, but %s was given", prefix, offset, string)));
     }
 
@@ -4791,7 +4797,7 @@ public final class Preconditions {
      * at the specified search start point.
      * <p>
      * If the argument doesn't start with a prefix specified by {@code prefix}, then
-     * {@link IllegalStringFoundException} will be thrown at runtime as an exception
+     * {@link PreconditionFailedException} will be thrown at runtime as an exception
      * object. The {@code message} passed as an argument will be printed as a
      * detailed message when the exception occurs.
      * <p>
@@ -4799,11 +4805,11 @@ public final class Preconditions {
      * {@link #requireStartWith(String, String, int, RuntimeException)} method.
      *
      * <pre>
-     * If the string argument does not begin at the search start position specified by offset and the prefix specified by prefix, an IllegalStringFoundException will be thrown.
+     * If the string argument does not begin at the search start position specified by offset and the prefix specified by prefix, an PreconditionFailedException will be thrown.
      * A message passed as an argument will be printed as a detailed message when an exception occurs.
      * <code>
      * Preconditions.requireStartWith("test", "st", 1, "any message");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4819,13 +4825,13 @@ public final class Preconditions {
      * @param offset  The offset
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalStringFoundException If a string passed as an argument does
+     * @exception PreconditionFailedException If a string passed as an argument does
      *                                        not begin with the prefix specified by
      *                                        {@code prefix} at the specified search
      *                                        start position
      */
     static void requireStartWith(String string, String prefix, int offset, String message) {
-        requireStartWith(string, prefix, offset, new IllegalStringFoundException(message));
+        requireStartWith(string, prefix, offset, new PreconditionFailedException(message));
     }
 
     /**
@@ -4913,17 +4919,17 @@ public final class Preconditions {
      * specified by {@code suffix} .
      * <p>
      * If the string specified as an argument does not end with the suffix specified
-     * by {@code suffix} , then {@link IllegalStringFoundException} is thrown as an
+     * by {@code suffix} , then {@link PreconditionFailedException} is thrown as an
      * exception object at runtime.
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireEndWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the string specified as an argument does not end with the suffix specified by suffix, IllegalStringFoundException will be thrown.
+     * If the string specified as an argument does not end with the suffix specified by suffix, PreconditionFailedException will be thrown.
      * <code>
      * Preconditions.requireEndWith("test", "es");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4937,12 +4943,12 @@ public final class Preconditions {
      * @param string The string to be validated
      * @param suffix The suffix
      *
-     * @exception IllegalStringFoundException If the string passed as an argument
+     * @exception PreconditionFailedException If the string passed as an argument
      *                                        does not end with the suffix specified
      *                                        by {@code suffix}
      */
     static void requireEndWith(String string, String suffix) {
-        requireEndWith(string, suffix, new IllegalStringFoundException(
+        requireEndWith(string, suffix, new PreconditionFailedException(
                 String.format("String must end with the %s suffix, but %s was given", suffix, string)));
     }
 
@@ -4951,7 +4957,7 @@ public final class Preconditions {
      * specified by {@code suffix} .
      * <p>
      * If the string passed as an argument does not end with the suffix specified by
-     * {@code suffix}, {@link IllegalStringFoundException} will be thrown as an
+     * {@code suffix}, {@link PreconditionFailedException} will be thrown as an
      * exception object at runtime. Any {@code message} passed as an argument will
      * be printed as a detail message when the exception occurs.
      * <p>
@@ -4959,11 +4965,11 @@ public final class Preconditions {
      * {@link #requireEndWith(String, String, RuntimeException)} method.
      *
      * <pre>
-     * If the string argument does not end with the suffix specified by suffix, IllegalStringFoundException will be thrown.
+     * If the string argument does not end with the suffix specified by suffix, PreconditionFailedException will be thrown.
      * A message passed as an argument will be printed as a detailed message if an exception is thrown.
      * <code>
      * Preconditions.requireEndWith("test", "es", "any message");
-     * &gt;&gt; IllegalStringFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -4978,12 +4984,12 @@ public final class Preconditions {
      * @param suffix  The suffix
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalStringFoundException If the string passed as an argument
+     * @exception PreconditionFailedException If the string passed as an argument
      *                                        does not end with the suffix specified
      *                                        by {@code suffix}
      */
     static void requireEndWith(String string, String suffix, String message) {
-        requireEndWith(string, suffix, new IllegalStringFoundException(message));
+        requireEndWith(string, suffix, new PreconditionFailedException(message));
     }
 
     /**
@@ -5035,10 +5041,10 @@ public final class Preconditions {
      * {@link #requireTrue(boolean, RuntimeException)} method.
      *
      * <pre>
-     * If the boolean is false, then {@link IllegalBooleanFoundException} is thrown.
+     * If the boolean is false, then {@link PreconditionFailedException} is thrown.
      * <code>
      * Preconditions.requireTrue(false);
-     * &gt;&gt; IllegalBooleanFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -5051,18 +5057,18 @@ public final class Preconditions {
      *
      * @param bool The value to be validated
      *
-     * @exception IllegalBooleanFoundException If the boolean value given as an
-     *                                         argument is {@code false}
+     * @exception PreconditionFailedException If the boolean value given as an
+     *                                        argument is {@code false}
      */
     static void requireTrue(boolean bool) {
-        requireTrue(bool, new IllegalBooleanFoundException("Boolean must be true, but false was given"));
+        requireTrue(bool, new PreconditionFailedException("Boolean must be true, but false was given"));
     }
 
     /**
      * Ensures that the boolean value given as an argument is {@code true} .
      * <p>
      * If the boolean passed as an argument is {@code false} ,
-     * {@link IllegalBooleanFoundException} will be thrown as an exception object at
+     * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime. Any {@code message} passed as an argument will be printed as a
      * detail message when the exception occurs.
      * <p>
@@ -5070,10 +5076,10 @@ public final class Preconditions {
      * {@link #requireTrue(boolean, RuntimeException)} method.
      *
      * <pre>
-     * If the boolean is false, then {@link IllegalBooleanFoundException} is thrown.
+     * If the boolean is false, then {@link PreconditionFailedException} is thrown.
      * <code>
      * Preconditions.requireTrue(false, "any message");
-     * &gt;&gt; IllegalBooleanFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -5087,11 +5093,11 @@ public final class Preconditions {
      * @param bool    The value to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalBooleanFoundException If the boolean value given as an
-     *                                         argument is {@code false}
+     * @exception PreconditionFailedException If the boolean value given as an
+     *                                        argument is {@code false}
      */
     static void requireTrue(boolean bool, String message) {
-        requireTrue(bool, new IllegalBooleanFoundException(message));
+        requireTrue(bool, new PreconditionFailedException(message));
     }
 
     /**
@@ -5140,10 +5146,10 @@ public final class Preconditions {
      * {@link #requireFalse(boolean, RuntimeException)} method.
      *
      * <pre>
-     * If the boolean is true, then {@link IllegalBooleanFoundException} is thrown.
+     * If the boolean is true, then {@link PreconditionFailedException} is thrown.
      * <code>
      * Preconditions.requireFalse(true);
-     * &gt;&gt; IllegalBooleanFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -5156,18 +5162,18 @@ public final class Preconditions {
      *
      * @param bool The value to be validated
      *
-     * @exception IllegalBooleanFoundException If the boolean value given as an
-     *                                         argument is {@code true}
+     * @exception PreconditionFailedException If the boolean value given as an
+     *                                        argument is {@code true}
      */
     static void requireFalse(boolean bool) {
-        requireFalse(bool, new IllegalBooleanFoundException("Boolean must be false, but true was given"));
+        requireFalse(bool, new PreconditionFailedException("Boolean must be false, but true was given"));
     }
 
     /**
      * Ensures that the boolean value given as an argument is {@code false} .
      * <p>
      * If the boolean passed as an argument is {@code true} ,
-     * {@link IllegalBooleanFoundException} will be thrown as an exception object at
+     * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime. Any {@code message} passed as an argument will be printed as a
      * detail message when the exception occurs.
      * <p>
@@ -5175,10 +5181,10 @@ public final class Preconditions {
      * {@link #requireFalse(boolean, RuntimeException)} method.
      *
      * <pre>
-     * If the boolean is true, then {@link IllegalBooleanFoundException} is thrown.
+     * If the boolean is true, then {@link PreconditionFailedException} is thrown.
      * <code>
      * Preconditions.requireFalse(true, "any message");
-     * &gt;&gt; IllegalBooleanFoundException
+     * &gt;&gt; PreconditionFailedException
      * </code>
      * </pre>
      *
@@ -5192,11 +5198,11 @@ public final class Preconditions {
      * @param bool    The value to be validated
      * @param message Detailed messages to be output on exception throwing
      *
-     * @exception IllegalBooleanFoundException If the boolean value given as an
-     *                                         argument is {@code true}
+     * @exception PreconditionFailedException If the boolean value given as an
+     *                                        argument is {@code true}
      */
     static void requireFalse(boolean bool, String message) {
-        requireFalse(bool, new IllegalBooleanFoundException(message));
+        requireFalse(bool, new PreconditionFailedException(message));
     }
 
     /**

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common;
+package org.thinkit.common.base.precondition;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import org.thinkit.common.base.precondition.exception.PreconditionFailedException;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -74,7 +76,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenStringIsBlank() {
-            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonBlank(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
@@ -141,7 +143,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenStringIsBlank() {
-            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonEmpty(""));
             assertEquals(EXCEPTION_MESSAGE_FOR_BLANK_STRING, exception.getMessage());
         }
@@ -208,7 +210,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(int testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_NUMBER, testParameter), exception.getMessage());
         }
@@ -269,7 +271,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(longs = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(long testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_LONG_NUMBER, testParameter),
                     exception.getMessage());
@@ -331,7 +333,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(shorts = { -1, -10, -100, -150, -500 })
         void testWhenNumberIsNegative(short testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_SHORT_NUMBER, testParameter),
                     exception.getMessage());
@@ -395,7 +397,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(bytes = { -1, -2, -10, -100 })
         void testWhenNumberIsNegative(byte testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_BYTE_NUMBER, testParameter),
                     exception.getMessage());
@@ -459,7 +461,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(floats = { -0.1f, -0.01f, -0.2f, -10.0f, -100.0f })
         void testWhenNumberIsNegative(float testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_FLOAT_NUMBER, testParameter),
                     exception.getMessage());
@@ -523,7 +525,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(doubles = { -0.1d, -0.01d, -0.2d, -10.0d, -100.0d })
         void testWhenNumberIsNegative(double testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requirePositive(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_NEGATIVE_DOUBLE_NUMBER, testParameter),
                     exception.getMessage());
@@ -587,7 +589,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(ints = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(int testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_NUMBER, testParameter), exception.getMessage());
         }
@@ -648,7 +650,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(longs = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(long testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_LONG_NUMBER, testParameter),
                     exception.getMessage());
@@ -710,7 +712,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(shorts = { 0, 1, 10, 100, 150, 500 })
         void testWhenNumberIsPositive(short testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_SHORT_NUMBER, testParameter),
                     exception.getMessage());
@@ -774,7 +776,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(bytes = { 0, 1, 2, 10, 100 })
         void testWhenNumberIsPositive(byte testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_BYTE_NUMBER, testParameter),
                     exception.getMessage());
@@ -838,7 +840,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(floats = { 0.0f, 0.01f, 0.1f, 0.2f, 10.0f, 100.0f })
         void testWhenNumberIsPositive(float testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_FLOAT_NUMBER, testParameter),
                     exception.getMessage());
@@ -902,7 +904,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @ValueSource(doubles = { 0.0d, 0.01d, 0.1d, 0.2d, 10.0d, 100.0d })
         void testWhenNumberIsPositive(double testParameter) {
-            final IllegalNumberFoundException exception = assertThrows(IllegalNumberFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNegative(testParameter));
             assertEquals(String.format(EXCEPTION_MESSAGE_FOR_POSITIVE_DOUBLE_NUMBER, testParameter),
                     exception.getMessage());
@@ -2738,7 +2740,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenListIsEmpty() {
-            final IllegalListFoundException exception = assertThrows(IllegalListFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonEmpty(List.of()));
             assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_LIST, exception.getMessage());
         }
@@ -2801,7 +2803,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenMapIsEmpty() {
-            final IllegalMapFoundException exception = assertThrows(IllegalMapFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonEmpty(Map.of()));
             assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_MAP, exception.getMessage());
         }
@@ -2865,7 +2867,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenSetIsEmpty() {
-            final IllegalSetFoundException exception = assertThrows(IllegalSetFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonEmpty(Set.of()));
             assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_SET, exception.getMessage());
         }
@@ -2923,7 +2925,7 @@ final class PreconditionsTest {
 
         @Test
         void testWhenArrayIsEmpty() {
-            final IllegalArrayFoundException exception = assertThrows(IllegalArrayFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireNonEmpty(new String[] {}));
             assertEquals(EXCEPTION_MESSAGE_FOR_EMPTY_ARRAY, exception.getMessage());
         }
@@ -2979,7 +2981,7 @@ final class PreconditionsTest {
         @ValueSource(strings = { "t", "est", "e", "sequence", "est", "tset" })
         void testWhenStringDoesNotStartWith(String testParameter) {
             final String testSequence = " test sequence";
-            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireStartWith(testSequence, testParameter));
             assertEquals(String.format("String must start with the %s prefix, but %s was given", testParameter,
                     testSequence), exception.getMessage());
@@ -3023,7 +3025,7 @@ final class PreconditionsTest {
         @ParameterizedTest
         @MethodSource("badStringAndOffsetProvider")
         void testWhenStringDoesNotStartWith(String sequence, String prefix, int offset) {
-            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireStartWith(sequence, prefix, offset));
             assertEquals(String.format("String must start with the %s prefix from %s index, but %s was given", prefix,
                     offset, sequence), exception.getMessage());
@@ -3133,7 +3135,7 @@ final class PreconditionsTest {
         @ValueSource(strings = { "test", "sequence", "c", "ce", "nce", "ence" })
         void testWhenStringDoesNotEndWith(String testParameter) {
             final String testSequence = "test sequence ";
-            final IllegalStringFoundException exception = assertThrows(IllegalStringFoundException.class,
+            final PreconditionFailedException exception = assertThrows(PreconditionFailedException.class,
                     () -> Preconditions.requireEndWith(testSequence, testParameter));
             assertEquals(
                     String.format("String must end with the %s suffix, but %s was given", testParameter, testSequence),
