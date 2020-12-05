@@ -100,7 +100,7 @@ public final class Preconditions {
      * @throws NullPointerException If {@code object} passed as an argument is
      *                              {@code null}
      */
-    static void requireNonNull(Object object) {
+    public static void requireNonNull(Object object) {
         requireNonNull(object, new NullPointerException());
     }
 
@@ -135,7 +135,7 @@ public final class Preconditions {
      * @throws NullPointerException If {@code object} passed as an argument is
      *                              {@code null}
      */
-    static void requireNonNull(Object object, String message) {
+    public static void requireNonNull(Object object, String message) {
         requireNonNull(object, new NullPointerException(message));
     }
 
@@ -165,7 +165,7 @@ public final class Preconditions {
      * @param exception Any exception object that is thrown if the preconditions are
      *                  not met
      */
-    static void requireNonNull(Object object, RuntimeException exception) {
+    public static void requireNonNull(Object object, RuntimeException exception) {
         if (object == null) {
             throw exception;
         }
@@ -207,7 +207,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
-    static void requireNonBlank(String string) {
+    public static void requireNonBlank(String string) {
         requireNonBlank(string, new PreconditionFailedException("String must not be blank"));
     }
 
@@ -246,7 +246,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
-    static void requireNonBlank(String string, String message) {
+    public static void requireNonBlank(String string, String message) {
         requireNonBlank(string, new PreconditionFailedException(message));
     }
 
@@ -283,7 +283,7 @@ public final class Preconditions {
      *                                        method and the {@code string} passed
      *                                        as an argument is an empty string
      */
-    static void requireNonBlank(String string, RuntimeException exception) {
+    public static void requireNonBlank(String string, RuntimeException exception) {
         requireNonNull(exception);
 
         if (string.isEmpty()) {
@@ -332,7 +332,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
-    static void requireNonEmpty(String string) {
+    public static void requireNonEmpty(String string) {
         requireNonNull(string);
         requireNonBlank(string);
     }
@@ -386,7 +386,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If an empty string is passed as an
      *                                     argument
      */
-    static void requireNonEmpty(String string, String message) {
+    public static void requireNonEmpty(String string, String message) {
         requireNonNull(string, message);
         requireNonBlank(string, message);
     }
@@ -433,7 +433,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If {@code string} passed as an
      *                                        argument is an empty string
      */
-    static void requireNonEmpty(String string, RuntimeException exception) {
+    public static void requireNonEmpty(String string, RuntimeException exception) {
         requireNonNull(exception);
         requireNonNull(string);
         requireNonBlank(string, exception);
@@ -468,7 +468,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a negative number
      */
-    static void requirePositive(int number) {
+    public static void requirePositive(int number) {
         requirePositive(number,
                 new PreconditionFailedException(String.format("Number must be positive but %s was given", number)));
     }
@@ -506,7 +506,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a negative number
      */
-    static void requirePositive(int number, String message) {
+    public static void requirePositive(int number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -540,7 +540,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified {@code number} is
      *                                        negative
      */
-    static void requirePositive(int number, RuntimeException exception) {
+    public static void requirePositive(int number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0) {
@@ -578,7 +578,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(long number) {
+    public static void requirePositive(long number) {
         requirePositive(number, new PreconditionFailedException(
                 String.format("Long number must be positive but %s was given", number)));
     }
@@ -617,7 +617,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(long number, String message) {
+    public static void requirePositive(long number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -651,7 +651,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified long {@code number}
      *                                        is negative
      */
-    static void requirePositive(long number, RuntimeException exception) {
+    public static void requirePositive(long number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0L) {
@@ -691,7 +691,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(short number) {
+    public static void requirePositive(short number) {
         requirePositive(number, new PreconditionFailedException(
                 String.format("Short number must be positive but %s was given", number)));
     }
@@ -732,7 +732,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(short number, String message) {
+    public static void requirePositive(short number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -768,7 +768,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified short {@code number}
      *                                        is negative
      */
-    static void requirePositive(short number, RuntimeException exception) {
+    public static void requirePositive(short number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0) {
@@ -808,7 +808,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(byte number) {
+    public static void requirePositive(byte number) {
         requirePositive(number, new PreconditionFailedException(
                 String.format("Byte number must be positive but %s was given", number)));
     }
@@ -849,7 +849,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(byte number, String message) {
+    public static void requirePositive(byte number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -885,7 +885,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified byte {@code number}
      *                                        is negative
      */
-    static void requirePositive(byte number, RuntimeException exception) {
+    public static void requirePositive(byte number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0) {
@@ -923,7 +923,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(float number) {
+    public static void requirePositive(float number) {
         requirePositive(number, new PreconditionFailedException(
                 String.format("Float number must be positive but %s was given", number)));
     }
@@ -962,7 +962,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(float number, String message) {
+    public static void requirePositive(float number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -996,7 +996,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified float {@code number}
      *                                        is negative
      */
-    static void requirePositive(float number, RuntimeException exception) {
+    public static void requirePositive(float number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0.0f) {
@@ -1034,7 +1034,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(double number) {
+    public static void requirePositive(double number) {
         requirePositive(number, new PreconditionFailedException(
                 String.format("Double number must be positive but %s was given", number)));
     }
@@ -1073,7 +1073,7 @@ public final class Preconditions {
      *                                     specified as an argument is a negative
      *                                     number
      */
-    static void requirePositive(double number, String message) {
+    public static void requirePositive(double number, String message) {
         requirePositive(number, new PreconditionFailedException(message));
     }
 
@@ -1107,7 +1107,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the specified double {@code number}
      *                                        is negative
      */
-    static void requirePositive(double number, RuntimeException exception) {
+    public static void requirePositive(double number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number < 0.0d) {
@@ -1144,7 +1144,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive number
      */
-    static void requireNegative(int number) {
+    public static void requireNegative(int number) {
         requireNegative(number,
                 new PreconditionFailedException(String.format("Number must be negative but %s was given", number)));
     }
@@ -1182,7 +1182,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive number
      */
-    static void requireNegative(int number, String message) {
+    public static void requireNegative(int number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1220,7 +1220,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        number
      */
-    static void requireNegative(int number, RuntimeException exception) {
+    public static void requireNegative(int number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0) {
@@ -1257,7 +1257,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive long number
      */
-    static void requireNegative(long number) {
+    public static void requireNegative(long number) {
         requireNegative(number, new PreconditionFailedException(
                 String.format("Long number must be negative but %s was given", number)));
     }
@@ -1295,7 +1295,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive long number
      */
-    static void requireNegative(long number, String message) {
+    public static void requireNegative(long number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1333,7 +1333,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        long number
      */
-    static void requireNegative(long number, RuntimeException exception) {
+    public static void requireNegative(long number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0L) {
@@ -1372,7 +1372,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive short number
      */
-    static void requireNegative(short number) {
+    public static void requireNegative(short number) {
         requireNegative(number, new PreconditionFailedException(
                 String.format("Short number must be negative but %s was given", number)));
     }
@@ -1412,7 +1412,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive short number
      */
-    static void requireNegative(short number, String message) {
+    public static void requireNegative(short number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1452,7 +1452,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        short number
      */
-    static void requireNegative(short number, RuntimeException exception) {
+    public static void requireNegative(short number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0) {
@@ -1491,7 +1491,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive byte number
      */
-    static void requireNegative(byte number) {
+    public static void requireNegative(byte number) {
         requireNegative(number, new PreconditionFailedException(
                 String.format("Byte number must be negative but %s was given", number)));
     }
@@ -1531,7 +1531,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive byte number
      */
-    static void requireNegative(byte number, String message) {
+    public static void requireNegative(byte number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1571,7 +1571,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        byte number
      */
-    static void requireNegative(byte number, RuntimeException exception) {
+    public static void requireNegative(byte number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0) {
@@ -1608,7 +1608,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive float number
      */
-    static void requireNegative(float number) {
+    public static void requireNegative(float number) {
         requireNegative(number, new PreconditionFailedException(
                 String.format("Float number must be negative but %s was given", number)));
     }
@@ -1646,7 +1646,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the number of {@code number} specified
      *                                     as an argument is a positive float number
      */
-    static void requireNegative(float number, String message) {
+    public static void requireNegative(float number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1684,7 +1684,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        float number
      */
-    static void requireNegative(float number, RuntimeException exception) {
+    public static void requireNegative(float number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0.0f) {
@@ -1722,7 +1722,7 @@ public final class Preconditions {
      *                                     as an argument is a positive double
      *                                     number
      */
-    static void requireNegative(double number) {
+    public static void requireNegative(double number) {
         requireNegative(number, new PreconditionFailedException(
                 String.format("Double number must be negative but %s was given", number)));
     }
@@ -1761,7 +1761,7 @@ public final class Preconditions {
      *                                     as an argument is a positive double
      *                                     number
      */
-    static void requireNegative(double number, String message) {
+    public static void requireNegative(double number, String message) {
         requireNegative(number, new PreconditionFailedException(message));
     }
 
@@ -1799,7 +1799,7 @@ public final class Preconditions {
      *                                        passed as an argument is a positive
      *                                        double number
      */
-    static void requireNegative(double number, RuntimeException exception) {
+    public static void requireNegative(double number, RuntimeException exception) {
         requireNonNull(exception);
 
         if (number >= 0.0d) {
@@ -1839,7 +1839,7 @@ public final class Preconditions {
      *                                   does not exist within the range specified
      *                                   by {@code from}
      */
-    static void requireRangeFrom(int index, int from) {
+    public static void requireRangeFrom(int index, int from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -1879,7 +1879,7 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException If the argument {@code index} does not fall
      *                                   within the range specified by {@code from}
      */
-    static void requireRangeFrom(int index, int from, String message) {
+    public static void requireRangeFrom(int index, int from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -1920,7 +1920,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from}
      */
-    static void requireRangeFrom(int index, int from, RuntimeException exception) {
+    public static void requireRangeFrom(int index, int from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -1960,7 +1960,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code from}
      */
-    static void requireRangeFrom(long index, long from) {
+    public static void requireRangeFrom(long index, long from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Long index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -2001,7 +2001,7 @@ public final class Preconditions {
      *                                   fall within the range specified by
      *                                   {@code from}
      */
-    static void requireRangeFrom(long index, long from, String message) {
+    public static void requireRangeFrom(long index, long from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -2042,7 +2042,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from}
      */
-    static void requireRangeFrom(long index, long from, RuntimeException exception) {
+    public static void requireRangeFrom(long index, long from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -2086,7 +2086,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code from}
      */
-    static void requireRangeFrom(short index, short from) {
+    public static void requireRangeFrom(short index, short from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Short index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -2131,7 +2131,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code from}
      */
-    static void requireRangeFrom(short index, short from, String message) {
+    public static void requireRangeFrom(short index, short from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -2176,7 +2176,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from}
      */
-    static void requireRangeFrom(short index, short from, RuntimeException exception) {
+    public static void requireRangeFrom(short index, short from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -2220,7 +2220,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code from}
      */
-    static void requireRangeFrom(byte index, byte from) {
+    public static void requireRangeFrom(byte index, byte from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Byte index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -2265,7 +2265,7 @@ public final class Preconditions {
      *                                   fall within the range specified by
      *                                   {@code from}
      */
-    static void requireRangeFrom(byte index, byte from, String message) {
+    public static void requireRangeFrom(byte index, byte from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -2310,7 +2310,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from}
      */
-    static void requireRangeFrom(byte index, byte from, RuntimeException exception) {
+    public static void requireRangeFrom(byte index, byte from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -2350,7 +2350,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code from}
      */
-    static void requireRangeFrom(float index, float from) {
+    public static void requireRangeFrom(float index, float from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Float index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -2391,7 +2391,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code from}
      */
-    static void requireRangeFrom(float index, float from, String message) {
+    public static void requireRangeFrom(float index, float from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -2432,7 +2432,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from}
      */
-    static void requireRangeFrom(float index, float from, RuntimeException exception) {
+    public static void requireRangeFrom(float index, float from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -2472,7 +2472,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code from}
      */
-    static void requireRangeFrom(double index, double from) {
+    public static void requireRangeFrom(double index, double from) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(
                 String.format("Double index %s out-of-bounds for range from length %s", index, from)));
     }
@@ -2513,7 +2513,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code from}
      */
-    static void requireRangeFrom(double index, double from, String message) {
+    public static void requireRangeFrom(double index, double from, String message) {
         requireRangeFrom(index, from, new IndexOutOfBoundsException(message));
     }
 
@@ -2554,7 +2554,7 @@ public final class Preconditions {
      *                                      does not fall within the range specified
      *                                      by {@code from}
      */
-    static void requireRangeFrom(double index, double from, RuntimeException exception) {
+    public static void requireRangeFrom(double index, double from, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from) {
@@ -2594,7 +2594,7 @@ public final class Preconditions {
      *                                   does not exist within the range specified
      *                                   by {@code to}
      */
-    static void requireRangeTo(int index, int to) {
+    public static void requireRangeTo(int index, int to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -2634,7 +2634,7 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException If the argument {@code index} does not fall
      *                                   within the range specified by {@code to}
      */
-    static void requireRangeTo(int index, int to, String message) {
+    public static void requireRangeTo(int index, int to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -2674,7 +2674,7 @@ public final class Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRangeTo(int index, int to, RuntimeException exception) {
+    public static void requireRangeTo(int index, int to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -2714,7 +2714,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code to}
      */
-    static void requireRangeTo(long index, long to) {
+    public static void requireRangeTo(long index, long to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Long index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -2755,7 +2755,7 @@ public final class Preconditions {
      *                                   fall within the range specified by
      *                                   {@code to}
      */
-    static void requireRangeTo(long index, long to, String message) {
+    public static void requireRangeTo(long index, long to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -2795,7 +2795,7 @@ public final class Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRangeTo(long index, long to, RuntimeException exception) {
+    public static void requireRangeTo(long index, long to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -2839,7 +2839,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code to}
      */
-    static void requireRangeTo(short index, short to) {
+    public static void requireRangeTo(short index, short to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Short index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -2884,7 +2884,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code to}
      */
-    static void requireRangeTo(short index, short to, String message) {
+    public static void requireRangeTo(short index, short to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -2928,7 +2928,7 @@ public final class Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRangeTo(short index, short to, RuntimeException exception) {
+    public static void requireRangeTo(short index, short to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -2972,7 +2972,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code to}
      */
-    static void requireRangeTo(byte index, byte to) {
+    public static void requireRangeTo(byte index, byte to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Byte index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -3017,7 +3017,7 @@ public final class Preconditions {
      *                                   fall within the range specified by
      *                                   {@code to}
      */
-    static void requireRangeTo(byte index, byte to, String message) {
+    public static void requireRangeTo(byte index, byte to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3061,7 +3061,7 @@ public final class Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRangeTo(byte index, byte to, RuntimeException exception) {
+    public static void requireRangeTo(byte index, byte to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -3101,7 +3101,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code to}
      */
-    static void requireRangeTo(float index, float to) {
+    public static void requireRangeTo(float index, float to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Float index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -3142,7 +3142,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code to}
      */
-    static void requireRangeTo(float index, float to, String message) {
+    public static void requireRangeTo(float index, float to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3182,7 +3182,7 @@ public final class Preconditions {
      *                                      specified as an argument does not fall
      *                                      within the range specified by {@code to}
      */
-    static void requireRangeTo(float index, float to, RuntimeException exception) {
+    public static void requireRangeTo(float index, float to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -3222,7 +3222,7 @@ public final class Preconditions {
      *                                   argument does not exist within the range
      *                                   specified by {@code to}
      */
-    static void requireRangeTo(double index, double to) {
+    public static void requireRangeTo(double index, double to) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(
                 String.format("Double index %s out-of-bounds for range from length 0 to length %s", index, to)));
     }
@@ -3263,7 +3263,7 @@ public final class Preconditions {
      *                                   not fall within the range specified by
      *                                   {@code to}
      */
-    static void requireRangeTo(double index, double to, String message) {
+    public static void requireRangeTo(double index, double to, String message) {
         requireRangeTo(index, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3304,7 +3304,7 @@ public final class Preconditions {
      *                                      does not fall within the range specified
      *                                      by {@code to}
      */
-    static void requireRangeTo(double index, double to, RuntimeException exception) {
+    public static void requireRangeTo(double index, double to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (to < index) {
@@ -3345,7 +3345,7 @@ public final class Preconditions {
      *                                   does not fall within the range specified by
      *                                   {@code from} to {@code to}
      */
-    static void requireRange(int index, int from, int to) {
+    public static void requireRange(int index, int from, int to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -3387,7 +3387,7 @@ public final class Preconditions {
      *                                   does not fall within the range specified by
      *                                   {@code from} to {@code to}
      */
-    static void requireRange(int index, int from, int to, String message) {
+    public static void requireRange(int index, int from, int to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3431,7 +3431,7 @@ public final class Preconditions {
      *                                      argument does not fall within the range
      *                                      specified by {@code from} to {@code to}
      */
-    static void requireRange(int index, int from, int to, RuntimeException exception) {
+    public static void requireRange(int index, int from, int to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -3472,7 +3472,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(long index, long from, long to) {
+    public static void requireRange(long index, long from, long to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Long index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -3514,7 +3514,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(long index, long from, long to, String message) {
+    public static void requireRange(long index, long from, long to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3558,7 +3558,7 @@ public final class Preconditions {
      *                                      argument does not fall within the range
      *                                      specified by {@code from} to {@code to}
      */
-    static void requireRange(long index, long from, long to, RuntimeException exception) {
+    public static void requireRange(long index, long from, long to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -3605,7 +3605,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(short index, short from, short to) {
+    public static void requireRange(short index, short from, short to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Short index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -3653,7 +3653,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(short index, short from, short to, String message) {
+    public static void requireRange(short index, short from, short to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3704,7 +3704,7 @@ public final class Preconditions {
      *                                      argument does not fall within the range
      *                                      specified by {@code from} to {@code to}
      */
-    static void requireRange(short index, short from, short to, RuntimeException exception) {
+    public static void requireRange(short index, short from, short to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -3751,7 +3751,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(byte index, byte from, byte to) {
+    public static void requireRange(byte index, byte from, byte to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Byte index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -3799,7 +3799,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(byte index, byte from, byte to, String message) {
+    public static void requireRange(byte index, byte from, byte to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3849,7 +3849,7 @@ public final class Preconditions {
      *                                      argument does not fall within the range
      *                                      specified by {@code from} to {@code to}
      */
-    static void requireRange(byte index, byte from, byte to, RuntimeException exception) {
+    public static void requireRange(byte index, byte from, byte to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -3890,7 +3890,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(float index, float from, float to) {
+    public static void requireRange(float index, float from, float to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Float index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -3932,7 +3932,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(float index, float from, float to, String message) {
+    public static void requireRange(float index, float from, float to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -3977,7 +3977,7 @@ public final class Preconditions {
      *                                      argument does not fall within the range
      *                                      specified by {@code from} to {@code to}
      */
-    static void requireRange(float index, float from, float to, RuntimeException exception) {
+    public static void requireRange(float index, float from, float to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -4018,7 +4018,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(double index, double from, double to) {
+    public static void requireRange(double index, double from, double to) {
         requireRange(index, from, to, new IndexOutOfBoundsException(
                 String.format("Double index %s out-of-bounds for range from length %s to length %s", index, from, to)));
     }
@@ -4060,7 +4060,7 @@ public final class Preconditions {
      *                                   argument does not fall within the range
      *                                   specified by {@code from} to {@code to}
      */
-    static void requireRange(double index, double from, double to, String message) {
+    public static void requireRange(double index, double from, double to, String message) {
         requireRange(index, from, to, new IndexOutOfBoundsException(message));
     }
 
@@ -4106,7 +4106,7 @@ public final class Preconditions {
      *                                      within the range specified by
      *                                      {@code from} to {@code to}
      */
-    static void requireRange(double index, double from, double to, RuntimeException exception) {
+    public static void requireRange(double index, double from, double to, RuntimeException exception) {
         requireNonNull(exception);
 
         if (index < from || to < index) {
@@ -4151,7 +4151,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If {@code list} passed as an argument
      *                                        is an empty list
      */
-    static void requireNonEmpty(List<?> list) {
+    public static void requireNonEmpty(List<?> list) {
         requireNonEmpty(list, new PreconditionFailedException("List must contain at least one or more elements"));
     }
 
@@ -4197,7 +4197,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If {@code list} passed as an argument
      *                                        is an empty list
      */
-    static void requireNonEmpty(List<?> list, String message) {
+    public static void requireNonEmpty(List<?> list, String message) {
         requireNonEmpty(list, new PreconditionFailedException(message));
     }
 
@@ -4246,7 +4246,7 @@ public final class Preconditions {
      *                                        and the {@code list} passed as an
      *                                        argument is an empty list
      */
-    static void requireNonEmpty(List<?> list, RuntimeException exception) {
+    public static void requireNonEmpty(List<?> list, RuntimeException exception) {
         requireNonNull(list);
         requireNonNull(exception);
 
@@ -4290,7 +4290,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the {@code map} passed as an argument
      *                                     does not contain any elements
      */
-    static void requireNonEmpty(Map<?, ?> map) {
+    public static void requireNonEmpty(Map<?, ?> map) {
         requireNonEmpty(map, new PreconditionFailedException("Map must contain at least one or more elements"));
     }
 
@@ -4334,7 +4334,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the {@code map} passed as an argument
      *                                     does not contain any elements
      */
-    static void requireNonEmpty(Map<?, ?> map, String message) {
+    public static void requireNonEmpty(Map<?, ?> map, String message) {
         requireNonEmpty(map, new PreconditionFailedException(message));
     }
 
@@ -4384,7 +4384,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the {@code map} argument is an
      *                                        empty map
      */
-    static void requireNonEmpty(Map<?, ?> map, RuntimeException exception) {
+    public static void requireNonEmpty(Map<?, ?> map, RuntimeException exception) {
         requireNonNull(map);
         requireNonNull(exception);
 
@@ -4428,7 +4428,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the {@code set} passed as an argument
      *                                     does not contain any elements
      */
-    static void requireNonEmpty(Set<?> set) {
+    public static void requireNonEmpty(Set<?> set) {
         requireNonEmpty(set, new PreconditionFailedException("Set must contain at least one or more elements"));
     }
 
@@ -4472,7 +4472,7 @@ public final class Preconditions {
      * @throws PreconditionFailedException If the {@code set} passed as an argument
      *                                     does not contain any elements
      */
-    static void requireNonEmpty(Set<?> set, String message) {
+    public static void requireNonEmpty(Set<?> set, String message) {
         requireNonEmpty(set, new PreconditionFailedException(message));
     }
 
@@ -4522,7 +4522,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the {@code set} argument is an
      *                                        empty set
      */
-    static void requireNonEmpty(Set<?> set, RuntimeException exception) {
+    public static void requireNonEmpty(Set<?> set, RuntimeException exception) {
         requireNonNull(set);
         requireNonNull(exception);
 
@@ -4571,7 +4571,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the array passed as an argument is
      *                                        an empty array
      */
-    static void requireNonEmpty(Object[] array) {
+    public static void requireNonEmpty(Object[] array) {
         requireNonEmpty(Arrays.asList(array),
                 new PreconditionFailedException("Array must contain at least one or more elements"));
     }
@@ -4620,7 +4620,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the array passed as an argument is
      *                                        an empty array
      */
-    static void requireNonEmpty(Object[] array, String message) {
+    public static void requireNonEmpty(Object[] array, String message) {
         requireNonEmpty(Arrays.asList(array), new PreconditionFailedException(message));
     }
 
@@ -4670,7 +4670,7 @@ public final class Preconditions {
      *                                        executed and the array passed as an
      *                                        argument is an empty array
      */
-    static void requireNonEmpty(Object[] array, RuntimeException exception) {
+    public static void requireNonEmpty(Object[] array, RuntimeException exception) {
         requireNonEmpty(Arrays.asList(array), exception);
     }
 
@@ -4707,7 +4707,7 @@ public final class Preconditions {
      *                                        not start with a prefix specified by
      *                                        {@code prefix}
      */
-    static void requireStartWith(String string, String prefix) {
+    public static void requireStartWith(String string, String prefix) {
         requireStartWith(string, prefix, new PreconditionFailedException(
                 String.format("String must start with the %s prefix, but %s was given", prefix, string)));
     }
@@ -4748,7 +4748,7 @@ public final class Preconditions {
      *                                        not start with a prefix specified by
      *                                        {@code prefix}
      */
-    static void requireStartWith(String string, String prefix, String message) {
+    public static void requireStartWith(String string, String prefix, String message) {
         requireStartWith(string, prefix, new PreconditionFailedException(message));
     }
 
@@ -4787,7 +4787,7 @@ public final class Preconditions {
      *                                        {@code prefix} from the specified
      *                                        search start point
      */
-    static void requireStartWith(String string, String prefix, int offset) {
+    public static void requireStartWith(String string, String prefix, int offset) {
         requireStartWith(string, prefix, offset, new PreconditionFailedException(String.format(
                 "String must start with the %s prefix from %s index, but %s was given", prefix, offset, string)));
     }
@@ -4830,7 +4830,7 @@ public final class Preconditions {
      *                                        {@code prefix} at the specified search
      *                                        start position
      */
-    static void requireStartWith(String string, String prefix, int offset, String message) {
+    public static void requireStartWith(String string, String prefix, int offset, String message) {
         requireStartWith(string, prefix, offset, new PreconditionFailedException(message));
     }
 
@@ -4868,7 +4868,7 @@ public final class Preconditions {
      * @exception NullPointerException If any exception object specified as an
      *                                 argument is {@code null}
      */
-    static void requireStartWith(String string, String prefix, RuntimeException exception) {
+    public static void requireStartWith(String string, String prefix, RuntimeException exception) {
         requireStartWith(string, prefix, 0, exception);
     }
 
@@ -4906,7 +4906,7 @@ public final class Preconditions {
      * @exception NullPointerException If any exception object passed as an argument
      *                                 is {@code null}
      */
-    static void requireStartWith(String string, String prefix, int offset, RuntimeException exception) {
+    public static void requireStartWith(String string, String prefix, int offset, RuntimeException exception) {
         requireNonNull(exception);
 
         if (!string.startsWith(prefix, offset)) {
@@ -4947,7 +4947,7 @@ public final class Preconditions {
      *                                        does not end with the suffix specified
      *                                        by {@code suffix}
      */
-    static void requireEndWith(String string, String suffix) {
+    public static void requireEndWith(String string, String suffix) {
         requireEndWith(string, suffix, new PreconditionFailedException(
                 String.format("String must end with the %s suffix, but %s was given", suffix, string)));
     }
@@ -4988,7 +4988,7 @@ public final class Preconditions {
      *                                        does not end with the suffix specified
      *                                        by {@code suffix}
      */
-    static void requireEndWith(String string, String suffix, String message) {
+    public static void requireEndWith(String string, String suffix, String message) {
         requireEndWith(string, suffix, new PreconditionFailedException(message));
     }
 
@@ -5026,7 +5026,7 @@ public final class Preconditions {
      * @exception NullPointerException If any exception object specified as an
      *                                 argument is {@code null}
      */
-    static void requireEndWith(String string, String suffix, RuntimeException exception) {
+    public static void requireEndWith(String string, String suffix, RuntimeException exception) {
         requireNonNull(exception);
 
         if (!string.endsWith(suffix)) {
@@ -5060,7 +5060,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the boolean value given as an
      *                                        argument is {@code false}
      */
-    static void requireTrue(boolean bool) {
+    public static void requireTrue(boolean bool) {
         requireTrue(bool, new PreconditionFailedException("Boolean must be true, but false was given"));
     }
 
@@ -5096,7 +5096,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the boolean value given as an
      *                                        argument is {@code false}
      */
-    static void requireTrue(boolean bool, String message) {
+    public static void requireTrue(boolean bool, String message) {
         requireTrue(bool, new PreconditionFailedException(message));
     }
 
@@ -5131,7 +5131,7 @@ public final class Preconditions {
      * @exception NullPointerException If any exception object specified as an
      *                                 argument is {@code null}
      */
-    static void requireTrue(boolean bool, RuntimeException exception) {
+    public static void requireTrue(boolean bool, RuntimeException exception) {
         requireNonNull(exception);
 
         if (!bool) {
@@ -5165,7 +5165,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the boolean value given as an
      *                                        argument is {@code true}
      */
-    static void requireFalse(boolean bool) {
+    public static void requireFalse(boolean bool) {
         requireFalse(bool, new PreconditionFailedException("Boolean must be false, but true was given"));
     }
 
@@ -5201,7 +5201,7 @@ public final class Preconditions {
      * @exception PreconditionFailedException If the boolean value given as an
      *                                        argument is {@code true}
      */
-    static void requireFalse(boolean bool, String message) {
+    public static void requireFalse(boolean bool, String message) {
         requireFalse(bool, new PreconditionFailedException(message));
     }
 
@@ -5236,7 +5236,7 @@ public final class Preconditions {
      * @exception NullPointerException If any exception object specified as an
      *                                 argument is {@code null}
      */
-    static void requireFalse(boolean bool, RuntimeException exception) {
+    public static void requireFalse(boolean bool, RuntimeException exception) {
         requireNonNull(exception);
 
         if (bool) {
