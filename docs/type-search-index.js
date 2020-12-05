@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"org.thinkit.common","l":"Preconditions"}];updateSearchResults();
+typeSearchIndex = [{"p":"org.thinkit.common.base.precondition.exception","l":"PreconditionFailedException"},{"p":"org.thinkit.common.base.precondition","l":"Preconditions"},{"l":"すべてのクラス","u":"allclasses-index.html"}];updateSearchResults();

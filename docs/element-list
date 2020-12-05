@@ -1,1 +1,2 @@
-org.thinkit.common
+org.thinkit.common.base.precondition
+org.thinkit.common.base.precondition.exception
