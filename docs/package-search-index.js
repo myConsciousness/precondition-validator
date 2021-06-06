@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"org.thinkit.common.base.precondition"},{"l":"org.thinkit.common.base.precondition.exception"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();
+packageSearchIndex = [{"l":"org.thinkit.common.base.precondition","h":"","u":""},{"l":"org.thinkit.common.base.precondition.exception","h":"","u":""},{"l":"すべてのパッケージ","h":"","u":"allpackages-index.html"}]
