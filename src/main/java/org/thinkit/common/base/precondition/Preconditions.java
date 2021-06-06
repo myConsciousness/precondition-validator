@@ -24,17 +24,20 @@ import org.thinkit.common.base.precondition.exception.PreconditionFailedExceptio
 /**
  * The {@link Preconditions} provides a way to ensure the preconditions for
  * arguments and data at the start of the process.
+ *
  * <p>
  * Each of the features provided by the {@link Preconditions} validates for
  * preconditions, and if the data being validated does not meet the
  * preconditions, it will always throw an exception corresponding to the
  * validation process.
+ *
  * <p>
  * In addition, each validation method has an option that allows you to specify
  * an arbitrary exception object or detailed message when an exception occurs,
  * so you can validate preconditions according to the implementation of your
  * application. The optional exception object must inherit from
  * {@link RuntimeException} .
+ *
  * <p>
  * If the data passed as an argument satisfies the specified preconditions, the
  * validation method terminates without performing any processing other than
@@ -59,13 +62,12 @@ import org.thinkit.common.base.precondition.exception.PreconditionFailedExceptio
  * </pre>
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 public final class Preconditions {
 
     /**
-     * Default constructor
+     * The default constructor.
      */
     private Preconditions() {
     }
@@ -73,9 +75,11 @@ public final class Preconditions {
     /**
      * Ensures that the reference to the {@code object} object passed as an argument
      * is not {@code null} . 
+     *
      * <p>
      * {@link NullPointerException} is always raised at runtime if the reference to
      * the {@code object} object is {@code null} .
+     *
      * <p>
      * Use the {@link #requireNonNull(Object, String)} method if you want to print
      * an arbitrary detailed message when an exception is raised.
@@ -106,7 +110,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the reference to the {@code object} object passed as an argument
-     * is not {@code null} . 
+     * is not {@code null} .  
      * <p>
      * If the {@code object} object is referenced by {@code null} , then
      * {@link NullPointerException} is always raised at runtime. The {@code message}
@@ -142,6 +146,7 @@ public final class Preconditions {
     /**
      * Ensures that the reference to the {@code object} object passed as an argument
      * is not {@code null} . 
+     *
      * <p>
      * If the reference to a {@code object} object is {@code null} , any exception
      * object specified as an argument will be thrown.
@@ -174,12 +179,15 @@ public final class Preconditions {
     /**
      * Ensures that the string of the {@code string} object given as an argument is
      * not an empty string. 
+     *
      * <p>
      * {@link PreconditionFailedException} is always raised at runtime if the string
      * of the {@code string} object is an empty string.
+     *
      * <p>
      * Use the {@link #requireNonEmpty(String)} method if a reference to a
      * {@code string} object specified as an argument is likely to be {@code null} .
+     *
      * <p>
      * Use the {@link #requireNonBlank(String, String)} method if you want to print
      * out an arbitrary detailed message when an exception is thrown. Also, to throw
@@ -214,11 +222,13 @@ public final class Preconditions {
     /**
      * Ensures that the string of the {@code string} object given as an argument is
      * not an empty string. 
+     *
      * <p>
      * If the string of a {@code string} object is an empty string,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * Use the {@link #requireNonEmpty(String)} method if a reference to a
      * {@code string} object specified as an argument is likely to be {@code null} .
@@ -252,6 +262,7 @@ public final class Preconditions {
 
     /**
      * Ensures that {@code string} given as an argument is not an empty string. 
+     *
      * <p>
      * Throws an {@code exception} object if the argument {@code string} is an empty
      * string. If you do not specify any exceptions, use the
@@ -294,11 +305,13 @@ public final class Preconditions {
     /**
      * Ensures that the reference to the {@code string} object specified as an
      * argument is not {@code null} or the string is not an empty string. 
+     *
      * <p>
      * {@link NullPointerException} is always raised at runtime if the reference to
      * a {@code string} object is {@code null} . And
      * {@link PreconditionFailedException} is always raised at runtime if the string
      * of the {@code string} object is an empty string.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(String, RuntimeException)} method.
@@ -340,16 +353,19 @@ public final class Preconditions {
     /**
      * Ensures that the reference to the {@code string} object specified as an
      * argument is not {@code null} or the string is not an empty string. 
+     *
      * <p>
      * If the {@code string} object is referenced by {@code null} , then
      * {@link NullPointerException} is always raised at runtime. The {@code message}
      * passed as an argument is output as a detailed message when an exception
      * occurs.
+     *
      * <p>
      * If the string of a {@code string} object is an empty string,
      * {@link PreconditionFailedException} is always raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(String, RuntimeException)} method.
@@ -394,6 +410,7 @@ public final class Preconditions {
     /**
      * Ensures that the value of {@code string} passed as an argument is not
      * {@code null} or an empty string. 
+     *
      * <p>
      * Throws an exception if it is {@code null} or an empty string. If you do not
      * specify an arbitrary exception object, use the
@@ -441,9 +458,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(int, RuntimeException)} method.
@@ -475,11 +494,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(int, RuntimeException)} method.
@@ -512,6 +533,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive number. 
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(int)} method.
@@ -550,9 +572,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive long number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(long, RuntimeException)} method.
@@ -585,11 +609,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive long number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(long, RuntimeException)} method.
@@ -623,6 +649,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive long number. 
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(long)} method.
@@ -661,9 +688,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive short number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(short, RuntimeException)} method.
@@ -698,11 +727,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive short number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(short, RuntimeException)} method.
@@ -738,6 +769,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive short number. 
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(short)} method.
@@ -778,9 +810,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive byte number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(byte, RuntimeException)} method.
@@ -815,11 +849,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive byte number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(byte, RuntimeException)} method.
@@ -855,6 +891,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive byte number. 
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(byte)} method.
@@ -894,10 +931,11 @@ public final class Preconditions {
     }
 
     /**
-     * Ensures that the {@code number} argument is a positive float number. 
+     * Ensures that the {@code number} argument is a positive float number.  
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(float, RuntimeException)} method.
@@ -930,11 +968,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive float number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(float, RuntimeException)} method.
@@ -967,7 +1007,7 @@ public final class Preconditions {
     }
 
     /**
-     * Ensures that the {@code number} argument is a positive float number. 
+     * Ensures that the {@code number} argument is a positive float number.  
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(float)} method.
@@ -1006,9 +1046,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive double number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(double, RuntimeException)} method.
@@ -1041,11 +1083,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive double number. 
+     *
      * <p>
      * If the argument {@code number} is negative,
      * {@link PreconditionFailedException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requirePositive(double, RuntimeException)} method.
@@ -1079,6 +1123,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the {@code number} argument is a positive double number. 
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requirePositive(double)} method.
@@ -1117,9 +1162,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative number. 
+     *
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(int, RuntimeException)} method.
@@ -1151,11 +1198,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(int, RuntimeException)} method.
@@ -1188,9 +1237,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(int)} method.
@@ -1230,9 +1281,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative long number. 
+     *
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(long, RuntimeException)} method.
@@ -1264,11 +1317,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative long number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(long, RuntimeException)} method.
@@ -1301,9 +1356,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative long number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(long)} method.
@@ -1343,9 +1400,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative short number. 
+     *
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(short, RuntimeException)} method.
@@ -1379,11 +1438,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative short number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(short, RuntimeException)} method.
@@ -1418,9 +1479,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative short number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(short)} method.
@@ -1461,10 +1524,11 @@ public final class Preconditions {
     }
 
     /**
-     * Ensures that the argument {@code number} is a negative byte number. 
+     * Ensures that the argument {@code number} is a negative byte number.  
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(byte, RuntimeException)} method.
@@ -1498,11 +1562,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative byte number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(byte, RuntimeException)} method.
@@ -1537,9 +1603,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative byte number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(byte)} method.
@@ -1581,9 +1649,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative float number. 
+     *
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(float, RuntimeException)} method.
@@ -1615,11 +1685,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative float number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(float, RuntimeException)} method.
@@ -1652,9 +1724,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative float number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(float)} method.
@@ -1694,9 +1768,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative double number. 
+     *
      * <p>
      * If the argument {@code number} is positive,
      * {@link PreconditionFailedException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(double, RuntimeException)} method.
@@ -1729,11 +1805,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative double number. 
+     *
      * <p>
      * If the argument {@code number} is a positive number,
      * {@link PreconditionFailedException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNegative(double, RuntimeException)} method.
@@ -1767,9 +1845,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the argument {@code number} is a negative double number. 
+     *
      * <p>
      * If {@code number} is a positive number, throw any exception object specified
      * as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireNegative(double)} method.
@@ -1810,9 +1890,11 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(int, int, RuntimeException)} method.
@@ -1847,11 +1929,13 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(int, int, RuntimeException)} method.
@@ -1886,9 +1970,11 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(int, int)} method.
@@ -1931,9 +2017,11 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(long, long, RuntimeException)} method.
@@ -1968,11 +2056,13 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(long, long, RuntimeException)} method.
@@ -2008,9 +2098,11 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(long, long)} method.
@@ -2053,9 +2145,11 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(short, short, RuntimeException)} method.
@@ -2094,11 +2188,13 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(short, short, RuntimeException)} method.
@@ -2138,9 +2234,11 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(short, short)} method.
@@ -2187,9 +2285,11 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(byte, byte, RuntimeException)} method.
@@ -2228,11 +2328,13 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(byte, byte, RuntimeException)} method.
@@ -2272,9 +2374,11 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(byte, byte)} method.
@@ -2321,9 +2425,11 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(float, float, RuntimeException)} method.
@@ -2358,11 +2464,13 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(float, float, RuntimeException)} method.
@@ -2398,9 +2506,11 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(float, float)} method.
@@ -2443,9 +2553,11 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(double, double, RuntimeException)} method.
@@ -2480,11 +2592,13 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(double, double, RuntimeException)} method.
@@ -2520,9 +2634,11 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code from} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeFrom(double, double)} method.
@@ -2565,9 +2681,11 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(int, int, RuntimeException)} method.
@@ -2602,11 +2720,13 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(int, int, RuntimeException)} method.
@@ -2641,9 +2761,11 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(int, int)} method.
@@ -2685,9 +2807,11 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(long, long, RuntimeException)} method.
@@ -2722,11 +2846,13 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(long, long, RuntimeException)} method.
@@ -2762,9 +2888,11 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(long, long)} method.
@@ -2806,9 +2934,11 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(short, short, RuntimeException)} method.
@@ -2847,11 +2977,13 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(short, short, RuntimeException)} method.
@@ -2891,9 +3023,11 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(short, short)} method.
@@ -2939,9 +3073,11 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(byte, byte, RuntimeException)} method.
@@ -2980,11 +3116,13 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(byte, byte, RuntimeException)} method.
@@ -3024,9 +3162,11 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(byte, byte)} method.
@@ -3072,9 +3212,11 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(float, float, RuntimeException)} method.
@@ -3109,11 +3251,13 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(float, float, RuntimeException)} method.
@@ -3149,9 +3293,11 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(float, float)} method.
@@ -3193,9 +3339,11 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(double, double, RuntimeException)} method.
@@ -3230,11 +3378,13 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. And the
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRangeTo(double, double, RuntimeException)} method.
@@ -3270,9 +3420,11 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is a number within the range
      * specified by {@code to} . 
+     *
      * <p>
      * If {@code index} specified as an argument is not within the range specified
      * by {@code to} , throw any exception object specified as an argument.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRangeTo(double, double)} method.
@@ -3315,9 +3467,11 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(int, int, int, RuntimeException)} method.
@@ -3353,11 +3507,13 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(int, int, int, RuntimeException)} method.
@@ -3394,12 +3550,14 @@ public final class Preconditions {
     /**
      * Ensures that the {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the {@link #requireRange(int, int, int)}
      * method, and throw {@link IndexOutOfBoundsException} as an exception object if
      * the {@code index} argument is not a number within the range specified by
      * {@code from} to {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(int, int, int)} method.
@@ -3442,9 +3600,11 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(long, long, long, RuntimeException)} method.
@@ -3480,11 +3640,13 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(long, long, long, RuntimeException)} method.
@@ -3521,12 +3683,14 @@ public final class Preconditions {
     /**
      * Ensures that the long {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the {@link #requireRange(long, long, long)}
      * method, and throw {@link IndexOutOfBoundsException} as an exception object if
      * the {@code index} argument is not a number within the range specified by
      * {@code from} to {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(long, long, long)} method.
@@ -3569,9 +3733,11 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(short, short, short, RuntimeException)} method.
@@ -3613,11 +3779,13 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(short, short, short, RuntimeException)} method.
@@ -3660,6 +3828,7 @@ public final class Preconditions {
     /**
      * Ensures that the short {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the
@@ -3667,6 +3836,7 @@ public final class Preconditions {
      * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
      * argument is not a number within the range specified by {@code from} to
      * {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(short, short, short)} method.
@@ -3715,9 +3885,11 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(byte, byte, byte, RuntimeException)} method.
@@ -3759,11 +3931,13 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(byte, byte, byte, RuntimeException)} method.
@@ -3806,12 +3980,14 @@ public final class Preconditions {
     /**
      * Ensures that the byte {@code index} argument is within the range specified by
      * {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the {@link #requireRange(byte, byte, byte)}
      * method, and throw {@link IndexOutOfBoundsException} as an exception object if
      * the {@code index} argument is not a number within the range specified by
      * {@code from} to {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(byte, byte, byte)} method.
@@ -3860,9 +4036,11 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(float, float, float, RuntimeException)} method.
@@ -3898,11 +4076,13 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(float, float, float, RuntimeException)} method.
@@ -3939,6 +4119,7 @@ public final class Preconditions {
     /**
      * Ensures that the float {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the
@@ -3946,6 +4127,7 @@ public final class Preconditions {
      * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
      * argument is not a number within the range specified by {@code from} to
      * {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(float, float, float)} method.
@@ -3987,10 +4169,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the double {@code index} argument is within the range specified
-     * by {@code from} to {@code to} . 
+     * by {@code from} to {@code to} .  
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} is always raised at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(double, double, double, RuntimeException)} method.
@@ -4026,11 +4209,13 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * If the {@code index} argument is an out-of-range number,
      * {@link IndexOutOfBoundsException} will always be raised at runtime. The
      * {@code message} passed as an argument is output as a detailed message when an
      * exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireRange(double, double, double, RuntimeException)} method.
@@ -4067,6 +4252,7 @@ public final class Preconditions {
     /**
      * Ensures that the double {@code index} argument is within the range specified
      * by {@code from} to {@code to} . 
+     *
      * <p>
      * Throws an arbitrary exception object if the argument {@code index} is an
      * out-of-range number. Execute from the
@@ -4074,6 +4260,7 @@ public final class Preconditions {
      * {@link IndexOutOfBoundsException} as an exception object if the {@code index}
      * argument is not a number within the range specified by {@code from} to
      * {@code to} .
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireRange(double, double, double)} method.
@@ -4117,6 +4304,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code list} passed as an argument is not {@code null} or an
      * empty list. 
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(List, RuntimeException)} method.
@@ -4158,6 +4346,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code list} passed as an argument is not {@code null} or an
      * empty list. 
+     *
      * <p>
      * To specify an arbitrary exception object, use
      * {@link #requireNonEmpty(List, RuntimeException)} method. The {@code message}
@@ -4204,6 +4393,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code list} given as an argument is not {@code null} or an
      * empty list. 
+     *
      * <p>
      * If {@code list} is an empty list, throw any exception object passed as an
      * argument. If it is executed by the {@link #requireNonEmpty(List)} method and
@@ -4258,6 +4448,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code map} passed as an argument is not {@code null} or an
      * empty map. 
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Map, RuntimeException)} method.
@@ -4297,6 +4488,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code map} passed as an argument is not {@code null} or an
      * empty map. 
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Map, RuntimeException)} method. The {@code message}
@@ -4341,6 +4533,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code map} passed as an argument is not {@code null} or an
      * empty map. 
+     *
      * <p>
      * If {@code map} is an empty map, any exception object passed as an argument
      * will be returned. Executed by the {@link #requireNonEmpty(Map)} method, if
@@ -4396,6 +4589,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code set} passed as an argument is not {@code null} or an
      * empty set. 
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Set, RuntimeException)} method.
@@ -4435,6 +4629,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code set} passed as an argument is not {@code null} or an
      * empty set. 
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireNonEmpty(Set, RuntimeException)} method. The {@code message}
@@ -4479,6 +4674,7 @@ public final class Preconditions {
     /**
      * Ensures that {@code set} passed as an argument is not {@code null} or an
      * empty set. 
+     *
      * <p>
      * If {@code set} is an empty set, any exception object passed as an argument
      * will be returned. Executed by the {@link #requireNonEmpty(Set)} method, if
@@ -4534,6 +4730,7 @@ public final class Preconditions {
     /**
      * Ensures that the array passed as an argument is not {@code null} or an empty
      * array. 
+     *
      * <p>
      * Throws {@link PreconditionFailedException} if the argument is either
      * {@code null} or an empty array.
@@ -4579,6 +4776,7 @@ public final class Preconditions {
     /**
      * Ensures that the array passed as an argument is not {@code null} or an empty
      * array. 
+     *
      * <p>
      * Throws {@link PreconditionFailedException} if the array argument is
      * {@code null} or an empty array. The {@code message} passed as an argument
@@ -4627,6 +4825,7 @@ public final class Preconditions {
     /**
      * Ensures that the array passed as a number is not {@code null} or an empty
      * array. 
+     *
      * <p>
      * If the array passed as an argument is an empty array, throw an arbitrary
      * exception object passed as an argument. Execute a
@@ -4677,10 +4876,12 @@ public final class Preconditions {
     /**
      * Ensures that a given string begins with the prefix specified by
      * {@code prefix} .
+     *
      * <p>
      * If the argument does not begin with a prefix specified by {@code prefix},
      * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, RuntimeException)} method.
@@ -4715,11 +4916,13 @@ public final class Preconditions {
     /**
      * Ensures that a given string begins with the prefix specified by
      * {@code prefix} .
+     *
      * <p>
      * If the argument doesn't start with a prefix specified by {@code prefix}, then
      * {@link PreconditionFailedException} will be thrown at runtime as an exception
      * object. The {@code message} passed as an argument will be printed as a
      * detailed message when the exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, RuntimeException)} method.
@@ -4755,10 +4958,12 @@ public final class Preconditions {
     /**
      * Ensures that the argument starts with the prefix specified by {@code prefix}
      * at the specified search start point.
+     *
      * <p>
      * If the argument does not begin with a prefix specified by {@code prefix},
      * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, int, RuntimeException)} method.
@@ -4795,11 +5000,13 @@ public final class Preconditions {
     /**
      * Ensures that the argument starts with the prefix specified by {@code prefix}
      * at the specified search start point.
+     *
      * <p>
      * If the argument doesn't start with a prefix specified by {@code prefix}, then
      * {@link PreconditionFailedException} will be thrown at runtime as an exception
      * object. The {@code message} passed as an argument will be printed as a
      * detailed message when the exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, int, RuntimeException)} method.
@@ -4837,10 +5044,12 @@ public final class Preconditions {
     /**
      * Ensures that a given string begins with the prefix specified by
      * {@code prefix} .
+     *
      * <p>
      * If a string specified as an argument does not begin with a prefix specified
      * by {@code prefix} , any exception object specified as an argument will be
      * thrown at runtime.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String)} method.
@@ -4875,9 +5084,11 @@ public final class Preconditions {
     /**
      * Ensures that the argument starts with the prefix specified by {@code prefix}
      * at the specified search start point.
+     *
      * <p>
      * If the string specified as an argument does not begin with a prefix specified
      * by {@code prefix}, any exception object passed as an argument is thrown.
+     *
      * <p>
      * If you do not specify an arbitrary exception object, use the
      * {@link #requireStartWith(String, String, int)} method.
@@ -4917,10 +5128,12 @@ public final class Preconditions {
     /**
      * Ensures that the string specified as an argument ends with the suffix
      * specified by {@code suffix} .
+     *
      * <p>
      * If the string specified as an argument does not end with the suffix specified
      * by {@code suffix} , then {@link PreconditionFailedException} is thrown as an
      * exception object at runtime.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireEndWith(String, String, RuntimeException)} method.
@@ -4955,11 +5168,13 @@ public final class Preconditions {
     /**
      * Ensures that the string specified as an argument ends with the suffix
      * specified by {@code suffix} .
+     *
      * <p>
      * If the string passed as an argument does not end with the suffix specified by
      * {@code suffix}, {@link PreconditionFailedException} will be thrown as an
      * exception object at runtime. Any {@code message} passed as an argument will
      * be printed as a detail message when the exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireEndWith(String, String, RuntimeException)} method.
@@ -4995,10 +5210,12 @@ public final class Preconditions {
     /**
      * Ensures that the string specified as an argument ends with the suffix
      * specified by {@code suffix} .
+     *
      * <p>
      * If the string specified as an argument does not end with the suffix specified
      * by {@code suffix} , then any exception object specified as an argument will
      * be thrown at runtime.
+     *
      * <p>
      * If you want to specify an arbitrary exception object, use the
      * {@link #requireEndWith(String, String)} method.
@@ -5036,6 +5253,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code true} .
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireTrue(boolean, RuntimeException)} method.
@@ -5066,11 +5284,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code true} .
+     *
      * <p>
      * If the boolean passed as an argument is {@code false} ,
      * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime. Any {@code message} passed as an argument will be printed as a
      * detail message when the exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireTrue(boolean, RuntimeException)} method.
@@ -5102,9 +5322,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code true} .
+     *
      * <p>
      * If the boolean specified as an argument is {@code false} , then any exception
      * object specified as an argument will be thrown at runtime.
+     *
      * <p>
      * Use {@link #requireTrue(boolean)} method if you do not specify any exception
      * objects.
@@ -5141,6 +5363,7 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code false} .
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireFalse(boolean, RuntimeException)} method.
@@ -5171,11 +5394,13 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code false} .
+     *
      * <p>
      * If the boolean passed as an argument is {@code true} ,
      * {@link PreconditionFailedException} will be thrown as an exception object at
      * runtime. Any {@code message} passed as an argument will be printed as a
      * detail message when the exception occurs.
+     *
      * <p>
      * To specify an arbitrary exception object, use the
      * {@link #requireFalse(boolean, RuntimeException)} method.
@@ -5207,9 +5432,11 @@ public final class Preconditions {
 
     /**
      * Ensures that the boolean value given as an argument is {@code false} .
+     *
      * <p>
      * If the boolean specified as an argument is {@code true} , then any exception
      * object specified as an argument will be thrown at runtime.
+     *
      * <p>
      * Use {@link #requireFalse(boolean)} method if you do not specify any exception
      * objects.
