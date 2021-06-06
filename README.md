@@ -1,26 +1,26 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
-![Latest Version](https://img.shields.io/badge/Latest_Version-v1.1.0-27ae60.svg?style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/Latest_Version-v1.1.1-27ae60.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
 ![Java CI with Gradle](https://github.com/myConsciousness/precondition-validator/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
-# Precondition Validator
+# 1. Precondition Validator
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [What is it?](#what-is-it)
-- [Benefits](#benefits)
-- [How To Use](#how-to-use)
-  - [1. Add the dependencies](#1-add-the-dependencies)
-  - [2. Add an import for **_Preconditions_**](#2-add-an-import-for-_preconditions_)
-  - [3. Define preconditions](#3-define-preconditions)
-- [License](#license)
-- [More Information](#more-information)
+- [1.1. What is it?](#11-what-is-it)
+- [1.2. Benefits](#12-benefits)
+- [1.3. How To Use](#13-how-to-use)
+  - [1.3.1. Add the dependencies](#131-add-the-dependencies)
+  - [1.3.2. Add an import for **_Preconditions_**](#132-add-an-import-for-_preconditions_)
+  - [1.3.3. Define preconditions](#133-define-preconditions)
+- [1.4. License](#14-license)
+- [1.5. More Information](#15-more-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## What is it?
+## 1.1. What is it?
 
 **_Make your software more robust by defining clear preconditions!_**
 
@@ -28,15 +28,15 @@
 
 Using the `Precondition Validator` features, you can safely and easily specify preconditions at the start of the process.
 
-## Benefits
+## 1.2. Benefits
 
 - No need to write a redundant validation process for preconditions
 - Tested and secure validation process
 - Easy and intuitive operation
 
-## How To Use
+## 1.3. How To Use
 
-### 1. Add the dependencies
+### 1.3.1. Add the dependencies
 
 > **_Note:_**<br>
 > Replace version you want to use. Check the latest [Packages](https://github.com/myConsciousness/precondition-validator/packages).<br>
@@ -48,7 +48,7 @@ Using the `Precondition Validator` features, you can safely and easily specify p
 <dependency>
   <groupId>org.thinkit.common</groupId>
   <artifactId>precondition-validator</artifactId>
-  <version>v1.1.0</version>
+  <version>v1.1.1</version>
 </dependency>
 
 <servers>
@@ -75,17 +75,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.common:precondition-validator:v1.1.0'
+    implementation 'org.thinkit.common:precondition-validator:v1.1.1'
 }
 ```
 
-### 2. Add an import for [**_Preconditions_**](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html)
+### 1.3.2. Add an import for [**_Preconditions_**](https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html)
 
 ```java
 import org.thinkit.common.base.precondition.Preconditions;
 ```
 
-### 3. Define preconditions
+### 1.3.3. Define preconditions
 
 The following is an example using [Preconditions#requireNonEmpty(Object[])](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html#requireNonEmpty(java.lang.Object[])>) and [Preconditions#requireNonEmpty(String)](<https://myconsciousness.github.io/precondition-validator/org/thinkit/common/base/precondition/Preconditions.html#requireNonEmpty(java.lang.String)>).
 
@@ -109,7 +109,7 @@ public class DemoPreconditions {
 }
 ```
 
-## License
+## 1.4. License
 
 ```
 Copyright 2020 Kato Shinya.
@@ -125,7 +125,7 @@ or implied. See the License for the specific language governing permissions and 
 the License.
 ```
 
-## More Information
+## 1.5. More Information
 
 `Precondition Validator` was designed and implemented by Kato Shinya, who works as a freelance developer.
 
