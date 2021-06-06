@@ -7,18 +7,16 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
-- [1. Precondition Validator](#1-precondition-validator)
-  - [1.1. What is it?](#11-what-is-it)
-  - [1.2. Benefits](#12-benefits)
-  - [1.3. How To Use](#13-how-to-use)
-    - [1.3.1. Add the dependencies](#131-add-the-dependencies)
-    - [1.3.2. Add an import for **_Preconditions_**](#132-add-an-import-for-preconditions)
-    - [1.3.3. Define preconditions](#133-define-preconditions)
-  - [1.4. License](#14-license)
-  - [1.5. More Information](#15-more-information)
+- [1.1. What is it?](#11-what-is-it)
+- [1.2. Benefits](#12-benefits)
+- [1.3. How To Use](#13-how-to-use)
+  - [1.3.1. Add the dependencies](#131-add-the-dependencies)
+  - [1.3.2. Add an import for **_Preconditions_**](#132-add-an-import-for-_preconditions_)
+  - [1.3.3. Define preconditions](#133-define-preconditions)
+- [1.4. License](#14-license)
+- [1.5. More Information](#15-more-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
